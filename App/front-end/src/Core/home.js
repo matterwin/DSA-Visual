@@ -1,9 +1,12 @@
-import React from 'react';
+import "../App.css"
+import "./home.css"
 
 function home(){
     return(
-        <div>
-            home page
+        <div className="border-control">
+            <div className="test">
+                test
+            </div>
         </div>
     );
 }

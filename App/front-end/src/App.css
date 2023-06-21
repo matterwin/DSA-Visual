@@ -6,3 +6,11 @@ background-color: #977575;
   background-color: #4d3939;
 
 }
+
+html, body {
+  background-color: #4d3939;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 200px;
+  margin-right: 200px;
+}
