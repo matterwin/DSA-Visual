@@ -9,6 +9,8 @@ const cors = require('cors');
 // connect to db
 const connectDB = require('./db/connect');
 
+app.use(cors());
+
 app.use(express.json());
 
 app.get('/',(req,res)=>{
@@ -18,7 +20,7 @@ app.get('/',(req,res)=>{
 const port = process.env.PORT || 5000
 const start = async () => {
     try {
-        await connectDB(process.env.MONGO_URL)
+        await connectDB(process.env.MONGO_URI)
         app.listen(port, console.log(`Listening on ${port}...`))
     } catch (error) {
         console.log(error);
