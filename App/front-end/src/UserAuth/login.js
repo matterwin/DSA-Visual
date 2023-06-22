@@ -1,11 +1,20 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import "./userauth.css";
 
-function login(){
+function Login(){
+    const [values, setValues] = useState('');
+
+    // const initialState = {
+    //     username: '',
+    //     email: '',
+    //     password: '',
+    // };
+
     return(
-        <div>
+        <div className='auth-box'>
             login page
         </div>
     );
 }
 
-export default login;
+export default Login;

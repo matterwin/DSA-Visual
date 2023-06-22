@@ -1,28 +1,39 @@
 .border-control{
-    background-color: white;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    height: 80vh;
-    align-items: center;
-    position: static;
-    background-color: #6b5151;
-    
-    margin-left: 400px;
-    margin-right: 400px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 80vh;
+  align-items: center;
+  position: static;
+  background-color: #6b5151;
+  
+  margin-left: 400px;
+  margin-right: 400px;
 }
 
 .container {
-    display: flex;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  flex-direction: column;
+}
+
+.box-container{
+  display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-  }
-  
-  .box {
-    width: 500px; 
-    height: 450px;
-    background-color: #ccc; 
-    padding: 20px; 
-  }
-  
+    flex-direction: column;
+}
+
+.box {
+  margin-top: 0;
+  padding-top: 0;
+  width: 500px; 
+  height: 450px;
+  background-color: #ccc; 
+  background-color: #977575;
+  padding: 20px; 
+}

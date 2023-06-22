@@ -1,0 +1,23 @@
+.nav-container {
+    /* margin-top: 50px;
+    margin-bottom: 50px; */
+    background-color: #6b5151;
+    background-color: #977575;
+    padding: 10px;
+}
+
+.nav-container h3 {
+    font-family: 'Montserrat', sans-serif;
+    color: #fff;
+    padding: 0;
+    margin: 0;
+}
+
+.left-nav-container{
+    display: flex;
+    flex-direction:row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+}
+
