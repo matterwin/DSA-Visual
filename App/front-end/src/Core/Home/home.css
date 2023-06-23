@@ -1,7 +1,20 @@
 .container {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   /* height: 100vh; */
   flex-direction: row;
+  gap: 10px;
+}
+
+.right-side-home, .center-side-home {
+  padding: 20px;
+}
+
+.left-side-home {
+  padding-top: 20px;
+}
+
+.center-side-home{
+  border-right: #A9C9A3 solid 1px;
 }
