@@ -24,3 +24,8 @@
     padding: 0;
     margin: 0;
 }
+
+.tabs-readme-container{
+    width: 100%;
+    /* background-color: blue; */
+}

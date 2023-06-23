@@ -22,14 +22,14 @@ export default function CenteredTabs() {
                 style: { backgroundColor: '#A9C9A3', color:'#fff' },
             }}
             sx={{
-                display:'flex',
-                flexDirection:'row',
-                justifyContent: 'space-between',
+                width:'100%'
             }}
         >
             <Tab 
                 sx={{
                     color: '#fff',
+                    borderTop: 'transparent solid 2px',
+                    borderBottom: '#adadad75 solid 2px',
                     '&:hover': {
                         backgroundColor: '#adadad75',
                     },
@@ -38,12 +38,15 @@ export default function CenteredTabs() {
                         backgroundColor:'#a9c9a383'
                     },
                     fontFamily: 'Noto Serif Ottoman Siyaq, serif',
+                    width:'25%',
                 }} 
                 label="Readme" 
             />
             <Tab 
                 sx={{
                     color: '#fff',
+                    borderTop: 'transparent solid 2px',
+                    borderBottom: '#adadad75 solid 2px',
                     '&:hover': {
                         backgroundColor: '#adadad75',
                     },
@@ -52,12 +55,15 @@ export default function CenteredTabs() {
                         backgroundColor:'#a9c9a383'
                     },
                     fontFamily: 'Noto Serif Ottoman Siyaq, serif',
+                    width:'25%'
                 }} 
                 label="Code"
             />
             <Tab 
                 sx={{
                     color: '#fff',
+                    borderTop: 'transparent solid 2px',
+                    borderBottom: '#adadad75 solid 2px',
                     '&:hover': {
                         backgroundColor: '#adadad75',
                     },
@@ -66,12 +72,15 @@ export default function CenteredTabs() {
                         backgroundColor:'#a9c9a383'
                     },
                     fontFamily: 'Noto Serif Ottoman Siyaq, serif',
+                    width:'25%'
                 }} 
                 label="Visuals"
             />
             <Tab 
                 sx={{
                     color: '#fff',
+                    borderTop: 'transparent solid 2px',
+                    borderBottom: '#adadad75 solid 2px',
                     '&:hover': {
                         backgroundColor: '#adadad75',
                     },
@@ -80,6 +89,7 @@ export default function CenteredTabs() {
                         backgroundColor:'#a9c9a383'
                     },
                     fontFamily: 'Noto Serif Ottoman Siyaq, serif',
+                    width:'25%'
                 }} 
                 label="Comments"
             />
