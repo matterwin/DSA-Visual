@@ -17,3 +17,7 @@ html, body {
   margin-left: 200px;
   margin-right: 200px; */
 }
+
+a, a:visited {
+  text-decoration: none;
+}

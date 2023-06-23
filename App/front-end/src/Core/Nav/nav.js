@@ -5,6 +5,8 @@
 // import Button from '@mui/material/Button';
 // import Divider from '@mui/material/Divider';
 import { NavLink } from "react-router-dom";
+
+import Searchbar from './searchbar';
 import "./nav.css"
 import "./subnav.css"
 
@@ -34,15 +36,11 @@ const Nav = () => {
         <div className="sub-nav-l-r-container">
           <div className="sub-left-side">
             <NavLink end to="/">
-              <h3 className="headline">Heyso</h3>
+              <h3 className="sub-headline">Heyso</h3>
             </NavLink> 
           </div>
           <div className="sub-right-side">
-            <NavLink end to="/">
-              <h3>Home</h3>
-            </NavLink> 
-            <a href="/register"><h3>register</h3></a>
-            <a href="/login"><h3>login</h3></a>
+            <Searchbar />
           </div>
         </div>
       </div>
