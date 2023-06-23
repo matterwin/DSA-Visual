@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
-import './test.css';
+import './filesys.css';
 
-const Test = () => {
+const Filesys = () => {
   const [openIndexes, setOpenIndexes] = useState([]);
 
   const handleOpen = (index) => {
@@ -26,6 +26,14 @@ const Test = () => {
             )}
             <p>Sort</p>
           </div>
+          <div className='children-container'>
+            {openIndexes.includes(0) && (
+              <>
+                <p>Merge</p>
+                <p>Quick</p>
+              </>
+            )}
+          </div>
         </div>
         <div className='pfolder-contain' onClick={() => handleOpen(1)}>
           <div className='fs-arrow'>
@@ -42,4 +50,4 @@ const Test = () => {
   );
 };
 
-export default Test;
+export default Filesys;

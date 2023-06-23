@@ -14,6 +14,15 @@
     justify-content: flex-start;
 }
 
+.children-container{
+    border-left: #fff solid 1px;
+    margin-left: 30px;
+    display: flex;
+    flex-direction:column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
 .pfolder-contain{
     width: 100%;
     padding-top: 5px;
