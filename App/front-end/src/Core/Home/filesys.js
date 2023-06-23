@@ -4,7 +4,27 @@ import './filesys.css';
 const filesys = () => {
   return (
     <div className='filesys-container'>
-        Est commodo esse nulla Lorem est et. Enim esse consectetur labore duis magna nisi fugiat ea ut laborum in ipsum in anim. Cupidatat enim aliqua non irure enim sint quis nostrud in fugiat Lorem ullamco. Qui sint non veniam id commodo magna occaecat tempor ex elit ex magna. Aute consequat in esse ut culpa anim irure.
+        <p>Sorting
+	Merge
+	Quick
+	Insertion
+	Bubble
+	Selection
+	etc.
+
+Trees
+	Binary
+	Binary Search Tree
+	Heap
+	Trie
+	etc.
+
+Graph Traversals
+	BFS
+	DFS
+	Dijkstras
+	Bellman
+	etc.</p>
     </div>
   )
 }

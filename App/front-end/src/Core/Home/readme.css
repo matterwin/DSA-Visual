@@ -1,0 +1,22 @@
+.readme-container{
+    /* min-width: 500px;
+    width: 500px; */
+    color: #adadad75;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 10px;
+    color: #fff;
+}
+
+.title-of-panel{
+    color: #A9C9A3;
+    padding: 0;
+    margin: 0;
+}
+
+.title-note{
+    padding: 0;
+    margin: 0;
+}

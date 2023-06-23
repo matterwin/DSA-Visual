@@ -5,6 +5,8 @@
   /* height: 100vh; */
   flex-direction: row;
   gap: 10px;
+  margin-left: 200px;
+  margin-right: 200px;
 }
 
 .right-side-home, .center-side-home {
@@ -17,4 +19,5 @@
 
 .center-side-home{
   border-right: #A9C9A3 solid 1px;
+  width: max-content;
 }

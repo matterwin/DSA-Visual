@@ -18,50 +18,69 @@ export default function CenteredTabs() {
         marginBottom: '30px' 
         }}
     >
-      <Tabs value={value} onChange={handleChange} centered TabIndicatorProps={{
-          style: { backgroundColor: '#A9C9A3', color:'#fff' },
-        }}>
-        <Tab 
+        <Tabs value={value} onChange={handleChange} centered 
+            TabIndicatorProps={{
+                style: { backgroundColor: '#A9C9A3', color:'#fff' },
+            }}
             sx={{
-                color: '#fff',
-                '&.Mui-selected': {
+                display:'flex',
+                flexDirection:'row',
+                justifyContent: 'space-between',
+            }}
+        >
+            <Tab 
+                sx={{
                     color: '#fff',
-                    backgroundColor:'#a9c9a383'
-                },
-            }} 
-            label="Readme" 
-        />
-        <Tab 
-            sx={{
-                color: '#fff',
-                '&.Mui-selected': {
+                    '&:hover': {
+                        backgroundColor: '#adadad75',
+                    },
+                    '&.Mui-selected': {
+                        color: '#fff',
+                        backgroundColor:'#a9c9a383'
+                    },
+                }} 
+                label="Readme" 
+            />
+            <Tab 
+                sx={{
                     color: '#fff',
-                    backgroundColor:'#a9c9a383'
-                },
-            }} 
-            label="Code"
-        />
-        <Tab 
-            sx={{
-                color: '#fff',
-                '&.Mui-selected': {
+                    '&:hover': {
+                        backgroundColor: '#adadad75',
+                    },
+                    '&.Mui-selected': {
+                        color: '#fff',
+                        backgroundColor:'#a9c9a383'
+                    },
+                }} 
+                label="Code"
+            />
+            <Tab 
+                sx={{
                     color: '#fff',
-                    backgroundColor:'#a9c9a383'
-                },
-            }} 
-            label="Visuals"
-        />
-        <Tab 
-            sx={{
-                color: '#fff',
-                '&.Mui-selected': {
+                    '&:hover': {
+                        backgroundColor: '#adadad75',
+                    },
+                    '&.Mui-selected': {
+                        color: '#fff',
+                        backgroundColor:'#a9c9a383'
+                    },
+                }} 
+                label="Visuals"
+            />
+            <Tab 
+                sx={{
                     color: '#fff',
-                    backgroundColor:'#a9c9a383'
-                },
-            }} 
-            label="Comments"
-        />
-      </Tabs>
+                    '&:hover': {
+                        backgroundColor: '#adadad75',
+                    },
+                    '&.Mui-selected': {
+                        color: '#fff',
+                        backgroundColor:'#a9c9a383'
+                    },
+                }} 
+                label="Comments"
+            />
+        </Tabs>
     </Box>
   );
 }
