@@ -22,14 +22,14 @@ const Nav = () => {
             </div>
             <div className="right-side">
               <NavLink end to="/">
-                <h4>Home</h4>
+                <h4 className="linkers">Home</h4>
               </NavLink> 
               <NavLink end to="/">
-                <h4>Forums</h4>
+                <h4 className="linkers">Forums</h4>
               </NavLink> 
               <Divider orientation="vertical" style={{ backgroundColor: '#f4f4f5', height: '25px', width:'1px' }} />
               <a href="/register" className="sign-up"><h4 className="sign-up-h3">Sign Up</h4></a>
-              <a href="/login"><h4>Sign In</h4></a>
+              <a href="/login"><h4 className="sign-in">Sign In</h4></a>
             </div>
           </div>
         </div>

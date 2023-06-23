@@ -18,9 +18,13 @@
     text-decoration: none; 
 }
 
-/* .inside-nav h3:hover {
+.linkers:hover{
     color:#A9C9A3;
-} */
+}
+
+.sign-in:hover {
+    color:#f1ff2e;
+}
 
 .sign-up {
     border: #977575 solid 2px;
