@@ -16,6 +16,31 @@
     text-decoration: none; 
 }
 
+.dsa-btn {
+    padding-top: 0;
+    margin-top: 0;
+    font-family: 'Source Sans Pro', sans-serif;
+    color: #4d3939;
+    font-size: 1rem;
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 5px;
+    padding: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    text-decoration: none;
+    outline: none;
+    border: 1px solid #A9C9A3;
+    background-color: #A9C9A3;
+    transition: background-color 0.3s ease;
+  }
+
+.dsa-btn:hover {
+    border: 1px solid #4d3939;
+    background-color: #a9c9a383;
+    cursor: pointer;
+}
+
 .nav-l-r-container {
     display: flex;
     flex-direction:row;

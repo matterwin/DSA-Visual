@@ -5,7 +5,7 @@ function Notfound() {
 
     const handleReturnToHome = () => {
         window.location.href = '/';
-        };
+    };
 
     return (
     <div className="nf-container">

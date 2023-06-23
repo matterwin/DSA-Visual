@@ -11,6 +11,11 @@ import "./nav.css"
 import "./subnav.css"
 
 const Nav = () => {
+
+  const handleReturnToHome = () => {
+    window.location.href = '/';
+  };
+
   return (
     <div>
       <div className='nav-container'>
@@ -25,8 +30,11 @@ const Nav = () => {
               <NavLink end to="/">
                 <h3>Home</h3>
               </NavLink> 
-              <a href="/register"><h3>register</h3></a>
-              <a href="/login"><h3>login</h3></a>
+              <NavLink end to="/">
+                <h3>Forums</h3>
+              </NavLink> 
+              <a href="/register"><h3>Sign Up</h3></a>
+              <a href="/login"><h3>Sign In</h3></a>
             </div>
           </div>
         </div>
@@ -35,9 +43,9 @@ const Nav = () => {
       <div className="sub-inside-nav">
         <div className="sub-nav-l-r-container">
           <div className="sub-left-side">
-            <NavLink end to="/">
-              <h3 className="sub-headline">Heyso</h3>
-            </NavLink> 
+            <button className='dsa-btn' onClick={handleReturnToHome}>
+              DSA Visuals
+            </button>
           </div>
           <div className="sub-right-side">
             <Searchbar />
