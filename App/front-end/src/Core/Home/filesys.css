@@ -1,8 +1,33 @@
 .filesys-container{
-    height: 200px;
+    height: 500px;
     width: 200px;
     overflow-y: scroll;
     padding: 0;
     margin: 0;
     color: #fff;
+}
+
+.file-container{
+    display: flex;
+    flex-direction:column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: max-content;
+}
+
+.parent-container {
+    width: max-content;
+    margin: 0;
+}
+
+.parent-folder{
+    display: flex;
+    flex-direction:row;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.parent-folder:hover{
+    background-color: #A9C9A3;
+    cursor: pointer;
 }

@@ -13,9 +13,8 @@ export default function CenteredTabs() {
   return (
     <Box 
         sx={{ 
-        width: '100%', 
-        color: '#FFF', 
-        marginBottom: '30px' 
+            width: '100%', 
+            color: '#FFF', 
         }}
     >
         <Tabs value={value} onChange={handleChange} centered 
@@ -38,6 +37,7 @@ export default function CenteredTabs() {
                         color: '#fff',
                         backgroundColor:'#a9c9a383'
                     },
+                    fontFamily: 'Noto Serif Ottoman Siyaq, serif',
                 }} 
                 label="Readme" 
             />
@@ -51,6 +51,7 @@ export default function CenteredTabs() {
                         color: '#fff',
                         backgroundColor:'#a9c9a383'
                     },
+                    fontFamily: 'Noto Serif Ottoman Siyaq, serif',
                 }} 
                 label="Code"
             />
@@ -64,6 +65,7 @@ export default function CenteredTabs() {
                         color: '#fff',
                         backgroundColor:'#a9c9a383'
                     },
+                    fontFamily: 'Noto Serif Ottoman Siyaq, serif',
                 }} 
                 label="Visuals"
             />
@@ -77,6 +79,7 @@ export default function CenteredTabs() {
                         color: '#fff',
                         backgroundColor:'#a9c9a383'
                     },
+                    fontFamily: 'Noto Serif Ottoman Siyaq, serif',
                 }} 
                 label="Comments"
             />

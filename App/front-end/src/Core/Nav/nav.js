@@ -1,11 +1,5 @@
-// import React, { useEffect, useState } from 'react';
-// import { NavLink, useLocation } from "react-router-dom";
-// import Tooltip from '@mui/material/Tooltip';
-// import WidgetsIcon from '@mui/icons-material/Widgets';
-// import Button from '@mui/material/Button';
-// import Divider from '@mui/material/Divider';
 import { NavLink } from "react-router-dom";
-
+import Divider from '@mui/material/Divider';
 import Searchbar from './searchbar';
 import "./nav.css"
 import "./subnav.css"
@@ -28,13 +22,14 @@ const Nav = () => {
             </div>
             <div className="right-side">
               <NavLink end to="/">
-                <h3>Home</h3>
+                <h4>Home</h4>
               </NavLink> 
               <NavLink end to="/">
-                <h3>Forums</h3>
+                <h4>Forums</h4>
               </NavLink> 
-              <a href="/register"><h3>Sign Up</h3></a>
-              <a href="/login"><h3>Sign In</h3></a>
+              <Divider orientation="vertical" style={{ backgroundColor: '#f4f4f5', height: '25px', width:'1px' }} />
+              <a href="/register" className="sign-up"><h4 className="sign-up-h3">Sign Up</h4></a>
+              <a href="/login"><h4>Sign In</h4></a>
             </div>
           </div>
         </div>
