@@ -20,8 +20,6 @@ function App() {
                 
   const HideNav = (validNavPath && !HideNavIf) ? <Nav /> : null;
 
-
-
   return (
     <div>
        <Router>
