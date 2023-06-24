@@ -15,18 +15,18 @@
 }
 
 .children-contain{
-    border-left: #fff solid 1px;
-    margin-left: 11px;
+    /* margin-left: 11px; */
     display: flex;
     flex-direction:column;
     align-items: flex-start;
     justify-content: flex-start;
+    border-left: #fff solid 1px;
 }
 
 .pfolder-contain{
     width: 100%;
     padding-top: 5px;
-    padding-bottom: 5px;
+    /* padding-bottom: 5px; */
 }
 
 .pfolder-contain p, .children-contain p {
@@ -37,14 +37,19 @@
     font-size: 17px;
 }
 
-.pfolder-contain:hover{
+.fs-arrow{
+    padding: 5px;
+}
+
+.fs-arrow:hover{
     background-color:#A9C9A3;
     cursor: pointer;
 }
 
 .children-contain{
     width: 100%;
-        margin-left: 20px;
+    margin-left: 17px;
+    /* padding-left: 20px; */
     /* padding-top: 5px;
     padding-bottom: 5px; */
 }
@@ -70,6 +75,7 @@
     width: 100%;
     padding-top: 5px;
     padding-bottom: 5px;
+    padding-left: 20px;
 }
 
 .children-content:hover{

@@ -13,14 +13,14 @@ const Folder = ({ name, isOpen, handleOpen, index, items }) => {
           <KeyboardArrowRightIcon sx={{ fontSize: 24, marginBottom: '-2px', marginRight: '-5px' }} />
         )}
         <p>{name}</p>
-        {/* {items && (
-          <div className='child-content'>
-            {items.map((item, itemIndex) => (
-              <p key={itemIndex}>{item}</p>
-            ))}
-          </div>
-        )} */}
       </div>
+      {items && (
+        <div className='child-content'>
+          {items.map((item, itemIndex) => (
+            <Children childName={item} isOpen={isOpen} />
+          ))}
+        </div>
+      )}
     </div>
   );
 };

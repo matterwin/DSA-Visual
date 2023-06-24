@@ -17,6 +17,7 @@ const Filesys = () => {
     <div className='fs-contain'>
       <div className='fs-folders-contain'>
         <Folder name='Sort' isOpen={openIndexes.includes(0)} handleOpen={handleOpen} index={0} items={['Merge', 'Quick', 'Insertion']}/>
+        <Folder name='Search' isOpen={openIndexes.includes(1)} handleOpen={handleOpen} index={1} items={['Binary']}/>
       </div>
     </div>
   );
