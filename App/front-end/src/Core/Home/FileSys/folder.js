@@ -33,6 +33,7 @@ const Folder = ({ name, isOpen, handleOpen, index, items, list}) => {
         <div className='child-content'>
           {items.map((item, itemIndex) => (
             <Children
+              key={itemIndex}
               childName={item}
               isOpen={isOpen}
               childIndex={itemIndex}

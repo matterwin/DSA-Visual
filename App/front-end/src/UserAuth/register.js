@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import EmailField from './emailfield';
+import PasswordField from './passwordfield';
 import { Divider } from '@mui/material';
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import ErrorOutlinedIcon from '@mui/icons-material/ErrorOutlined';
@@ -7,7 +8,7 @@ import "./userauth.css";
 
 const initialState = {
     username: '',
-    email: '',
+    email: 'testing@aol.com',
     password: '',
 };
 
@@ -15,13 +16,11 @@ function Register() {
     const [values, setValues] = useState(initialState);
 
     const [showEmailBox, setShowEmailBox] = useState(true);
-    const [emailValue, setEmailValue] = useState('');
     const [isEmailValid, setisEmailValid] = useState(false);
     const [showEmailError, setShowEmailError] = useState(false);
-    const [showEmailTakenError, setShowEmailTakenError] = useState(true);
+    const [showEmailTakenError, setShowEmailTakenError] = useState(false);
 
     const [showPasswordBox, setShowPasswordBox] = useState(false);
-    const [passwordValue, setPasswordValue] = useState('');
 
     function handleEmailChange(event) {
         const emailInput = event.target.value;
@@ -36,22 +35,65 @@ function Register() {
         else
             setisEmailValid(true);
 
-        setEmailValue(emailInput);
+        setValues(prevValues => ({
+            ...prevValues,
+            email: emailInput
+        }));
     }
 
     function handleEmailSubmit() {
-    if(isEmailValid){
-        //communicate with db
+        if (isEmailValid) {
+ 
+            const url = 'http://localhost:5000/auth/checkEmail';
+    
+            fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ email: values.email }),
+            })
+            .then(res => {return res.json();})
+            .then(data => {
+                if(data){
+                    setShowPasswordBox(true);
+                    setShowEmailBox(false);
+                }
+                else
+                    setShowEmailTakenError(true);
+                
+            })
+            .catch(err => {
+                console.error(err);
+            });
+    
+            // Last step: means email field is correct and complete
+   
+            //fetch is asyn, so show a loading thing here maybe for when we officially sign in or something
+            //in the .then response is a promise whenever it runs successfulyl, and so in there return to a normal state or move on to the pw field
 
-        //last step: means email field is correct and complete
-        values.email = emailValue;
-        setShowEmailBox(false);
-        setShowPasswordBox(true);
+        } else {
+            setShowEmailError(true);
+        }   
     }
-    else{
-        setShowEmailError(true);
-    }   
+
+    function handlePasswordChange(event) {
+        const passwordInput = event.target.value;
+
+        // const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        // const isValid = emailRegex.test(emailInput);
+
+        // if(!isValid)
+        //     setisEmailValid(false);
+        // else
+        //     setisEmailValid(true);
+
+        setValues(prevValues => ({
+            ...prevValues,
+            password: passwordInput
+        }));
     }
+    
 
     return (
     <div className='auth-box'>
@@ -63,6 +105,41 @@ function Register() {
             <h5 className='h5-auth'>Create your account</h5>
             <div className='form-container'>
                 <EmailField handleEmailChange={handleEmailChange} />
+                {showEmailError && 
+                <div className='error-email-div'>
+                    <ErrorOutlinedIcon sx={{color:'#fff', fontSize:'20px'}}/>
+                    <p className="invalid-email-msg">Please enter a valid email address.</p>
+                </div>
+                }
+                {showEmailTakenError && 
+                <div className='error-email-div'>
+                    <ErrorOutlinedIcon sx={{color:'#fff', fontSize:'20px'}}/>
+                    <p className="invalid-email-msg">Email already in use.</p>
+                </div>
+                }
+                <div className='auth-btn-container'>
+                <button className='auth-btn' onClick={handleEmailSubmit}>Continue</button>
+                </div>
+            </div>
+            <div className='back-btn-contain'>
+                <div className='div-auth'>
+                    <Divider orientation="horizontal" style={{ backgroundColor: '#f4f4f5', height: '1px', width:'100%' }} />
+                </div>
+                <a href='/'>
+                    <div className='home-btn'>
+                        <HomeOutlinedIcon sx={{fontSize:'30px'}}/>
+                    </div>
+                </a>
+            </div>
+            </div>
+        )}
+
+        {showPasswordBox && (
+            <div>
+            <h3 className='h3-auth'>Your secrets are save with me</h3>
+            <h5 className='h5-auth'>Write your password</h5>
+            <div className='form-container'>
+                <PasswordField handlePasswordChange={handlePasswordChange} />
                 {showEmailError && 
                 <div className='error-email-div'>
                     <ErrorOutlinedIcon sx={{color:'#fff', fontSize:'20px'}}/>
