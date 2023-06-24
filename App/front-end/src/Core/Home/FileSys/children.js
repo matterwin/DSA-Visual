@@ -1,6 +1,7 @@
 import React from 'react';
 
 const Children = ({ childName, isOpen }) => {
+  
   return (
     isOpen && (
       <div className='children-contain'>

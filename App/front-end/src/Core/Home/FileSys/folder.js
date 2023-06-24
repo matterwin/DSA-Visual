@@ -5,8 +5,8 @@ import Children from './children';
 
 const Folder = ({ name, isOpen, handleOpen, index, items }) => {
   return (
-    <div className='pfolder-contain' onClick={() => handleOpen(index)}>
-      <div className='fs-arrow'>
+    <div className='pfolder-contain' >
+      <div className='fs-arrow' onClick={() => handleOpen(index)}>
         {isOpen ? (
           <KeyboardArrowDownIcon sx={{ fontSize: 24, marginBottom: '-2px', marginRight: '-5px' }} />
         ) : (
