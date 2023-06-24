@@ -1,96 +1,70 @@
-import { useState } from 'react';
-import TextField from '@mui/material/TextField';
-import "./userauth.css";
+import React, { useState } from 'react';
+import EmailField from './emailfield';
 import { Divider } from '@mui/material';
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
+import "./userauth.css";
 
-const initialState = {
-    username: '',
-    email: '',
-    password: '',
-};
+function Register() {
+  const [showEmailBox, setShowEmailBox] = useState(true);
+  const [emailValue, setEmailValue] = useState('');
+  const [isEmailValid, setisEmailValid] = useState(false);
+  const [showEmailError, setShowEmailError] = useState(false);
 
-function Register(){
-    const [values, setValues] = useState(initialState);
+  function handleEmailChange(event) {
+    const emailInput = event.target.value;
+    setShowEmailError(false);
 
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setValues(prevState => ({ ...prevState, [name]: value }));
-    };
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const isValid = emailRegex.test(emailInput);
 
-    return(
-        <div className='auth-box'>
-            <div className='auth-width'>
-                <h3 className='h3-auth'>The man, the myth, the legend</h3>
-                <div className='form-container'>
-                    <TextField
-                        autoFocus
-                        id="email-field"
-                        label="Email"
-                        variant="outlined"
-                        sx={{
-                            '& .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline': {
-                                borderColor: "#A9C9A3",
-                                boxShadow: "0 0 2px #A9C9A3"
-                            },
-                            '& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline': {
-                                borderColor: "#A9C9A3",
-                                boxShadow: "0 0 2px #A9C9A3"
-                            },
-                            '& .MuiOutlinedInput-notchedOutline': {
-                                borderColor: '#f4f4f5',
-                            },
-                        }}  
-                        InputLabelProps={{
-                            style: { color: '#fff' }
-                        }}
-                        InputProps={{
-                            style: { color: "#fff" },
-                        }}
-                    />
-                    <TextField
-                        id="email-field"
-                        label="Password"
-                        variant="outlined"
-                        sx={{
-                            '& .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline': {
-                                borderColor: "#A9C9A3",
-                                boxShadow: "0 0 2px #A9C9A3"
-                            },
-                            '& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline': {
-                                borderColor: "#A9C9A3",
-                                boxShadow: "0 0 2px #A9C9A3"
-                            },
-                            '& .MuiOutlinedInput-notchedOutline': {
-                                borderColor: '#f4f4f5',
-                            },
-                        }}  
-                        InputLabelProps={{
-                            style: { color: '#fff' }
-                        }}
-                        InputProps={{
-                            style: { color: "#fff" },
-                        }}
-                    />
-                </div>
-                <div className='auth-btn-container'>
-                    <button className='auth-btn'>
-                        Continue
-                    </button>
-                </div>
-                <div className='back-btn-contain'>
-                    <div className='div-auth'>
-                        <Divider orientation="horizontal" style={{ backgroundColor: '#f4f4f5', height: '2px', width:'100%' }} />
-                    </div>
-                    <a href='/'>
-                        <div className='home-btn'>
-                            <HomeOutlinedIcon/>
-                        </div>
-                    </a>
-                </div>
+    if(!isValid)
+        setisEmailValid(false);
+    else
+        setisEmailValid(true);
+
+    setEmailValue(emailInput);
+  }
+
+  function handleEmailSubmit() {
+    if(isEmailValid){
+        //communicate with db
+    }
+    else{
+        setShowEmailError(true);
+    }   
+  }
+
+  return (
+    <div className='auth-box'>
+      <div className='auth-width'>
+
+        {showEmailBox && (
+          <div>
+            <h3 className='h3-auth'>The man, the myth, the legend</h3>
+            <h5 className='h5-auth'>Create your account</h5>
+            <div className='form-container'>
+              <EmailField handleEmailChange={handleEmailChange} />
+              {showEmailError && <p className="invalid-email-msg">Please enter a valid email address.</p>}
+              <div className='auth-btn-container'>
+                <button className='auth-btn' onClick={() => {alert('you a bitch')}}>Continue</button>
+              </div>
             </div>
-        </div>
-    );
+            <div className='back-btn-contain'>
+                <div className='div-auth'>
+                    <Divider orientation="horizontal" style={{ backgroundColor: '#f4f4f5', height: '1px', width:'100%' }} />
+                </div>
+                <a href='/'>
+                    <div className='home-btn'>
+                        <HomeOutlinedIcon sx={{fontSize:'30px'}}/>
+                    </div>
+                </a>
+            </div>
+          </div>
+        )}
+
+      </div>
+    </div>
+  );
 }
 
 export default Register;

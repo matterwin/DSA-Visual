@@ -21,8 +21,14 @@
     text-align: center;
   }
 
+  .h5-auth{
+    color:#fff;
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+  }
+
   .auth-width {
-    width: 200px;
+    width: 300px;
     padding-left: 10px;
     padding-right: 10px;
   }
@@ -31,12 +37,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 30px;
-    flex-direction: column
+    /* margin-top: 30px; */
+    flex-direction: column;
+    width: 100%;
   }
 
   .auth-btn {
-    width: 200px;
+    width: 100%;
     text-align: center;
     font-family: 'Source Sans Pro', sans-serif;
     color: #A9C9A3;
@@ -45,7 +52,7 @@
     text-decoration: none;
     font-weight: 600;
     border-radius: 5px;
-    padding: 10px;
+    padding: 17px;
     padding-left: 20px;
     padding-right: 20px;
     text-decoration: none;
@@ -85,9 +92,29 @@
     border-radius: 15%;
     padding: 5px 5px 3px 5px;
     transition: background-color 0.3s ease;
+    background-color: #cccccc69;
+  }
+
+  .invalid-email-msg {
+    color: rgb(255, 255, 255);
+    padding: 0;
+    margin: 0;
+    text-align: left;
+    width: 100%;
+    margin-top: -25px;
   }
 
   .home-btn:hover{
+    background-color: #A9C9A3;
+    color:#fff;
+  }
+
+  .sign-div{
+    /* padding: 5px 5px 3px 5px; */
+    text-align: center;
+  }
+
+  .sign-div:hover{
     background-color: #A9C9A3;
     color:#fff;
   }
