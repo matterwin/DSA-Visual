@@ -3,7 +3,7 @@ import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import Children from './children';
 
-const Folder = ({ isOpen, handleOpen, index, children }) => {
+const Folder = ({ name, isOpen, handleOpen, index, items }) => {
   return (
     <div className='pfolder-contain' onClick={() => handleOpen(index)}>
       <div className='fs-arrow'>
@@ -12,9 +12,15 @@ const Folder = ({ isOpen, handleOpen, index, children }) => {
         ) : (
           <KeyboardArrowRightIcon sx={{ fontSize: 24, marginBottom: '-2px', marginRight: '-5px' }} />
         )}
-        {children}
+        <p>{name}</p>
+        {/* {items && (
+          <div className='child-content'>
+            {items.map((item, itemIndex) => (
+              <p key={itemIndex}>{item}</p>
+            ))}
+          </div>
+        )} */}
       </div>
-      <Children isOpen={isOpen} />
     </div>
   );
 };
