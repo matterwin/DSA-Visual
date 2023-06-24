@@ -60,3 +60,34 @@
     background-color: #70836c;
     cursor: pointer;
   }
+
+  .back-btn-contain{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-decoration: none;
+    gap: 10px;
+  }
+
+  .div-auth{
+    margin-top: 15px;
+    width: 100%;
+  }
+
+  a, a:visited{
+    text-decoration: none;
+    color: #ccc;
+  }
+
+  .home-btn{
+    cursor: pointer;
+    border-radius: 15%;
+    padding: 5px 5px 3px 5px;
+    transition: background-color 0.3s ease;
+  }
+
+  .home-btn:hover{
+    background-color: #A9C9A3;
+    color:#fff;
+  }

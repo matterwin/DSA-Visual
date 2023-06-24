@@ -1,6 +1,8 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import TextField from '@mui/material/TextField';
 import "./userauth.css";
+import { Divider } from '@mui/material';
+import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 
 const initialState = {
     username: '',
@@ -75,6 +77,16 @@ function Login(){
                     <button className='auth-btn'>
                         Continue
                     </button>
+                </div>
+                <div className='back-btn-contain'>
+                    <div className='div-auth'>
+                        <Divider orientation="horizontal" style={{ backgroundColor: '#f4f4f5', height: '2px', width:'100%' }} />
+                    </div>
+                    <a href='/'>
+                        <div className='home-btn'>
+                            <HomeOutlinedIcon/>
+                        </div>
+                    </a>
                 </div>
             </div>
         </div>

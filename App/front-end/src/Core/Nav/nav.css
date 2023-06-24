@@ -32,12 +32,13 @@
     padding: 5px 10px 5px 10px;
 }
 
-.sign-up{
-    background-color: #9775756e;background-color: #A9C9A3;
+.sign-up:hover{
+    background-color: #9775756e;
+    background-color: #A9C9A3;
     border-color: #A9C9A3;
 }
 
-.sign-up:hover{
+.sign-up{
     background-color: #a0a08c;
     border-color: #A9C9A3;
 }

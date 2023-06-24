@@ -44,6 +44,7 @@
 
 .fs-arrow:hover{
     background-color:#A9C9A3;
+    background-color: #a0a08d;
     cursor: pointer;
 }
 
@@ -77,9 +78,19 @@
     padding-top: 5px;
     padding-bottom: 5px;
     padding-left: 20px;
+    cursor: pointer;
 }
 
 .children-content:hover{
     background-color:#A9C9A3;
+    background-color: #a0a08d;
     cursor: pointer;
+}
+
+.children-content:focus{
+    background-color: #a0a08d;
+}
+
+.clicked {
+    background-color: #A9C9A3;
 }

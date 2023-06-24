@@ -2,26 +2,8 @@
 
 // add snackbar for updating like signing in, changing settings, creating a post, etc.
 
-Sorting
-	Merge
-	Quick
-	Insertion
-	Bubble
-	Selection
-	etc.
+Omega (Ω) Notation:
+Omega notation represents the lower bound or best-case scenario of an algorithm's performance. It provides the minimum growth rate required for the algorithm.
 
-Trees
-	Binary
-	Binary Search Tree
-	Heap
-	Trie
-	etc.
-
-Graph Traversals
-	BFS
-	DFS
-	Dijkstras
-	Bellman
-	etc.
-
-and so on...
+Theta (Θ) Notation:
+Theta notation represents the average-case or tight bound of an algorithm's performance. It provides both the upper and lower bounds for the growth rate of the algorithm.
