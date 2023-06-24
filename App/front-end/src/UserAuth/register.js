@@ -2,52 +2,82 @@ import React, { useState } from 'react';
 import EmailField from './emailfield';
 import { Divider } from '@mui/material';
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
+import ErrorOutlinedIcon from '@mui/icons-material/ErrorOutlined';
 import "./userauth.css";
 
+const initialState = {
+    username: '',
+    email: '',
+    password: '',
+};
+
 function Register() {
-  const [showEmailBox, setShowEmailBox] = useState(true);
-  const [emailValue, setEmailValue] = useState('');
-  const [isEmailValid, setisEmailValid] = useState(false);
-  const [showEmailError, setShowEmailError] = useState(false);
+    const [values, setValues] = useState(initialState);
 
-  function handleEmailChange(event) {
-    const emailInput = event.target.value;
-    setShowEmailError(false);
+    const [showEmailBox, setShowEmailBox] = useState(true);
+    const [emailValue, setEmailValue] = useState('');
+    const [isEmailValid, setisEmailValid] = useState(false);
+    const [showEmailError, setShowEmailError] = useState(false);
+    const [showEmailTakenError, setShowEmailTakenError] = useState(true);
 
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    const isValid = emailRegex.test(emailInput);
+    const [showPasswordBox, setShowPasswordBox] = useState(false);
+    const [passwordValue, setPasswordValue] = useState('');
 
-    if(!isValid)
-        setisEmailValid(false);
-    else
-        setisEmailValid(true);
+    function handleEmailChange(event) {
+        const emailInput = event.target.value;
+        setShowEmailError(false);
+        setShowEmailTakenError(false);
 
-    setEmailValue(emailInput);
-  }
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        const isValid = emailRegex.test(emailInput);
 
-  function handleEmailSubmit() {
+        if(!isValid)
+            setisEmailValid(false);
+        else
+            setisEmailValid(true);
+
+        setEmailValue(emailInput);
+    }
+
+    function handleEmailSubmit() {
     if(isEmailValid){
         //communicate with db
+
+        //last step: means email field is correct and complete
+        values.email = emailValue;
+        setShowEmailBox(false);
+        setShowPasswordBox(true);
     }
     else{
         setShowEmailError(true);
     }   
-  }
+    }
 
-  return (
+    return (
     <div className='auth-box'>
-      <div className='auth-width'>
+        <div className='auth-width'>
 
         {showEmailBox && (
-          <div>
+            <div>
             <h3 className='h3-auth'>The man, the myth, the legend</h3>
             <h5 className='h5-auth'>Create your account</h5>
             <div className='form-container'>
-              <EmailField handleEmailChange={handleEmailChange} />
-              {showEmailError && <p className="invalid-email-msg">Please enter a valid email address.</p>}
-              <div className='auth-btn-container'>
-                <button className='auth-btn' onClick={() => {alert('you a bitch')}}>Continue</button>
-              </div>
+                <EmailField handleEmailChange={handleEmailChange} />
+                {showEmailError && 
+                <div className='error-email-div'>
+                    <ErrorOutlinedIcon sx={{color:'#fff', fontSize:'20px'}}/>
+                    <p className="invalid-email-msg">Please enter a valid email address.</p>
+                </div>
+                }
+                {showEmailTakenError && 
+                <div className='error-email-div'>
+                    <ErrorOutlinedIcon sx={{color:'#fff', fontSize:'20px'}}/>
+                    <p className="invalid-email-msg">Email already in use.</p>
+                </div>
+                }
+                <div className='auth-btn-container'>
+                <button className='auth-btn' onClick={handleEmailSubmit}>Continue</button>
+                </div>
             </div>
             <div className='back-btn-contain'>
                 <div className='div-auth'>
@@ -59,12 +89,12 @@ function Register() {
                     </div>
                 </a>
             </div>
-          </div>
+            </div>
         )}
 
-      </div>
+        </div>
     </div>
-  );
+    );
 }
 
 export default Register;
