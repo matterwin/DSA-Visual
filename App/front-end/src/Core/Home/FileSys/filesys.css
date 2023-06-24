@@ -14,9 +14,9 @@
     justify-content: flex-start;
 }
 
-.children-container{
+.children-contain{
     border-left: #fff solid 1px;
-    margin-left: 30px;
+    margin-left: 11px;
     display: flex;
     flex-direction:column;
     align-items: flex-start;
@@ -29,7 +29,7 @@
     padding-bottom: 5px;
 }
 
-.pfolder-contain p {
+.pfolder-contain p, .children-contain p {
     padding: 0px;
     margin: 0px;
     color: #fff;
@@ -42,9 +42,37 @@
     cursor: pointer;
 }
 
+.children-contain{
+    width: 100%;
+        margin-left: 20px;
+    /* padding-top: 5px;
+    padding-bottom: 5px; */
+}
+
+/* .children-contain:hover{
+    background-color:#A9C9A3;
+    cursor: pointer;
+} */
+
 .fs-arrow{
     display: flex;
     flex-direction:row;
     align-items: center;
     justify-content: flex-start;
+}
+
+.children-content{
+    /* margin-left: 20px; */
+    display: flex;
+    flex-direction:column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 100%;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.children-content:hover{
+    background-color:#A9C9A3;
+    cursor: pointer;
 }
