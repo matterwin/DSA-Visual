@@ -21,6 +21,8 @@ function Register() {
     const [showEmailTakenError, setShowEmailTakenError] = useState(false);
 
     const [showPasswordBox, setShowPasswordBox] = useState(false);
+    const [showPasswordError, setShowPasswordError] = useState(false);
+    const [showPasswordToShortError, setShowPasswordToShortError] = useState(false);
 
     function handleEmailChange(event) {
         const emailInput = event.target.value;
@@ -79,22 +81,25 @@ function Register() {
 
     function handlePasswordChange(event) {
         const passwordInput = event.target.value;
-
-        // const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        // const isValid = emailRegex.test(emailInput);
-
-        // if(!isValid)
-        //     setisEmailValid(false);
-        // else
-        //     setisEmailValid(true);
+        setShowPasswordError(false);
+        setShowPasswordToShortError(false);
 
         setValues(prevValues => ({
             ...prevValues,
             password: passwordInput
         }));
     }
-    
 
+    function handlePasswordSubmit(){
+        if(values.password.length > 0){
+            if(values.password.length < 6){
+                setShowPasswordToShortError(true);
+            }
+        }
+        else
+            setShowPasswordError(true);
+    }
+    
     return (
     <div className='auth-box'>
         <div className='auth-width'>
@@ -136,24 +141,25 @@ function Register() {
 
         {showPasswordBox && (
             <div>
-            <h3 className='h3-auth'>Your secrets are save with me</h3>
-            <h5 className='h5-auth'>Write your password</h5>
+            <h3 className='h3-auth'>Your secret is save with me</h3>
+            <h5 className='h5-auth'>Create your password</h5>
             <div className='form-container'>
                 <PasswordField handlePasswordChange={handlePasswordChange} />
-                {showEmailError && 
+                {values.password}
+                {showPasswordError && 
                 <div className='error-email-div'>
                     <ErrorOutlinedIcon sx={{color:'#fff', fontSize:'20px'}}/>
-                    <p className="invalid-email-msg">Please enter a valid email address.</p>
+                    <p className="invalid-email-msg">Please enter a password.</p>
                 </div>
                 }
-                {showEmailTakenError && 
+                {showPasswordToShortError && 
                 <div className='error-email-div'>
                     <ErrorOutlinedIcon sx={{color:'#fff', fontSize:'20px'}}/>
-                    <p className="invalid-email-msg">Email already in use.</p>
+                    <p className="invalid-email-msg">Password is too short (6)</p>
                 </div>
                 }
                 <div className='auth-btn-container'>
-                <button className='auth-btn' onClick={handleEmailSubmit}>Continue</button>
+                <button className='auth-btn' onClick={handlePasswordSubmit}>Continue</button>
                 </div>
             </div>
             <div className='back-btn-contain'>
