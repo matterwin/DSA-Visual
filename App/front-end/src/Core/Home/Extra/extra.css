@@ -5,9 +5,10 @@
 
 .extra-contain {
     /* position: fixed; */ 
-    width: min-content;
     position: static;
     background-color: #bdbdbd;
     padding: 10px;
     border-radius: 5px;
+    overflow: hidden;
+    width: 20rem;
   }
