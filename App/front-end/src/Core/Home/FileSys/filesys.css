@@ -5,7 +5,7 @@
     overflow-x:hidden;
     padding: 0;
     margin: 0;
-    color: #fff;
+    color: #cacaca;
 }
 
 .fs-folders-contain{
@@ -21,7 +21,11 @@
     flex-direction:column;
     align-items: flex-start;
     justify-content: flex-start;
-    border-left: #fff solid 1px;
+    border-left: transparent solid 1px;
+}
+
+.fs-folders-contain:hover .children-contain{
+    border-left: #cacacaa1 solid 1px;
 }
 
 .pfolder-contain{

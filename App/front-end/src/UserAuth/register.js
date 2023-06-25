@@ -116,6 +116,7 @@ function Register() {
             ...prevValues,
             password: passwordInput
         }));
+
     }
 
     function handlePasswordSubmit(){
@@ -128,6 +129,7 @@ function Register() {
                 setWhatToShow('Last step: username')
                 setShowEmailBox(false);
                 setShowPasswordBox(false);
+                setContinueBtn('handleUsernameSubmit')
             }
         }
         else{
@@ -139,6 +141,11 @@ function Register() {
         const usernameInput = event.target.value;
         console.log(usernameInput);
 
+        if(usernameInput.length > 2 && usernameInput.length < 36)
+            setisUsernameValid(true);
+        else
+            setisUsernameValid(false);
+
         setValues(prevValues => ({
             ...prevValues,
             username: usernameInput
@@ -146,28 +153,31 @@ function Register() {
     }
 
     function handleUsernameSubmit() {
-        if (isEmailValid) {
+        if (isUsernameValid) {
  
-            const url = 'http://localhost:5000/auth/checkEmail';
+            const url = 'http://localhost:5000/auth/register';
     
             fetch(url, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ email: values.email }),
+                body: JSON.stringify({ 
+                    username: values.username,
+                    email: values.email,
+                    password: values.password
+                }),
             })
             .then(res => {
                 if (res.status === 400) {
-                    setShowEmailTakenError(true);
-                    throw new Error("Email is taken");           
-                  }
+                    setShowUsernameTakenError(true);
+                    throw new Error("Username is taken");           
+                }
                 return res.json();
             })
             .then(() => {
-                setContinueBtn('handlePasswordSubmit')
-                setShowEditBtn(true);
-                setShowPasswordBox(true);
+                
+                alert('good!');
             })
             .catch((err) => {console.log(err);});
     
@@ -177,7 +187,7 @@ function Register() {
             //in the .then response is a promise whenever it runs successfulyl, and so in there return to a normal state or move on to the pw field
 
         } else {
-            setShowEmailError(true);
+            setShowUsernameError(true);
         }   
     }
     
@@ -194,13 +204,13 @@ function Register() {
                             {showEmailError && 
                                 <div className='error-email-div'>
                                     <ErrorOutlinedIcon sx={{color:'#fff', fontSize:'20px'}}/>
-                                    <p className="invalid-email-msg">Please enter a valid email address.</p>
+                                    <p className="invalid-email-msg">Please enter a valid email address</p>
                                 </div>
                             }
                             {showEmailTakenError && 
                                 <div className='error-email-div'>
                                     <ErrorOutlinedIcon sx={{color:'#fff', fontSize:'20px'}}/>
-                                    <p className="invalid-email-msg">Email already in use.</p>
+                                    <p className="invalid-email-msg">Email already in use</p>
                                 </div>
                             }
                         </>
@@ -211,7 +221,7 @@ function Register() {
                             {showPasswordError && 
                             <div className='error-email-div'>
                                 <ErrorOutlinedIcon sx={{color:'#fff', fontSize:'20px'}}/>
-                                <p className="invalid-email-msg">Please enter a password.</p>
+                                <p className="invalid-email-msg">Please enter a password</p>
                             </div>
                             }
                             {showPasswordToShortError && 
@@ -225,16 +235,16 @@ function Register() {
                     {showUsernameBox && (
                         <>
                             <UsernameField handleUsernameChange={handleUsernameChange} />
-                            {showPasswordError && 
+                            {showUsernameError  && 
                             <div className='error-email-div'>
                                 <ErrorOutlinedIcon sx={{color:'#fff', fontSize:'20px'}}/>
-                                <p className="invalid-email-msg">Please enter a password.</p>
+                                <p className="invalid-email-msg">Username is too short or too long </p>
                             </div>
                             }
-                            {showPasswordToShortError && 
+                            {showUsernameTakenError && 
                             <div className='error-email-div'>
                                 <ErrorOutlinedIcon sx={{color:'#fff', fontSize:'20px'}}/>
-                                <p className="invalid-email-msg">Password is too short (6)</p>
+                                <p className="invalid-email-msg">Username is already taken</p>
                             </div>
                             }
                         </>

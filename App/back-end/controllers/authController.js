@@ -18,28 +18,18 @@ const checkEmail = async (req,res) => {
     res.status(StatusCodes.OK).json({ msg: 'Email is available to use' });
 }
 
-const checkUsername = async (req,res) => {
-    const { username } = req.body;
+const register = async (req,res) => {
+    const { username, email, password } = req.body;
     console.log(req.body);
 
-    if(!username ){
-        throw new CustomError.BadRequestError('Provide username');
+    const emailAlreadyExists = await User.findOne({ email });
+    if (emailAlreadyExists){
+        throw new CustomError.BadRequestError('Email already exists');
     }
 
     const usernameAlreadyExists = await User.findOne({ username });
     if (usernameAlreadyExists){
         throw new CustomError.BadRequestError('Username already exists');
-    }
-
-    res.status(StatusCodes.OK).json({ msg: 'Username is available to use' });
-}
-
-const register = async (req,res) => {
-    const { username, email, password } = req.body;
-
-    const emailAlreadyExists = await User.findOne({ email });
-    if (emailAlreadyExists){
-        throw new CustomError.BadRequestError('Email already exists');
     }
 
     if(!username || !email || !password){
@@ -61,7 +51,6 @@ const login = async (req,res) => {
 
 module.exports = {
     checkEmail,
-    checkUsername,
     register,
     login
 }
