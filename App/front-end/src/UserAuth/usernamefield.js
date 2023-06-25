@@ -6,7 +6,7 @@ import InputAdornment from '@mui/material/InputAdornment';
 import FormControl from '@mui/material/FormControl';
 import EditIcon from '@mui/icons-material/Edit';
 
-function EmailField({ handleEmailChange, showEditBtn}) {
+function UsernameField({ handleUsernameChange, showEditBtn}) {
   const [showPassword, setShowPassword] = React.useState(false);
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
@@ -17,10 +17,10 @@ function EmailField({ handleEmailChange, showEditBtn}) {
 
   return (
     <FormControl
-      id="email"
-      label="Email"
+      id="username"
+      label="Username"
       variant="outlined"
-      name="email"
+      name="username"
       sx={{
         '& .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline': {
           borderColor: "#A9C9A3",
@@ -35,36 +35,34 @@ function EmailField({ handleEmailChange, showEditBtn}) {
         },
         width:'100%'
       }}
-      onChange={handleEmailChange}
+      onChange={handleUsernameChange}
     >
       <InputLabel htmlFor="outlined-adornment-password"
         style={{ color: '#fff' }}
       >
-        Email
+        Username
       </InputLabel>
       <OutlinedInput
         autoFocus
         id="outlined-adornment-password"
-        sx={{ color: '#fff' }}
+        sx={{color:'#fff',}}
         // type={showPassword ? 'text' : 'password'}
         endAdornment={
-          showEditBtn && (
-            <InputAdornment position="end">
-              <IconButton
-                aria-label="toggle password visibility"
-                onClick={handleClickShowPassword}
-                onMouseDown={handleMouseDownPassword}
-                edge="end"
-              >
-                {showEditBtn && <EditIcon sx={{ color: '#fff' }} />}
-              </IconButton>
-            </InputAdornment>
-          )
+          <InputAdornment position="end">
+            <IconButton
+              aria-label="toggle password visibility"
+              onClick={handleClickShowPassword}
+              onMouseDown={handleMouseDownPassword}
+              edge="end"
+            >
+              {showEditBtn ? <EditIcon sx={{color:'#fff'}}/> : <></>}
+            </IconButton>
+          </InputAdornment>
         }
-        label="Email"
+        label="Username"
       />
     </FormControl>
   );
 }
 
-export default EmailField;
+export default UsernameField;
