@@ -6,7 +6,7 @@ import InputAdornment from '@mui/material/InputAdornment';
 import FormControl from '@mui/material/FormControl';
 import EditIcon from '@mui/icons-material/Edit';
 
-function EmailField({ handleEmailChange, showEditBtn}) {
+function EmailField({ handleEmailChange, showEditBtn, handleEmailEdit}) {
   const [showPassword, setShowPassword] = React.useState(false);
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
@@ -46,14 +46,12 @@ function EmailField({ handleEmailChange, showEditBtn}) {
         autoFocus
         id="outlined-adornment-password"
         sx={{ color: '#fff', fontSize: '18px' }}
-        // type={showPassword ? 'text' : 'password'}
         endAdornment={
           showEditBtn && (
             <InputAdornment position="end">
               <IconButton
                 aria-label="toggle password visibility"
-                onClick={handleClickShowPassword}
-                onMouseDown={handleMouseDownPassword}
+                onClick={handleEmailEdit}
                 edge="end"
               >
                 {showEditBtn && <EditIcon sx={{ color: '#fff' }} />}

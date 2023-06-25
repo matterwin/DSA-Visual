@@ -4,7 +4,6 @@ const CustomError = require('../errors');
 
 const checkEmail = async (req,res) => {
     const { email } = req.body;
-    console.log(req.body);
 
     if(!email){
         throw new CustomError.BadRequestError('Provide email');
@@ -43,6 +42,7 @@ const register = async (req,res) => {
 
 const login = async (req,res) => {
     const { email, password} = req.body;
+    console.log(req.body);
 
     const user = await User.findOne({ email });
 

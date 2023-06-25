@@ -78,6 +78,26 @@ function Register() {
         }));
     }
 
+    // email reset basically
+    function handleEmailEdit(){
+
+        setContinueBtn('handleEmailSubmit');
+        setShowEditBtn(false);
+
+        setWhatToShow('Create your account');
+
+        setShowEmailBox(true);
+        setisEmailValid(true); //this stays the same cause it was already validated
+        setShowEmailError(false);
+        setShowEmailTakenError(false);
+
+        setShowPasswordBox(false);
+        setShowPasswordError(false);
+        setShowPasswordToShortError(false);
+        setWarningPass(false);
+        setisPasswordValid(false);
+    }
+
     function handleEmailSubmit() {
         if (isEmailValid) {
  
@@ -220,7 +240,7 @@ function Register() {
                 <div className='form-container'>
                     {showEmailBox && (
                         <>
-                            <EmailField handleEmailChange={handleEmailChange} showEditBtn={showEditBtn} />
+                            <EmailField handleEmailChange={handleEmailChange} showEditBtn={showEditBtn} handleEmailEdit={handleEmailEdit}/>
                             {showEmailError && 
                                 <div className='error-email-div'>
                                     <ErrorOutlinedIcon sx={{color:'#fff', fontSize:'20px'}}/>
