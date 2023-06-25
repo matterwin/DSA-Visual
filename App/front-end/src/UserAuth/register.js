@@ -14,6 +14,7 @@ const initialState = {
 
 function Register() {
     const [values, setValues] = useState(initialState);
+    const [continueBtn, setContinueBtn] = useState('handleEmailSubmit');
 
     const [showEmailBox, setShowEmailBox] = useState(true);
     const [isEmailValid, setisEmailValid] = useState(false);
@@ -23,6 +24,20 @@ function Register() {
     const [showPasswordBox, setShowPasswordBox] = useState(false);
     const [showPasswordError, setShowPasswordError] = useState(false);
     const [showPasswordToShortError, setShowPasswordToShortError] = useState(false);
+
+    function chooseChange(){
+        switch (continueBtn) {
+            case 'handleEmailSubmit':
+                handleEmailSubmit();
+                break;
+            case 'handlePasswordSubmit':
+                handlePasswordSubmit();
+                break;
+            default:
+                console.log('Unknown decision choice');
+                break;
+          }
+    }
 
     function handleEmailChange(event) {
         const emailInput = event.target.value;
@@ -62,7 +77,10 @@ function Register() {
                   }
                 return res.json();
             })
-            .then(() => {setShowPasswordBox(true);})
+            .then(() => {
+                setContinueBtn('handlePasswordSubmit')
+                setShowPasswordBox(true);
+            })
             .catch((err) => {console.log(err);});
     
             // Last step: means email field is correct and complete
@@ -136,7 +154,7 @@ function Register() {
                     </>
                 )}
                 <div className='auth-btn-container'>
-                    <button className='auth-btn' onClick={handleEmailSubmit}>Continue</button>
+                    <button className='auth-btn' onClick={chooseChange}>Continue</button>
                 </div>
             </div>
             <div className='back-btn-contain'>
