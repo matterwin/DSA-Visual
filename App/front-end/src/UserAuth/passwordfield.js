@@ -39,7 +39,7 @@ function PasswordField({ handlePasswordChange}) {
       onChange={handlePasswordChange}
     >
           <InputLabel htmlFor="outlined-adornment-password"
-            style={{ color: '#ccc', fontSize: '18px' }}
+            style={{ color: '#fff', fontSize: '18px' }}
           >
             Password
           </InputLabel>

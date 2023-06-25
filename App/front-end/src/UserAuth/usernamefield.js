@@ -47,18 +47,18 @@ function UsernameField({ handleUsernameChange, showEditBtn}) {
         id="outlined-adornment-password"
         sx={{color:'#fff', fontSize: '18px'}}
         // type={showPassword ? 'text' : 'password'}
-        endAdornment={
-          <InputAdornment position="end">
-            <IconButton
-              aria-label="toggle password visibility"
-              onClick={handleClickShowPassword}
-              onMouseDown={handleMouseDownPassword}
-              edge="end"
-            >
-              {showEditBtn ? <EditIcon sx={{color:'#fff'}}/> : <></>}
-            </IconButton>
-          </InputAdornment>
-        }
+        // endAdornment={
+        //   <InputAdornment position="end">
+        //     <IconButton
+        //       aria-label="toggle password visibility"
+        //       onClick={handleClickShowPassword}
+        //       onMouseDown={handleMouseDownPassword}
+        //       edge="end"
+        //     >
+        //       {showEditBtn ? <EditIcon sx={{color:'#fff'}}/> : <></>}
+        //     </IconButton>
+        //   </InputAdornment>
+        // }
         label="Username"
       />
     </FormControl>

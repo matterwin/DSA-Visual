@@ -308,11 +308,17 @@ function Register() {
                     <div className='div-auth'>
                         <Divider orientation="horizontal" style={{ backgroundColor: '#f4f4f5', height: '1px', width:'100%' }} />
                     </div>
-                    <a href='/'>
-                        <div className='home-btn'>
-                            <HomeOutlinedIcon sx={{fontSize:'30px'}}/>
+                    <div className='bottom-auth-links'>      
+                        <a href='/'>
+                            <div className='home-btn'>
+                                <HomeOutlinedIcon sx={{fontSize:'30px'}}/>
+                            </div>
+                        </a>
+                        <h5 className='OR'>OR</h5>
+                        <div className='other-auth-link'>
+                            <p>Need to <a href='/login' className='other-auth-link-a-tag'><b>sign in?</b></a></p>
                         </div>
-                    </a>
+                    </div>  
                 </div>
             </div>
         </div>

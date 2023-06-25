@@ -38,7 +38,16 @@
     padding: 15px;
   }
 
-  .warning-title, .constraints {
+  .bottom-auth-links{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    gap: 10px;
+  }
+
+  .warning-title, .constraints, .OR {
     color: #fff;
   }
 
@@ -47,6 +56,14 @@
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
+  }
+
+  .other-auth-link{
+    color: #ffffffb0;
+  }
+
+  .other-auth-link-a-tag{
+    color: #A9C9A3 !important;
   }
 
   .h5-auth{

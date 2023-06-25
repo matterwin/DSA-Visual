@@ -5,6 +5,7 @@ import Register from './UserAuth/register';
 import Home from './Core/Home/home';
 import Nav from './Core/Nav/nav';
 import Notfound from './Core/NotFound/notfound';
+import Chat from './Core/Chat/chat';
 import './App.css';
 
 function App() {
@@ -12,11 +13,12 @@ function App() {
   const { pathname } = window.location;
 
   const validNavPath = pathname === '/' 
-                     || pathname === '/login'
-                     || pathname === '/register' 
+                    || pathname === '/chat'
+                    || pathname === '/login'
+                    || pathname === '/register' 
 
   const HideNavIf = pathname === '/register' 
-                || pathname === '/login' 
+                    || pathname === '/login'  
                 
   const HideNav = (validNavPath && !HideNavIf) ? <Nav /> : null;
 
@@ -27,9 +29,10 @@ function App() {
           {HideNav}
         
           <Routes>
-            <Route caseSensitive path="/" element={<Home/>}/>
-            <Route caseSensitive path="/login" element={<Login/>}/>
-            <Route caseSensitive path="/register" element={<Register/>}/>
+            <Route caseSensitive path="/" element={<Home />}/>
+            <Route caseSensitive path="/chat" element={<Chat />}/>
+            <Route caseSensitive path="/login" element={<Login />}/>
+            <Route caseSensitive path="/register" element={<Register />}/>
             <Route path="*" element={<Notfound />} />
           </Routes>
 
