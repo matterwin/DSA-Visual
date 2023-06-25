@@ -7,6 +7,8 @@ import UsernameField from './usernamefield';
 import { Divider } from '@mui/material';
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import ErrorOutlinedIcon from '@mui/icons-material/ErrorOutlined';
+import CheckIcon from '@mui/icons-material/Check';
+import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
 import "./userauth.css";
 
 const initialState = {
@@ -30,20 +32,15 @@ function Register() {
     const [showPasswordBox, setShowPasswordBox] = useState(false);
     const [showPasswordError, setShowPasswordError] = useState(false);
     const [showPasswordToShortError, setShowPasswordToShortError] = useState(false);
+    const [warningPass, setWarningPass] = useState(false);
+    const [isPasswordValid, setisPasswordValid] = useState(false);
     
     const [showUsernameBox, setShowUsernameBox] = useState(false);
     const [isUsernameValid, setisUsernameValid] = useState(false);
     const [showUsernameError, setShowUsernameError] = useState(false);
     const [showUsernameTakenError, setShowUsernameTakenError] = useState(false);
 
-    const [open, setOpen] = React.useState(false);
-
-    const handleClose = () => {
-        setOpen(false);
-    };
-    const handleOpen = () => {
-        setOpen(true);
-    };
+    const [loading, setLoading] = useState(false);
 
     function chooseChange(){
         switch (continueBtn) {
@@ -122,6 +119,17 @@ function Register() {
         const passwordInput = event.target.value;
         setShowPasswordError(false);
         setShowPasswordToShortError(false);
+        setWarningPass(true);
+
+        if(passwordInput.length > 0){
+            if(passwordInput.length < 6){
+                setisPasswordValid(false);
+            }
+            else
+                setisPasswordValid(true);
+        }
+        else
+            setisPasswordValid(false);
 
         setValues(prevValues => ({
             ...prevValues,
@@ -136,6 +144,8 @@ function Register() {
                 setShowPasswordToShortError(true);
             }
             else{
+                setisPasswordValid(true);
+                setWarningPass(false);
                 setShowUsernameBox(true);
                 setWhatToShow('Last step: username')
                 setShowEmailBox(false);
@@ -150,6 +160,8 @@ function Register() {
 
     function handleUsernameChange(event) {
         const usernameInput = event.target.value;
+        setShowUsernameError(false);
+        setShowUsernameTakenError(false);
 
         if(usernameInput.length > 2 && usernameInput.length < 36)
             setisUsernameValid(true);
@@ -181,21 +193,22 @@ function Register() {
             .then(res => {
                 if (res.status === 400) {
                     setShowUsernameTakenError(true);
+                    setLoading(false);
                     throw new Error("Username is taken");           
                 }
                 return res.json();
             })
             .then(() => {
-                setOpen(false);
+                setLoading(false);
                 window.location.href = '/';
             })
             .catch((err) => {console.log(err);});
 
+            setLoading(true);
         } else {
             setShowUsernameError(true);
             return;
         }   
-        setOpen(true);
     }
     
     return (
@@ -256,12 +269,36 @@ function Register() {
                             }
                         </>
                     )}
+                    {warningPass && (
+                        <div className='warning-container'>
+                            <div className='password-msg'>
+                                <div>
+                                    <h7 className='warning-title'>Password must include:</h7>
+                                </div>
+                                <div className='check-mate'> 
+                                    {
+                                        (isPasswordValid)  ?(
+                                        <>
+                                            <CheckIcon sx={{ color:'#6fc261', fontSize:'20px' }}/>
+                                            <h7 style={{ color:'#6fc261' }}className='constraints'>&nbsp;At least 6 characters</h7>
+                                        </>
+                                        ) : (
+                                        <>
+                                            <FiberManualRecordIcon sx={{ color:'#fff', fontSize:'10px' }}/>
+                                            <h7 style={{ color:'#fff' }}className='constraints'>&nbsp;&nbsp;At least 6 characters</h7>
+                                        </>
+                                        )
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    )}
                     <div className='auth-btn-container'>
                         <button className='auth-btn' onClick={chooseChange}>Continue</button>
                         <Backdrop
                             sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
-                            open={open}
-                            onClick={handleClose}
+                            open={loading}
+                            onClick={() => {setLoading(false);}}
                         >
                             <CircularProgress color="inherit" />
                         </Backdrop>

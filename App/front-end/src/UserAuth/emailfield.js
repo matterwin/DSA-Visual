@@ -38,14 +38,14 @@ function EmailField({ handleEmailChange, showEditBtn}) {
       onChange={handleEmailChange}
     >
       <InputLabel htmlFor="outlined-adornment-password"
-        style={{ color: '#fff' }}
+        style={{ color: '#fff', fontSize: '18px' }}
       >
         Email
       </InputLabel>
       <OutlinedInput
         autoFocus
         id="outlined-adornment-password"
-        sx={{ color: '#fff' }}
+        sx={{ color: '#fff', fontSize: '18px' }}
         // type={showPassword ? 'text' : 'password'}
         endAdornment={
           showEditBtn && (

@@ -38,14 +38,14 @@ function UsernameField({ handleUsernameChange, showEditBtn}) {
       onChange={handleUsernameChange}
     >
       <InputLabel htmlFor="outlined-adornment-password"
-        style={{ color: '#fff' }}
+        style={{ color: '#fff', fontSize: '18px' }}
       >
         Username
       </InputLabel>
       <OutlinedInput
         autoFocus
         id="outlined-adornment-password"
-        sx={{color:'#fff',}}
+        sx={{color:'#fff', fontSize: '18px'}}
         // type={showPassword ? 'text' : 'password'}
         endAdornment={
           <InputAdornment position="end">

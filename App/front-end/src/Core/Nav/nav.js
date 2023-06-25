@@ -21,12 +21,13 @@ const Nav = () => {
               </NavLink> 
             </div>
             <div className="right-side">
-              <NavLink end to="/">
+              <NavLink end to="/" className="nav-link-div">
                 <h4 className="linkers">Home</h4>
               </NavLink> 
-              <NavLink end to="/">
+              <NavLink end to="/" className="nav-link-div">
                 <h4 className="linkers">Chat</h4>
               </NavLink> 
+              
               <Divider orientation="vertical" style={{ backgroundColor: '#f4f4f5', height: '25px', width:'1px' }} />
               <a href="/register" className="sign-up"><h4 className="sign-up-h3">Sign Up</h4></a>
               <a href="/login"><h4 className="sign-in">Sign In</h4></a>

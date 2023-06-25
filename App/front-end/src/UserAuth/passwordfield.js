@@ -34,19 +34,19 @@ function PasswordField({ handlePasswordChange}) {
         '& .MuiOutlinedInput-notchedOutline': {
           borderColor: '#f4f4f5',
         },
-        width:'100%'
+        width:'100%',
       }}
       onChange={handlePasswordChange}
     >
           <InputLabel htmlFor="outlined-adornment-password"
-            style={{ color: '#fff' }}
+            style={{ color: '#ccc', fontSize: '18px' }}
           >
             Password
           </InputLabel>
           <OutlinedInput
             autoFocus
             id="outlined-adornment-password"
-            sx={{color:'#fff',}}
+            sx={{color:'#fff', fontSize: '18px' }}
             type={showPassword ? 'text' : 'password'}
             endAdornment={
               <InputAdornment position="end">

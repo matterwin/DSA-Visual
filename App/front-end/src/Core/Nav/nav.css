@@ -18,12 +18,23 @@
     text-decoration: none; 
 }
 
-.linkers:hover{
+/* .linkers:hover{
+    color:#A9C9A3;
+} */
+
+.sign-in:hover {
     color:#A9C9A3;
 }
 
-.sign-in:hover {
-    color:#f1ff2e;
+.nav-link-div{
+    padding: 5px 10px 5px 10px;
+    border-radius: 5px;
+}
+
+.nav-link-div:hover{
+    padding: 5px;
+    background-color: #cccccc34;
+    padding: 7px 10px 7px 10px;
 }
 
 .sign-up {
@@ -79,6 +90,7 @@
     justify-content: flex-start;
     gap: 10px;
 }
+
 
 .right-side{
     margin-left: auto;
