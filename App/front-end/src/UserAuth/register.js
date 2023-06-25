@@ -120,7 +120,7 @@ function Register() {
                 if (res.status === 400) {
                     setShowEmailTakenError(true);
                     throw new Error("Email is taken");           
-                  }
+                }
                 return res.json();
             })
             .then(() => {
