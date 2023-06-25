@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
+import Backdrop from '@mui/material/Backdrop';
+import CircularProgress from '@mui/material/CircularProgress';
 import EmailField from './emailfield';
 import PasswordField from './passwordfield';
 import UsernameField from './usernamefield';
 import { Divider } from '@mui/material';
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import ErrorOutlinedIcon from '@mui/icons-material/ErrorOutlined';
-import LoadingButton from '@mui/lab/LoadingButton';
 import "./userauth.css";
 
 const initialState = {
@@ -34,6 +35,15 @@ function Register() {
     const [isUsernameValid, setisUsernameValid] = useState(false);
     const [showUsernameError, setShowUsernameError] = useState(false);
     const [showUsernameTakenError, setShowUsernameTakenError] = useState(false);
+
+    const [open, setOpen] = React.useState(false);
+
+    const handleClose = () => {
+        setOpen(false);
+    };
+    const handleOpen = () => {
+        setOpen(true);
+    };
 
     function chooseChange(){
         switch (continueBtn) {
@@ -176,15 +186,16 @@ function Register() {
                 return res.json();
             })
             .then(() => {
-                console.log('finished loading');
+                setOpen(false);
                 window.location.href = '/';
             })
             .catch((err) => {console.log(err);});
+
         } else {
             setShowUsernameError(true);
+            return;
         }   
-
-        console.log('loading');
+        setOpen(true);
     }
     
     return (
@@ -247,7 +258,13 @@ function Register() {
                     )}
                     <div className='auth-btn-container'>
                         <button className='auth-btn' onClick={chooseChange}>Continue</button>
-                        <LoadingButton loading variant="outlined">Submit</LoadingButton>
+                        <Backdrop
+                            sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+                            open={open}
+                            onClick={handleClose}
+                        >
+                            <CircularProgress color="inherit" />
+                        </Backdrop>
                     </div>
                 </div>
                 <div className='back-btn-contain'>
