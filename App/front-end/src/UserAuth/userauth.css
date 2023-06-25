@@ -51,6 +51,13 @@
     color: #fff;
   }
 
+  .auth-username-check{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+
   .check-mate{
     display: flex;
     flex-direction: row;

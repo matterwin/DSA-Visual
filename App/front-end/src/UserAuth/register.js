@@ -24,21 +24,27 @@ function Register() {
 
     const [whatToShow, setWhatToShow] = useState('Create your account')
 
+    // email states
     const [showEmailBox, setShowEmailBox] = useState(true);
     const [isEmailValid, setisEmailValid] = useState(false);
     const [showEmailError, setShowEmailError] = useState(false);
     const [showEmailTakenError, setShowEmailTakenError] = useState(false);
 
+    // password states
     const [showPasswordBox, setShowPasswordBox] = useState(false);
     const [showPasswordError, setShowPasswordError] = useState(false);
     const [showPasswordToShortError, setShowPasswordToShortError] = useState(false);
     const [warningPass, setWarningPass] = useState(false);
     const [isPasswordValid, setisPasswordValid] = useState(false);
     
+    // username states
     const [showUsernameBox, setShowUsernameBox] = useState(false);
     const [isUsernameValid, setisUsernameValid] = useState(false);
+    const [isUsernameShortEnough, setisUsernameShortEnough] = useState(false);
+    const [isUsernameLongEnough, setisUsernameLongEnough] = useState(false);
     const [showUsernameError, setShowUsernameError] = useState(false);
     const [showUsernameTakenError, setShowUsernameTakenError] = useState(false);
+    const [warningUsername, setWarningUsername] = useState(false);
 
     const [loading, setLoading] = useState(false);
 
@@ -182,11 +188,40 @@ function Register() {
         const usernameInput = event.target.value;
         setShowUsernameError(false);
         setShowUsernameTakenError(false);
+        setWarningUsername(true);
 
-        if(usernameInput.length > 2 && usernameInput.length < 36)
-            setisUsernameValid(true);
-        else
-            setisUsernameValid(false);
+        // if(usernameInput.length > 2 && usernameInput.length < 36){
+        //     setisUsernameValid(true);
+        // }
+        // else{
+        //     setisUsernameValid(false);
+        // }
+
+        if(usernameInput.length < 36){
+            setisUsernameShortEnough(true);
+            if(usernameInput.length > 2){
+                setisUsernameValid(true);
+                setisUsernameLongEnough(true);
+            }
+            else{
+                if(usernameInput.length === 0){
+                    setisUsernameShortEnough(true);
+                }
+                setisUsernameValid(false);
+                setisUsernameLongEnough(false);
+            }
+        }
+        else{
+            setisUsernameShortEnough(false);
+            if(usernameInput.length > 2){
+                setisUsernameValid(false);
+                setisUsernameLongEnough(true);
+            }
+            else{
+                setisUsernameValid(false);
+                setisUsernameLongEnough(false);
+            }
+        }
 
         setValues(prevValues => ({
             ...prevValues,
@@ -232,117 +267,157 @@ function Register() {
     }
     
     return (
-    <div className='auth-box'>
-        <div className='auth-width'>
-            <div>
-                <h3 className='h3-auth'>The man, the myth, the legend</h3>
-                <h5 className='h5-auth'>{whatToShow}</h5>
-                <div className='form-container'>
-                    {showEmailBox && (
-                        <>
-                            <EmailField handleEmailChange={handleEmailChange} showEditBtn={showEditBtn} handleEmailEdit={handleEmailEdit}/>
-                            {showEmailError && 
+        <div className='auth-box'>
+            <div className='auth-width'>
+                <div>
+                    <h3 className='h3-auth'>The man, the myth, the legend</h3>
+                    <h5 className='h5-auth'>{whatToShow}</h5>
+                    <div className='form-container'>
+                        {showEmailBox && (
+                            <>
+                                <EmailField handleEmailChange={handleEmailChange} showEditBtn={showEditBtn} handleEmailEdit={handleEmailEdit}/>
+                                {showEmailError && 
+                                    <div className='error-email-div'>
+                                        <ErrorOutlinedIcon sx={{color:'#fff', fontSize:'20px'}}/>
+                                        <p className="invalid-email-msg">Please enter a valid email address</p>
+                                    </div>
+                                }
+                                {showEmailTakenError && 
+                                    <div className='error-email-div'>
+                                        <ErrorOutlinedIcon sx={{color:'#fff', fontSize:'20px'}}/>
+                                        <p className="invalid-email-msg">Email already in use</p>
+                                    </div>
+                                }
+                            </>
+                        )}
+                        {showPasswordBox && (
+                            <>
+                                <PasswordField handlePasswordChange={handlePasswordChange} />
+                                {showPasswordError && 
                                 <div className='error-email-div'>
                                     <ErrorOutlinedIcon sx={{color:'#fff', fontSize:'20px'}}/>
-                                    <p className="invalid-email-msg">Please enter a valid email address</p>
+                                    <p className="invalid-email-msg">Please enter a password</p>
                                 </div>
-                            }
-                            {showEmailTakenError && 
+                                }
+                                {showPasswordToShortError && 
                                 <div className='error-email-div'>
                                     <ErrorOutlinedIcon sx={{color:'#fff', fontSize:'20px'}}/>
-                                    <p className="invalid-email-msg">Email already in use</p>
+                                    <p className="invalid-email-msg">Password is too short (6)</p>
                                 </div>
-                            }
-                        </>
-                    )}
-                    {showPasswordBox && (
-                        <>
-                            <PasswordField handlePasswordChange={handlePasswordChange} />
-                            {showPasswordError && 
-                            <div className='error-email-div'>
-                                <ErrorOutlinedIcon sx={{color:'#fff', fontSize:'20px'}}/>
-                                <p className="invalid-email-msg">Please enter a password</p>
-                            </div>
-                            }
-                            {showPasswordToShortError && 
-                            <div className='error-email-div'>
-                                <ErrorOutlinedIcon sx={{color:'#fff', fontSize:'20px'}}/>
-                                <p className="invalid-email-msg">Password is too short (6)</p>
-                            </div>
-                            }
-                        </>
-                    )}
-                    {showUsernameBox && (
-                        <>
-                            <UsernameField handleUsernameChange={handleUsernameChange} />
-                            {showUsernameError  && 
-                            <div className='error-email-div'>
-                                <ErrorOutlinedIcon sx={{color:'#fff', fontSize:'20px'}}/>
-                                <p className="invalid-email-msg">Username is too short or too long </p>
-                            </div>
-                            }
-                            {showUsernameTakenError && 
-                            <div className='error-email-div'>
-                                <ErrorOutlinedIcon sx={{color:'#fff', fontSize:'20px'}}/>
-                                <p className="invalid-email-msg">Username is already taken</p>
-                            </div>
-                            }
-                        </>
-                    )}
-                    {warningPass && (
-                        <div className='warning-container'>
-                            <div className='password-msg'>
-                                <div>
-                                    <h7 className='warning-title'>Password must include:</h7>
+                                }
+                            </>
+                        )}
+                        {showUsernameBox && (
+                            <>
+                                <UsernameField handleUsernameChange={handleUsernameChange} />
+                                {showUsernameError  && 
+                                <div className='error-email-div'>
+                                    <ErrorOutlinedIcon sx={{color:'#fff', fontSize:'20px'}}/>
+                                    <p className="invalid-email-msg">Username is too short/long</p>
                                 </div>
-                                <div className='check-mate'> 
-                                    {
-                                        (isPasswordValid)  ?(
-                                        <>
-                                            <CheckIcon sx={{ color:'#6fc261', fontSize:'20px' }}/>
-                                            <h7 style={{ color:'#6fc261' }}className='constraints'>&nbsp;At least 6 characters</h7>
-                                        </>
-                                        ) : (
-                                        <>
-                                            <FiberManualRecordIcon sx={{ color:'#fff', fontSize:'10px' }}/>
-                                            <h7 style={{ color:'#fff' }}className='constraints'>&nbsp;&nbsp;At least 6 characters</h7>
-                                        </>
-                                        )
-                                    }
+                                }
+                                {showUsernameTakenError && 
+                                <div className='error-email-div'>
+                                    <ErrorOutlinedIcon sx={{color:'#fff', fontSize:'20px'}}/>
+                                    <p className="invalid-email-msg">Username is already taken</p>
+                                </div>
+                                }
+                            </>
+                        )}
+                        {warningPass && (
+                            <div className='warning-container'>
+                                <div className='password-msg'>
+                                    <div>
+                                        <h7 className='warning-title'>Password must include:</h7>
+                                    </div>
+                                    <div className='check-mate'> 
+                                        {
+                                            (isPasswordValid)  ?(
+                                            <>
+                                                <CheckIcon sx={{ color:'#6fc261', fontSize:'20px' }}/>
+                                                <h7 style={{ color:'#6fc261' }}className='constraints'>&nbsp;At least 6 characters</h7>
+                                            </>
+                                            ) : (
+                                            <>
+                                                <FiberManualRecordIcon sx={{ color:'#fff', fontSize:'10px' }}/>
+                                                <h7 style={{ color:'#fff' }}className='constraints'>&nbsp;&nbsp;At least 6 characters</h7>
+                                            </>
+                                            )
+                                        }
+                                    </div>
                                 </div>
                             </div>
+                        )}
+                        {warningUsername && (
+                            <div className='warning-container'>
+                                <div className='password-msg'>
+                                    <div>
+                                        <h7 className='warning-title'>Username must include:</h7>
+                                    </div>
+                                    <div className='auth-username-check'> 
+                                        {
+                                            (!isUsernameLongEnough || !isUsernameShortEnough) ? (
+                                            <>
+                                                <div className='check-mate'>
+                                                    {isUsernameLongEnough && <CheckIcon sx={{ color:'#6fc261', fontSize:'20px' }}/>}
+                                                    {isUsernameLongEnough && <h7 style={{ color:'#6fc261' }}className='constraints'>&nbsp;At least 3 characters</h7>}
+                                                    {!isUsernameLongEnough && <FiberManualRecordIcon sx={{ color:'#fff', fontSize:'10px' }}/>}
+                                                    {!isUsernameLongEnough && <h7 style={{ color:'#fff' }}className='constraints'>&nbsp;At least 3 characters</h7>}
+                                                </div>
+                                                <div className='check-mate'>
+                                                    {isUsernameShortEnough && <CheckIcon sx={{ color:'#6fc261', fontSize:'20px' }}/>}
+                                                    {isUsernameShortEnough && <h7 style={{ color:'#6fc261' }}className='constraints'>&nbsp;At most 35 characters</h7>}
+                                                    {!isUsernameShortEnough && <FiberManualRecordIcon sx={{ color:'#fff', fontSize:'10px' }}/>}
+                                                    {!isUsernameShortEnough && <h7 style={{ color:'#fff' }}className='constraints'>&nbsp;At most 35 characters</h7>}
+                                                </div>
+                                            </>
+                                            ) : (
+                                            <>
+                                                <div className='check-mate'>
+                                                    <FiberManualRecordIcon sx={{ color:'#fff', fontSize:'10px' }}/>
+                                                    <h7 style={{ color:'#fff' }}className='constraints'>&nbsp;At least 3 characters</h7>
+                                                </div>
+                                                <div className='check-mate'>
+                                                    <FiberManualRecordIcon sx={{ color:'#fff', fontSize:'10px' }}/>
+                                                    <h7 style={{ color:'#fff' }}className='constraints'>&nbsp;At most 35 characters</h7>
+                                                </div>
+                                            </>
+                                            )
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        )}
+                        <div className='auth-btn-container'>
+                            <button className='auth-btn' onClick={chooseChange}>Continue</button>
+                            <Backdrop
+                                sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+                                open={loading}
+                                onClick={() => {setLoading(false);}}
+                            >
+                                <CircularProgress color="inherit" />
+                            </Backdrop>
                         </div>
-                    )}
-                    <div className='auth-btn-container'>
-                        <button className='auth-btn' onClick={chooseChange}>Continue</button>
-                        <Backdrop
-                            sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
-                            open={loading}
-                            onClick={() => {setLoading(false);}}
-                        >
-                            <CircularProgress color="inherit" />
-                        </Backdrop>
                     </div>
-                </div>
-                <div className='back-btn-contain'>
-                    <div className='div-auth'>
-                        <Divider orientation="horizontal" style={{ backgroundColor: '#f4f4f5', height: '1px', width:'100%' }} />
-                    </div>
-                    <div className='bottom-auth-links'>      
-                        <a href='/'>
-                            <div className='home-btn'>
-                                <HomeOutlinedIcon sx={{fontSize:'30px'}}/>
-                            </div>
-                        </a>
-                        <h5 className='OR'>OR</h5>
-                        <div className='other-auth-link'>
-                            <p>Need to <a href='/login' className='other-auth-link-a-tag'><b>sign in?</b></a></p>
+                    <div className='back-btn-contain'>
+                        <div className='div-auth'>
+                            <Divider orientation="horizontal" style={{ backgroundColor: '#f4f4f5', height: '1px', width:'100%' }} />
                         </div>
-                    </div>  
+                        <div className='bottom-auth-links'>      
+                            <a href='/'>
+                                <div className='home-btn'>
+                                    <HomeOutlinedIcon sx={{fontSize:'30px'}}/>
+                                </div>
+                            </a>
+                            <h5 className='OR'>OR</h5>
+                            <div className='other-auth-link'>
+                                <p>Need to <a href='/login' className='other-auth-link-a-tag'><b>sign in?</b></a></p>
+                            </div>
+                        </div>  
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
     );
 }
 
