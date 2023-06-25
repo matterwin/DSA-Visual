@@ -5,6 +5,7 @@ import UsernameField from './usernamefield';
 import { Divider } from '@mui/material';
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import ErrorOutlinedIcon from '@mui/icons-material/ErrorOutlined';
+import LoadingButton from '@mui/lab/LoadingButton';
 import "./userauth.css";
 
 const initialState = {
@@ -139,7 +140,6 @@ function Register() {
 
     function handleUsernameChange(event) {
         const usernameInput = event.target.value;
-        console.log(usernameInput);
 
         if(usernameInput.length > 2 && usernameInput.length < 36)
             setisUsernameValid(true);
@@ -176,19 +176,15 @@ function Register() {
                 return res.json();
             })
             .then(() => {
-                
-                alert('good!');
+                console.log('finished loading');
+                window.location.href = '/';
             })
             .catch((err) => {console.log(err);});
-    
-            // Last step: means email field is correct and complete
-   
-            //fetch is asyn, so show a loading thing here maybe for when we officially sign in or something
-            //in the .then response is a promise whenever it runs successfulyl, and so in there return to a normal state or move on to the pw field
-
         } else {
             setShowUsernameError(true);
         }   
+
+        console.log('loading');
     }
     
     return (
@@ -251,6 +247,7 @@ function Register() {
                     )}
                     <div className='auth-btn-container'>
                         <button className='auth-btn' onClick={chooseChange}>Continue</button>
+                        <LoadingButton loading variant="outlined">Submit</LoadingButton>
                     </div>
                 </div>
                 <div className='back-btn-contain'>
