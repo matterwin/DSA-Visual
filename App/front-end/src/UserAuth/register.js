@@ -55,19 +55,15 @@ function Register() {
                 },
                 body: JSON.stringify({ email: values.email }),
             })
-            .then(res => {return res.json();})
-            .then(data => {
-                if(data){
-                    setShowPasswordBox(true);
-                    setShowEmailBox(false);
-                }
-                else
+            .then(res => {
+                if (res.status === 400) {
                     setShowEmailTakenError(true);
-                
+                    throw new Error("Email is taken");           
+                  }
+                return res.json();
             })
-            .catch(err => {
-                console.error(err);
-            });
+            .then(() => {setShowPasswordBox(true);})
+            .catch((err) => {console.log(err);});
     
             // Last step: means email field is correct and complete
    
@@ -111,19 +107,36 @@ function Register() {
             <div className='form-container'>
                 <EmailField handleEmailChange={handleEmailChange} />
                 {showEmailError && 
-                <div className='error-email-div'>
-                    <ErrorOutlinedIcon sx={{color:'#fff', fontSize:'20px'}}/>
-                    <p className="invalid-email-msg">Please enter a valid email address.</p>
-                </div>
+                    <div className='error-email-div'>
+                        <ErrorOutlinedIcon sx={{color:'#fff', fontSize:'20px'}}/>
+                        <p className="invalid-email-msg">Please enter a valid email address.</p>
+                    </div>
                 }
                 {showEmailTakenError && 
-                <div className='error-email-div'>
-                    <ErrorOutlinedIcon sx={{color:'#fff', fontSize:'20px'}}/>
-                    <p className="invalid-email-msg">Email already in use.</p>
-                </div>
+                    <div className='error-email-div'>
+                        <ErrorOutlinedIcon sx={{color:'#fff', fontSize:'20px'}}/>
+                        <p className="invalid-email-msg">Email already in use.</p>
+                    </div>
                 }
+                {showPasswordBox && (
+                    <>
+                        <PasswordField handlePasswordChange={handlePasswordChange} />
+                        {showPasswordError && 
+                        <div className='error-email-div'>
+                            <ErrorOutlinedIcon sx={{color:'#fff', fontSize:'20px'}}/>
+                            <p className="invalid-email-msg">Please enter a password.</p>
+                        </div>
+                        }
+                        {showPasswordToShortError && 
+                        <div className='error-email-div'>
+                            <ErrorOutlinedIcon sx={{color:'#fff', fontSize:'20px'}}/>
+                            <p className="invalid-email-msg">Password is too short (6)</p>
+                        </div>
+                        }
+                    </>
+                )}
                 <div className='auth-btn-container'>
-                <button className='auth-btn' onClick={handleEmailSubmit}>Continue</button>
+                    <button className='auth-btn' onClick={handleEmailSubmit}>Continue</button>
                 </div>
             </div>
             <div className='back-btn-contain'>
@@ -139,7 +152,7 @@ function Register() {
             </div>
         )}
 
-        {showPasswordBox && (
+        {/* {showPasswordBox && (
             <div>
             <h3 className='h3-auth'>Your secret is save with me</h3>
             <h5 className='h5-auth'>Create your password</h5>
@@ -173,7 +186,7 @@ function Register() {
                 </a>
             </div>
             </div>
-        )}
+        )} */}
 
         </div>
     </div>

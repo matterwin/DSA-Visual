@@ -30,6 +30,7 @@ function EmailField({ handleEmailChange}) {
         style: { color: "#fff" },
       }}
       onChange={handleEmailChange}
+      readOnly
     />
   );
 }
