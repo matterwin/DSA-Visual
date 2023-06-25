@@ -190,36 +190,32 @@ function Register() {
         setShowUsernameTakenError(false);
         setWarningUsername(true);
 
-        // if(usernameInput.length > 2 && usernameInput.length < 36){
-        //     setisUsernameValid(true);
-        // }
-        // else{
-        //     setisUsernameValid(false);
-        // }
-
-        if(usernameInput.length < 36){
-            setisUsernameShortEnough(true);
-            if(usernameInput.length > 2){
-                setisUsernameValid(true);
-                setisUsernameLongEnough(true);
-            }
-            else{
-                if(usernameInput.length === 0){
-                    setisUsernameShortEnough(true);
-                }
-                setisUsernameValid(false);
-                setisUsernameLongEnough(false);
-            }
+        if(usernameInput.length === 0){
+            setisUsernameValid(false);
+            setisUsernameLongEnough(false);
+            setisUsernameShortEnough(false);
         }
         else{
-            setisUsernameShortEnough(false);
-            if(usernameInput.length > 2){
-                setisUsernameValid(false);
-                setisUsernameLongEnough(true);
+            if(usernameInput.length < 16){
+                setisUsernameShortEnough(true);
+                if(usernameInput.length > 2){
+                    setisUsernameLongEnough(true);
+                    setisUsernameValid(true);
+                }
+                else{
+                    setisUsernameLongEnough(false);
+                    setisUsernameValid(false);
+                }
             }
             else{
+                setisUsernameShortEnough(false);
                 setisUsernameValid(false);
-                setisUsernameLongEnough(false);
+                if(usernameInput.length > 2){
+                    setisUsernameLongEnough(true);
+                }
+                else{
+                    setisUsernameLongEnough(false);
+                }
             }
         }
 
@@ -302,7 +298,7 @@ function Register() {
                                 {showPasswordToShortError && 
                                 <div className='error-email-div'>
                                     <ErrorOutlinedIcon sx={{color:'#fff', fontSize:'20px'}}/>
-                                    <p className="invalid-email-msg">Password is too short (6)</p>
+                                    <p className="invalid-email-msg">Password is too short</p>
                                 </div>
                                 }
                             </>
@@ -313,7 +309,9 @@ function Register() {
                                 {showUsernameError  && 
                                 <div className='error-email-div'>
                                     <ErrorOutlinedIcon sx={{color:'#fff', fontSize:'20px'}}/>
-                                    <p className="invalid-email-msg">Username is too short/long</p>
+                                    <p className="invalid-email-msg">Username is too 
+                                        {isUsernameLongEnough ? (<> long</>) : (<> short</>)}
+                                    </p>
                                 </div>
                                 }
                                 {showUsernameTakenError && 
@@ -327,7 +325,7 @@ function Register() {
                         {warningPass && (
                             <div className='warning-container'>
                                 <div className='password-msg'>
-                                    <div>
+                                    <div className='warning-div'>
                                         <h7 className='warning-title'>Password must include:</h7>
                                     </div>
                                     <div className='check-mate'> 
@@ -335,7 +333,7 @@ function Register() {
                                             (isPasswordValid)  ?(
                                             <>
                                                 <CheckIcon sx={{ color:'#6fc261', fontSize:'20px' }}/>
-                                                <h7 style={{ color:'#6fc261' }}className='constraints'>&nbsp;At least 6 characters</h7>
+                                                <h7 style={{ color:'#fff' }}className='constraints'>&nbsp;At least 6 characters</h7>
                                             </>
                                             ) : (
                                             <>
@@ -351,35 +349,33 @@ function Register() {
                         {warningUsername && (
                             <div className='warning-container'>
                                 <div className='password-msg'>
-                                    <div>
+                                    <div className='warning-div'>
                                         <h7 className='warning-title'>Username must include:</h7>
                                     </div>
                                     <div className='auth-username-check'> 
                                         {
-                                            (!isUsernameLongEnough || !isUsernameShortEnough) ? (
+                                            (isUsernameValid) ? (
                                             <>
                                                 <div className='check-mate'>
-                                                    {isUsernameLongEnough && <CheckIcon sx={{ color:'#6fc261', fontSize:'20px' }}/>}
-                                                    {isUsernameLongEnough && <h7 style={{ color:'#6fc261' }}className='constraints'>&nbsp;At least 3 characters</h7>}
-                                                    {!isUsernameLongEnough && <FiberManualRecordIcon sx={{ color:'#fff', fontSize:'10px' }}/>}
-                                                    {!isUsernameLongEnough && <h7 style={{ color:'#fff' }}className='constraints'>&nbsp;At least 3 characters</h7>}
+                                                    <CheckIcon sx={{ color:'#6fc261', fontSize:'20px' }}/>
+                                                    <h7 style={{ color:'#fff' }}className='constraints'>&nbsp;At least 3 characters</h7>
                                                 </div>
                                                 <div className='check-mate'>
-                                                    {isUsernameShortEnough && <CheckIcon sx={{ color:'#6fc261', fontSize:'20px' }}/>}
-                                                    {isUsernameShortEnough && <h7 style={{ color:'#6fc261' }}className='constraints'>&nbsp;At most 35 characters</h7>}
-                                                    {!isUsernameShortEnough && <FiberManualRecordIcon sx={{ color:'#fff', fontSize:'10px' }}/>}
-                                                    {!isUsernameShortEnough && <h7 style={{ color:'#fff' }}className='constraints'>&nbsp;At most 35 characters</h7>}
+                                                    <CheckIcon sx={{ color:'#6fc261', fontSize:'20px' }}/>
+                                                    <h7 style={{ color:'#fff' }}className='constraints'>&nbsp;At most 15 characters</h7>
                                                 </div>
                                             </>
                                             ) : (
                                             <>
                                                 <div className='check-mate'>
-                                                    <FiberManualRecordIcon sx={{ color:'#fff', fontSize:'10px' }}/>
+                                                    {isUsernameLongEnough && <CheckIcon sx={{ color:'#6fc261', fontSize:'20px' }}/>}              
+                                                    {!isUsernameLongEnough && <FiberManualRecordIcon sx={{ color:'#fff', fontSize:'10px' }}/>}
                                                     <h7 style={{ color:'#fff' }}className='constraints'>&nbsp;At least 3 characters</h7>
                                                 </div>
                                                 <div className='check-mate'>
-                                                    <FiberManualRecordIcon sx={{ color:'#fff', fontSize:'10px' }}/>
-                                                    <h7 style={{ color:'#fff' }}className='constraints'>&nbsp;At most 35 characters</h7>
+                                                    {isUsernameShortEnough && <CheckIcon sx={{ color:'#6fc261', fontSize:'20px' }}/>}
+                                                    {!isUsernameShortEnough && <FiberManualRecordIcon sx={{ color:'#fff', fontSize:'10px' }}/>}
+                                                    <h7 style={{ color:'#fff' }}className='constraints'>&nbsp;At most 15 characters</h7>
                                                 </div>
                                             </>
                                             )
