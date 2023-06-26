@@ -36,17 +36,27 @@ const register = async (req,res) => {
     }
 
     const user = await User.create({ username, email, password });
-
-    res.status(StatusCodes.CREATED).json({ user });
+    const cookie = user._id;
+    res.status(StatusCodes.CREATED).json({ cookie });
 }
 
 const login = async (req,res) => {
-    const { email, password} = req.body;
-    console.log(req.body);
+    const { email, password } = req.body;
 
+    if (!email || !password) {
+        throw new CustomError.BadRequestError('Please provide email and password');
+    }
     const user = await User.findOne({ email });
 
-    res.status(200).json({ user });
+    if (!user) {
+        throw new CustomError.UnauthenticatedError('Invalid Credentials');
+    }
+    const isPasswordCorrect = await user.comparePassword(password);
+    if (!isPasswordCorrect) {
+        throw new CustomError.UnauthenticatedError('Invalid Credentials');
+    }
+
+    res.status(StatusCodes.OK).json({ msg:'test success' });
 }
 
 module.exports = {

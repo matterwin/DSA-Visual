@@ -6,6 +6,7 @@ import Home from './Core/Home/home';
 import Nav from './Core/Nav/nav';
 import Notfound from './Core/NotFound/notfound';
 import Chat from './Core/Chat/chat';
+import readCookies from './Cookies/readCookies';
 import './App.css';
 
 function App() {
@@ -21,6 +22,8 @@ function App() {
                     || pathname === '/login'  
                 
   const HideNav = (validNavPath && !HideNavIf) ? <Nav /> : null;
+  const userLoggedIn = (readCookies()) ? true : false;
+  console.log(userLoggedIn);
 
   return (
     <div>

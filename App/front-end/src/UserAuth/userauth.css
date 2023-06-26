@@ -22,6 +22,11 @@
     font-size: 25px;
   }
 
+  p{
+    padding: 0;
+    margin: 0;
+  }
+
   .warning-container{
     width: 100%;
     border: #fff solid 1px;

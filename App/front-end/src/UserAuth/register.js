@@ -9,6 +9,7 @@ import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import ErrorOutlinedIcon from '@mui/icons-material/ErrorOutlined';
 import CheckIcon from '@mui/icons-material/Check';
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
+import createCookies from '../Cookies/createCookies';
 import "./userauth.css";
 
 const initialState = {
@@ -249,9 +250,10 @@ function Register() {
                 }
                 return res.json();
             })
-            .then(() => {
+            .then((data) => {
+                createCookies(data);
                 setLoading(false);
-                window.location.href = '/';
+                // window.location.href = '/';
             })
             .catch((err) => {console.log(err);});
 
@@ -326,19 +328,19 @@ function Register() {
                             <div className='warning-container'>
                                 <div className='password-msg'>
                                     <div className='warning-div'>
-                                        <h7 className='warning-title'>Password must include:</h7>
+                                        <p className='warning-title'>Password must include:</p>
                                     </div>
                                     <div className='check-mate'> 
                                         {
                                             (isPasswordValid)  ?(
                                             <>
                                                 <CheckIcon sx={{ color:'#6fc261', fontSize:'20px' }}/>
-                                                <h7 style={{ color:'#fff' }}className='constraints'>&nbsp;At least 6 characters</h7>
+                                                <p style={{ color:'#fff' }}className='constraints'>&nbsp;At least 6 characters</p>
                                             </>
                                             ) : (
                                             <>
                                                 <FiberManualRecordIcon sx={{ color:'#fff', fontSize:'10px' }}/>
-                                                <h7 style={{ color:'#fff' }}className='constraints'>&nbsp;&nbsp;At least 6 characters</h7>
+                                                <p style={{ color:'#fff' }}className='constraints'>&nbsp;&nbsp;At least 6 characters</p>
                                             </>
                                             )
                                         }
@@ -350,7 +352,7 @@ function Register() {
                             <div className='warning-container'>
                                 <div className='password-msg'>
                                     <div className='warning-div'>
-                                        <h7 className='warning-title'>Username must include:</h7>
+                                        <p className='warning-title'>Username must include:</p>
                                     </div>
                                     <div className='auth-username-check'> 
                                         {
@@ -358,11 +360,11 @@ function Register() {
                                             <>
                                                 <div className='check-mate'>
                                                     <CheckIcon sx={{ color:'#6fc261', fontSize:'20px' }}/>
-                                                    <h7 style={{ color:'#fff' }}className='constraints'>&nbsp;At least 3 characters</h7>
+                                                    <p style={{ color:'#fff' }}className='constraints'>&nbsp;At least 3 characters</p>
                                                 </div>
                                                 <div className='check-mate'>
                                                     <CheckIcon sx={{ color:'#6fc261', fontSize:'20px' }}/>
-                                                    <h7 style={{ color:'#fff' }}className='constraints'>&nbsp;At most 15 characters</h7>
+                                                    <p style={{ color:'#fff' }}className='constraints'>&nbsp;At most 15 characters</p>
                                                 </div>
                                             </>
                                             ) : (
@@ -370,12 +372,12 @@ function Register() {
                                                 <div className='check-mate'>
                                                     {isUsernameLongEnough && <CheckIcon sx={{ color:'#6fc261', fontSize:'20px' }}/>}              
                                                     {!isUsernameLongEnough && <FiberManualRecordIcon sx={{ color:'#fff', fontSize:'10px' }}/>}
-                                                    <h7 style={{ color:'#fff' }}className='constraints'>&nbsp;At least 3 characters</h7>
+                                                    <p style={{ color:'#fff' }}className='constraints'>&nbsp;At least 3 characters</p>
                                                 </div>
                                                 <div className='check-mate'>
                                                     {isUsernameShortEnough && <CheckIcon sx={{ color:'#6fc261', fontSize:'20px' }}/>}
                                                     {!isUsernameShortEnough && <FiberManualRecordIcon sx={{ color:'#fff', fontSize:'10px' }}/>}
-                                                    <h7 style={{ color:'#fff' }}className='constraints'>&nbsp;At most 15 characters</h7>
+                                                    <p style={{ color:'#fff' }}className='constraints'>&nbsp;At most 15 characters</p>
                                                 </div>
                                             </>
                                             )
