@@ -7,6 +7,15 @@ const app = express();
 // packages
 const cors = require('cors');
 const fileUpload = require('express-fileupload');
+
+// USE V2
+const cloudinary = require('cloudinary').v2;
+cloudinary.config({
+  cloud_name: process.env.CLOUD_NAME,
+  api_key: process.env.CLOUD_API_KEY,
+  api_secret: process.env.CLOUD_API_SECRET,
+});
+
 const helmet = require('helmet');
 const xss = require('xss-clean');
 
@@ -14,7 +23,8 @@ const xss = require('xss-clean');
 const connectDB = require('./db/connect');
 
 // routers
-const authRouter = require('./routes/authRoutes')
+const authRouter = require('./routes/authRoutes');
+const uploadRouter = require('./routes/uploadRoutes');
 
 // middleware
 const notFoundMiddleware = require('./middleware/not-found');
@@ -24,10 +34,13 @@ app.use(helmet());
 app.use(cors());
 app.use(xss());
 
+app.use(express.static('../front-end/public'));
 app.use(express.json());
+app.use(fileUpload({ useTempFiles: true }));
 
 // actual routes
 app.use('/auth', authRouter);
+app.use('/upload', uploadRouter);
 
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
