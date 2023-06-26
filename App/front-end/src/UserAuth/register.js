@@ -251,9 +251,9 @@ function Register() {
                 return res.json();
             })
             .then((data) => {
-                createCookies(data);
+                createCookies(data.cookie);
                 setLoading(false);
-                // window.location.href = '/';
+                window.location.href = '/';
             })
             .catch((err) => {console.log(err);});
 

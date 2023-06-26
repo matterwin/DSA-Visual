@@ -7,6 +7,8 @@ import Nav from './Core/Nav/nav';
 import Notfound from './Core/NotFound/notfound';
 import Chat from './Core/Chat/chat';
 import readCookies from './Cookies/readCookies';
+import deleteCookies from './Cookies/deleteCookies';
+ 
 import './App.css';
 
 function App() {
@@ -23,7 +25,8 @@ function App() {
                 
   const HideNav = (validNavPath && !HideNavIf) ? <Nav /> : null;
   const userLoggedIn = (readCookies()) ? true : false;
-  console.log(userLoggedIn);
+
+  // deleteCookies();
 
   return (
     <div>

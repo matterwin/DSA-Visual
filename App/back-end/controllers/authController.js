@@ -55,8 +55,9 @@ const login = async (req,res) => {
     if (!isPasswordCorrect) {
         throw new CustomError.UnauthenticatedError('Invalid Credentials');
     }
-
-    res.status(StatusCodes.OK).json({ msg:'test success' });
+    
+    const cookie = user._id;
+    res.status(StatusCodes.OK).json({ cookie });
 }
 
 module.exports = {
