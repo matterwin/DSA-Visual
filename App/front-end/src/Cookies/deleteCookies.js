@@ -4,5 +4,4 @@ const cookies = new Cookies();
 
 export default function deleteCookies() {
     cookies.remove('userId');
-    console.warn("deleting cookie...     " + cookies.get('userId'));
 }
