@@ -4,7 +4,8 @@ import Folder from './folder';
 
 const list = ['Merge','Quick','Insertion','Bubble','Heap','Selection', 'Binary', 'Singly','Doubly','Stacks','Queues','Priority Queues', 'Binary','BST','Heap','Trie','AVL','Red-Black', 'BFS','DFS','Dijkstra','Bellman','Bidirectional', 'Big-O','Big-Θ','Big-Ω','Dijkstra','Bellman','Bidirectional'];
 
-const Filesys = () => {
+function Filesys({ handleFocusedFile }) {
+  // console.log(focusedFile);
   const [openIndexes, setOpenIndexes] = useState([]);
 
   const handleOpen = (index) => {
@@ -17,6 +18,7 @@ const Filesys = () => {
 
   return (
     <div className='fs-contain'>
+      <button onClick={handleFocusedFile}>click test</button>
       <div className='fs-folders-contain'>
         <Folder name='Sort' isOpen={openIndexes.includes(0)} handleOpen={handleOpen} index={0} items={['Merge','Quick','Insertion','Bubble','Heap','Selection','Topological']} list={list}/>
         <Folder name='Search' isOpen={openIndexes.includes(1)} handleOpen={handleOpen} index={1} items={['Binary']} list={list}/>
