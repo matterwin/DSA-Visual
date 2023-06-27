@@ -5,7 +5,9 @@
     background-color: #977575;
     background-color: #A9C9A3;
     background-color: #4d3939;
-    padding: 10px;
+    padding: 5px;
+    /* margin-left: 10px;
+    margin-right: 10px; */
 }
 
 .right-side h4 {
@@ -18,10 +20,6 @@
     text-decoration: none; 
 }
 
-/* .linkers:hover{
-    color:#A9C9A3;
-} */
-
 .sign-in:hover {
     color:#A9C9A3;
 }
@@ -29,13 +27,38 @@
 .nav-link-div{
     padding: 7px 10px 7px 10px;
     border-radius: 5px;
+    cursor: pointer;
 }
 
 .nav-link-div:hover{
-    padding: 5px;
     background-color: #cccccc34;
     padding: 7px 10px 7px 10px;
 }
+
+.nav-link-div-icons{
+    padding: 7px 10px 7px 10px;
+    /* margin-left: -3px;
+    margin-right: -3px; */
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.nav-link-div-icons:hover{
+    background-color: #cccccc34;
+    padding: 7px 10px 7px 10px;
+}
+
+.nav-link-div-pp{
+    margin: 7px 10px 7px 10px;
+    margin-right: 0px;
+    border-radius: 5px;
+    /* cursor: pointer; */
+}
+
+/* .nav-link-div-pp:hover{
+    background-color: #cccccc34;
+    padding: 7px 10px 7px 10px;
+} */
 
 .sign-up {
     border: #977575 solid 2px;
@@ -116,7 +139,9 @@
 }
 
 .inside-nav{
-    margin-left: 200px;
-    margin-right: 200px;
+    margin-left: 205px;
+    margin-right: 205px;
+    /* margin-left: 100px;
+    margin-right: 100px; */
 }
 

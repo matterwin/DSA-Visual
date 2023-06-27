@@ -1,16 +1,26 @@
+import React, { useState } from 'react';
 import { NavLink } from "react-router-dom";
 import Divider from '@mui/material/Divider';
 import Searchbar from '../searchbar';
 import NavProfile from './navProfile';
+import AddRoundedIcon from '@mui/icons-material/AddRounded';
+import NotificationsRoundedIcon from '@mui/icons-material/NotificationsRounded';
+import NotificationsActiveRoundedIcon from '@mui/icons-material/NotificationsActiveRounded';
 import "../nav.css"
 import "./navIn.css"
 import "../subnav.css"
 
 const NavIn = () => {
+  const [dsaOrHomeBtn, setdsaOrHomeBtn] = useState('DSA Visuals')
 
-  const handleReturnToHome = () => {
-    window.location.href = '/';
-  };
+  const handleClickDSABtn = () => {
+    if(dsaOrHomeBtn === 'DSA Visuals'){
+      setdsaOrHomeBtn('Back Home')
+
+    }
+    else
+      window.location.href = '/';
+  }
 
   return (
     <div>
@@ -31,7 +41,15 @@ const NavIn = () => {
                 <h4 className="linkers">Chat</h4>
               </NavLink> 
               <Divider orientation="vertical" style={{ backgroundColor: '#f4f4f5', height: '25px', width:'1px' }} />
-              <NavProfile />
+              <div className="nav-link-div-icons">
+                <AddRoundedIcon sx={{ padding: '0', margin:'0', cursor: 'pointer', color:'#fff' }}/>
+              </div>
+              <div className="nav-link-div-icons">
+                <NotificationsRoundedIcon sx={{ padding: '0', margin:'0', cursor: 'pointer', color:'#fff' }}/>
+              </div>
+              <div className="nav-link-div-pp">
+                 <NavProfile />
+              </div>
             </div>
           </div>
         </div>
@@ -41,8 +59,8 @@ const NavIn = () => {
         <div className="sub-inside-nav">
           <div className="sub-nav-l-r-container">
             <div className="sub-left-side">
-              <button className='dsa-btn' onClick={handleReturnToHome}>
-                DSA Visuals
+              <button className='dsa-btn' onClick={handleClickDSABtn}>
+                {dsaOrHomeBtn}
               </button>
             </div>
             <div className="sub-right-side">

@@ -6,7 +6,7 @@ import SearchIcon from '@mui/icons-material/Search';
 const Search = styled('div')(({ theme, hasInput }) => ({
   position: 'relative',
   borderRadius: theme.shape.borderRadius,
-  backgroundColor: hasInput ? alpha(theme.palette.common.white, 0.85) : alpha(theme.palette.common.white, 0.25),
+  backgroundColor: hasInput ? '#cccccc34' : alpha(theme.palette.common.white, 0.25),
   '&:hover': {
     backgroundColor: alpha(theme.palette.common.white, 0.85),
   },

@@ -12,7 +12,7 @@ import Button from '@mui/material/Button';
 import { NavLink } from "react-router-dom";
 import "./navIn.css"
 
-// import deleteCookies from '../../Hooks/deleteCookies';
+import deleteCookies from '../../../Cookies/deleteCookies'
 import readCookies from '../../../Cookies/readCookies';
 
   const StyledKeyboardArrowDownIcon = styled(KeyboardArrowDownIcon)({
@@ -193,7 +193,7 @@ export default function NavProfile() {
         </NavLink> */}
 
         <MenuItem onClick={handleClose} disableRipple >
-          <a href="/Logout"><Button variant="contained" sx={{ padding: '5px', paddingRight: '45px', paddingLeft: '45px' }}>Log Out</Button></a>
+          <a><Button onClick={() => {deleteCookies(); window.location.href = '/';}} variant="contained" sx={{ padding: '5px', paddingRight: '45px', paddingLeft: '45px' }}>Log Out</Button></a>
         </MenuItem>
 
         {/* <MenuItem onClick={handleClose} disableRipple >
