@@ -4,7 +4,7 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import Divider from '@mui/material/Divider';
 import DefaultPic from '../../profilePics/def.webp';
-import Tooltip from '@mui/material/Tooltip';
+import CustomizedTooltip from '../../Custom/customTooltip';
 import Button from '@mui/material/Button';
 import { NavLink } from "react-router-dom";
 import "./navOut.css"
@@ -87,9 +87,9 @@ export default function LoggedOutProfile() {
                 className='parent-div-pfp-logged-out'
             >   
             <div className="pfp-div-logged-out">
-                <Tooltip title="Profile">
+                <CustomizedTooltip title="Not signed in">
                     <img className="profile-pic-logged-out" src={DefaultPic} alt="ProfilePicture" />      
-                </Tooltip>            
+                </CustomizedTooltip>            
             </div>
         </div>
             <StyledMenu

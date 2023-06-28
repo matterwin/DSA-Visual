@@ -6,11 +6,19 @@ import InputAdornment from '@mui/material/InputAdornment';
 import FormControl from '@mui/material/FormControl';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
+import CustomizedTooltip from '../Core/Custom/customTooltip';
 
 function PasswordField({ handlePasswordChange}) {
   const [showPassword, setShowPassword] = React.useState(false);
+  const [tooltipTitle, setTooltipTitle] = React.useState('Show');
 
-  const handleClickShowPassword = () => setShowPassword((show) => !show);
+  const handleClickShowPassword = () => {
+    if(tooltipTitle === 'Show')
+      setTooltipTitle('Hide');
+    else
+      setTooltipTitle('Show');
+    setShowPassword((show) => !show);
+  }
 
   const handleMouseDownPassword = (event) => {
     event.preventDefault();
@@ -50,14 +58,16 @@ function PasswordField({ handlePasswordChange}) {
             type={showPassword ? 'text' : 'password'}
             endAdornment={
               <InputAdornment position="end">
-                <IconButton
-                  aria-label="toggle password visibility"
-                  onClick={handleClickShowPassword}
-                  onMouseDown={handleMouseDownPassword}
-                  edge="end"
-                >
-                  {showPassword ? <VisibilityOff sx={{color:'#fff'}}/> : <Visibility sx={{color:'#fff'}}/>}
-                </IconButton>
+                <CustomizedTooltip title={tooltipTitle}>
+                  <IconButton
+                    aria-label="toggle password visibility"
+                    onClick={handleClickShowPassword}
+                    onMouseDown={handleMouseDownPassword}
+                    edge="end"
+                  >
+                    {showPassword ? <VisibilityOff sx={{color:'#fff'}}/> : <Visibility sx={{color:'#fff'}}/>}
+                  </IconButton>
+                </CustomizedTooltip>
               </InputAdornment>
             }
             label="Password"

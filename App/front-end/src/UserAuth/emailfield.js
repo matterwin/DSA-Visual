@@ -5,6 +5,7 @@ import InputLabel from '@mui/material/InputLabel';
 import InputAdornment from '@mui/material/InputAdornment';
 import FormControl from '@mui/material/FormControl';
 import EditIcon from '@mui/icons-material/Edit';
+import CustomizedTooltip from '../Core/Custom/customTooltip';
 
 function EmailField({ handleEmailChange, showEditBtn, handleEmailEdit}) {
   const [showPassword, setShowPassword] = React.useState(false);
@@ -49,13 +50,15 @@ function EmailField({ handleEmailChange, showEditBtn, handleEmailEdit}) {
         endAdornment={
           showEditBtn && (
             <InputAdornment position="end">
-              <IconButton
-                aria-label="toggle password visibility"
-                onClick={handleEmailEdit}
-                edge="end"
-              >
-                {showEditBtn && <EditIcon sx={{ color: '#fff' }} />}
-              </IconButton>
+              <CustomizedTooltip title="Edit">
+                <IconButton
+                  aria-label="toggle password visibility"
+                  onClick={handleEmailEdit}
+                  edge="end"
+                >
+                  {showEditBtn && <EditIcon sx={{ color: '#fff' }} />}
+                </IconButton>
+              </CustomizedTooltip>
             </InputAdornment>
           )
         }

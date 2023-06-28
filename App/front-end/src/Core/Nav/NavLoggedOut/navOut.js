@@ -1,11 +1,22 @@
+import React, { useState } from 'react';
 import { NavLink } from "react-router-dom";
 import Divider from '@mui/material/Divider';
 import Searchbar from '../searchbar';
 import LoggedOutProfile from "./loggedOutProfile";
+import GraphicEqOutlinedIcon from '@mui/icons-material/GraphicEqOutlined';
 import "../nav.css"
 import "../subnav.css"
 
 const NavOut = () => {
+  const [dsaOrHomeBtn, setdsaOrHomeBtn] = useState('DSA Visuals')
+
+  const handleClickDSABtn = () => {
+    if(dsaOrHomeBtn === 'DSA Visuals'){
+      setdsaOrHomeBtn('Back Home')
+    }
+    else
+      window.location.href = '/';
+  }
 
   const handleReturnToHome = () => {
     window.location.href = '/';
@@ -44,8 +55,10 @@ const NavOut = () => {
         <div className="sub-inside-nav">
           <div className="sub-nav-l-r-container">
             <div className="sub-left-side">
-              <button className='dsa-btn' onClick={handleReturnToHome}>
-                DSA Visuals
+              <button className='dsa-btn' onClick={handleClickDSABtn}>
+                <div className='dsa-btn-inside'>
+                  <GraphicEqOutlinedIcon />{dsaOrHomeBtn}
+                </div>
               </button>
             </div>
             <div className="sub-right-side">

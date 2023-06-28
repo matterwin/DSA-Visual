@@ -1,0 +1,29 @@
+import * as React from 'react';
+import { styled } from '@mui/material/styles';
+import Tooltip, { tooltipClasses } from '@mui/material/Tooltip';
+
+const NewTooltip = styled(({ className, ...props }) => (
+  <Tooltip {...props} arrow classes={{ popper: className }} />
+))(({ theme }) => ({
+  [`& .${tooltipClasses.arrow}`]: {
+    color: '#efeff1',
+  },
+  [`& .${tooltipClasses.tooltip}`]: {
+    backgroundColor: '#efeff1',
+    padding: '5px 5px 5px 5px',
+    fontSize: '13px',
+    fontFamily:'Montserrat',
+    color:'black',
+    fontWeight:'600'
+  },
+}));
+
+export default function CustomizedTooltip({ title, children }) {
+  return (
+    <div>
+      <NewTooltip title={title}>
+        {children}
+      </NewTooltip>
+    </div>
+  );
+}

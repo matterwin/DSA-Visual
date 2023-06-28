@@ -7,6 +7,7 @@ import { Divider } from '@mui/material';
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import ErrorOutlinedIcon from '@mui/icons-material/ErrorOutlined';
 import createCookies from '../Cookies/createCookies';
+import CustomizedTooltip from '../Core/Custom/customTooltip';
 import "./userauth.css";
 
 const initialState = {
@@ -204,9 +205,11 @@ function Login() {
                         </div>
                         <div className='bottom-auth-links'>      
                             <a href='/'>
+                            <CustomizedTooltip title="Home">
                                 <div className='home-btn'>
                                     <HomeOutlinedIcon sx={{fontSize:'30px'}}/>
                                 </div>
+                            </CustomizedTooltip>
                             </a>
                             <h5 className='OR'>OR</h5>
                             <div className='other-auth-link'>

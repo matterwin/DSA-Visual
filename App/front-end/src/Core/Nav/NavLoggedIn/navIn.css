@@ -31,6 +31,15 @@
     border-radius: 50%;
 }
 
+.div-for-menu{
+    cursor: pointer;
+    display:flex;
+    flex-direction:row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 5px;
+}
+
 /* 
 .pfp-div:hover {
     outline:2px solid #fff;

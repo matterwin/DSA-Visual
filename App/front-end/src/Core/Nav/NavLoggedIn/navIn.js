@@ -6,6 +6,7 @@ import NavProfile from './navProfile';
 import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
 import NotificationsOutlinedIcon from '@mui/icons-material/NotificationsOutlined';
 import NotificationsActiveOutlinedIcon from '@mui/icons-material/NotificationsActiveOutlined';
+import CustomizedTooltip from '../../Custom/customTooltip';
 import GraphicEqOutlinedIcon from '@mui/icons-material/GraphicEqOutlined';
 import "../nav.css"
 import "./navIn.css"
@@ -17,7 +18,6 @@ const NavIn = () => {
   const handleClickDSABtn = () => {
     if(dsaOrHomeBtn === 'DSA Visuals'){
       setdsaOrHomeBtn('Back Home')
-
     }
     else
       window.location.href = '/';
@@ -25,14 +25,13 @@ const NavIn = () => {
 
   return (
     <div>
-    
       <div className='nav-container'>
         <div className="inside-nav">
           <div className="nav-l-r-container">
             <div className="left-side">
               <NavLink end to="/">
                 <h3 className="headline">Heyso</h3>
-              </NavLink> 
+              </NavLink>
             </div>
             <div className="right-side-nav-in">
               <NavLink end to="/" className="nav-link-div">
@@ -42,12 +41,16 @@ const NavIn = () => {
                 <h4 className="linkers">Chat</h4>
               </NavLink> 
               <Divider orientation="vertical" style={{ backgroundColor: 'grey', height: '25px', width:'1px' }} />
-              <div className="nav-link-div-icons">
-                <AddOutlinedIcon sx={{ padding: '0', margin:'0', cursor: 'pointer', color:'#fff', fontSize:'25px'}}/>
-              </div>
-              <div className="nav-link-div-icons">
-                <NotificationsOutlinedIcon sx={{ padding: '0', margin:'0', cursor: 'pointer', color:'#fff', fontSize:'25px' }}/>
-              </div>
+              <CustomizedTooltip title={"Add Post"}>
+                <div className="nav-link-div-icons">
+                  <AddOutlinedIcon sx={{ padding: '0', margin:'0', cursor: 'pointer', color:'#fff', fontSize:'25px'}}/>
+                </div>
+              </CustomizedTooltip>
+              <CustomizedTooltip title={"Notification"}>
+                <div className="nav-link-div-icons">
+                  <NotificationsOutlinedIcon sx={{ padding: '0', margin:'0', cursor: 'pointer', color:'#fff', fontSize:'25px' }}/>
+                </div>
+              </CustomizedTooltip>
               <div className="nav-link-div-pp">
                  <NavProfile />
               </div>

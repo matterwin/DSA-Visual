@@ -10,6 +10,7 @@ import ErrorOutlinedIcon from '@mui/icons-material/ErrorOutlined';
 import CheckIcon from '@mui/icons-material/Check';
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
 import createCookies from '../Cookies/createCookies';
+import CustomizedTooltip from '../Core/Custom/customTooltip';
 import "./userauth.css";
 
 const initialState = {
@@ -253,6 +254,7 @@ function Register() {
             .then((data) => {
                 createCookies(data.cookie);
                 setLoading(false);
+
                 window.location.href = '/';
             })
             .catch((err) => {console.log(err);});
@@ -403,9 +405,11 @@ function Register() {
                         </div>
                         <div className='bottom-auth-links'>      
                             <a href='/'>
+                            <CustomizedTooltip title="Home">
                                 <div className='home-btn'>
                                     <HomeOutlinedIcon sx={{fontSize:'30px'}}/>
                                 </div>
+                            </CustomizedTooltip>
                             </a>
                             <h5 className='OR'>OR</h5>
                             <div className='other-auth-link'>
