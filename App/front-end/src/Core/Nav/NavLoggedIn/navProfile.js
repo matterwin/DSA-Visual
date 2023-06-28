@@ -1,35 +1,15 @@
 import * as React from 'react';
-import { useEffect, useState } from 'react';
 import { styled, alpha } from '@mui/material/styles';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import Divider from '@mui/material/Divider';
-import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
-import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import DefaultPic from '../../profilePics/pika.png';
 import Tooltip from '@mui/material/Tooltip';
 import Button from '@mui/material/Button';
 import { NavLink } from "react-router-dom";
-import "./navIn.css"
-
 import deleteCookies from '../../../Cookies/deleteCookies'
 import readCookies from '../../../Cookies/readCookies';
-
-  const StyledKeyboardArrowDownIcon = styled(KeyboardArrowDownIcon)({
-    color: '#8f8f8f',
-    fontSize: 28,
-    '&:hover': {
-      color: '#1976d2',
-    },
-  });
-
-  const StyledKeyboardArrowUpIcon = styled(KeyboardArrowUpIcon)({
-    color: '#8f8f8f',
-    fontSize: 28,
-    '&:hover': {
-      color: '#1976d2',
-    },
-  });
+import "./navIn.css"
 
 const StyledMenu = styled((props) => (
   <Menu
@@ -147,10 +127,7 @@ export default function NavProfile() {
                 <Tooltip title="Profile">
                     <img className="profile-pic" src={DefaultPic} alt="ProfilePicture" />      
                 </Tooltip>            
-            </div> 
-            {/* <div>
-                {showArrowDown ? <StyledKeyboardArrowDownIcon/> : <StyledKeyboardArrowUpIcon/> }
-            </div>           */}
+            </div>
         </div>
             <StyledMenu
             id="demo-customized-menu"

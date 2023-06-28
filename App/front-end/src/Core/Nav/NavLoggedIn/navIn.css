@@ -16,9 +16,10 @@
     overflow: hidden;
     background-color: #f4f4f5;
     cursor: pointer; 
-    outline-offset: 3px;
-    outline:2px solid #fff;
-    transition: border-radius 0.2s ease-in-out, outline 0.2s ease-in-out;
+    /* outline-offset: 3px;
+    outline:2px solid #fff; */
+    /* transition: border-radius 0.2s ease-in-out, outline 0.2s ease-in-out; */
+    transition: border-radius 0.2s ease-in-out;
 }
 
 .profile-pic {
@@ -29,10 +30,10 @@
     border-radius: 50%;
 }
 
-
+/* 
 .pfp-div:hover {
     outline:2px solid #fff;
-}
+} */
 
 .pfp-div:hover{
     border-radius: 35%;
