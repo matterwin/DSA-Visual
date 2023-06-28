@@ -16,6 +16,7 @@
     overflow: hidden;
     background-color: #f4f4f5;
     cursor: pointer; 
+    border: transparent solid 2px;
     /* outline-offset: 3px;
     outline:2px solid #fff; */
     /* transition: border-radius 0.2s ease-in-out, outline 0.2s ease-in-out; */

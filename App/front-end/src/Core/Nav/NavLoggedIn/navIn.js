@@ -34,7 +34,7 @@ const NavIn = () => {
                 <h3 className="headline">Heyso</h3>
               </NavLink> 
             </div>
-            <div className="right-side">
+            <div className="right-side-nav-in">
               <NavLink end to="/" className="nav-link-div">
                 <h4 className="linkers">Home</h4>
               </NavLink> 

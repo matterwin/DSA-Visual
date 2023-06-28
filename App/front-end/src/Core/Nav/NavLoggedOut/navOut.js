@@ -1,6 +1,7 @@
 import { NavLink } from "react-router-dom";
 import Divider from '@mui/material/Divider';
 import Searchbar from '../searchbar';
+import LoggedOutProfile from "./loggedOutProfile";
 import "../nav.css"
 import "../subnav.css"
 
@@ -21,7 +22,7 @@ const NavOut = () => {
                 <h3 className="headline">Heyso</h3>
               </NavLink> 
             </div>
-            <div className="right-side">
+            <div className="right-side-nav-out">
               <NavLink end to="/" className="nav-link-div">
                 <h4 className="linkers">Home</h4>
               </NavLink> 
@@ -30,7 +31,10 @@ const NavOut = () => {
               </NavLink> 
               <Divider orientation="vertical" style={{ backgroundColor: '#f4f4f5', height: '25px', width:'1px' }} />
               <a href="/register" className="sign-up"><h4 className="sign-up-h3">Sign Up</h4></a>
-              <a href="/login"><h4 className="sign-in">Sign In</h4></a>
+              <a href="/login" className="sign-in"><h4 className="sign-in-h3">Log In</h4></a>
+              <div className="nav-link-div-pp">
+                 <LoggedOutProfile />
+              </div>
             </div>
           </div>
         </div>
