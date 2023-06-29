@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useState } from 'react';
 import Box from '@mui/material/Box';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
@@ -8,7 +8,8 @@ import GraphicEqOutlinedIcon from '@mui/icons-material/GraphicEqOutlined';
 import SmsOutlinedIcon from '@mui/icons-material/SmsOutlined';
 
 export default function CenteredTabs() {
-  const [value, setValue] = React.useState(0);
+  const [value, setValue] = useState(0);
+  const [underlineColor, setUnderlineColor] = useState('#fff5d8')
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -23,7 +24,7 @@ export default function CenteredTabs() {
     >
         <Tabs value={value} onChange={handleChange} centered 
             TabIndicatorProps={{
-                style: { backgroundColor: '#A9C9A3', color:'#fff' },
+                style: { backgroundColor: '#fff', color:'#fff' },
             }}
             sx={{
                 width:'100%'
@@ -38,19 +39,21 @@ export default function CenteredTabs() {
                     gap:'5px',
                     color: '#fff',
                     borderTop: 'transparent solid 2px',
-                    borderBottom: '#adadad75 solid 2px',
+                    borderBottom: '#fff5d8 solid 2px',
                     '&:hover': {
-                        backgroundColor: '#adadad75',
+                        backgroundColor: '#fff5d87c',
                     },
                     '&.Mui-selected': {
                         color: '#fff',
-                        backgroundColor:'#a9c9a383'
+                        backgroundColor:'#fff5d87c'
                     },
                     fontFamily: 'Noto Serif Ottoman Siyaq, serif',
+                    fontWeight:'bold',
                     width:'25%',
                 }} 
                 label="Readme" 
                 icon={<DescriptionOutlinedIcon />}
+                onClick={() => {setUnderlineColor('#fff')}}
             />
             <Tab 
                 sx={{
@@ -61,19 +64,21 @@ export default function CenteredTabs() {
                     gap:'5px',
                     color: '#fff',
                     borderTop: 'transparent solid 2px',
-                    borderBottom: '#adadad75 solid 2px',
+                    borderBottom: '#e8e2c2 solid 2px',
                     '&:hover': {
-                        backgroundColor: '#adadad75',
+                        backgroundColor: '#e8e2c270',
                     },
                     '&.Mui-selected': {
                         color: '#fff',
-                        backgroundColor:'#a9c9a383'
+                        backgroundColor:'#e8e2c270'
                     },
                     fontFamily: 'Noto Serif Ottoman Siyaq, serif',
+                    fontWeight:'bold',
                     width:'25%'
                 }} 
                 icon={<CodeOutlinedIcon />}
                 label="Code"
+                onClick={() => {setUnderlineColor('#fff')}}
             />
             <Tab 
                 sx={{
@@ -84,19 +89,21 @@ export default function CenteredTabs() {
                     gap:'5px',
                     color: '#fff',
                     borderTop: 'transparent solid 2px',
-                    borderBottom: '#adadad75 solid 2px',
+                    borderBottom: '#d1dcae solid 2px',
                     '&:hover': {
-                        backgroundColor: '#adadad75',
+                        backgroundColor: '#d1dcae31',
                     },
                     '&.Mui-selected': {
                         color: '#fff',
-                        backgroundColor:'#a9c9a383'
+                        backgroundColor:'#d1dcae31'
                     },
                     fontFamily: 'Noto Serif Ottoman Siyaq, serif',
+                    fontWeight:'bold',
                     width:'25%'
                 }} 
                 label="Visuals"
                 icon={<GraphicEqOutlinedIcon />}
+                onClick={() => {setUnderlineColor('#fff')}}
             />
             <Tab 
                 sx={{
@@ -107,19 +114,21 @@ export default function CenteredTabs() {
                     gap:'5px',
                     color: '#fff',
                     borderTop: 'transparent solid 2px',
-                    borderBottom: '#adadad75 solid 2px',
+                    borderBottom: '#a9c9a3 solid 2px',
                     '&:hover': {
-                        backgroundColor: '#adadad75',
+                        backgroundColor: '#a9c9a341',
                     },
                     '&.Mui-selected': {
                         color: '#fff',
-                        backgroundColor:'#a9c9a383'
+                        backgroundColor:'#a9c9a341'
                     },
                     fontFamily: 'Noto Serif Ottoman Siyaq, serif',
+                    fontWeight:'bold',
                     width:'25%'
                 }} 
                 label="Comments"
                 icon={<SmsOutlinedIcon/>}
+                onClick={() => {setUnderlineColor('#fff')}}
             />
         </Tabs>
     </Box>

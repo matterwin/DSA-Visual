@@ -18,7 +18,7 @@ function Filesys({ handleFocusedFile }) {
 
   return (
     <div className='fs-contain'>
-      <button onClick={handleFocusedFile}>click test</button>
+      <p className='ref'>Reference</p>
       <div className='fs-folders-contain'>
         <Folder name='Sort' isOpen={openIndexes.includes(0)} handleOpen={handleOpen} index={0} items={['Merge','Quick','Insertion','Bubble','Heap','Selection','Topological']} list={list}/>
         <Folder name='Search' isOpen={openIndexes.includes(1)} handleOpen={handleOpen} index={1} items={['Binary']} list={list}/>

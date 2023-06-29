@@ -29,20 +29,15 @@ const StyledMenu = styled((props) => (
 ))(({ theme }) => ({
   '& .MuiPaper-root': {
     borderRadius: 2,
-    padding:'10px 10px 10px 0px',
+    padding:'5px',
     marginTop: theme.spacing(0.5),
     width: 10,
     minWidth: 140,
     color:'#efeff1',
     backgroundColor: '#887777',
     boxShadow:
-      'rgb(255, 255, 255) 0px 0px 0px 0px, rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px, rgba(0, 0, 0, 0.2) 0px 5px 5px 0px', // Updated box shadow
+      'rgb(0, 0, 0, 0.2) 0px 0px 5px 5px',
     '& .MuiMenu-list': {
-      padding: '4px 0',
-      display: 'flex',
-      flexDirection: 'column', // Set menu items to be in a column
-      alignItems: 'flex-start', // Align items to the left
-      justifyContent:'center'
     },
     '& .MuiMenuItem-root': {
       color: '#fff',
@@ -50,9 +45,6 @@ const StyledMenu = styled((props) => (
       marginTop:1,
       marginBottom:1,
       '& .MuiSvgIcon-root': {
-        // fontSize: 24,
-        // color: theme.palette.text.secondary,
-        // marginRight: theme.spacing(1.5),
       },
       '&:active': {
         backgroundColor: 'yellow'
@@ -73,39 +65,6 @@ export default function NavProfile() {
     const open = Boolean(anchorEl);
 
     const userId = readCookies();
-
-//     useEffect(() => {
-
-//       const url = `http://localhost:8000/api/userAuthControllerInfo?id=${userId}`;
-
-//       fetch(url, {
-//         method: 'GET',
-//         headers: {
-//           'Content-Type': 'application/json',
-//         },
-//       })
-//       .then(response => {
-//         if (response.status === 404) {
-//           throw new Error("User not found");
-//         }
-//         return response.json();     
-//       })
-//       .then(data => {
-//         if(data) { 
-//           setUsername(data.username);
-//           if(data.url == null)
-//             setUserProfilePic(DefaultPic);
-//         }
-//       })
-//       .catch(error => {       
-//         console.error(error);
-//       });
-
-//   },[userId])
-
-    // function handleLogOut() {
-    //   deleteCookies();
-    // }
 
     const handleClick = (event) => {
       setShowArrowDown(!showArrowDown);
@@ -153,6 +112,7 @@ export default function NavProfile() {
               </div>
             </MenuItem>
           </NavLink>
+        
           <NavLink end to="/Settings">
             <MenuItem onClick={handleClose} disableRipple>
               <div className='div-for-menu'>
@@ -161,7 +121,9 @@ export default function NavProfile() {
               </div>
             </MenuItem>
           </NavLink>
+
           <Divider sx={{ backgroundColor: 'silver', marginTop:'5px', marginBottom:'5px' }} />
+          
           <NavLink onClick={() => {deleteCookies(); window.location.href = '/';}}>
             <MenuItem disableRipple>
               <div className='div-for-menu'>

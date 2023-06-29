@@ -80,6 +80,7 @@
 .sign-up {
     /* border: #977575 solid 2px; */
     background-color: #a0a08c;
+    background-color: #A9C9A3;
     border-radius: 4px;
     transition: background-color 0.3s ease;
     padding: 1px;
@@ -89,6 +90,7 @@
 .sign-up:hover{
     background-color: #9775756e;
     background-color: #A9C9A3;
+    background-color: #a0a08c;
 }
 
 .sign-in {

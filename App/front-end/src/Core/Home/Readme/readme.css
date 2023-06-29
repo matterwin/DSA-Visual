@@ -29,3 +29,24 @@
     width: 100%;
     /* background-color: blue; */
 }
+
+.section{
+    margin-top: 10px;
+    background-color: #ccc;
+    border-radius: 3px;
+    padding: 10px;
+    width:98%;
+}
+
+.section-div{
+    width:100%;
+}
+
+.section p{
+    color: black;
+}
+
+.section-title{
+    color: #ccc;
+    font-size: 22px;
+}

@@ -42,6 +42,13 @@
     font-size: 17px;
 }
 
+.ref{
+    font-size: 20px;
+    padding: 0;
+    margin: 0;
+    color: #A9C9A3;
+}
+
 .fs-arrow{
     padding: 5px;
 }
