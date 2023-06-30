@@ -27,13 +27,11 @@ function App() {
   const HideNavIf = pathname === '/register' 
                     || pathname === '/login'  
                 
-  const userLoggedIn = (readCookies()) ? true : false;
+  const userLoggedIn = (readCookies('auth-token')) ? true : false;
 
   const HideNav = validNavPath && !HideNavIf && (
     userLoggedIn ? <NavIn /> : <NavOut />
   );
-
-  console.log(userLoggedIn);
 
   return (
     <div>

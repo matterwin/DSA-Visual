@@ -6,7 +6,7 @@ import PasswordField from './passwordfield';
 import { Divider } from '@mui/material';
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import ErrorOutlinedIcon from '@mui/icons-material/ErrorOutlined';
-import createCookies from '../Cookies/createCookies';
+import { createAuthCookie, createNameCookie } from '../Cookies/createCookies';
 import CustomizedTooltip from '../Core/Custom/customTooltip';
 import "./userauth.css";
 
@@ -134,7 +134,8 @@ function Login() {
                 return res.json();
             })
             .then((data) => {
-                createCookies(data.cookie);
+                createAuthCookie(data.cookie)
+                createNameCookie(data.name)
                 setLoading(false);
                 window.location.href = '/';
             })

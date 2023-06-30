@@ -54,7 +54,8 @@ const register = async (req,res) => {
 
     const user = await User.create({ username, email, password });
     const cookie = user._id;
-    res.status(StatusCodes.CREATED).json({ cookie });
+    const name = user.username;
+    res.status(StatusCodes.CREATED).json({ cookie, name });
 }
 
 const login = async (req,res) => {
@@ -75,7 +76,8 @@ const login = async (req,res) => {
     }
     
     const cookie = user._id;
-    res.status(StatusCodes.OK).json({ cookie });
+    const name = user.username;
+    res.status(StatusCodes.OK).json({ cookie, name });
 }
 
 module.exports = {

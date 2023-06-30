@@ -7,3 +7,5 @@ Omega notation represents the lower bound or best-case scenario of an algorithm'
 
 Theta (Θ) Notation:
 Theta notation represents the average-case or tight bound of an algorithm's performance. It provides both the upper and lower bounds for the growth rate of the algorithm.
+
+// need to refactor cookies

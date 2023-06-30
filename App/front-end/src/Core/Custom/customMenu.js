@@ -8,10 +8,12 @@ import Divider from '@mui/material/Divider';
 import CustomizedTooltip from './customTooltip';
 import DefaultPic from '../profilePics/pika.png';
 import './customMenu.css';
+import readCookies from '../../Cookies/readCookies';
 
 function CustomMenu() {
     const [isOpen, setIsOpen] = useState(false);
     const menuRef = useRef(null);
+    const username = readCookies('name');
 
     useEffect(() => {
         document.addEventListener('click', handleClickOutside);
@@ -52,7 +54,7 @@ function CustomMenu() {
                                     <img className="submenu-cust-profile-pic" src={DefaultPic} alt="ProfilePicture" />  
                                 </NavLink>    
                             </div>
-                            <p className='username-submenu'>username</p>
+                            <p className='username-submenu'>{username}</p>
                         </div>
                     
                     <Divider sx={{ backgroundColor: 'silver', marginTop:'10px', marginBottom:'10px' }} />
@@ -77,7 +79,7 @@ function CustomMenu() {
 
                     <Divider sx={{ backgroundColor: 'silver', marginTop:'10px', marginBottom:'10px' }} />
 
-                    <NavLink className='custom-navlink' onClick={() => {deleteCookies(); window.location.href = '/';}}>
+                    <NavLink className='custom-navlink' onClick={() => {deleteCookies('auth-token'); deleteCookies('name'); window.location.href = '/';}}>
                         <div className='contain-flex'> 
                             <div className='custom-menu-row-div'>
                                 <LogoutOutlinedIcon sx={{color:'#efeff1', fontSize:'20px', transform: 'scaleX(-1)',}}/>

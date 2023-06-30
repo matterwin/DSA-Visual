@@ -2,6 +2,10 @@ import Cookies from 'universal-cookie';
 
 const cookies = new Cookies();
 
-export default function createCookies(data) {
-    cookies.set('userId', data, { path: '/', secure: true});
+export function createAuthCookie(cookie) {
+    cookies.set('auth-token', cookie, { path: '/', secure: true});
+}
+
+export function createNameCookie(cookie) {
+    cookies.set('name', cookie, { path: '/', secure: true});
 }
