@@ -1,7 +1,5 @@
 import React from 'react'
 import Tabs from '../tabs';
-import CustomMenu from '../../Custom/customMenu';
-
 import './readme.css'
 import '../../../Fonts/fonts.css'
 import { Divider } from '@mui/material';
@@ -16,7 +14,6 @@ function Readme({focusedFile}){
           <Tabs />
       </div>
       <div>
-        <CustomMenu />
           <h1 className='title-of-panel' style={{ fontFamily: 'roobert' }}>{focusedFile.title}</h1>
           <p className='title-note' style={{ fontFamily: 'roobert' }}>{focusedFile.note}</p>
       </div>

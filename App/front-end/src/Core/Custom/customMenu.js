@@ -45,7 +45,19 @@ function CustomMenu() {
             </div>
             {isOpen &&
                 <div className='menu-div-contain'>
-                    <NavLink end to="/Profile">
+                    
+                        <div className='submenu-prof-div'>
+                            <div className="submenu-cust-pfp-div">
+                                <NavLink end to="/profile">
+                                    <img className="submenu-cust-profile-pic" src={DefaultPic} alt="ProfilePicture" />  
+                                </NavLink>    
+                            </div>
+                            <p className='username-submenu'>username</p>
+                        </div>
+                    
+                    <Divider sx={{ backgroundColor: 'silver', marginTop:'10px', marginBottom:'10px' }} />
+
+                    <NavLink end to="/profile">
                         <div className='contain-flex'>
                             <div className='custom-menu-row-div'>
                                 <Person2OutlinedIcon sx={{color:'#efeff1', fontSize:'20px'}}/>
@@ -54,7 +66,7 @@ function CustomMenu() {
                         </div>
                     </NavLink>
 
-                    <NavLink end to="/chat" className='custom-navlink'>
+                    <NavLink end to="/profile/settings" className='custom-navlink'>
                         <div className='contain-flex'>                          
                             <div className='custom-menu-row-div'>
                                 <SettingsOutlinedIcon sx={{ color: '#efeff1', fontSize: '20px' }} />
@@ -63,7 +75,7 @@ function CustomMenu() {
                         </div>
                     </NavLink>
 
-                    <Divider sx={{ backgroundColor: 'silver', marginTop:'5px', marginBottom:'5px' }} />
+                    <Divider sx={{ backgroundColor: 'silver', marginTop:'10px', marginBottom:'10px' }} />
 
                     <NavLink className='custom-navlink' onClick={() => {deleteCookies(); window.location.href = '/';}}>
                         <div className='contain-flex'> 
