@@ -2,6 +2,23 @@ const User = require('../models/User');
 const { StatusCodes } = require('http-status-codes');
 const CustomError = require('../errors');
 
+const basicUserInfo = async(req, res) => {
+    const { userId } = req.body;
+    console.log(req.body);
+
+    if(!userId){
+        throw new CustomError.BadRequestError('Provide userId');
+    }
+
+    const user = await User.findOne({ _id: userId });
+    if (!user){
+        throw new CustomError.BadRequestError('userId is invalid');
+    }
+    
+    const username = user.username;
+    res.status(StatusCodes.OK).json({ msg: 'success', username });
+}
+
 const checkEmail = async (req,res) => {
     const { email } = req.body;
 
@@ -62,6 +79,7 @@ const login = async (req,res) => {
 }
 
 module.exports = {
+    basicUserInfo,
     checkEmail,
     register,
     login
