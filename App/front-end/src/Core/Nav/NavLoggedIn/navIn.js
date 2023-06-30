@@ -61,10 +61,9 @@ const NavIn = () => {
                 <div className="nav-link-div-icons">
                   <NotificationsOutlinedIcon sx={{ padding: '0', margin:'0', cursor: 'pointer', color:'#fff', fontSize:'25px' }}/>
                 </div>
-              </CustomizedTooltip>
-              <CustomMenu />
+              </CustomizedTooltip>             
               <div className="nav-link-div-pp">
-                 <NavProfile />
+                <CustomMenu />
               </div>
             </div>
           </div>
