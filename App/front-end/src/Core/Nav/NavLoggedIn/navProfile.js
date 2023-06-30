@@ -27,7 +27,7 @@ const StyledMenu = styled((props) => (
     {...props}
   />
 ))(({ theme }) => ({
-  '& .MuiPaper-root': {
+    '& .MuiPaper-root': {
     borderRadius: 2,
     padding:'5px',
     marginTop: theme.spacing(0.5),
@@ -42,8 +42,9 @@ const StyledMenu = styled((props) => (
     '& .MuiMenuItem-root': {
       color: '#fff',
       borderRadius: 5,
-      marginTop:1,
-      marginBottom:1,
+      // marginTop:20,
+      // marginBottom:1,
+      marginRight:20,
       '& .MuiSvgIcon-root': {
       },
       '&:active': {
@@ -114,7 +115,7 @@ export default function NavProfile() {
           </NavLink>
         
           <NavLink end to="/Settings">
-            <MenuItem onClick={handleClose} disableRipple>
+            <MenuItem onClick={handleClose} disableRipple className='profile-space'>
               <div className='div-for-menu'>
                 <SettingsOutlinedIcon sx={{color:'#efeff1', fontSize:'20px'}}/>
                 <p style={{fontSize:'15px', fontWeight:'bold'}}>Settings</p>

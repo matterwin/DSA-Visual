@@ -8,19 +8,30 @@ import NotificationsOutlinedIcon from '@mui/icons-material/NotificationsOutlined
 import NotificationsActiveOutlinedIcon from '@mui/icons-material/NotificationsActiveOutlined';
 import CustomizedTooltip from '../../Custom/customTooltip';
 import GraphicEqOutlinedIcon from '@mui/icons-material/GraphicEqOutlined';
+import CustomMenu from '../../Custom/customMenu';
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
 import "../nav.css"
 import "./navIn.css"
 import "../subnav.css"
 
+const CloseBtn = () => {
+  return(
+    <><CloseOutlinedIcon />Close</>
+  );
+}
+
+const DSABtn = () => {
+  return(
+    <><GraphicEqOutlinedIcon />DSA Visuals<ArrowDropDownIcon/></>   
+  );
+}
+
 const NavIn = () => {
-  const [dsaOrHomeBtn, setdsaOrHomeBtn] = useState('DSA Visuals')
+  const [showDSABtn, setShowDSABtn] = useState(true)
 
   const handleClickDSABtn = () => {
-    if(dsaOrHomeBtn === 'DSA Visuals'){
-      setdsaOrHomeBtn('Back Home')
-    }
-    else
-      window.location.href = '/';
+    setShowDSABtn(!showDSABtn);
   }
 
   return (
@@ -51,6 +62,7 @@ const NavIn = () => {
                   <NotificationsOutlinedIcon sx={{ padding: '0', margin:'0', cursor: 'pointer', color:'#fff', fontSize:'25px' }}/>
                 </div>
               </CustomizedTooltip>
+              <CustomMenu />
               <div className="nav-link-div-pp">
                  <NavProfile />
               </div>
@@ -63,11 +75,20 @@ const NavIn = () => {
         <div className="sub-inside-nav">
           <div className="sub-nav-l-r-container">
             <div className="sub-left-side">
-              <button className='dsa-btn' onClick={handleClickDSABtn}>
-                <div className='dsa-btn-inside'>
-                  <GraphicEqOutlinedIcon />{dsaOrHomeBtn}
-                </div>
+              {showDSABtn && (<>
+                <button className='dsa-btn' onClick={handleClickDSABtn}>
+                  <div className='dsa-btn-inside'>
+                    <DSABtn />
+                  </div>                      
+                </button>
+              </>)}
+              {!showDSABtn && (<>
+                <button className='dsa-btn-close' onClick={handleClickDSABtn}>
+                  <div className='dsa-btn-inside'>
+                    <CloseBtn />
+                  </div>                      
               </button>
+              </>)}
             </div>
             <div className="sub-right-side">
               <Searchbar />
@@ -75,7 +96,6 @@ const NavIn = () => {
           </div>
         </div>
       </div>
-
     </div>
   )
 }

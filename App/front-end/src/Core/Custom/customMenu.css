@@ -1,0 +1,43 @@
+.menu-parent{
+    position: relative;
+}
+
+.menu-div-contain{
+    background-color: #887777;
+    padding: 10px;
+    padding-right: 100px;
+    position: absolute;
+    margin-top: 5px;
+    box-shadow: rgba(0, 0, 0, 0.021) 0px 0px 5px 5px;
+    border-radius: 5px;
+}
+
+.menu-div-flex{
+    cursor: pointer;
+    display:flex;
+    flex-direction:column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.menu-div-flex > * {
+    color: #fff;
+}
+
+.custom-menu-row-div{
+    width: 100%;
+}
+
+.custom-navlink:hover{
+    background-color: aqua;
+}
+
+.custom-menu-row-div{
+    width: 100%;
+    cursor: pointer;
+    display:flex;
+    flex-direction:row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 5px;
+}

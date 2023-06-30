@@ -4,6 +4,8 @@ import Divider from '@mui/material/Divider';
 import Searchbar from '../searchbar';
 import LoggedOutProfile from "./loggedOutProfile";
 import GraphicEqOutlinedIcon from '@mui/icons-material/GraphicEqOutlined';
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
 import "../nav.css"
 import "../subnav.css"
 
@@ -57,7 +59,7 @@ const NavOut = () => {
             <div className="sub-left-side">
               <button className='dsa-btn' onClick={handleClickDSABtn}>
                 <div className='dsa-btn-inside'>
-                  <GraphicEqOutlinedIcon />{dsaOrHomeBtn}
+                  <GraphicEqOutlinedIcon />{dsaOrHomeBtn}<ArrowDropDownIcon />
                 </div>
               </button>
             </div>
