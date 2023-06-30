@@ -53,6 +53,10 @@
     padding: 5px;
 }
 
+.inter-for-files{
+    font-family: 'Inter', sans-serif;
+}
+
 .fs-arrow:hover{
     background-color:#A9C9A3;
     background-color: #a0a08d;

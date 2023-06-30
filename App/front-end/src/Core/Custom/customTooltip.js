@@ -12,7 +12,7 @@ const NewTooltip = styled(({ className, ...props }) => (
     backgroundColor: '#efeff1',
     padding: '5px 5px 5px 5px',
     fontSize: '13px',
-    fontFamily:'Montserrat',
+    fontFamily:'Inter',
     color:'black',
     fontWeight:'600'
   },

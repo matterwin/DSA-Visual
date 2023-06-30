@@ -23,7 +23,7 @@ const Children = ({ childName, isOpen, childIndex, onClick, cIndex, setcIndex })
       <div className={`children-contain ${childIndex === focusedIndex ? 'clicked' : ''}`} onClick={handleChildClick}>
         <div className='children-content'>
           <div className='child1'>
-            <p>{childName}</p>
+            <p className='inter-for-files'>{childName}</p>
           </div>
         </div>
       </div>

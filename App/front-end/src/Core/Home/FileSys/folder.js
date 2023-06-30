@@ -27,7 +27,7 @@ const Folder = ({ name, isOpen, handleOpen, index, items, list}) => {
         ) : (
           <KeyboardArrowRightIcon sx={{ fontSize: 24, marginBottom: '-2px', marginRight: '-5px' }} />
         )}
-        <p>{name}</p>
+        <p className='inter-for-files'>{name}</p>
       </div>
       {items && (
         <div className='child-content'>

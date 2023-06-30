@@ -31,6 +31,7 @@
 .right-side-nav-in h4, .right-side-nav-out h4 {
     font-family: 'Montserrat', sans-serif;
     font-family: 'Noto Serif Ottoman Siyaq', serif;
+    /* font-family: 'Inter', sans-serif; */
     color: #fff;
     padding: 0;
     margin: 0;
@@ -45,7 +46,13 @@
 
 .nav-link-div:hover{
     background-color: #cccccc34;
+}
+
+.nav-link-div-active{
     padding: 7px 10px 7px 10px;
+    background-color: #cccccc34;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
 .nav-link-div-icons{
