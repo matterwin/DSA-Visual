@@ -14,6 +14,7 @@ function CustomMenu() {
     const [isOpen, setIsOpen] = useState(false);
     const menuRef = useRef(null);
     const username = readCookies('name');
+    const pp = readCookies('pp')
 
     useEffect(() => {
         document.addEventListener('click', handleClickOutside);
@@ -41,7 +42,7 @@ function CustomMenu() {
             >
                 <div className="cust-pfp-div">
                     <CustomizedTooltip title={"Profile"}>
-                        <img className="cust-profile-pic" src={DefaultPic} alt="ProfilePicture" />      
+                        <img className="cust-profile-pic" src={pp} alt="ProfilePicture" />      
                     </CustomizedTooltip>  
                 </div>
             </div>
@@ -51,7 +52,7 @@ function CustomMenu() {
                         <div className='submenu-prof-div'>
                             <div className="submenu-cust-pfp-div">
                                 <NavLink end to="/profile">
-                                    <img className="submenu-cust-profile-pic" src={DefaultPic} alt="ProfilePicture" />  
+                                    <img className="submenu-cust-profile-pic" src={pp} alt="ProfilePicture" />  
                                 </NavLink>    
                             </div>
                             <p className='username-submenu'>{username}</p>
@@ -79,7 +80,7 @@ function CustomMenu() {
 
                     <Divider sx={{ backgroundColor: 'silver', marginTop:'10px', marginBottom:'10px' }} />
 
-                    <NavLink className='custom-navlink' onClick={() => {deleteCookies('auth-token'); deleteCookies('name'); window.location.href = '/';}}>
+                    <NavLink className='custom-navlink' onClick={() => {deleteCookies('auth-token'); deleteCookies('name'); deleteCookies('pp'); window.location.href = '/';}}>
                         <div className='contain-flex'> 
                             <div className='custom-menu-row-div'>
                                 <LogoutOutlinedIcon sx={{color:'#efeff1', fontSize:'20px', transform: 'scaleX(-1)',}}/>

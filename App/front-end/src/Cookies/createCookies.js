@@ -9,3 +9,7 @@ export function createAuthCookie(cookie) {
 export function createNameCookie(cookie) {
     cookies.set('name', cookie, { path: '/', secure: true});
 }
+
+export function createProfilePicCookie(cookie) {
+    cookies.set('pp', cookie, { path: '/', secure: true});
+}
