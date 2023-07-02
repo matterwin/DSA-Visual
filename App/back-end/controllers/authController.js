@@ -34,6 +34,15 @@ const checkEmail = async (req,res) => {
     res.status(StatusCodes.OK).json({ msg: 'Email is available to use' });
 }
 
+const generateRandomColor = () => {
+    const letters = "0123456789ABCDEF";
+    let color = "#";
+    for (let i = 0; i < 6; i++) {
+      color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+};
+
 const register = async (req,res) => {
     const { username, email, password } = req.body;
     console.log(req.body);
@@ -52,7 +61,9 @@ const register = async (req,res) => {
         throw new CustomError.BadRequestError('Provide all auth values');
     }
 
-    const user = await User.create({ username, email, password });
+    const color = generateRandomColor(); // Generate random hex color
+
+    const user = await User.create({ username, email, password, color });
     const cookie = user._id;
     const name = user.username;
     const profilePic = user.profilePic;

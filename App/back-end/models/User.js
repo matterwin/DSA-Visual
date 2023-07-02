@@ -26,7 +26,11 @@ const UserSchema = new mongoose.Schema({
     },
     profilePic:{
         type: String,
-        default: 'https://res.cloudinary.com/dkqbgiqgu/image/upload/v1688190772/file-upload/tmp-1-1688190773995_fffx9m.png'
+        default: 'https://res.cloudinary.com/dkqbgiqgu/image/upload/v1688311832/file-upload/tmp-2-1688311833137_yi10la.jpg'
+    },
+    color:{
+        type:String,
+        default:'red'
     }
 })
 
