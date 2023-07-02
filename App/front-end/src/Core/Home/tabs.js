@@ -18,7 +18,8 @@ export default function CenteredTabs() {
   return (
     <Box 
         sx={{ 
-            width: '100%', 
+            width: '100%',
+            overflowX:'scroll',
             color: '#FFF', 
         }}
     >

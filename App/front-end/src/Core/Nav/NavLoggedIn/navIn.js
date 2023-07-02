@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { NavLink } from "react-router-dom";
 import Divider from '@mui/material/Divider';
 import Searchbar from '../searchbar';
-import NavProfile from './navProfile';
 import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
 import NotificationsOutlinedIcon from '@mui/icons-material/NotificationsOutlined';
 import NotificationsActiveOutlinedIcon from '@mui/icons-material/NotificationsActiveOutlined';
@@ -11,10 +10,10 @@ import GraphicEqOutlinedIcon from '@mui/icons-material/GraphicEqOutlined';
 import CustomMenu from '../../Custom/customMenu';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
+import CustomDSABtn from '../../Custom/customDSABtn';
 import "../nav.css"
 import "./navIn.css"
 import "../subnav.css"
-
 const CloseBtn = () => {
   return(
     <><CloseOutlinedIcon />Close</>
@@ -74,20 +73,7 @@ const NavIn = () => {
         <div className="sub-inside-nav">
           <div className="sub-nav-l-r-container">
             <div className="sub-left-side">
-              {showDSABtn && (<>
-                <button className='dsa-btn' onClick={handleClickDSABtn}>
-                  <div className='dsa-btn-inside'>
-                    <DSABtn />
-                  </div>                      
-                </button>
-              </>)}
-              {!showDSABtn && (<>
-                <button className='dsa-btn-close' onClick={handleClickDSABtn}>
-                  <div className='dsa-btn-inside'>
-                    <CloseBtn />
-                  </div>                      
-              </button>
-              </>)}
+              <CustomDSABtn />
             </div>
             <div className="sub-right-side">
               <Searchbar />

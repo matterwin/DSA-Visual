@@ -16,18 +16,18 @@ import './App.css';
 function App() {
 
   const { pathname } = window.location;
+  const userLoggedIn = (readCookies('auth-token')) ? true : false;
+  if(userLoggedIn) var name = readCookies('name');
 
   const validNavPath = pathname === '/' 
                     || pathname === '/chat'
                     || pathname === '/login'
                     || pathname === '/register'
-                    || pathname === '/profile'
-                    || pathname === '/profile/settings'
+                    || pathname === '/' + name
+                    || pathname === '/' + name + '/settings'
 
   const HideNavIf = pathname === '/register' 
                     || pathname === '/login'  
-                
-  const userLoggedIn = (readCookies('auth-token')) ? true : false;
 
   const HideNav = validNavPath && !HideNavIf && (
     userLoggedIn ? <NavIn /> : <NavOut />
@@ -44,8 +44,8 @@ function App() {
             <Route caseSensitive path="/chat" element={<Chat />}/>
             {!userLoggedIn && <Route caseSensitive path="/login" element={<Login />}/>}
             {!userLoggedIn && <Route caseSensitive path="/register" element={<Register />}/>}
-            {userLoggedIn && <Route caseSensitive path="/profile" element={<Profile />}/>}
-            {userLoggedIn && <Route caseSensitive path="/profile/settings" element={<Settings />}/>}
+            {userLoggedIn && <Route caseSensitive path="/:username" element={<Profile />} />}
+            {userLoggedIn && <Route caseSensitive path="/:username/settings" element={<Settings />}/>}
             <Route path="*" element={<Notfound />} />
           </Routes>
 

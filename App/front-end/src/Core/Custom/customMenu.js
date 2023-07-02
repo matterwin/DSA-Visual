@@ -6,7 +6,6 @@ import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
 import deleteCookies from '../../Cookies/deleteCookies';
 import Divider from '@mui/material/Divider';
 import CustomizedTooltip from './customTooltip';
-import DefaultPic from '../profilePics/pika.png';
 import './customMenu.css';
 import readCookies from '../../Cookies/readCookies';
 
@@ -60,7 +59,7 @@ function CustomMenu() {
                     
                     <Divider sx={{ backgroundColor: 'silver', marginTop:'10px', marginBottom:'10px' }} />
 
-                    <NavLink end to="/profile">
+                    <NavLink end to={'/' + username}>
                         <div className='contain-flex'>
                             <div className='custom-menu-row-div'>
                                 <Person2OutlinedIcon sx={{color:'#efeff1', fontSize:'20px'}}/>
@@ -69,7 +68,7 @@ function CustomMenu() {
                         </div>
                     </NavLink>
 
-                    <NavLink end to="/profile/settings" className='custom-navlink'>
+                    <NavLink end to={'/' + username + '/settings'} className='custom-navlink'>
                         <div className='contain-flex'>                          
                             <div className='custom-menu-row-div'>
                                 <SettingsOutlinedIcon sx={{ color: '#efeff1', fontSize: '20px' }} />
