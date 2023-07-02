@@ -137,6 +137,7 @@ function Login() {
                 createAuthCookie(data.cookie);
                 createNameCookie(data.name);
                 createProfilePicCookie(data.profilePic);
+                
                 setLoading(false);
                 window.location.href = '/';
             })
