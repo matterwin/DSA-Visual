@@ -23,12 +23,58 @@
     transition: border-radius 0.2s ease-in-out;
 }
 
+.sub-left-side-row-contain{
+    display:flex;
+    flex-direction:row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 3px;
+}
+
+.sub-nav-icon-contain{
+    display:flex;
+    flex-direction:row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 5px;
+}
+
+.sub-nav-p{
+    color: #fff;
+    font-family: 'Inter';
+    font-size: 15px;
+}
+
 .profile-pic {
     width: 100%;
     height: 100%;
     object-fit:cover;
     transition: transform .2s;
     border-radius: 50%;
+}
+
+.sub-nav-boxes{
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.sub-nav-boxes-active{
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #4b4b4b6b;
+}
+
+.sub-nav-boxes-active .sub-nav-p{
+    color: #fff;
+    font-family: 'Inter';
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.sub-nav-boxes:hover{
+    background-color: #4b4b4b6b;
 }
 
 .div-for-menu{

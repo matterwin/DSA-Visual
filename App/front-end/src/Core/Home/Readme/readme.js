@@ -10,9 +10,9 @@ function Readme({focusedFile}){
 
   return (
     <div className='readme-container'>
-      <div className='tabs-readme-container'>
+      {/* <div className='tabs-readme-container'>
           <Tabs />
-      </div>
+      </div> */}
       <div>
           <h1 className='title-of-panel' style={{ fontFamily: 'roobert' }}>{focusedFile.title}</h1>
           <p className='title-note' style={{ fontFamily: 'roobert' }}>{focusedFile.note}</p>

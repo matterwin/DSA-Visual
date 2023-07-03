@@ -9,7 +9,7 @@
     padding: 10px;
     margin-top: 5px;
     box-shadow: rgba(0, 0, 0, .05) 0px 0px 30px 30px;
-    border-radius: 5px;
+    border-radius: 7px;
     z-index: 2;
     position: absolute;
     width: 200px;
@@ -67,8 +67,8 @@
 }
 
 .cust-pfp-div {
-    width: 35px;
-    height: 35px;
+    width: 30px;
+    height: 30px;
     border-radius: 50%;
     overflow: hidden;
     background-color: #f4f4f5;
