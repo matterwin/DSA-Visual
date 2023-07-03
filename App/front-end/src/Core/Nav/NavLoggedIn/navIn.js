@@ -18,17 +18,6 @@ import SmsOutlinedIcon from '@mui/icons-material/SmsOutlined';
 import "../nav.css"
 import "./navIn.css"
 import "../subnav.css"
-const CloseBtn = () => {
-  return(
-    <><CloseOutlinedIcon />Close</>
-  );
-}
-
-const DSABtn = () => {
-  return(
-    <><GraphicEqOutlinedIcon />DSA Visuals<ArrowDropDownIcon/></>   
-  );
-}
 
 const NavIn = () => {
   const [showDSABtn, setShowDSABtn] = useState(true)
@@ -111,9 +100,6 @@ const NavIn = () => {
                 </NavLink>                                                                                            
               </div>
             </div>
-            {/* <div className="sub-right-side">
-              <Searchbar />
-            </div> */}
           </div>
         </div>
       </div>

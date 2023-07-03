@@ -11,6 +11,8 @@ import Profile from './Core/Profile/profile';
 import Settings from './Core/Profile/settings';
 import CustomSnackbar from './Core/Custom/customSnackbar';
 
+import Test from './Core/Visuals/Sort/test';
+
 //visuals -- sorting
 import Merge from './Core/Visuals/Sort/Merge';
 import Quick from './Core/Visuals/Sort/Quick';
@@ -46,6 +48,7 @@ function App() {
                     || pathname === '/visuals/dfs'
                     || pathname === '/visuals/bfs'
                     || pathname === '/visuals/binarysearch'
+                    || pathname === '/test'
 
 
   const HideNavIf = pathname === '/register' 
@@ -60,7 +63,7 @@ function App() {
        <Router>
 
           {HideNav}
-          <CustomSnackbar message={"testing from app"}/>
+          {/* <CustomSnackbar message={"testing from app"}/> */}
           <Routes>
             <Route caseSensitive path="/" element={<Home />}/>
             <Route caseSensitive path="/chat" element={<Chat />}/>
@@ -69,6 +72,7 @@ function App() {
             <Route caseSensitive path="/visuals/insertion" element={<Insert />}/>
             <Route caseSensitive path="/visuals/bubble" element={<Bubble />}/>
             <Route caseSensitive path="/visuals/selection" element={<Selection />}/>
+            <Route caseSensitive path="/test" element={<Test />}/>
             <Route caseSensitive path="/visuals/dfs" element={<DFS />}/>
             <Route caseSensitive path="/visuals/bfs" element={<BFS />}/>
             <Route caseSensitive path="/visuals/binarysearch" element={<Binary />}/>
