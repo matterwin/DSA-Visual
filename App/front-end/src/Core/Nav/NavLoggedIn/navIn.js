@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { NavLink } from "react-router-dom";
+import React, { useState, useEffect } from 'react';
+import { NavLink, useLocation } from "react-router-dom";
 import Divider from '@mui/material/Divider';
 import Searchbar from '../searchbar';
 import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
@@ -15,16 +15,31 @@ import CustomDSANavBtn from '../../Custom/customDSANavBtn';
 import DescriptionOutlinedIcon from '@mui/icons-material/DescriptionOutlined';
 import CodeOutlinedIcon from '@mui/icons-material/CodeOutlined';
 import SmsOutlinedIcon from '@mui/icons-material/SmsOutlined';
+import AutorenewOutlinedIcon from '@mui/icons-material/AutorenewOutlined';
+import PlayCircleOutlineOutlinedIcon from '@mui/icons-material/PlayCircleOutlineOutlined';
+import RestartAltOutlinedIcon from '@mui/icons-material/RestartAltOutlined';
 import "../nav.css"
 import "./navIn.css"
 import "../subnav.css"
 
 const NavIn = () => {
-  const [showDSABtn, setShowDSABtn] = useState(true)
+  const [showRegSubNav, setShowRegSubNav] = useState(true)
+  const location = useLocation();
+  const [pathname, setPathname] = useState("");
 
-  const handleClickDSABtn = () => {
-    setShowDSABtn(!showDSABtn);
-  }
+  useEffect(() => {
+    let currentPathname = location.pathname.substring(1);
+    if(currentPathname === "") currentPathname = "Home";
+    setPathname(currentPathname);
+  }, [location]);
+
+  useEffect(() => {
+    if(pathname.includes('visual'))
+      setShowRegSubNav(false);
+    else
+      setShowRegSubNav(true);
+  }, [pathname]);
+
 
   return (
     <div>
@@ -74,30 +89,56 @@ const NavIn = () => {
           <div className="sub-nav-l-r-container">
             <div className="sub-left-side">
               <div className='sub-left-side-row-contain'>
-                <NavLink end to="/readme" className={({ isActive }) => (isActive ? 'sub-nav-boxes-active' : 'sub-nav-boxes')}>
-                  <div className='sub-nav-icon-contain'>
-                    <DescriptionOutlinedIcon sx={{ padding: '0', margin:'0', cursor: 'pointer', color:'#bbb', fontSize:'20px' }}/>
-                    <p className='sub-nav-p'>Readme</p>
+                {showRegSubNav && 
+                <>
+                  <NavLink end to="/readme" className={({ isActive }) => (isActive ? 'sub-nav-boxes-active' : 'sub-nav-boxes')}>
+                    <div className='sub-nav-icon-contain'>
+                      <DescriptionOutlinedIcon sx={{stroke: "#fff", strokeWidth: 0.4, padding: '0', margin:'0', cursor: 'pointer', color:'#bbb', fontSize:'20px' }}/>
+                      <p className='sub-nav-p'>Readme</p>
+                    </div>
+                  </NavLink>
+                  <NavLink end to="/code" className={({ isActive }) => (isActive ? 'sub-nav-boxes-active' : 'sub-nav-boxes')}>
+                    <div className='sub-nav-icon-contain'>
+                      <CodeOutlinedIcon sx={{stroke: "#fff", strokeWidth: 0.4, padding: '0', margin:'0', cursor: 'pointer', color:'#bbb', fontSize:'20px' }}/>
+                      <p className='sub-nav-p'>Code</p>
+                    </div>
+                  </NavLink>
+                  <NavLink end to="/visuals" className={({ isActive }) => (isActive ? 'sub-nav-boxes-active' : 'sub-nav-boxes')}>
+                    <div className='sub-nav-icon-contain'>
+                      <GraphicEqOutlinedIcon sx={{stroke: "#fff", strokeWidth: 0.4, padding: '0', margin:'0', cursor: 'pointer', color:'#bbb', fontSize:'20px' }}/>
+                      <p className='sub-nav-p'>Visuals</p>
+                    </div>
+                  </NavLink>
+                  <NavLink end to="/comments" className={({ isActive }) => (isActive ? 'sub-nav-boxes-active' : 'sub-nav-boxes')}>
+                    <div className='sub-nav-icon-contain'>
+                      <SmsOutlinedIcon sx={{stroke: "#fff", strokeWidth: 0.4, padding: '0', margin:'0', cursor: 'pointer', color:'#bbb', fontSize:'20px' }}/>
+                      <p className='sub-nav-p'>Comments</p>
+                    </div> 
+                  </NavLink>       
+                </>
+                }   
+                {!showRegSubNav && 
+                <>
+                  <NavLink end to="/readme" className={({ isActive }) => (isActive ? 'sub-nav-boxes-active' : 'sub-nav-boxes')}>
+                    <div className='sub-nav-icon-contain'>
+                      <PlayCircleOutlineOutlinedIcon sx={{stroke: "#fff", strokeWidth: 0.4, padding: '0', margin:'0', cursor: 'pointer', color:'#bbb', fontSize:'20px' }}/>
+                      <p className='sub-nav-p'>Start</p>
+                    </div>
+                  </NavLink>
+                  <NavLink end to="/code" className={({ isActive }) => (isActive ? 'sub-nav-boxes-active' : 'sub-nav-boxes')}>
+                    <div className='sub-nav-icon-contain'>
+                      <RestartAltOutlinedIcon sx={{stroke: "#fff", strokeWidth: 0.4, padding: '0', margin:'0', cursor: 'pointer', color:'#bbb', fontSize:'20px' }}/>
+                      <p className='sub-nav-p'>Restart</p>
+                    </div>
+                  </NavLink>
+                  <div className='vis-sub-nav-boxes-active'>
+                    <div className='sub-nav-icon-contain'>
+                      <AutorenewOutlinedIcon sx={{stroke: "#fff", strokeWidth: 0.4, padding: '0', margin:'0', cursor: 'pointer', color:'#bbb', fontSize:'20px' }}/>
+                      <p className='sub-nav-p'>Generate</p>
+                    </div>
                   </div>
-                </NavLink>
-                <NavLink end to="/code" className={({ isActive }) => (isActive ? 'sub-nav-boxes-active' : 'sub-nav-boxes')}>
-                  <div className='sub-nav-icon-contain'>
-                    <CodeOutlinedIcon sx={{ padding: '0', margin:'0', cursor: 'pointer', color:'#bbb', fontSize:'20px' }}/>
-                    <p className='sub-nav-p'>Code</p>
-                  </div>
-                </NavLink>
-                <NavLink end to="/visuals" className={({ isActive }) => (isActive ? 'sub-nav-boxes-active' : 'sub-nav-boxes')}>
-                  <div className='sub-nav-icon-contain'>
-                    <GraphicEqOutlinedIcon sx={{ padding: '0', margin:'0', cursor: 'pointer', color:'#bbb', fontSize:'20px' }}/>
-                    <p className='sub-nav-p'>Visuals</p>
-                  </div>
-                </NavLink>
-                <NavLink end to="/comments" className={({ isActive }) => (isActive ? 'sub-nav-boxes-active' : 'sub-nav-boxes')}>
-                  <div className='sub-nav-icon-contain'>
-                    <SmsOutlinedIcon sx={{ padding: '0', margin:'0', cursor: 'pointer', color:'#bbb', fontSize:'20px' }}/>
-                    <p className='sub-nav-p'>Comments</p>
-                  </div> 
-                </NavLink>                                                                                            
+                </>
+                }                                                                             
               </div>
             </div>
           </div>

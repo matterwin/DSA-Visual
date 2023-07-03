@@ -49,6 +49,11 @@ function CustomDSANavBtn() {
                 <div className='dsa-nav-menu-div-contain'>
 
                     <p className='title-dsa'>SORT</p>
+                    <NavLink end to="/visuals/test">
+                        <div className='dsa-contain-flex'>
+                            <p>Test</p>
+                        </div>
+                    </NavLink>
                     <NavLink end to="/visuals/merge">
                         <div className='dsa-contain-flex'>
                             <p>Merge</p>

@@ -48,7 +48,7 @@ function App() {
                     || pathname === '/visuals/dfs'
                     || pathname === '/visuals/bfs'
                     || pathname === '/visuals/binarysearch'
-                    || pathname === '/test'
+                    || pathname === '/visuals/test'
 
 
   const HideNavIf = pathname === '/register' 
@@ -72,7 +72,7 @@ function App() {
             <Route caseSensitive path="/visuals/insertion" element={<Insert />}/>
             <Route caseSensitive path="/visuals/bubble" element={<Bubble />}/>
             <Route caseSensitive path="/visuals/selection" element={<Selection />}/>
-            <Route caseSensitive path="/test" element={<Test />}/>
+            <Route caseSensitive path="/visuals/test" element={<Test />}/>
             <Route caseSensitive path="/visuals/dfs" element={<DFS />}/>
             <Route caseSensitive path="/visuals/bfs" element={<BFS />}/>
             <Route caseSensitive path="/visuals/binarysearch" element={<Binary />}/>
