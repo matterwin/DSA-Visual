@@ -3,7 +3,9 @@ import React, { useState, useEffect, useRef } from 'react';
 import GraphicEqOutlinedIcon from '@mui/icons-material/GraphicEqOutlined';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
+import CustomizedTooltip from './customTooltip';
 import Divider from '@mui/material/Divider';
+import { NavLink } from 'react-router-dom';
 import './customDSANavBtn.css';
 
 
@@ -37,41 +39,60 @@ function CustomDSANavBtn() {
                 className='dsa-menu-parent'
                 ref={menuRef}
             >
-                <div>
-                    <GraphicEqOutlinedIcon sx={{stroke: "#fff", strokeWidth: 0.7, padding: '0', margin:'0', cursor: 'pointer', color:'#fff', fontSize:'25px' }}/>
-                </div>
+                <CustomizedTooltip title={"Visuals"}>
+                    <div className="nav-link-div-icons">
+                        <GraphicEqOutlinedIcon sx={{stroke: "#fff", strokeWidth: 0.7, padding: '0', margin:'0', cursor: 'pointer', color:'#fff', fontSize:'25px' }}/>
+                    </div>
+                </CustomizedTooltip>
             </div>
             {isOpen &&
                 <div className='dsa-nav-menu-div-contain'>
 
                     <p className='title-dsa'>SORT</p>
-                    <div className='dsa-contain-flex'>
-                        <p>Merge</p>
-                    </div>
-                    <div className='dsa-contain-flex'>
-                        <p>Quick</p>
-                    </div>
-                    <div className='dsa-contain-flex'>
-                        <p>Insertion</p>
-                    </div>
-                    <div className='dsa-contain-flex'>
-                        <p>Selection</p>
-                    </div>
-                    <div className='dsa-contain-flex'>
-                        <p>Bubble</p>
-                    </div>
+                    <NavLink end to="/visuals/merge">
+                        <div className='dsa-contain-flex'>
+                            <p>Merge</p>
+                        </div>
+                    </NavLink>
+                    <NavLink end to="/visuals/quick">
+                        <div className='dsa-contain-flex'>
+                            <p>Quick</p>
+                        </div>
+                    </NavLink>
+                    <NavLink end to="/visuals/insertion">
+                        <div className='dsa-contain-flex'>
+                            <p>Insertion</p>
+                        </div>
+                    </NavLink>
+                    <NavLink end to="/visuals/selection">
+                        <div className='dsa-contain-flex'>
+                            <p>Selection</p>
+                        </div>
+                    </NavLink>
+                    <NavLink end to="/visuals/bubble">
+                        <div className='dsa-contain-flex'>
+                            <p>Bubble</p>
+                        </div>
+                    </NavLink>
+
                     <Divider sx={{ backgroundColor: 'silver', marginTop:'10px', marginBottom:'10px' }} />
 
                     <p className='title-dsa'>SEARCH</p>
-                    <div className='dsa-contain-flex'>
-                        <p>Binary</p>
-                    </div>
-                    <div className='dsa-contain-flex'>
-                        <p>DFS</p>
-                    </div>
-                    <div className='dsa-contain-flex'>
-                        <p>BFS</p>
-                    </div>
+                    <NavLink end to="/visuals/binarysearch">
+                        <div className='dsa-contain-flex'>
+                            <p>Binary</p>
+                        </div>
+                    </NavLink>
+                    <NavLink end to="/visuals/dfs">
+                        <div className='dsa-contain-flex'>
+                            <p>DFS</p>
+                        </div>
+                    </NavLink>
+                    <NavLink end to="/visuals/bfs">
+                        <div className='dsa-contain-flex'>
+                            <p>BFS</p>
+                        </div>
+                    </NavLink>                                        
                 </div>
             }
         </div>

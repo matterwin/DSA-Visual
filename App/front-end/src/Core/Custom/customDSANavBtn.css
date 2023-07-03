@@ -22,6 +22,10 @@
     border-radius: 5px;
 }
 
+.testt{
+    padding: 7px 10px 7px 10px;
+}
+
 .dsa-contain-flex:hover {
     background-color: #4b4b4b6b;
 }

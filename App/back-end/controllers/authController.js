@@ -93,9 +93,19 @@ const login = async (req,res) => {
     res.status(StatusCodes.OK).json({ cookie, name, profilePic });
 }
 
+const deleteAllUserAccounts = async (req, res) => {
+    try {
+      await User.deleteMany();
+      res.status(StatusCodes.OK).json({ msg: 'All user accounts deleted' });
+    } catch (error) {
+      throw new CustomError.InternalServerError('Error deleting user accounts');
+    }
+};
+
 module.exports = {
     basicUserInfo,
     checkEmail,
     register,
-    login
+    login,
+    deleteAllUserAccounts
 }

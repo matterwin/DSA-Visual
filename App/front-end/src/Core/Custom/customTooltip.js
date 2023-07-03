@@ -7,6 +7,9 @@ const NewTooltip = styled(({ className, ...props }) => (
 ))(({ theme }) => ({
   [`& .${tooltipClasses.arrow}`]: {
     color: '#f8f8f8',
+    "&:before": {
+      borderRadius:'2px'
+    },
   },
   [`& .${tooltipClasses.tooltip}`]: {
     backgroundColor: '#f8f8f8',

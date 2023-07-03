@@ -65,11 +65,7 @@ const NavIn = () => {
                   <AddOutlinedIcon sx={{stroke: "#fff", strokeWidth: 1.4, padding: '0', margin:'0', cursor: 'pointer', color:'#fff', fontSize:'25px'}}/>
                 </div>
               </CustomizedTooltip>
-              <CustomizedTooltip title={"Visuals"}>
-                <div className="nav-link-div-icons">
-                  <CustomDSANavBtn />
-                </div>
-              </CustomizedTooltip> 
+              <CustomDSANavBtn />
               <CustomizedTooltip title={"Notification"}>
                 <div className="nav-link-div-icons">
                   <NotificationsOutlinedIcon sx={{stroke: "#fff", strokeWidth: 0.7, padding: '0', margin:'0', cursor: 'pointer', color:'#fff', fontSize:'25px' }}/>
