@@ -23,8 +23,8 @@ const Test = () => {
     const calculateFontSize = (value) => {
         const ratio = 2 / array.length;
         const max = Math.max(...array);
-        const fontSize = 20 - ratio * 10; // Adjust the scaling factor (10) as needed
-        return `${ratio}px`;
+        const fontSize = 20 - ratio * 10 * Math.log10(array.length); // Adjust the scaling factor (10) as needed
+        return `${fontSize}px`;
       };
 
   return (
