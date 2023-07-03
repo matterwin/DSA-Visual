@@ -51,21 +51,12 @@ function CustomDSABtn() {
                 className='dsa-menu-parent'
                 ref={menuRef}
             >
-                {/* {showDSABtn && (<> */}
-                <button className='dsa-btn-close'  onClick={handleClickDSABtn}>
+                <button className='dsa-btn-close' onClick={handleClickDSABtn}>
                   <div className='dsa-btn-inside'>
                     {showDSABtn && <DSABtn />}
                     {!showDSABtn && <CloseBtn />}
                   </div>                      
                 </button>
-              {/* </>)} */}
-              {/* {!showDSABtn && (<>
-                <button className='dsa-btn-close' onClick={handleClickDSABtn}>
-                  <div className='dsa-btn-inside'>
-                    <CloseBtn />
-                  </div>                      
-              </button>
-              </>)} */}
             </div>
             {isOpen &&
                 <div className='dsa-menu-div-contain'>

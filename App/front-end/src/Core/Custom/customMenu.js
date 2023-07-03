@@ -50,7 +50,7 @@ function CustomMenu() {
                     
                         <div className='submenu-prof-div'>
                             <div className="submenu-cust-pfp-div">
-                                <NavLink end to="/profile">
+                                <NavLink end to={'/' + username}>
                                     <img className="submenu-cust-profile-pic" src={pp} alt="ProfilePicture" />  
                                 </NavLink>    
                             </div>
@@ -62,7 +62,7 @@ function CustomMenu() {
                     <NavLink end to={'/' + username}>
                         <div className='contain-flex'>
                             <div className='custom-menu-row-div'>
-                                <Person2OutlinedIcon sx={{color:'#efeff1', fontSize:'20px'}}/>
+                                <Person2OutlinedIcon sx={{stroke: "#fff", strokeWidth: 0.4, color:'#efeff1', fontSize:'22px', fontStyle:'bold'}}/>
                                 <p style={{fontSize:'15px', fontFamily: 'Inter', color:'#fff'}}>Profile</p>
                             </div>
                         </div>
@@ -71,7 +71,7 @@ function CustomMenu() {
                     <NavLink end to={'/' + username + '/settings'} className='custom-navlink'>
                         <div className='contain-flex'>                          
                             <div className='custom-menu-row-div'>
-                                <SettingsOutlinedIcon sx={{ color: '#efeff1', fontSize: '20px' }} />
+                                <SettingsOutlinedIcon sx={{ stroke: "#fff", strokeWidth: 0.4, color: '#efeff1', fontSize: '22px' }} />
                                 <p style={{ fontSize: '15px', fontFamily: 'Inter', color:'#fff' }}>Settings</p>
                             </div>                           
                         </div>
@@ -82,7 +82,7 @@ function CustomMenu() {
                     <NavLink className='custom-navlink' onClick={() => {deleteCookies('auth-token'); deleteCookies('name'); deleteCookies('pp'); window.location.href = '/';}}>
                         <div className='contain-flex'> 
                             <div className='custom-menu-row-div'>
-                                <LogoutOutlinedIcon sx={{color:'#efeff1', fontSize:'20px', transform: 'scaleX(-1)',}}/>
+                                <LogoutOutlinedIcon sx={{stroke: "#fff", strokeWidth: 0.4, color:'#efeff1', fontSize:'22px', transform: 'scaleX(-1)'}}/>
                                 <p style={{fontSize:'15px', fontFamily: 'Inter', color:'#fff'}}>Log out</p>
                             </div>
                         </div>

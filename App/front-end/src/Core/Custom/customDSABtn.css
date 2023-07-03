@@ -42,11 +42,12 @@
 }
 
 .title-dsa{
-    color: #aaaaaa;
+    color: #b6b6b6;
     font-family: 'Inter';
     font-weight: 600;
     margin-bottom: 5px;
     margin-top: 5px;
+    font-size: 15px;
 }
 
 .dsa-contain-flex{
@@ -55,6 +56,7 @@
     color: #fff;
     font-family: 'Inter';
     cursor: pointer;
+    font-size: 15px; 
 }
 
 .dsa-contain-flex:hover {
