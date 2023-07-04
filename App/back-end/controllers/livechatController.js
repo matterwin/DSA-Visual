@@ -9,6 +9,15 @@ const seeLiveChat = async (req,res) => {
     return res.status(StatusCodes.OK).json({ count: chat.length, chat });
 }
 
+const clearChat = async (req,res) => {
+    try {
+        await LiveChat.deleteMany();
+        res.status(StatusCodes.OK).json({ msg: 'Chat has been cleared'});
+    } catch (error) {
+        throw new CustomError.InternalServerError('Error deleting chat messages');
+    }
+}
+
 const postComment = async (req,res) => {
     // will need to send a cookie back to backend, so like send a validate a JWT
     const { userId, message } = req.body;
@@ -16,7 +25,7 @@ const postComment = async (req,res) => {
     if(!userId || !message)
         throw new CustomError.BadRequestError('Provide all chat values');
 
-        const user = await User.findOne({ _id: userId }).select('-email -password');
+    const user = await User.findOne({ _id: userId }).select('-email -password');
     if(!user)
         throw new CustomError.UnauthenticatedError('Invalid Credentials');
 
@@ -27,5 +36,6 @@ const postComment = async (req,res) => {
 
 module.exports = {
     seeLiveChat,
+    clearChat,
     postComment
 };
