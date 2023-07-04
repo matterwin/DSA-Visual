@@ -24,6 +24,8 @@ const connectDB = require('./db/connect');
 
 // routers
 const authRouter = require('./routes/authRoutes');
+const livechatRouter = require('./routes/livechatRoutes')
+// const livechatRouter = require('./routes/livechatRoutes');
 const uploadRouter = require('./routes/uploadRoutes');
 
 // middleware
@@ -40,6 +42,7 @@ app.use(fileUpload({ useTempFiles: true }));
 
 // actual routes
 app.use('/auth', authRouter);
+app.use('/livechat', livechatRouter);
 app.use('/upload', uploadRouter);
 
 app.use(notFoundMiddleware);
