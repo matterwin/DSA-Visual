@@ -9,7 +9,7 @@
 .search-homemade{
     text-decoration: none;
     outline: none;
-    padding: 8px;
+    padding: 10px;
     font-family: 'Inter';
     border: 1px solid #ccc;
     border-bottom-left-radius: 5px;
@@ -31,7 +31,7 @@
 
 .search-icon-div{
     background-color: #ccc;
-    padding: 4.1px;
+    padding: 6px;
     border-bottom-right-radius: 5px;
     border-top-right-radius: 5px;
     cursor: pointer;

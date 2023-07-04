@@ -74,6 +74,7 @@
     cursor: pointer;
     background-color: #4b4b4b6b;
     border: 1px solid #cccccc42;
+    border: 1px solid #ccc;
 }
 
 .sub-nav-boxes-active .sub-nav-p{

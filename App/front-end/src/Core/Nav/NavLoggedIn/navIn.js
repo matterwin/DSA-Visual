@@ -114,8 +114,7 @@ const NavIn = () => {
                         <SmsOutlinedIcon sx={{stroke: "#fff", strokeWidth: 0.4, padding: '0', margin:'0', cursor: 'pointer', color:'#bbb', fontSize:'20px' }}/>
                         <p className='sub-nav-p'>Comments</p>
                       </div> 
-                    </NavLink>       
-                                                                            
+                    </NavLink>                                                  
                 </div>
               </div>
             </div>
