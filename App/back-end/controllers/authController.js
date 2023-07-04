@@ -16,7 +16,8 @@ const basicUserInfo = async(req, res) => {
     }
     
     const username = user.username;
-    res.status(StatusCodes.OK).json({ msg: 'success', username });
+    const color = user.color;
+    res.status(StatusCodes.OK).json({ msg: 'success', username, color });
 }
 
 const checkEmail = async (req,res) => {

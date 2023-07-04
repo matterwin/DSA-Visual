@@ -3,7 +3,7 @@ import {useState, useEffect} from 'react';
 import AutorenewOutlinedIcon from '@mui/icons-material/AutorenewOutlined';
 import PlayCircleOutlineOutlinedIcon from '@mui/icons-material/PlayCircleOutlineOutlined';
 import RestartAltOutlinedIcon from '@mui/icons-material/RestartAltOutlined';
-import { mergeSort } from './mergeAlgo';
+// import { mergeSort, mergeSortVisual } from './mergeAlgo';
 import './test.css'
 
 const Test = () => {
@@ -12,7 +12,7 @@ const Test = () => {
   const arrayLength = Math.floor(Math.random() * (50 - 10 + 1)) + 10;
 
   useEffect(() => {
-    setArray(generate());
+    generate();
   }, []);
 
   const generate = () => {
@@ -21,12 +21,12 @@ const Test = () => {
         newArray.push(Math.floor(Math.random() * 701));
 
     setArrayCopy(newArray);
-    return newArray;
+    setArray(newArray);
   }
 
   const sortArray = () => {
     const sortedArray = array.slice();
-    mergeSort(sortedArray);
+    mergeSortVisual(sortedArray);
     console.log(sortedArray);
     setArray(sortedArray);
   };
@@ -34,6 +34,33 @@ const Test = () => {
   const restart = () => {
     setArray(arrayCopy);
   };
+
+  function mergeVisual(a, l, r){
+    var i = 0;
+    var j = 0;
+
+    while(i + j < a.length){
+        if(j === r.length || (i<l.length && l[i] < r[j]))
+            a[i+j] = l[i++];
+        else
+            a[i+j] = r[j++];
+    }
+}
+
+ function mergeSortVisual(a) {
+    if(a.length < 2) return;
+    const len = a.length;
+
+    const mid = len / 2;
+    const l = a.slice(0,mid);
+    const r = a.slice(mid);
+
+    mergeSortVisual(l);
+    mergeSortVisual(r);
+    mergeVisual(a, l, r);
+
+    return a;
+}
     
   return (
     <div>
@@ -54,7 +81,7 @@ const Test = () => {
                       <p className='sub-nav-p'>Restart</p>
                     </div>
                   </div>
-                  <div className='vis-sub-nav-boxes-active' onClick={() => {setArray(generate());}}>
+                  <div className='vis-sub-nav-boxes-active' onClick={generate}>
                     <div className='sub-nav-icon-contain'>
                       <AutorenewOutlinedIcon sx={{stroke: "#fff", strokeWidth: 0.4, padding: '0', margin:'0', cursor: 'pointer', color:'#bbb', fontSize:'20px' }}/>
                       <p className='sub-nav-p'>Generate</p>

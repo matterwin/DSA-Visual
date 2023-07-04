@@ -7,7 +7,8 @@
     align-items: flex-start;
     flex-direction: column;
     gap: 10px;
-    color: #fff;
+    color: black;
+    padding-bottom: 1000px;
 }
 
 .title-of-panel{

@@ -1,68 +1,16 @@
-import * as React from 'react';
-import { styled, alpha } from '@mui/material/styles';
-import InputBase from '@mui/material/InputBase';
-import SearchIcon from '@mui/icons-material/Search';
+import React from 'react'
+import './searchbar.css'
+import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
 
-const Search = styled('div')(({ theme, hasInput }) => ({
-  position: 'relative',
-  borderRadius: theme.shape.borderRadius,
-  backgroundColor: hasInput ? '#fff' : '#fff',
-  '&:hover': {
-    backgroundColor: '#fff',
-  },
-  marginLeft: 0,
-  width: '100%',
-  [theme.breakpoints.up('sm')]: {
-    marginLeft: theme.spacing(2),
-    width: 'auto',
-  },
-}));
-
-const SearchIconWrapper = styled('div')(({ theme }) => ({
-  padding: theme.spacing(0, 2),
-  height: '100%',
-  position: 'absolute',
-  pointerEvents: 'none',
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-}));
-
-const StyledInputBase = styled(InputBase)(({ theme }) => ({
-  color: 'black',
-  '& .MuiInputBase-input': {
-    padding: theme.spacing(1, 1, 1, 0),
-    // vertical padding + font size from searchIcon
-    paddingLeft: `calc(1em + ${theme.spacing(4)})`,
-    transition: theme.transitions.create('width'),
-    width: '100%',
-    [theme.breakpoints.up('sm')]: {
-      width: '16ch',
-      '&:focus': {
-        width: '22ch',
-      },
-    },
-  },
-}));
-
-export default function SearchBar() {
-  const [inputValue, setInputValue] = React.useState('');
-
-  const handleInputChange = (event) => {
-    setInputValue(event.target.value);
-  };
-
+const Searchbar = () => {
   return (
-    <Search hasInput={inputValue.length > 0}>
-      <SearchIconWrapper>
-        <SearchIcon />
-      </SearchIconWrapper>
-      <StyledInputBase
-        placeholder="Go to"
-        inputProps={{ 'aria-label': 'search' }}
-        value={inputValue}
-        onChange={handleInputChange}
-      />
-    </Search>
-  );
+    <div className='row-search-contain'>
+      <input className='search-homemade' type="text" placeholder="Jump"></input>
+      <div className='search-icon-div'>
+        <SearchRoundedIcon sx={{stroke: "#fff", strokeWidth: 1, color:'#efeff1', fontSize:'22px'}}/>
+      </div>
+    </div>
+  )
 }
+
+export default Searchbar

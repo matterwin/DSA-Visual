@@ -7,7 +7,7 @@
   gap: 10px;
   margin-left: 200px;
   margin-right: 200px;
-  padding-bottom: 1000px;
+  /* padding-bottom: 1000px; */
 }
 
 .right-side-home, .center-side-home {
@@ -20,11 +20,18 @@
 
 .left-side-home {
   margin-top: 20px;
+  position: sticky;
+  top: 0;
+}
+
+.right-side-home{
+  position: sticky;
+  top: 0;
 }
 
 .center-side-home{
   border-right: #A9C9A3 solid 1px;
   /* color: #fff5d87c; */
-  width: 100%;
-  /* background-color: #fff; */
+  /* width: 100%; */
+  background-color: #fff;
 }
