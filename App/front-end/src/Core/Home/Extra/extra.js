@@ -52,11 +52,26 @@ const Extra = () => {
     };
   }, []);
  
+  // const getChat = () => {
+  //   return chat.map((comment) => (
+  //     <div className='single-msg-contain' key={comment._id}>
+  //       <p className='name-of-comment' style={{ color: comment.user.color }}>{comment.user.username}</p>
+  //       <p className='msg-of-user'>:&nbsp;{comment.message}</p>
+  //     </div>
+  //   ));
+  // };
+
   const getChat = () => {
     return chat.map((comment) => (
       <div className='single-msg-contain' key={comment._id}>
-        <p className='name-of-comment' style={{ color: comment.user.color }}>{comment.user.username}</p>
-        <p className='msg-of-user'>:&nbsp;{comment.message}</p>
+        <p>
+          <span className='name-of-comment' style={{ color: comment.user.color }}>
+          {comment.user.username}
+          </span>
+          <span className='msg-of-user'>
+            :&nbsp;{comment.message}
+          </span>
+        </p>
       </div>
     ));
   };

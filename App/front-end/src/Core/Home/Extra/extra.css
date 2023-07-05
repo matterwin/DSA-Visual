@@ -38,13 +38,13 @@
     flex-direction: row;
     justify-content: flex-start;
     /* gap: 3px; */
-    align-items: flex-end;
+    align-items: flex-start;
+    width: 100%;
   }
 
   .single-msg-contain:hover{
     padding: 5px;
     background-color: #a5a5a56b;
-
   }
 
   .name-of-comment{
@@ -58,6 +58,10 @@
     color: #fff;
     font-family: 'Inter';
     font-size: 13px;
+    word-wrap: break-word;
+    overflow-wrap: break-word; /* Added line */
+    width: 100%;
+    box-sizing: border-box;
   }
   
   .msg-box {
