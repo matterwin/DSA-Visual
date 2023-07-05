@@ -29,6 +29,36 @@
     box-sizing: border-box;
     width: calc(100% - 20px); /* Subtract the total margin value from the parent's width */
   }
+
+  .single-msg-contain{
+    padding: 5px;
+    background-color: transparent;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    /* gap: 3px; */
+    align-items: flex-end;
+  }
+
+  .single-msg-contain:hover{
+    padding: 5px;
+    background-color: #a5a5a56b;
+
+  }
+
+  .name-of-comment{
+    color: #fff;
+    font-family: 'Inter';
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  .msg-of-user{
+    color: #fff;
+    font-family: 'Inter';
+    font-size: 13px;
+  }
   
   .msg-box {
     text-decoration: none;

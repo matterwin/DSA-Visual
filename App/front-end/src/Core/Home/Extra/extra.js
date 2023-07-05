@@ -1,12 +1,65 @@
-import React from 'react'
-import { useState } from 'react';
+import * as React from 'react';
+import { useState, useEffect } from 'react';
 import './extra.css'
 import PeopleAltOutlinedIcon from '@mui/icons-material/PeopleAltOutlined';
 import CloseFullscreenOutlinedIcon from '@mui/icons-material/CloseFullscreenOutlined';
 import CustomizedTooltip from '../../Custom/customTooltip';
+import CircularProgress from '@mui/material/CircularProgress';
+import Box from '@mui/material/Box';
+
+const Loading = () => {
+  return (
+    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '30vh' }}>
+      <Box sx={{ display: 'flex' }}>
+        <CircularProgress style={{ color: '#a9c9a3' }} />
+      </Box>
+    </div>
+  );
+}
 
 const Extra = () => {
   const [showChat, setShowChat] = useState(true);
+  const [chat, setChat] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  const fetchChat = () => {
+    const url = 'http://localhost:5000/livechat/seeChat';
+    
+    fetch(url)
+      .then(res => {
+        if (res.status !== 200) {
+          throw new Error("Email is taken");           
+        }
+        return res.json();
+      })
+      .then((data) => {
+        setChat(data.chat);
+        setLoading(false);
+        console.log(data.chat);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  useEffect(() => {
+    fetchChat(); // Initial fetch
+
+    const intervalId = setInterval(fetchChat, 5000); // Fetch every 5 seconds
+
+    return () => {
+      clearInterval(intervalId); // Cleanup on component unmount
+    };
+  }, []);
+ 
+  const getChat = () => {
+    return chat.map((comment) => (
+      <div className='single-msg-contain' key={comment._id}>
+        <p className='name-of-comment' style={{ color: comment.user.color }}>{comment.user.username}</p>
+        <p className='msg-of-user'>:&nbsp;{comment.message}</p>
+      </div>
+    ));
+  };
 
   return (
     <div>
@@ -38,8 +91,16 @@ const Extra = () => {
           </div>
 
           <div className='chat-box-contain'>
-           {/* Do ad irure dolor consequat. Eiusmod do mollit ad id aute tempor elit ad voluptate nulla esse anim proident. Cupidatat nostrud ullamco cupidatat eiusmod officia nulla dolore proident. Nostrud amet proident irure mollit sint consequat. Do Lorem reprehenderit ex do qui minim sunt ad ipsum proident ut ut aliqua sint. Minim ex dolore enim deserunt qui Lorem proident cillum culpa amet eiusmod non. Consequat consectetur aliquip amet quis elit proident et sint incididunt do esse. */}
-            I psum sint Lorem sit ex quis labore deserunt quis quis eiusmod. Non et dolore tempor do in aliquip nulla non ea consequat irure mollit veniam. Minim ullamco consectetur laboris consequat mollit nisi consectetur duis eiusmod in. Excepteur mollit elit laboris quis quis veniam laboris.
+            {loading && 
+            <>
+              <div className='single-msg-contain'>
+                <p className='name-of-comment'>Server:</p>
+                <p className='msg-of-user'>Loading real quick</p>
+              </div>
+              <Loading />
+            </>
+            }
+            {!loading && getChat()}
           </div>
 
           <div className='msg-box-contain'>

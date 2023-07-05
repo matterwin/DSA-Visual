@@ -3,11 +3,19 @@ const LiveChat = require('../models/LiveChat');
 const { StatusCodes } = require('http-status-codes');
 const CustomError = require('../errors');
 
-const seeLiveChat = async (req,res) => {
-
-    const chat = await LiveChat.find({});
-    return res.status(StatusCodes.OK).json({ count: chat.length, chat });
-}
+const seeLiveChat = async (req, res) => {
+    try {
+      const chat = await LiveChat.find({}).populate('user', '-_id -__v -password -email -profilePic')
+      return res.status(StatusCodes.OK).json({ count: chat.length, chat });
+    } catch (error) {
+      // Handle any errors that occur during the operation
+      console.error(error);
+      return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
+        error: 'Internal Server Error',
+      });
+    }
+  };
+  
 
 const clearChat = async (req,res) => {
     try {
