@@ -99,11 +99,12 @@
     height: 15px;
     border-radius: 50%;
     overflow: hidden;
-    background-color: #f4f4f5;
+    /* background-color: #f4f4f5; */
     cursor: pointer; 
-    border: transparent solid 2px;
+    /* border: transparent solid 2px; */
     transition: border-radius 0.2s ease-in-out;
     margin-right: 2px;
+    margin-top: 3px;
 }
 
 .extra-profile-pic {
