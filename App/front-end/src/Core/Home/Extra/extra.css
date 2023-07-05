@@ -30,21 +30,21 @@
     width: calc(100% - 20px); /* Subtract the total margin value from the parent's width */
   }
 
-  .single-msg-contain{
+  .single-msg-contain {
     padding: 5px;
     background-color: transparent;
     border-radius: 5px;
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
-    /* gap: 3px; */
     align-items: flex-start;
-    width: 100%;
+    width: calc(100% - 30px);
   }
 
   .single-msg-contain:hover{
     padding: 5px;
     background-color: #a5a5a56b;
+    
   }
 
   .name-of-comment{
@@ -58,10 +58,6 @@
     color: #fff;
     font-family: 'Inter';
     font-size: 13px;
-    word-wrap: break-word;
-    overflow-wrap: break-word; /* Added line */
-    width: 100%;
-    box-sizing: border-box;
   }
   
   .msg-box {
@@ -86,6 +82,12 @@
     font-weight: 600 
 }
 
+.word-warping{
+    word-wrap: break-word;
+    width: calc(100% - 40px);
+    box-sizing: border-box;
+}
+
 .chat-bar-nav{
     display: flex;
     flex-direction: row;
@@ -102,8 +104,9 @@
 
 .chat-box-contain{
     margin: 10px;
-    overflow-y: scroll;
-    /* height: fit-content; */
+    /* overflow-y: scroll; */
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .chat-btn-div{

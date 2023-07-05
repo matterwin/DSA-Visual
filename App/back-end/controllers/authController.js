@@ -38,11 +38,26 @@ const checkEmail = async (req,res) => {
 const generateRandomColor = () => {
     const letters = "0123456789ABCDEF";
     let color = "#";
-    for (let i = 0; i < 6; i++) {
-      color += letters[Math.floor(Math.random() * 16)];
+    let isValidColor = false;
+  
+    while (!isValidColor) {
+      color = "#";
+      for (let i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+      }
+  
+      // Check if the generated color is within the allowed range
+      const parsedColor = parseInt(color.substring(1), 16);
+      const isExcludedColor =
+        parsedColor <= 0x7F7F7F || // Black
+        (parsedColor >= 0x8B4513 && parsedColor <= 0xA52A2A); // Brown and Dark Red
+  
+      isValidColor = !isExcludedColor;
     }
+  
     return color;
-};
+  };
+  
 
 const register = async (req,res) => {
     const { username, email, password } = req.body;

@@ -51,20 +51,12 @@ const Extra = () => {
       clearInterval(intervalId); // Cleanup on component unmount
     };
   }, []);
- 
-  // const getChat = () => {
-  //   return chat.map((comment) => (
-  //     <div className='single-msg-contain' key={comment._id}>
-  //       <p className='name-of-comment' style={{ color: comment.user.color }}>{comment.user.username}</p>
-  //       <p className='msg-of-user'>:&nbsp;{comment.message}</p>
-  //     </div>
-  //   ));
-  // };
+
 
   const getChat = () => {
     return chat.map((comment) => (
       <div className='single-msg-contain' key={comment._id}>
-        <p>
+        <p className='word-warping'>
           <span className='name-of-comment' style={{ color: comment.user.color }}>
           {comment.user.username}
           </span>
@@ -106,15 +98,7 @@ const Extra = () => {
           </div>
 
           <div className='chat-box-contain'>
-            {loading && 
-            <>
-              <div className='single-msg-contain'>
-                <p className='name-of-comment'>Server:</p>
-                <p className='msg-of-user'>Loading real quick</p>
-              </div>
-              <Loading />
-            </>
-            }
+            {loading && <Loading />}
             {!loading && getChat()}
           </div>
 
