@@ -5,6 +5,7 @@ import PeopleAltOutlinedIcon from '@mui/icons-material/PeopleAltOutlined';
 import CloseFullscreenOutlinedIcon from '@mui/icons-material/CloseFullscreenOutlined';
 import CustomizedTooltip from '../../Custom/customTooltip';
 import CircularProgress from '@mui/material/CircularProgress';
+import readCookies from '../../../Cookies/readCookies';
 import Box from '@mui/material/Box';
 
 const Loading = () => {
@@ -68,6 +69,37 @@ const Extra = () => {
     ));
   };
 
+  const postMsg = (e) => {
+    e.preventDefault(); // Prevent the form from submitting
+  
+    const inputField = document.querySelector('.msg-box');
+    const msg = inputField.value;
+  
+    if (readCookies('auth-token')) {
+      const url = 'http://localhost:5000/livechat/postComment';
+  
+      fetch(url, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ userId: readCookies('auth-token'), message: msg }),
+      })
+        .then(res => {
+          if (res.status !== 201) {
+            throw new Error("Email is taken");
+          }
+  
+          inputField.value = ''; // Clear the input field
+          return fetchChat();
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  }
+  
+
   return (
     <div>
       {showChat && 
@@ -105,7 +137,7 @@ const Extra = () => {
           <div className='msg-box-contain'>
             <input className='msg-box' type="text" placeholder="Send a message"></input>
             <div className='chat-btn-div-contain'>
-              <div className='chat-btn-div'>
+              <div className='chat-btn-div' onClick={postMsg}>
                 <p className='chat-btn-p'>Chat</p>
               </div>
             </div>

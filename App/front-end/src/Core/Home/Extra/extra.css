@@ -104,9 +104,12 @@
 
 .chat-box-contain{
     margin: 10px;
-    /* overflow-y: scroll; */
+    overflow-y: scroll;
+    
     width: 100%;
+    width: calc(100% - 10px);
     box-sizing: border-box;
+    height: 72%;
 }
 
 .chat-btn-div{
