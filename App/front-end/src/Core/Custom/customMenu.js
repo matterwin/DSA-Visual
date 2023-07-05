@@ -39,11 +39,11 @@ function CustomMenu() {
                 className='menu-parent'
                 ref={menuRef}
             >
-                <div className="cust-pfp-div">
-                    <CustomizedTooltip title={"Profile"}>
-                        <img className="cust-profile-pic" src={pp} alt="ProfilePicture" />      
-                    </CustomizedTooltip>  
-                </div>
+                <CustomizedTooltip title={"Profile"}>
+                    <div className="cust-pfp-div">
+                        <img className="cust-profile-pic" src={pp} alt="ProfilePicture" />                         
+                    </div>
+                </CustomizedTooltip>  
             </div>
             {isOpen &&
                 <div className='menu-div-contain'>
