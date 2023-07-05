@@ -5,7 +5,7 @@ const CustomError = require('../errors');
 
 const seeLiveChat = async (req, res) => {
     try {
-      const chat = await LiveChat.find({}).populate('user', '-_id -__v -password -email -profilePic')
+      const chat = await LiveChat.find({}).populate('user', '-_id -__v -password -email')
       return res.status(StatusCodes.OK).json({ count: chat.length, chat });
     } catch (error) {
       // Handle any errors that occur during the operation

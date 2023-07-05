@@ -57,6 +57,11 @@ const Extra = () => {
   const getChat = () => {
     return chat.map((comment) => (
       <div className='single-msg-contain' key={comment._id}>
+        <div className="extra-pfp-div">
+          {/* <CustomizedTooltip title={"Profile"}> */}
+              <img className="extra-profile-pic" src={comment.user.profilePic} alt="ProfilePicture" />      
+          {/* </CustomizedTooltip>   */}
+        </div>
         <p className='word-warping'>
           <span className='name-of-comment' style={{ color: comment.user.color }}>
           {comment.user.username}
