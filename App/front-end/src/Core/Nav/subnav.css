@@ -21,6 +21,8 @@
     width: 100%; */
     /* position: sticky;
     top:55px */
+    position: sticky;
+    top: 52px;
 }
 
 .sub-right-side h3 {

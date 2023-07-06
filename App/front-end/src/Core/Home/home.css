@@ -9,27 +9,10 @@
 }
 
 .right-side-home, .left-side-home {
-  /* padding: 0px 20px 20px 20px; */
-  /* margin-top: 20px; */
   margin: 20px;
-  /* height: 100vh; */
-}
-
-/* .test {
-  margin-top: 40px;
-}  */
-
-.left-side-home {
-  /* margin-top: 20px; */
-  /* position: sticky;
-  top: 70px; */
-}
-
-.right-side-home{
-  /* position: sticky;
-  top: 80px; */
-  /* position: sticky;
-  top: 70px; */
+  position: sticky;
+  display: flex;
+  top: 115px;
 }
 
 .center-side-home{
