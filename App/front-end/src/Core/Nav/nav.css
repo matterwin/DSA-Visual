@@ -1,13 +1,12 @@
 .nav-container {
-    /* margin-top: 50px;
-    margin-bottom: 50px; */
     background-color: #6b5151;
     background-color: #977575;
     background-color: #A9C9A3;
     background-color: #4d3939;
     padding: 2px;
-    /* padding-top: 5px;
-    padding-bottom: 5px; */
+    /* position: fixed;
+    width: 100%;
+    z-index: 999; */
 }
 
 .left-side{

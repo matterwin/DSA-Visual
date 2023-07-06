@@ -14,7 +14,6 @@ import "../subnav.css"
 const NavIn = () => {
 
   return (
-    <div>
       <div className='nav-container'>
         <div className="inside-nav">
           <div className="nav-l-r-container">
@@ -55,7 +54,6 @@ const NavIn = () => {
           </div>
         </div>
       </div>
-    </div>
   )
 }
 
