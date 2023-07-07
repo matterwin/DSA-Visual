@@ -32,6 +32,14 @@ function CustomMenu() {
         }
     };
 
+    const handleLogout = () => {
+        deleteCookies('auth-token'); 
+        deleteCookies('name'); 
+        deleteCookies('pp');
+        deleteCookies('showChat') 
+        window.location.href = '/';
+    }
+
     return (
         <div>
             <div
@@ -79,7 +87,7 @@ function CustomMenu() {
 
                     <Divider sx={{ backgroundColor: 'silver', marginTop:'10px', marginBottom:'10px' }} />
 
-                    <a className='custom-a' onClick={() => {deleteCookies('auth-token'); deleteCookies('name'); deleteCookies('pp'); window.location.href = '/';}}>
+                    <a className='custom-a' onClick={handleLogout}>
                         <div className='contain-flex'> 
                             <div className='custom-menu-row-div'>
                                 <LogoutOutlinedIcon sx={{stroke: "#fff", strokeWidth: 0.4, color:'#efeff1', fontSize:'22px', transform: 'scaleX(-1)'}}/>

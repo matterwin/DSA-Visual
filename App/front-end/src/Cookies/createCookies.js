@@ -13,3 +13,8 @@ export function createNameCookie(cookie) {
 export function createProfilePicCookie(cookie) {
     cookies.set('pp', cookie, { path: '/', secure: true});
 }
+
+export function createChatCookie(cookie) {
+    cookies.set('showChat', cookie, { path: '/', secure: true});
+}
+

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 //basics
@@ -33,12 +33,18 @@ import SettingsChat from './Core/Profile/Settings/settingsChat';
 import SettingsNotif from './Core/Profile/Settings/settingsNotif';
 
 import readCookies from './Cookies/readCookies';
+import { createChatCookie } from './Cookies/createCookies';
 import './App.css';
 
 function App() {
 
   const { pathname } = window.location;
   const userLoggedIn = (readCookies('auth-token')) ? true : false;
+
+  if(readCookies('showChat') === undefined){
+    createChatCookie(true);
+  }
+
   if(userLoggedIn) var name = readCookies('name');
 
   const validNavPath = pathname === '/' 
