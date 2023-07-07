@@ -63,6 +63,10 @@
     margin-right: auto;
 }
 
+.sub-right-side{
+    margin-left: auto;
+}
+
 .sub-inside-nav{
     margin-left: 200px;
     margin-right: 200px;

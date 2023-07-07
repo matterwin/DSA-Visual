@@ -18,8 +18,7 @@ const Loading = () => {
   );
 }
 
-const Extra = () => {
-  const [showChat, setShowChat] = useState(true);
+const Extra = ({ showLiveChat, handleShowLiveChat }) => {
   const [chat, setChat] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -107,14 +106,14 @@ const Extra = () => {
 
   return (
     <div>
-      {showChat && 
+      {showLiveChat && 
       <>
         <div className='extra-contain'>
           <div className='chat-bar-nav-contain'>
             <div className='chat-bar-nav'>
 
               <CustomizedTooltip title={"Collapse"}>
-                <div className='left-chat-nav' onClick={() => {setShowChat(false)}}>
+                <div className='left-chat-nav' onClick={handleShowLiveChat}>
                   <CloseFullscreenOutlinedIcon sx={{ stroke: "#fff", strokeWidth: 0.4, color: '#efeff1', fontSize: '22px' }}/>
                 </div>
               </CustomizedTooltip>
