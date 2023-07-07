@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom';
-import readCookies from '../../Cookies/readCookies';
-import NotFound from '../NotFound/notfound';
+import readCookies from '../../../Cookies/readCookies';
+import NotFound from '../../NotFound/notfound';
 
 function Profile() {
   const { username } = useParams();

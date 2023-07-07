@@ -5,7 +5,7 @@ import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
 import CustomizedTooltip from './customTooltip';
 import Divider from '@mui/material/Divider';
-import { NavLink } from 'react-router-dom';
+import { a } from 'react-router-dom';
 import './customDSANavBtn.css';
 
 
@@ -49,55 +49,55 @@ function CustomDSANavBtn() {
                 <div className='dsa-nav-menu-div-contain'>
 
                     <p className='title-dsa'>SORT</p>
-                    <NavLink end to="/visuals/test">
+                    <a href="/visuals/test">
                         <div className='dsa-contain-flex'>
                             <p>Test</p>
                         </div>
-                    </NavLink>
-                    <NavLink end to="/visuals/merge">
+                    </a>
+                    <a href="/visuals/merge">
                         <div className='dsa-contain-flex'>
                             <p>Merge</p>
                         </div>
-                    </NavLink>
-                    <NavLink end to="/visuals/quick">
+                    </a>
+                    <a href="/visuals/quick">
                         <div className='dsa-contain-flex'>
                             <p>Quick</p>
                         </div>
-                    </NavLink>
-                    <NavLink end to="/visuals/insertion">
+                    </a>
+                    <a href="/visuals/insertion">
                         <div className='dsa-contain-flex'>
                             <p>Insertion</p>
                         </div>
-                    </NavLink>
-                    <NavLink end to="/visuals/selection">
+                    </a>
+                    <a href="/visuals/selection">
                         <div className='dsa-contain-flex'>
                             <p>Selection</p>
                         </div>
-                    </NavLink>
-                    <NavLink end to="/visuals/bubble">
+                    </a>
+                    <a href="/visuals/bubble">
                         <div className='dsa-contain-flex'>
                             <p>Bubble</p>
                         </div>
-                    </NavLink>
+                    </a>
 
                     <Divider sx={{ backgroundColor: 'silver', marginTop:'10px', marginBottom:'10px' }} />
 
                     <p className='title-dsa'>SEARCH</p>
-                    <NavLink end to="/visuals/binarysearch">
+                    <a href="/visuals/binarysearch">
                         <div className='dsa-contain-flex'>
                             <p>Binary</p>
                         </div>
-                    </NavLink>
-                    <NavLink end to="/visuals/dfs">
+                    </a>
+                    <a href="/visuals/dfs">
                         <div className='dsa-contain-flex'>
                             <p>DFS</p>
                         </div>
-                    </NavLink>
-                    <NavLink end to="/visuals/bfs">
+                    </a>
+                    <a href="/visuals/bfs">
                         <div className='dsa-contain-flex'>
                             <p>BFS</p>
                         </div>
-                    </NavLink>                                        
+                    </a>                                        
                 </div>
             }
         </div>

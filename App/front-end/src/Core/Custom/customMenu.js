@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { NavLink } from "react-router-dom";
+import { a } from "react-router-dom";
 import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
 import Person2OutlinedIcon from '@mui/icons-material/Person2Outlined';
 import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
@@ -50,43 +50,43 @@ function CustomMenu() {
                     
                         <div className='submenu-prof-div'>
                             <div className="submenu-cust-pfp-div">
-                                <NavLink end to={'/' + username}>
+                                <a href={'/' + username}>
                                     <img className="submenu-cust-profile-pic" src={pp} alt="ProfilePicture" />  
-                                </NavLink>    
+                                </a>    
                             </div>
                             <p className='username-submenu'>{username}</p>
                         </div>
                     
                     <Divider sx={{ backgroundColor: 'silver', marginTop:'10px', marginBottom:'10px' }} />
 
-                    <NavLink end to={'/' + username}>
+                    <a href={'/' + username}>
                         <div className='contain-flex'>
                             <div className='custom-menu-row-div'>
                                 <Person2OutlinedIcon sx={{stroke: "#fff", strokeWidth: 0.4, color:'#efeff1', fontSize:'22px', fontStyle:'bold'}}/>
                                 <p style={{fontSize:'15px', fontFamily: 'Inter', color:'#fff'}}>Profile</p>
                             </div>
                         </div>
-                    </NavLink>
+                    </a>
 
-                    <NavLink end to={'/' + username + '/settings'} className='custom-navlink'>
+                    <a href={'/settings/profile'} className='custom-a'>
                         <div className='contain-flex'>                          
                             <div className='custom-menu-row-div'>
                                 <SettingsOutlinedIcon sx={{ stroke: "#fff", strokeWidth: 0.4, color: '#efeff1', fontSize: '22px' }} />
                                 <p style={{ fontSize: '15px', fontFamily: 'Inter', color:'#fff' }}>Settings</p>
                             </div>                           
                         </div>
-                    </NavLink>
+                    </a>
 
                     <Divider sx={{ backgroundColor: 'silver', marginTop:'10px', marginBottom:'10px' }} />
 
-                    <NavLink className='custom-navlink' onClick={() => {deleteCookies('auth-token'); deleteCookies('name'); deleteCookies('pp'); window.location.href = '/';}}>
+                    <a className='custom-a' onClick={() => {deleteCookies('auth-token'); deleteCookies('name'); deleteCookies('pp'); window.location.href = '/';}}>
                         <div className='contain-flex'> 
                             <div className='custom-menu-row-div'>
                                 <LogoutOutlinedIcon sx={{stroke: "#fff", strokeWidth: 0.4, color:'#efeff1', fontSize:'22px', transform: 'scaleX(-1)'}}/>
                                 <p style={{fontSize:'15px', fontFamily: 'Inter', color:'#fff'}}>Log out</p>
                             </div>
                         </div>
-                    </NavLink>
+                    </a>
                 </div>
             }
         </div>

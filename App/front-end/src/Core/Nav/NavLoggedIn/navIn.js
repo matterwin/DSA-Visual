@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from "react-router-dom";
+import { a } from "react-router-dom";
 import Divider from '@mui/material/Divider';
 import Searchbar from '../searchbar';
 import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
@@ -18,9 +18,9 @@ const NavIn = () => {
         <div className="inside-nav">
           <div className="nav-l-r-container">
             <div className="left-side">
-              <NavLink end to="/">
+              <a href="/">
                 <h3 className="headline">Heyso</h3>
-              </NavLink>
+              </a>
             </div>
 
             <div className='center-side'>
@@ -28,12 +28,12 @@ const NavIn = () => {
             </div>
 
             <div className="right-side-nav-in">
-              <NavLink end to="/" className="nav-link-div">
+              <a href="/" className="nav-link-div">
                 <h4 className="linkers">Home</h4>
-              </NavLink> 
-              <NavLink end to="/chat" className="nav-link-div">
+              </a> 
+              <a href="/chat" className="nav-link-div">
                 <h4 className="linkers">Chat</h4>
-              </NavLink> 
+              </a> 
               <Divider orientation="vertical" style={{ backgroundColor: 'grey', height: '25px', width:'1px' }} />
               <CustomizedTooltip title={"Add Post"}>
                 <div className="nav-link-div-icons">

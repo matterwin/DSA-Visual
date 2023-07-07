@@ -1,0 +1,73 @@
+.settings-container {
+  margin-left: 200px;
+  margin-right: 200px;
+  margin-top: 20px;
+}
+
+.right-side-settings, .left-side-settings {
+  margin: 20px;
+  position: sticky;
+  display: flex;
+  top: 115px;
+}
+
+.center-side-settings{
+  border-right: #A9C9A3 solid 1px;
+  background-color: #fff;
+  padding: 0px 20px 20px 20px;
+}
+
+.settings-title{
+  font-family: 'roobert';
+  color: #fff;
+  padding: 0;
+  margin: 0;
+  margin-bottom: 20px;
+  font-size: 40px;
+}
+
+.settings-nav{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: #A9C9A3;
+}
+
+.tabs-settings-contain{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  border-bottom: 1px solid #ccc;
+  gap: 15px;
+}
+
+.settings-tabs-divs{
+  padding: 5px 0px 5px 0px;
+  color: #fff;
+  border-bottom: 3px solid transparent;
+}
+
+.settings-tabs-divs:hover{
+  padding: 5px 0px 5px 0px;
+  border-bottom: 3px solid #A9C9A3;
+}
+
+.settings-tabs-divs-active{
+  padding: 5px 0px 5px 0px;
+  color: #A9C9A3;
+  border-bottom: 3px solid #A9C9A3;
+}
+
+.settings-tabs-divs-active .settings-tab-p{
+  font-family: 'Inter';
+  font-size: 15px;
+  color: #A9C9A3;
+}
+
+.settings-tab-p{
+  color: #fff;
+  font-family: 'Inter';
+  font-size: 15px;
+}

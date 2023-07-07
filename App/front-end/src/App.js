@@ -1,5 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+
+//basics
 import Login from './UserAuth/login';
 import Register from './UserAuth/register';
 import Home from './Core/Home/home';
@@ -7,13 +9,11 @@ import NavIn from './Core/Nav/NavLoggedIn/navIn';
 import NavOut from './Core/Nav/NavLoggedOut/navOut';
 import Notfound from './Core/NotFound/notfound';
 import Chat from './Core/Chat/chat';
-import Profile from './Core/Profile/profile';
-import Settings from './Core/Profile/settings';
-import CustomSnackbar from './Core/Custom/customSnackbar';
 
-import Test from './Core/Visuals/Sort/test';
+// import CustomSnackbar from './Core/Custom/customSnackbar';
 
 //visuals -- sorting
+import Test from './Core/Visuals/Sort/test';
 import Merge from './Core/Visuals/Sort/Merge';
 import Quick from './Core/Visuals/Sort/Quick';
 import Insert from './Core/Visuals/Sort/Insert';
@@ -24,6 +24,13 @@ import Bubble from './Core/Visuals/Sort/Bubble';
 import DFS from './Core/Visuals/Search/DFS';
 import BFS from './Core/Visuals/Search/BFS';
 import Binary from './Core/Visuals/Search/Binary';
+
+//profile
+import Profile from './Core/Profile/Profile/profile';
+import SettingsNav from './Core/Profile/Settings/settingsNav';
+import SettingsProfile from './Core/Profile/Settings/settingsProfile';
+import SettingsChat from './Core/Profile/Settings/settingsChat';
+import SettingsNotif from './Core/Profile/Settings/settingsNotif';
 
 import readCookies from './Cookies/readCookies';
 import './App.css';
@@ -39,7 +46,9 @@ function App() {
                     || pathname === '/login'
                     || pathname === '/register'
                     || pathname === '/' + name
-                    || pathname === '/' + name + '/settings'
+                    || (userLoggedIn && pathname === '/settings/profile')
+                    || (userLoggedIn && pathname === '/settings/chat')
+                    || (userLoggedIn && pathname === '/settings/notifications')
                     || pathname === '/visuals/merge'
                     || pathname === '/visuals/quick'
                     || pathname === '/visuals/insertion'
@@ -50,6 +59,7 @@ function App() {
                     || pathname === '/visuals/binarysearch'
                     || pathname === '/visuals/test'
 
+  const validSettingsPath = (pathname.includes('/settings') ? true : false);
 
   const HideNavIf = pathname === '/register' 
                     || pathname === '/login'  
@@ -58,12 +68,16 @@ function App() {
     userLoggedIn ? <NavIn /> : <NavOut />
   );
 
+  const ShowSettingsNavIf = (userLoggedIn && validSettingsPath) ? <SettingsNav /> : <></>;
+
   return (
     <div>
        <Router>
 
           {HideNav}
+          {ShowSettingsNavIf}
           {/* <CustomSnackbar message={"testing from app"}/> */}
+
           <Routes>
             <Route caseSensitive path="/" element={<Home />}/>
             <Route caseSensitive path="/chat" element={<Chat />}/>
@@ -79,7 +93,9 @@ function App() {
             {!userLoggedIn && <Route caseSensitive path="/login" element={<Login />}/>}
             {!userLoggedIn && <Route caseSensitive path="/register" element={<Register />}/>}
             {userLoggedIn && <Route caseSensitive path="/:username" element={<Profile />} />}
-            {userLoggedIn && <Route caseSensitive path="/:username/settings" element={<Settings />}/>}
+            {userLoggedIn && <Route caseSensitive path="/settings/profile" element={<SettingsProfile />}/>}
+            {userLoggedIn && <Route caseSensitive path="/settings/chat" element={<SettingsChat />}/>}
+            {userLoggedIn && <Route caseSensitive path="/settings/notifications" element={<SettingsNotif />}/>}
             <Route path="*" element={<Notfound />} />
           </Routes>
 
