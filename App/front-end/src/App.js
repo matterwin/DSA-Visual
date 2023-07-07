@@ -9,6 +9,7 @@ import NavIn from './Core/Nav/NavLoggedIn/navIn';
 import NavOut from './Core/Nav/NavLoggedOut/navOut';
 import Notfound from './Core/NotFound/notfound';
 import Chat from './Core/Chat/chat';
+import ChatNav from './Core/Chat/chatNav';
 
 // import CustomSnackbar from './Core/Custom/customSnackbar';
 
@@ -47,7 +48,7 @@ function App() {
 
   if(userLoggedIn) var name = readCookies('name');
 
-  const validNavPath = pathname === '/' 
+  const validPath = pathname === '/' 
                     || pathname === '/chat'
                     || pathname === '/login'
                     || pathname === '/register'
@@ -66,15 +67,17 @@ function App() {
                     || pathname === '/visuals/test'
 
   const validSettingsPath = (pathname.includes('/settings') ? true : false);
+  const validChatPath = (pathname.includes('/chat') ? true : false);
 
   const HideNavIf = pathname === '/register' 
                     || pathname === '/login'  
 
-  const HideNav = validNavPath && !HideNavIf && (
+  const HideNav = validPath && !HideNavIf && (
     userLoggedIn ? <NavIn /> : <NavOut />
   );
 
-  const ShowSettingsNavIf = (userLoggedIn && validSettingsPath) ? <SettingsNav /> : <></>;
+  const ShowSettingsNavIf = (userLoggedIn && validSettingsPath && validPath) ? <SettingsNav /> : <></>;
+  // const ShowChatNavIf = (validChatPath && validPath) ? <ChatNav /> : <></>;
 
   return (
     <div>
@@ -82,6 +85,7 @@ function App() {
 
           {HideNav}
           {ShowSettingsNavIf}
+          {/* {ShowChatNavIf} */}
           {/* <CustomSnackbar message={"testing from app"}/> */}
 
           <Routes>

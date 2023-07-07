@@ -1,4 +1,4 @@
-.container {
+.chat-container {
     display: flex;
     justify-content: center;
     align-items: flex-start;
@@ -7,5 +7,21 @@
     gap: 10px;
     margin-left: 200px;
     margin-right: 200px;
-    /* padding-bottom: 1000px; */
+  }
+  
+  .right-side-chat, .left-side-chat{
+    margin: 20px;
+    position: sticky;
+    display: flex;
+    top: 115px;
+    /* width: 15%; */
+  }
+  
+  .center-side-chat{
+    border-right: #A9C9A3 solid 1px;
+    background-color: #fff;
+    margin-top: 20px;
+    padding: 0px 20px 20px 20px;
+    width: 100%;
+    padding-bottom: 1000px;
   }
