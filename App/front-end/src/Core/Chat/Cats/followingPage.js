@@ -7,8 +7,14 @@ import Subnavchat from '.././subnavchat';
 import { NavLink } from 'react-router-dom';
 import SafetyDividerOutlinedIcon from '@mui/icons-material/SafetyDividerOutlined';
 import DescriptionOutlinedIcon from '@mui/icons-material/DescriptionOutlined';
+import ChatInfo from '../chatInfo';
 
 import '../chat.css'
+
+const chatInfo = {
+    title:'Following',
+    msg:'Your following page. Check in on what your following is saying.'
+}
 
 function FollowingPage() {
   const [showLiveChat, setShowLiveChat] = useState();
@@ -61,6 +67,7 @@ function FollowingPage() {
               Following
           </div>
           <div className="right-side-chat">
+            <ChatInfo title={chatInfo.title} msg={chatInfo.msg} />
             {!showLiveChat && 
             <>
                 <div className='open-btn'>

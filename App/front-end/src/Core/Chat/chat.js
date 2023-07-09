@@ -7,6 +7,7 @@ import Subnavchat from './subnavchat';
 import { NavLink } from 'react-router-dom';
 import SafetyDividerOutlinedIcon from '@mui/icons-material/SafetyDividerOutlined';
 import DescriptionOutlinedIcon from '@mui/icons-material/DescriptionOutlined';
+import ChatInfo from './chatInfo';
 
 import './chat.css'
 
@@ -61,6 +62,7 @@ function Chat() {
               Hello there
           </div>
           <div className="right-side-chat">
+            <ChatInfo />
             {!showLiveChat && 
             <>
                 <div className='open-btn'>

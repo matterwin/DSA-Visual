@@ -48,7 +48,7 @@ function CustomDSANavBtn() {
             {isOpen &&
                 <div className='dsa-nav-menu-div-contain'>
 
-                    <p className='title-dsa'>SORT</p>
+                    <p className='title-dsa'>Sort</p>
                     <a href="/visuals/test">
                         <div className='dsa-contain-flex'>
                             <p>Test</p>
@@ -82,7 +82,7 @@ function CustomDSANavBtn() {
 
                     <Divider sx={{ backgroundColor: 'silver', marginTop:'10px', marginBottom:'10px' }} />
 
-                    <p className='title-dsa'>SEARCH</p>
+                    <p className='title-dsa'>Search</p>
                     <a href="/visuals/binarysearch">
                         <div className='dsa-contain-flex'>
                             <p>Binary</p>

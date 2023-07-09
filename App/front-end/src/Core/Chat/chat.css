@@ -23,6 +23,13 @@
     margin-right: 0px;
     display: flex;
     /* width: 15%; */
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    /* height: 100vh; */
+    flex-direction: column;
+    gap: 10px;
+    z-index: 0;
   }
   
   .center-side-chat{
@@ -68,4 +75,5 @@
     border-bottom: #A9C9A3 solid 1px;
     position: sticky;
     top: 52px;
+    z-index: 2;
 }
