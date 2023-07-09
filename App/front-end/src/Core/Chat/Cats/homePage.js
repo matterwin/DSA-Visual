@@ -7,8 +7,14 @@ import Subnavchat from '.././subnavchat';
 import { NavLink } from 'react-router-dom';
 import SafetyDividerOutlinedIcon from '@mui/icons-material/SafetyDividerOutlined';
 import DescriptionOutlinedIcon from '@mui/icons-material/DescriptionOutlined';
+import ChatInfo from '../chatInfo';
 
 import '../chat.css'
+
+const chatInfo = {
+    title:'Home',
+    msg:'Your personal frontpage. Come here to view the most recent posts.'
+}
 
 function HomePage() {
   const [showLiveChat, setShowLiveChat] = useState();
@@ -61,6 +67,7 @@ function HomePage() {
               Home page actual
           </div>
           <div className="right-side-chat">
+            <ChatInfo title={chatInfo.title} msg={chatInfo.msg} />
             {!showLiveChat && 
             <>
                 <div className='open-btn'>
