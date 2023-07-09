@@ -4,6 +4,8 @@
     background-color: #4d3939;
     background-color: #977575;
     padding: 5px;
+    padding-left: 0px;
+    padding-right: 0px;
     border-bottom: #A9C9A3 solid 1px;
     position: sticky;
     top: 52px;
@@ -55,5 +57,7 @@
 .sub-inside-nav{
     margin-left: 200px;
     margin-right: 200px;
+    margin-left: 400px;
+    margin-right: 400px;
 }
 

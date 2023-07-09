@@ -6,6 +6,7 @@ import NotificationsOutlinedIcon from '@mui/icons-material/NotificationsOutlined
 import CustomizedTooltip from '../../Custom/customTooltip';
 import CustomMenu from '../../Custom/customMenu';
 import CustomDSANavBtn from '../../Custom/customDSANavBtn';
+import Oldsearch from '../oldsearch';
 import "../nav.css"
 import "./navIn.css"
 import "../subnav.css"
@@ -18,13 +19,14 @@ const NavIn = () => {
           <div className="nav-l-r-container">
             <div className="left-side">
               <a href="/">
-                <h3 className="headline">Heyso</h3>
+                <h3 className="headline">H</h3>
               </a>
+              <Oldsearch />
             </div>
 
-            <div className='center-side'>
+            {/* <div className='center-side'>
               <Searchbar />
-            </div>
+            </div> */}
 
             <div className="right-side-nav-in">
               <a href="/" className="nav-link-div">

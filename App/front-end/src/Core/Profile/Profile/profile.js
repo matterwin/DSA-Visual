@@ -10,7 +10,7 @@ function Profile() {
   }
 
   return (
-    <div className='container'>
+    <div className='profile-container'>
         profile
     </div>
   );

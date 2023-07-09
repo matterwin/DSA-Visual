@@ -93,6 +93,11 @@
     width: 300px;
     padding-left: 10px;
     padding-right: 10px;
+    background-color: #6b5151;
+    border-radius: 10px;
+    padding: 20px;
+    padding: 20px 30px;
+    box-shadow: rgba(0, 0, 0, .15) 0px 0px 10px 10px;
   }
 
   .auth-btn-container{

@@ -69,7 +69,7 @@ function Home() {
                         </NavLink>
                         </div>
                     </div>
-                    {!showLiveChat &&
+                    {/* {!showLiveChat &&
                         <div className='sub-right-side'>
                         <div className='sub-nav-boxes-active' onClick={handleShowLiveChat}>
                             <div className='sub-nav-icon-contain'>
@@ -78,7 +78,7 @@ function Home() {
                             </div>
                         </div>
                         </div>
-                    }
+                    } */}
                     </div>
                 </div>
             </div>
@@ -90,7 +90,7 @@ function Home() {
                 <Readme focusedFile={focusedFile} />
             </div>
             <div className="right-side-home">
-                {showLiveChat && <Extra showLiveChat handleShowLiveChat={handleShowLiveChat} />}
+                {/* {showLiveChat && <Extra showLiveChat handleShowLiveChat={handleShowLiveChat} />} */}
             </div>
             </div>
         </div>
