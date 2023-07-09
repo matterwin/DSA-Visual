@@ -25,3 +25,39 @@
     width: 100%;
     padding-bottom: 1000px;
   }
+
+  .open-btn{
+    position: relative;
+    background-color: #bdbdbd;
+    background-color: #4d3939;
+    border-radius: 5px;
+    overflow: hidden;
+    width: 20rem;
+    /* height: 80%; */
+    /* height: 85vh */
+  }
+
+  .open-live-center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* height: 100vh; */
+    flex-direction: row;
+    padding: 8px;
+    cursor: pointer;
+  }
+
+  .open-live-center:hover{
+    background-color: #bdbdbd;
+  }
+
+  .sub-nav-container-chat {
+    background-color: #6b5151; 
+    background-color: #A9C9A3;
+    background-color: #4d3939;
+    background-color: #977575;
+    padding: 5px;
+    border-bottom: #A9C9A3 solid 1px;
+    position: sticky;
+    top: 52px;
+}

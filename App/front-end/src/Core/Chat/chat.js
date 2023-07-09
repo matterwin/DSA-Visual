@@ -28,14 +28,14 @@ function Chat() {
 
   return (
       <div>
-        {/* <div className='sub-nav-container'>
+        <div className='sub-nav-container-chat'>
             <div className="sub-inside-nav">
                 <div className="sub-nav-l-r-container">
                 <div className="sub-left-side">
                     <div className='sub-left-side-row-contain'>
                       <div className='sub-nav-boxes'>
                           <div className='sub-nav-icon-contain'>
-                          <p className='sub-nav-p' style={{backgroundColor: 'transparent', color: 'transparent'}}>f</p>
+                          <p className='sub-nav-p' >f</p>
                           </div>
                       </div>
                     </div>
@@ -52,7 +52,7 @@ function Chat() {
                 }
                 </div>
             </div>
-        </div> */}
+        </div>
         <div className="chat-container">
           <div className="left-side-chat">
               <ChatNav />
@@ -61,7 +61,16 @@ function Chat() {
               Hello there
           </div>
           <div className="right-side-chat">
-              {showLiveChat && <Extra showLiveChat handleShowLiveChat={handleShowLiveChat} />}
+            {!showLiveChat && 
+            <>
+                <div className='open-btn'>
+                    <div className='open-live-center' onClick={handleShowLiveChat}>
+                        <p style={{ color:'#fff', fontSize:'15px', fontFamily:'Inter' }}>Open Chat</p>
+                    </div>
+                </div>
+            </>
+            }
+            {showLiveChat && <Extra showLiveChat handleShowLiveChat={handleShowLiveChat} />}
           </div>
         </div>
       </div>
