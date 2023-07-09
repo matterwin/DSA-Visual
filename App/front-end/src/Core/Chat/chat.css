@@ -11,6 +11,7 @@
   
   .left-side-chat{
     margin: 20px;
+    margin-left: 0px;
     position: sticky;
     display: flex;
     top: 115px;
@@ -19,6 +20,7 @@
 
   .right-side-chat{
     margin: 20px;
+    margin-right: 0px;
     display: flex;
     /* width: 15%; */
   }

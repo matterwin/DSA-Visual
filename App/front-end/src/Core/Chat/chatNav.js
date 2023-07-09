@@ -23,14 +23,14 @@ function ChatNav() {
                         <p className='title-chat'>FEEDS</p>
                     {/* </div> */}
                     
-                    <div className='row-nav-div'>
+                    <a href='/chat/home' className='row-nav-div'>
                         <CottageOutlinedIcon  sx={{stroke: "#fff", strokeWidth: 0.4, color:'#efeff1', fontSize:'22px', fontStyle:'bold'}}/>
                         <p className='p-in-navs'>Home</p>
-                    </div>
-                    <div className='row-nav-div'>
+                    </a>
+                    <a href='/chat/following' className='row-nav-div'>
                         <FollowTheSignsOutlinedIcon  sx={{stroke: "#fff", strokeWidth: 0.4, color:'#efeff1', fontSize:'22px', fontStyle:'bold'}}/>
                         <p className='p-in-navs'>Following</p>
-                    </div>
+                    </a>
                     <Divider sx={{ backgroundColor: '#ccc', width:'100%', marginTop:'10px', marginBottom:'10px' }} />
                     <p style={{fontSize:'15px', fontFamily: 'Inter', color:'#ccc'}}>COMMUNITIES</p>
                     <div className='row-nav-div'>

@@ -10,6 +10,8 @@ import NavOut from './Core/Nav/NavLoggedOut/navOut';
 import Notfound from './Core/NotFound/notfound';
 import Chat from './Core/Chat/chat';
 import ChatNav from './Core/Chat/chatNav';
+import HomePage from './Core/Chat/Cats/homePage';
+import FollowingPage from './Core/Chat/Cats/followingPage';
 
 // import CustomSnackbar from './Core/Custom/customSnackbar';
 
@@ -50,6 +52,8 @@ function App() {
 
   const validPath = pathname === '/' 
                     || pathname === '/chat'
+                    || pathname === '/chat/following'
+                    || pathname === '/chat/home'
                     || pathname === '/login'
                     || pathname === '/register'
                     || pathname === '/' + name
@@ -67,7 +71,7 @@ function App() {
                     || pathname === '/visuals/test'
 
   const validSettingsPath = (pathname.includes('/settings') ? true : false);
-  const validChatPath = (pathname.includes('/chat') ? true : false);
+  // const validChatPath = (pathname.includes('/chat') ? true : false);
 
   const HideNavIf = pathname === '/register' 
                     || pathname === '/login'  
@@ -99,9 +103,11 @@ function App() {
             <Route caseSensitive path="/visuals/test" element={<Test />}/>
             <Route caseSensitive path="/visuals/dfs" element={<DFS />}/>
             <Route caseSensitive path="/visuals/bfs" element={<BFS />}/>
+            <Route caseSensitive path="/chat/home" element={<HomePage />}/>
             <Route caseSensitive path="/visuals/binarysearch" element={<Binary />}/>
             {!userLoggedIn && <Route caseSensitive path="/login" element={<Login />}/>}
             {!userLoggedIn && <Route caseSensitive path="/register" element={<Register />}/>}
+            {userLoggedIn && <Route caseSensitive path="/chat/following" element={<FollowingPage />}/>}
             {userLoggedIn && <Route caseSensitive path="/:username" element={<Profile />} />}
             {userLoggedIn && <Route caseSensitive path="/settings/profile" element={<SettingsProfile />}/>}
             {userLoggedIn && <Route caseSensitive path="/settings/chat" element={<SettingsChat />}/>}
