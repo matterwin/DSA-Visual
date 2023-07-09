@@ -6,6 +6,9 @@ import Person2OutlinedIcon from '@mui/icons-material/Person2Outlined';
 import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
 import NotificationsOutlinedIcon from '@mui/icons-material/NotificationsOutlined';
 import MailOutlinedIcon from '@mui/icons-material/MailOutlined';
+import Diversity3OutlinedIcon from '@mui/icons-material/Diversity3Outlined';
+import WhatshotOutlinedIcon from '@mui/icons-material/WhatshotOutlined';
+import CS from '../../Images/cs.png'
 import { Divider } from '@mui/material';
 
 import './chatNav.css'
@@ -21,25 +24,27 @@ function ChatNav() {
                     {/* </div> */}
                     
                     <div className='row-nav-div'>
-                        <CottageOutlinedIcon  sx={{stroke: "#fff", strokeWidth: 0.4, color:'#efeff1', fontSize:'20px', fontStyle:'bold'}}/>
+                        <CottageOutlinedIcon  sx={{stroke: "#fff", strokeWidth: 0.4, color:'#efeff1', fontSize:'22px', fontStyle:'bold'}}/>
                         <p className='p-in-navs'>Home</p>
                     </div>
                     <div className='row-nav-div'>
-                        <FollowTheSignsOutlinedIcon  sx={{stroke: "#fff", strokeWidth: 0.4, color:'#efeff1', fontSize:'20px', fontStyle:'bold'}}/>
+                        <FollowTheSignsOutlinedIcon  sx={{stroke: "#fff", strokeWidth: 0.4, color:'#efeff1', fontSize:'22px', fontStyle:'bold'}}/>
                         <p className='p-in-navs'>Following</p>
                     </div>
                     <Divider sx={{ backgroundColor: '#ccc', width:'100%', marginTop:'10px', marginBottom:'10px' }} />
                     <p style={{fontSize:'15px', fontFamily: 'Inter', color:'#ccc'}}>COMMUNITIES</p>
                     <div className='row-nav-div'>
-                        <Person2OutlinedIcon  sx={{stroke: "#fff", strokeWidth: 0.4, color:'#efeff1', fontSize:'20px', fontStyle:'bold'}}/>
+                        <div className="cust-pfp-div-chat">
+                            <img className="cust-profile-pic-chat" src={CS} alt="ProfilePicture" />                         
+                        </div>
                         <p className='p-in-navs'>csccareer</p>
                     </div>
                     <div className='row-nav-div'>
-                        <Person2OutlinedIcon  sx={{stroke: "#fff", strokeWidth: 0.4, color:'#efeff1', fontSize:'20px', fontStyle:'bold'}}/>
+                        <WhatshotOutlinedIcon  sx={{stroke: "#fff", strokeWidth: 0.4, color:'red', fontSize:'23px', fontStyle:'bold'}}/>
                         <p className='p-in-navs'>trends</p>
                     </div>
                     <div className='row-nav-div'>
-                        <Person2OutlinedIcon  sx={{stroke: "#fff", strokeWidth: 0.4, color:'#efeff1', fontSize:'20px', fontStyle:'bold'}}/>
+                        <Diversity3OutlinedIcon  sx={{stroke: "#fff", strokeWidth: 0.4, color:'#efeff1', fontSize:'22px', fontStyle:'bold'}}/>
                         <p className='p-in-navs'>advice</p>
                     </div>
                     <Divider sx={{ backgroundColor: '#ccc', width:'100%', marginTop:'10px', marginBottom:'10px' }} />
@@ -47,21 +52,22 @@ function ChatNav() {
                         <p className='title-chat'>OTHER</p>
                     {/* </div> */}
                     <div className='row-nav-div'>
-                        <Person2OutlinedIcon  sx={{stroke: "#fff", strokeWidth: 0.4, color:'#efeff1', fontSize:'20px', fontStyle:'bold'}}/>
+                        <Person2OutlinedIcon  sx={{stroke: "#fff", strokeWidth: 0.4, color:'#efeff1', fontSize:'22px', fontStyle:'bold'}}/>
                         <p className='p-in-navs'>Profile</p>
                     </div>
                     <div className='row-nav-div'>
-                        <CottageOutlinedIcon  sx={{stroke: "#fff", strokeWidth: 0.4, color:'#efeff1', fontSize:'20px', fontStyle:'bold'}}/>
+                        <CottageOutlinedIcon  sx={{stroke: "#fff", strokeWidth: 0.4, color:'#efeff1', fontSize:'22px', fontStyle:'bold'}}/>
                         <p className='p-in-navs'>Your Posts</p>
                     </div>
                     <div className='row-nav-div'>
-                        <MailOutlinedIcon  sx={{stroke: "#fff", strokeWidth: 0.4, color:'#efeff1', fontSize:'20px', fontStyle:'bold'}}/>
+                        <MailOutlinedIcon  sx={{stroke: "#fff", strokeWidth: 0.4, color:'#efeff1', fontSize:'22px', fontStyle:'bold'}}/>
                         <p className='p-in-navs'>Messages</p>
                     </div>
                     <div className='row-nav-div'>
-                        <NotificationsOutlinedIcon  sx={{stroke: "#fff", strokeWidth: 0.4, color:'#efeff1', fontSize:'20px', fontStyle:'bold'}}/>
+                        <NotificationsOutlinedIcon  sx={{stroke: "#fff", strokeWidth: 0.4, color:'#efeff1', fontSize:'22px', fontStyle:'bold'}}/>
                         <p className='p-in-navs'>Notifications</p>
                     </div>
+                    <Divider sx={{ backgroundColor: '#ccc', width:'100%', marginTop:'10px', marginBottom:'10px' }} />
                     <div className='row-nav-div-post'>
                         {/* <AddOutlinedIcon  sx={{stroke: "#fff", strokeWidth: 0.4, color:'#efeff1', fontSize:'22px', fontStyle:'bold'}}/> */}
                         <p className='p-in-navs'>Create Post</p>

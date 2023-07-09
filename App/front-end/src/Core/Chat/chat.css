@@ -9,11 +9,17 @@
     margin-right: 200px;
   }
   
-  .right-side-chat, .left-side-chat{
+  .left-side-chat{
     margin: 20px;
     position: sticky;
     display: flex;
     top: 115px;
+    /* width: 15%; */
+  }
+
+  .right-side-chat{
+    margin: 20px;
+    display: flex;
     /* width: 15%; */
   }
   

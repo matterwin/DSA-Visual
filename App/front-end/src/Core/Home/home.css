@@ -8,11 +8,20 @@
   margin-right: 200px;
 }
 
-.right-side-home, .left-side-home {
+.left-side-home {
   margin: 20px;
+  margin-left: 0px;
   position: sticky;
   display: flex;
   top: 115px;
+}
+
+.right-side-home {
+  margin: 20px;
+  margin-right: 0px;
+  display: flex;
+  /* top: 115px; */
+  
 }
 
 .center-side-home{
