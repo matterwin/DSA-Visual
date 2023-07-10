@@ -13,11 +13,11 @@
 }
 
 .chat-cust-pfp-div {
-    width: 35px;
-    height: 35px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
     overflow: hidden;
-    background-color: #f4f4f5;
+    background-color: transparent;
     cursor: pointer; 
     border: transparent solid 2px;
     transition: border-radius 0.2s ease-in-out;
@@ -35,7 +35,7 @@
     width: 100%;
     box-sizing: border-box;
     text-decoration: none;
-    border: 1px solid #ccc;
+    border: 2px solid #ccc;
     outline: none;
     padding: 10px;
     border-radius: 5px;

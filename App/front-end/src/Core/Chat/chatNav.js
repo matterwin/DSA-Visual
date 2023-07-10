@@ -9,6 +9,7 @@ import MailOutlinedIcon from '@mui/icons-material/MailOutlined';
 import Diversity3OutlinedIcon from '@mui/icons-material/Diversity3Outlined';
 import WhatshotOutlinedIcon from '@mui/icons-material/WhatshotOutlined';
 import EmojiObjectsOutlinedIcon from '@mui/icons-material/EmojiObjectsOutlined';
+import readCookies from '../../Cookies/readCookies';
 import CS from '../../Images/cs.png'
 import Fire from '../../Images/Fire.gif'
 import { Divider } from '@mui/material';
@@ -18,6 +19,8 @@ import './chatNav.css'
 function ChatNav() {
     const [highlight, setHighlight] = useState('#fff');
     const [flickerCount, setFlickerCount] = useState(0);
+    const pp = readCookies('pp');
+    const username = readCookies('name');
 
     useEffect(() => {
         if (flickerCount > 0) {
@@ -76,10 +79,12 @@ function ChatNav() {
                     {/* <div className='title-in-navs'> */}
                         <p className='title-chat'>Other</p>
                     {/* </div> */}
-                    <div className='row-nav-div'>
-                        <Person2OutlinedIcon  sx={{stroke: "#fff", strokeWidth: 0.4, color:'#efeff1', fontSize:'22px', fontStyle:'bold'}}/>
+                    <a href={'/' + username} className='row-nav-div'>
+                        <div className="cust-pfp-div-chat">
+                            <img className="cust-profile-pic-chat" src={pp} alt="ProfilePicture" />                         
+                        </div>
                         <p className='p-in-navs'>Profile</p>
-                    </div>
+                    </a>
                     <div className='row-nav-div'>
                         <CottageOutlinedIcon  sx={{stroke: "#fff", strokeWidth: 0.4, color:'#efeff1', fontSize:'22px', fontStyle:'bold'}}/>
                         <p className='p-in-navs'>Your Posts</p>
