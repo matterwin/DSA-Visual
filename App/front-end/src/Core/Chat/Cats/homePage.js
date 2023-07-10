@@ -76,7 +76,6 @@ function HomePage() {
                     Hi
                 </div> */}
                 <UserPosts />
-                <UserPosts />
             </div>
             
           </div>
