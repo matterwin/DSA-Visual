@@ -8,6 +8,9 @@ import { NavLink } from 'react-router-dom';
 import SafetyDividerOutlinedIcon from '@mui/icons-material/SafetyDividerOutlined';
 import DescriptionOutlinedIcon from '@mui/icons-material/DescriptionOutlined';
 import ChatInfo from '../chatInfo';
+import { Divider } from '@mui/material';
+import PostBox from './postBox';
+import TabBox from './tabBox';
 
 import '../chat.css'
 
@@ -34,7 +37,7 @@ function HomePage() {
 
   return (
       <div>
-        <div className='sub-nav-container-chat'>
+        <div className='sub-nav-container-chat' style={{zIndex:'1'}}>
             <div className="sub-inside-nav">
                 <div className="sub-nav-l-r-container">
                 <div className="sub-left-side">
@@ -64,7 +67,15 @@ function HomePage() {
               <ChatNav />
           </div>
           <div className="center-side-chat">
-              Home page actual
+            <div className='teste'>
+                <PostBox />
+                <Divider sx={{ backgroundColor: 'silver', marginTop:'10px', marginBottom:'10px', width:'100%' }} />
+                <TabBox title1="Home" title2="For You"/>
+                <div className='main-page-div'>
+                    Hi
+                </div>
+            </div>
+            
           </div>
           <div className="right-side-chat">
             <ChatInfo title={chatInfo.title} msg={chatInfo.msg} />

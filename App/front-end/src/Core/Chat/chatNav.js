@@ -10,13 +10,32 @@ import Diversity3OutlinedIcon from '@mui/icons-material/Diversity3Outlined';
 import WhatshotOutlinedIcon from '@mui/icons-material/WhatshotOutlined';
 import EmojiObjectsOutlinedIcon from '@mui/icons-material/EmojiObjectsOutlined';
 import CS from '../../Images/cs.png'
+import Fire from '../../Images/Fire.gif'
 import { Divider } from '@mui/material';
 
 import './chatNav.css'
 
 function ChatNav() {
     const [highlight, setHighlight] = useState('#fff');
-    const [highlightTrends, setHighlightTrends] = useState('#fff');
+    const [flickerCount, setFlickerCount] = useState(0);
+
+    useEffect(() => {
+        if (flickerCount > 0) {
+            const flickerTimer = setTimeout(() => {
+                setHighlight('#efeff1'); // Reset the highlight color after flickering
+            }, 300);
+            return () => clearTimeout(flickerTimer);
+        }
+    }, [flickerCount]);
+
+    const startFlicker = () => {
+        
+        setFlickerCount((prevCount) => prevCount + 1);
+    };
+
+    const stopFlicker = () => {
+        setFlickerCount((prevCount) => prevCount + 1); // Increment the flicker count to trigger the useEffect hook
+    };
 
     return(
         // <div className='sticky-uh'>
@@ -42,11 +61,14 @@ function ChatNav() {
                         </div>
                         <p className='p-in-navs'>csccareer</p>
                     </div>
-                    <div className='row-nav-div' onMouseEnter={() => setHighlightTrends('red')} onMouseLeave={() => setHighlightTrends('#efeff1')}>
-                        <WhatshotOutlinedIcon  sx={{stroke: "#fff", strokeWidth: 0.4, color:highlightTrends, fontSize:'23px', fontStyle:'bold'}}/>
+                    <div className='row-nav-div'>
+                        {/* <WhatshotOutlinedIcon  sx={{stroke: "#fff", strokeWidth: 0.4, color:highlightTrends, fontSize:'23px', fontStyle:'bold'}}/> */}
+                        <div className="cust-pfp-div-chat">
+                            <img className="cust-profile-pic-chat" src={Fire} alt="ProfilePicture" />                         
+                        </div>
                         <p className='p-in-navs'>trends</p>
                     </div>
-                    <div className='row-nav-div' onMouseEnter={() => setHighlight('gold')} onMouseLeave={() => setHighlight('#efeff1')}>
+                    <div className='row-nav-div' onMouseEnter={() => setHighlight('gold')} onMouseLeave={startFlicker}>
                         <EmojiObjectsOutlinedIcon sx={{stroke: "#fff", strokeWidth: 0.4, color:highlight, fontSize:'22px', fontStyle:'bold'}}/>
                         <p className='p-in-navs'>resources</p>
                     </div>

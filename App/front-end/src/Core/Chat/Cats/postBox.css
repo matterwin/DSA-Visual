@@ -1,0 +1,46 @@
+.box-contain{
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.box-div{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 5px;
+}
+
+.chat-cust-pfp-div {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: #f4f4f5;
+    cursor: pointer; 
+    border: transparent solid 2px;
+    transition: border-radius 0.2s ease-in-out;
+}
+
+.chat-cust-profile-pic {
+    width: 100%;
+    height: 100%;
+    object-fit:cover;
+    transition: transform .2s;
+    border-radius: 50%;
+}
+
+.prop-box{
+    width: 100%;
+    box-sizing: border-box;
+    text-decoration: none;
+    border: 1px solid #ccc;
+    outline: none;
+    padding: 10px;
+    border-radius: 5px;
+    color: black;
+    background-color: transparent;
+    font-family: 'Inter';
+    font-size: 15px;
+}
