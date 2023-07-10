@@ -1,0 +1,118 @@
+.user-posts-container{
+    background-color: #fff;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.div-for-padding{
+    padding: 10px;
+}
+
+.split-side-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 5px;
+}
+
+.testee{
+    /* background-color: #4d3939; */
+    /* border-right: 2px solid #a5a5a56b; */
+    padding-right: 5px;
+    /* min-height: 90%; */
+    /* background-color: #4d39390e; */
+}
+
+.top-level-div{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 5px;
+    
+}
+
+.like-counter-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 5px;
+}
+
+.likes-icon-div-up{
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 0px;
+    margin-bottom: -5px;
+}
+
+.likes-icon-div-up:hover, .likes-icon-div-down:hover{
+    background-color: #a5a5a56b;
+}
+
+.likes-icon-div-down{
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: -5px;
+}
+
+.likes-text{
+    font-family: 'Inter';
+    font-size: 15px;
+    font-weight: 800;
+    color: #4d3939;
+}
+
+.post-text{
+    font-family: 'Inter';
+    font-size: 15px;
+    font-weight: 600;
+    color: #4d3939;
+}
+
+.title-text{
+    font-family: 'Inter';
+    font-size: 17px;
+    font-weight: 800;;
+    color: #4d3939;
+    margin-bottom: 5px;
+}
+
+.top-contain{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    /* gap: 5px; */
+}
+
+.left-top-div{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.right-top-div{
+    margin-left: auto;
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.right-top-div:hover{
+    background-color: #a5a5a56b;
+}
+
+.top-and-text-div{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 5px;
+}

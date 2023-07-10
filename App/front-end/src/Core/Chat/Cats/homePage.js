@@ -11,6 +11,7 @@ import ChatInfo from '../chatInfo';
 import { Divider } from '@mui/material';
 import PostBox from './postBox';
 import TabBox from './tabBox';
+import UserPosts from './userPosts';
 
 import '../chat.css'
 
@@ -71,9 +72,11 @@ function HomePage() {
                 <PostBox />
                 <Divider sx={{ backgroundColor: 'silver', marginTop:'10px', marginBottom:'10px', width:'100%' }} />
                 <TabBox title1="Home" title2="For You"/>
-                <div className='main-page-div'>
+                {/* <div className='main-page-div'>
                     Hi
-                </div>
+                </div> */}
+                <UserPosts />
+                <UserPosts />
             </div>
             
           </div>
