@@ -26,14 +26,16 @@
     justify-content: flex-start;
     align-items: flex-start;
     gap: 5px;
+    width: 100%;
 }
 
 .bottom-post-div{
     display: flex;
     flex-direction: row;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
     gap: 5px;
+    width: 100%;
 }
 
 .center-row-align{
@@ -257,6 +259,7 @@
 }
 
 .top-and-text-div{
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;

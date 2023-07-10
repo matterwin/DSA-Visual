@@ -3,10 +3,14 @@ const HomeFeed = require('../models/HomeFeed');
 const { StatusCodes } = require('http-status-codes');
 const CustomError = require('../errors');
 
-const allPosts = async (req,res) => {
+const allPosts = async (req, res) => {
     try {
-        const posts = await HomeFeed.find({}).populate('user', '-_id -__v -password -email')
-        res.status(StatusCodes.OK).json({ count: posts.length, feed: posts });
+        const posts = await HomeFeed.find({})
+                    .populate('user', '-_id -__v -password -email')
+                    .lean(); // Convert to plain JavaScript objects for modification
+
+        const reversedPosts = posts.reverse();
+        res.status(StatusCodes.OK).json({ count: reversedPosts.length, feed: reversedPosts });
     } catch (error) {
         // Handle any errors that occur during the operation
         console.error(error);
@@ -16,7 +20,7 @@ const allPosts = async (req,res) => {
     }
 }
 
-const clearFeed = async (req,res) => {
+const clearFeed = async (req, res) => {
     try {
         await HomeFeed.deleteMany();
         res.status(StatusCodes.OK).json({ msg: 'Feed has been cleared'});
