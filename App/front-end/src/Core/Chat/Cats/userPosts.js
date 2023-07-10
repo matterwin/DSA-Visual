@@ -4,6 +4,9 @@ import CustomizedTooltip from '../../Custom/customTooltip'
 import ThumbUpOutlinedIcon from '@mui/icons-material/ThumbUpOutlined';
 import ThumbDownOffAltOutlinedIcon from '@mui/icons-material/ThumbDownOffAltOutlined';
 import MoreHorizOutlinedIcon from '@mui/icons-material/MoreHorizOutlined';
+import MapsUgcOutlinedIcon from '@mui/icons-material/MapsUgcOutlined';
+import SyncOutlinedIcon from '@mui/icons-material/SyncOutlined';
+import { Divider } from '@mui/material';
 import './postBox.css'
 import './userPosts.css'
 
@@ -25,12 +28,12 @@ const UserPosts = () => {
                                 </div>
                             </CustomizedTooltip>
                             <div className='like-counter-container'>
-                                <div className='likes-icon-div-up'>
-                                    <ThumbUpOutlinedIcon style={{stroke: "#4d3939", strokeWidth: 0.4, color:'#4d3939', fontSize:'22px', fontStyle:'bold'}} />
+                                <div className='new-icon-word-div-thumbs-up'>
+                                    <ThumbUpOutlinedIcon className='thumbs-up-icon' />
                                 </div>
                                 <p className='likes-text'>{likes}</p>
-                                <div className='likes-icon-div-down'>
-                                    <ThumbDownOffAltOutlinedIcon sx={{stroke: "#4d3939", strokeWidth: 0.4, color:'#4d3939', fontSize:'22px', fontStyle:'bold'}}/>
+                                <div className='new-icon-word-div-thumbs-down'>
+                                    <ThumbDownOffAltOutlinedIcon className='thumbs-down-icon' />
                                 </div>
                             </div>
                         </div>
@@ -51,6 +54,19 @@ const UserPosts = () => {
                             <p className='title-text'>News Flash for you</p>
                             <p className='post-text'>Officia nulla dolore nostrud nostrud dolor velit et deserunt. Ea sit aliquip nulla culpa consequat sint eu pariatur ipsum. Id cupidatat duis exercitation id eiusmod culpa incididunt. Nulla reprehenderit cillum et laborum. Velit culpa incididunt mollit duis adipisicing dolore dolore mollit duis sit non aliqua tempor excepteur. Cillum sint cupidatat excepteur non deserunt cillum sunt. Labore ut ex id mollit id officia.</p>
                         </div>
+                    </div>
+                </div>
+                <Divider sx={{ backgroundColor: 'silver', marginTop:'10px', marginBottom:'10px', width:'100%' }} />
+                <div className='bottom-post-div'>
+                    <div className='center-row-align'>
+                        <div className='new-icon-word-div-replies'>
+                            <MapsUgcOutlinedIcon className='replies-icon' />
+                            <p className='replies-text' style={{ fontWeight:'500' }}>432 Replies</p>
+                        </div>
+                    </div>
+                    <div className='new-icon-word-div-repost'>
+                        <SyncOutlinedIcon className='repost-icon' />
+                        <p className='repost-text' style={{ fontWeight:'500' }}>Repost</p>
                     </div>
                 </div>
             </div>
