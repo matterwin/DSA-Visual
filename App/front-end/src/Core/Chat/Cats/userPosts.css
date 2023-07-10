@@ -16,12 +16,8 @@
     gap: 5px;
 }
 
-.testee{
-    /* background-color: #4d3939; */
-    /* border-right: 2px solid #a5a5a56b; */
+.left-contain-post{
     padding-right: 5px;
-    /* min-height: 90%; */
-    /* background-color: #4d39390e; */
 }
 
 .top-level-div{
@@ -70,16 +66,16 @@
 .post-text{
     font-family: 'Inter';
     font-size: 15px;
-    font-weight: 600;
+    font-weight: 500;
     color: #4d3939;
 }
 
 .title-text{
     font-family: 'Inter';
     font-size: 17px;
-    font-weight: 800;;
+    font-weight: 600;;
     color: #4d3939;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
 }
 
 .top-contain{

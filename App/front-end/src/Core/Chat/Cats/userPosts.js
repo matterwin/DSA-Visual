@@ -17,7 +17,7 @@ const UserPosts = () => {
         <div className='user-posts-container'>
             <div className='div-for-padding'>
                 <div className='split-side-container'>
-                    <div className='testee'>
+                    <div className='left-contain-post'>
                         <div className='top-level-div'>
                             <CustomizedTooltip title={username}>
                                 <div className="chat-cust-pfp-div">
