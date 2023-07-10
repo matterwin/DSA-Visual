@@ -14,7 +14,7 @@ const HomeFeedSchema = new mongoose.Schema({
   message: {
     type: String,
     minlength: 1,
-    maxlength: 100,
+    maxlength: 400,
     required: true,
   },
   likes:{
