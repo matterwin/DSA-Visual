@@ -17,6 +17,14 @@ const HomeFeedSchema = new mongoose.Schema({
     maxlength: 100,
     required: true,
   },
+  likes:{
+    type: Number,
+    default:0
+  },
+  replies:{
+    type: Number,
+    default:0
+  },
   createdAt: {
     type: Date,
     default: Date.now,
