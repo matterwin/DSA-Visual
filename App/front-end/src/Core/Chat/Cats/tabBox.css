@@ -18,15 +18,11 @@
 
 .tab-box-div{
     width: 100%;
-    /* box-sizing: border-box; */
-    /* background-color: #ccc; */
 }
 
 .tab-box-div:hover{
     width: 100%;
     background-color: #ccc;
-    /* box-sizing: border-box; */
-    /* background-color: #ccc; */
 }
 
 .tab-box-p{
@@ -34,4 +30,19 @@
     font-family: 'Inter';
     color: #fff;
     font-weight: 600;
+    padding-bottom: 4px;
+    border-bottom: 3px solid transparent;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+
+.tab-box-p-active{
+    font-size: 15px;
+    font-family: 'Inter';
+    color: #fff;
+    font-weight: 600;
+    padding-bottom: 4px;
+    border-bottom: 3px solid #a9c9a3;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
 }

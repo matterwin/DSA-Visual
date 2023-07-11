@@ -17,13 +17,21 @@ const HomeFeedSchema = new mongoose.Schema({
     maxlength: 400,
     required: true,
   },
-  likes:{
-    type: Number,
-    default:0
-  },
-  replies:{
-    type: Number,
-    default:0
+  likes:[
+    {
+      type: mongoose.Schema.ObjectId,
+      ref: 'User',
+    },
+  ],
+  replies:[
+    {
+      type: mongoose.Schema.ObjectId,
+      ref: 'User',
+    },
+  ],
+  hasUserLikedThis:{
+    type:Boolean,
+    default: false
   },
   createdAt: {
     type: Date,

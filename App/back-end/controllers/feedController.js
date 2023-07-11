@@ -2,6 +2,7 @@ const User = require('../models/User');
 const HomeFeed = require('../models/HomeFeed');
 const { StatusCodes } = require('http-status-codes');
 const CustomError = require('../errors');
+const mongoose = require('mongoose');
 
 const allPosts = async (req, res) => {
     try {
@@ -50,8 +51,77 @@ const userPost = async (req, res) => {
     res.status(StatusCodes.CREATED).json({ post });
 }
 
+const likePost = async (req, res) => {
+    const { userId, postId } = req.body;
+
+    if(!userId){
+        throw new CustomError.BadRequestError('Provide userId');
+    }
+
+    if(!postId){
+        throw new CustomError.BadRequestError('Provide postId');
+    }
+
+    const user = await User.findOne({ _id: userId }).select('-email -password');
+    if (!user) {
+        throw new CustomError.UnauthenticatedError('Invalid Credentials');
+    }
+
+    const post = await HomeFeed.findOne({ _id: postId });
+    if (!post) {
+        throw new CustomError.BadRequestError(`User post: ${postId} does not exist.`);
+    }
+
+    // See if the userId is already apart of the likes array
+    const alreadyLiked = await post.likes.includes(userId);
+    if (alreadyLiked) {
+        throw new CustomError.BadRequestError('You have already liked this post.');
+    }
+
+    // Add the user's like to the post
+    post.likes.push(user);
+    await post.save();
+
+    res.status(StatusCodes.OK).json({msg: `You've successfully liked this user post: ${postId}`});
+}
+
+const repliesPost = async (req, res) => {
+    const { userId, postId } = req.body;
+
+    if(!userId){
+        throw new CustomError.BadRequestError('Provide userId');
+    }
+
+    if(!postId){
+        throw new CustomError.BadRequestError('Provide postId');
+    }
+
+    const user = await User.findOne({ _id: userId }).select('-email -password');
+    if (!user) {
+        throw new CustomError.UnauthenticatedError('Invalid Credentials');
+    }
+
+    const post = await HomeFeed.findOne({ _id: postId });
+    if (!post) {
+        throw new CustomError.BadRequestError(`User post: ${postId} does not exist.`);
+    }
+
+    // See if the userId is already apart of the likes array
+    const alreadyLiked = await post.replies.includes(userId);
+    if (alreadyLiked) {
+        throw new CustomError.BadRequestError('You have already liked this post.');
+    }
+
+    // Add the user's like to the post
+    post.replies.push(user);
+    await post.save();
+
+    res.status(StatusCodes.OK).json({msg: `You've successfully replied to this user post: ${postId}`});
+}
+
 module.exports = {
     allPosts,
     clearFeed,
     userPost,
+    likePost
 }

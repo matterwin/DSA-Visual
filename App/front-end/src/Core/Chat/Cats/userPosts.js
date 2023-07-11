@@ -73,7 +73,7 @@ const UserPosts = () => {
                                     <div className='new-icon-word-div-thumbs-up'>
                                         <ThumbUpOutlinedIcon className='thumbs-up-icon' />
                                     </div>
-                                    <p className='likes-text'>{post.likes}</p>
+                                    <p className='likes-text'>{post.likes.length}</p>
                                     <div className='new-icon-word-div-thumbs-down'>
                                         <ThumbDownOffAltOutlinedIcon className='thumbs-down-icon' />
                                     </div>
@@ -103,7 +103,7 @@ const UserPosts = () => {
                         <div className='center-row-align'>
                             <div className='new-icon-word-div-replies'>
                                 <MapsUgcOutlinedIcon className='replies-icon' />
-                                <p className='replies-text' style={{ fontWeight:'500' }}>{post.replies} Replies</p>
+                                <p className='replies-text' style={{ fontWeight:'500' }}>{post.replies.length} Replies</p>
                             </div>
                         </div>
                         <div className='new-icon-word-div-repost'>

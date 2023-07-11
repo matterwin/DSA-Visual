@@ -71,7 +71,7 @@ function HomePage() {
             <div className='teste'>
                 <PostBox />
                 <Divider sx={{ backgroundColor: 'silver', marginTop:'10px', marginBottom:'10px', width:'100%' }} />
-                <TabBox title1="Home" title2="For You" title1Link="/chat/home" title2Link="/chat/foryou"/>
+                <TabBox title1="Home" title2="For You" title1Link="/chat/home" title2Link="/chat/foryou" active1={true}/>
                 {/* <div className='main-page-div'>
                     Hi
                 </div> */}
