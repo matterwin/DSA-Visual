@@ -23,6 +23,12 @@ const HomeFeedSchema = new mongoose.Schema({
       ref: 'User',
     },
   ],
+  dislikes:[
+    {
+      type: mongoose.Schema.ObjectId,
+      ref: 'User',
+    },
+  ],
   replies:[
     {
       type: mongoose.Schema.ObjectId,
@@ -30,6 +36,10 @@ const HomeFeedSchema = new mongoose.Schema({
     },
   ],
   hasUserLikedThis:{
+    type:Boolean,
+    default: false
+  },
+  hasUserDislikedThis:{
     type:Boolean,
     default: false
   },

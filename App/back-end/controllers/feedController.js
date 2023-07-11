@@ -2,25 +2,43 @@ const User = require('../models/User');
 const HomeFeed = require('../models/HomeFeed');
 const { StatusCodes } = require('http-status-codes');
 const CustomError = require('../errors');
-const mongoose = require('mongoose');
 
 const allPosts = async (req, res) => {
     try {
-        const posts = await HomeFeed.find({})
-                    .populate('user', '-_id -__v -password -email')
-                    .lean(); // Convert to plain JavaScript objects for modification
-
-        const reversedPosts = posts.reverse();
-        res.status(StatusCodes.OK).json({ count: reversedPosts.length, feed: reversedPosts });
+      const { userId } = req.body;
+    //   console.log(userId);
+  
+      const user = await User.findOne({ _id: userId }).select('-email -password');
+      if (!user) {
+        throw new CustomError.UnauthenticatedError('Invalid Credentials');
+      }
+  
+      const posts = await HomeFeed.find({})
+        .populate('user', '-_id -__v -password -email');
+  
+      const enrichedPosts = posts.map((post) => {
+        const hasUserLikedThis = post.likes.includes(user);
+        const hasUserDislikedThis = post.dislikes.includes(user);
+  
+        post.hasUserLikedThis = hasUserLikedThis;
+        post.hasUserDislikedThis = hasUserDislikedThis;
+  
+        return post;
+      });
+  
+      await Promise.all(enrichedPosts.map((post) => post.save())); // Save the updated posts
+  
+      const reversedPosts = enrichedPosts.reverse();
+      res.status(StatusCodes.OK).json({ count: reversedPosts.length, feed: reversedPosts });
     } catch (error) {
-        // Handle any errors that occur during the operation
-        console.error(error);
-        return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
-            error: 'Internal Server Error',
-        });
+      // Handle any errors that occur during the operation
+      console.error(error);
+      return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
+        error: 'Internal Server Error',
+      });
     }
-}
-
+};  
+  
 const clearFeed = async (req, res) => {
     try {
         await HomeFeed.deleteMany();
