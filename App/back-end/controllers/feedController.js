@@ -27,7 +27,7 @@ const allPosts = async (req, res) => {
     try {
         const { userId } = req.body;
         const { page } = req.query;
-        const limit = 15;
+        const limit = 5;
 
         const totalCount = await HomeFeed.countDocuments({}); // Get total count of documents
         const totalPages = Math.ceil(totalCount / limit); // Calculate total number of pages

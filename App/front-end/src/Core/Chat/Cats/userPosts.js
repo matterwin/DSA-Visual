@@ -27,7 +27,7 @@ const UserPosts = () => {
     const [loading, setLoading] = useState(true);
 
     const fetchFeed = () => {
-        const url = 'http://localhost:5000/feed/homeFeed/all';
+        const url = `http://localhost:5000/feed/homeFeed/all?page=${1}`;
         
         fetch(url)
           .then(res => {
@@ -50,11 +50,11 @@ const UserPosts = () => {
         console.log('test');
         fetchFeed(); // Initial fetch
     
-        const intervalId = setInterval(fetchFeed, 5000); // Fetch every 5 seconds
+        // const intervalId = setInterval(fetchFeed, 5000); // Fetch every 5 seconds
     
-        return () => {
-          clearInterval(intervalId); // Cleanup on component unmount
-        };
+        // return () => {
+        //   clearInterval(intervalId); // Cleanup on component unmount
+        // };
       }, []);
 
       const getFeed = () => {
