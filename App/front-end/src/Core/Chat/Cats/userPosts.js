@@ -25,27 +25,30 @@ const Loading = () => {
 const UserPosts = () => {
     const [feed, setFeed] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [page, setPage] = useState(1); // init page
+    const [test, setTest] = useState(1);
 
-    const fetchFeed = () => {
-        const url = `http://localhost:5000/feed/homeFeed/all?page=${1}`;
-        
-        fetch(url)
-          .then(res => {
-            if (res.status !== 200) {
-              throw new Error("Email is taken");           
-            }
-            return res.json();
-          })
-          .then((data) => {
-            setFeed(data.feed);
-            setLoading(false);
-            console.log(data.feed);
-          })
-          .catch((err) => {
-            console.log(err);
-          });
+    const fetchFeed = async () => {
+        try {
+          const url = `http://localhost:5000/feed/homeFeed/all?page=${page}`;
+      
+          const response = await fetch(url);
+      
+          if (response.status !== 200) {
+            throw new Error("Email is taken");
+          }
+      
+          const data = await response.json();
+      
+          setFeed((prevFeed) => [...prevFeed, ...data.feed]);
+          setLoading(false);
+          console.log(data.feed);
+          setPage((prevPage) => prevPage + 1);
+        } catch (err) {
+          console.log(err);
+        }
       };
-    
+      
       useEffect(() => {
         console.log('test');
         fetchFeed(); // Initial fetch
@@ -55,11 +58,12 @@ const UserPosts = () => {
         // return () => {
         //   clearInterval(intervalId); // Cleanup on component unmount
         // };
-      }, []);
+      }, [test]);
 
       const getFeed = () => {
         return feed.map((post) => (
             <div className='user-posts-container' key={post._id}>
+                <button onClick={() => {setTest(prev => prev + 1)}}></button>
                 <div className='div-for-padding'>
                     <div className='split-side-container'>
                         <div className='left-contain-post'>

@@ -25,35 +25,43 @@ const CustomError = require('../errors');
 
 const allPosts = async (req, res) => {
     try {
-        const { userId } = req.body;
-        const { page } = req.query;
-        const limit = 5;
+      const { userId } = req.body;
+      const { page } = req.query;
+      const limit = 1;
 
-        const totalCount = await HomeFeed.countDocuments({}); // Get total count of documents
-        const totalPages = Math.ceil(totalCount / limit); // Calculate total number of pages
-
-        const skip = (page - 1) * limit;
-        const posts = await HomeFeed.find({})
+      console.log(page);
+  
+      const totalCount = await HomeFeed.countDocuments({}); // Get total count of documents
+      const totalPages = Math.ceil(totalCount / limit); // Calculate total number of pages
+  
+      let skip = (page - 1) * limit;
+  
+      // Calculate the skip value for fetching all previous pages
+      if (page > 1) {
+        skip = (page - 1) * limit + limit * (page - 2);
+      }
+  
+      const posts = await HomeFeed.find({})
         .skip(skip)
         .limit(limit)
         .sort({ createdAt: -1 }) // Sort in descending order by createdAt
         .populate('user', '-_id -__v -password -email');
-
-        res.status(StatusCodes.OK).json({
-            count: posts.length,
-            totalPages: totalPages,
-            currentPage: page,
-            feed: posts,
-        });
-
+  
+      res.status(StatusCodes.OK).json({
+        count: posts.length,
+        totalPages: totalPages,
+        currentPage: page,
+        feed: posts,
+      });
+  
     } catch (error) {
-        // Handle any errors that occur during the operation
-        console.error(error);
-        return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
+      // Handle any errors that occur during the operation
+      console.error(error);
+      return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
         error: 'Internal Server Error',
-        });
+      });
     }
-};
+  };
   
 // maybe pagination for a handful of posts, and for each handful check if the user has liked the post already
   
