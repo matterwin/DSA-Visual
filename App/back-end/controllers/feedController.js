@@ -4,15 +4,47 @@ const UserInfo = require('../models/UserInfo');
 const { StatusCodes } = require('http-status-codes');
 const CustomError = require('../errors');
 
+// const allPosts = async (req, res) => {
+//     try {
+//         const { userId } = req.body;
+
+//         const posts = await HomeFeed.find({})
+//         .populate('user', '-_id -__v -password -email');
+
+//         const reversedPosts = posts.reverse();
+//         res.status(StatusCodes.OK).json({ count: reversedPosts.length, feed: reversedPosts });
+
+//     } catch (error) {
+//         // Handle any errors that occur during the operation
+//         console.error(error);
+//         return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
+//         error: 'Internal Server Error',
+//         });
+//     }
+// };
+
 const allPosts = async (req, res) => {
     try {
         const { userId } = req.body;
+        const { page } = req.query;
+        const limit = 15;
 
+        const totalCount = await HomeFeed.countDocuments({}); // Get total count of documents
+        const totalPages = Math.ceil(totalCount / limit); // Calculate total number of pages
+
+        const skip = (page - 1) * limit;
         const posts = await HomeFeed.find({})
+        .skip(skip)
+        .limit(limit)
+        .sort({ createdAt: -1 }) // Sort in descending order by createdAt
         .populate('user', '-_id -__v -password -email');
 
-        const reversedPosts = posts.reverse();
-        res.status(StatusCodes.OK).json({ count: reversedPosts.length, feed: reversedPosts });
+        res.status(StatusCodes.OK).json({
+            count: posts.length,
+            totalPages: totalPages,
+            currentPage: page,
+            feed: posts,
+        });
 
     } catch (error) {
         // Handle any errors that occur during the operation

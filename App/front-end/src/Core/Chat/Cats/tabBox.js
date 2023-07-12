@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { NavLink } from 'react-router-dom';
 import './tabBox.css'
 
 const TabBox = ({ title1, title2, title1Link, title2Link, active1, active2}) => {
@@ -13,14 +14,14 @@ const TabBox = ({ title1, title2, title1Link, title2Link, active1, active2}) => 
   return (
     <div className='tab-box-contain'>
         <div className='box-div'>
-            <a href={title1Link} className='tab-box-div'>
+            <NavLink end to={title1Link} className='tab-box-div'>
                 <p className={active1 ? 'tab-box-p-active' : 'tab-box-p'}>{title1}</p>
-            </a>
+            </NavLink>
             {!showTitle2 && 
             <>
-                <a href={title2Link} className='tab-box-div'>
+                <NavLink end to={title2Link} className='tab-box-div'>
                     <p className={active2 ? 'tab-box-p-active' : 'tab-box-p'}>{title2}</p>
-                </a>
+                </NavLink>
             </>
             }
         </div>

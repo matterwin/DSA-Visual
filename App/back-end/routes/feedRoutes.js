@@ -9,7 +9,7 @@ const {
     userInfo
 } = require('../controllers/feedController');
 
-router.post('/homeFeed/all', allPosts);
+router.get('/homeFeed/all', allPosts);
 router.post('/homeFeed/userInfo', userInfo);
 router.delete('/homeFeed/clearFeed', clearFeed);
 router.post('/homeFeed/post', userPost);

@@ -16,12 +16,12 @@ import UserPosts from './userPosts';
 import '../chat.css'
 
 const chatInfo = {
-    title:'Home',
-    msg:'Your personal frontpage. Come here to view the most recent posts.'
+    title:'For you',
+    msg:'Your personal frontpage. Come here to view posts that are garbage'
 }
 
-function HomePage() {
-  const [showLiveChat, setShowLiveChat] = useState(false);
+function ForYouPage() {
+  const [showLiveChat, setShowLiveChat] = useState();
 
     useEffect(() => {
         const rememChat = readCookies('showChat');
@@ -71,7 +71,7 @@ function HomePage() {
             <div className='teste'>
                 <PostBox />
                 <Divider sx={{ backgroundColor: 'silver', marginTop:'10px', marginBottom:'10px', width:'100%' }} />
-                <TabBox title1="Home" title2="For You" title1Link="/chat/home" title2Link="/chat/foryou" active1={true}/>
+                <TabBox title1="Home" title2="For You" title1Link="/chat/home" title2Link="/chat/foryou" active2={true}/>
                 {/* <div className='main-page-div'>
                     Hi
                 </div> */}
@@ -97,4 +97,4 @@ function HomePage() {
   );
 }
 
-export default HomePage
+export default ForYouPage
