@@ -1,4 +1,5 @@
 const User = require('../models/User');
+const UserInfo = require('../models/UserInfo');
 const { StatusCodes } = require('http-status-codes');
 const CustomError = require('../errors');
 
@@ -56,7 +57,7 @@ const generateRandomColor = () => {
     }
   
     return color;
-  };
+};
   
 
 const register = async (req,res) => {
@@ -83,6 +84,9 @@ const register = async (req,res) => {
     const cookie = user._id;
     const name = user.username;
     const profilePic = user.profilePic;
+
+    await UserInfo.create({ user });
+
     res.status(StatusCodes.CREATED).json({ cookie, name, profilePic });
 }
 
