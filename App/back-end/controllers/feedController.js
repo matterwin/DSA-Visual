@@ -27,7 +27,7 @@ const allPosts = async (req, res) => {
     try {
       const { userId } = req.body;
       const { page } = req.query;
-      const limit = 1;
+      const limit = 3;
 
       console.log(page);
   

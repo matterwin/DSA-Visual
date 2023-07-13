@@ -71,7 +71,7 @@ function ForYouPage() {
             <div className='teste'>
                 <PostBox />
                 <Divider sx={{ backgroundColor: 'silver', marginTop:'10px', marginBottom:'10px', width:'100%' }} />
-                <TabBox title1="Home" title2="For You" title1Link="/chat/home" title2Link="/chat/foryou" active2={true}/>
+                <TabBox title1="Home" title2="For You" title1Link="/chat" title2Link="/chat/foryou" active2={true}/>
                 {/* <div className='main-page-div'>
                     Hi
                 </div> */}

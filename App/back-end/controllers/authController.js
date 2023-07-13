@@ -58,7 +58,6 @@ const generateRandomColor = () => {
   
     return color;
 };
-  
 
 const register = async (req,res) => {
     const { username, email, password } = req.body;

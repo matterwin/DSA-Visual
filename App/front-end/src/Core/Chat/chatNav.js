@@ -48,7 +48,7 @@ function ChatNav() {
                         <p className='title-chat'>Feeds</p>
                     {/* </div> */}
                     
-                    <a href='/chat/home' className='row-nav-div'>
+                    <a href='/chat' className='row-nav-div'>
                         <CottageOutlinedIcon  sx={{stroke: "#fff", strokeWidth: 0.4, color:'#efeff1', fontSize:'22px', fontStyle:'bold'}}/>
                         <p className='p-in-navs'>Home</p>
                     </a>

@@ -54,7 +54,6 @@ function App() {
   const validPath = pathname === '/' 
                     || pathname === '/chat'
                     || pathname === '/chat/following'
-                    || pathname === '/chat/home'
                     || pathname === '/chat/foryou'
                     || pathname === '/login'
                     || pathname === '/register'
@@ -96,7 +95,6 @@ function App() {
 
           <Routes>
             <Route caseSensitive path="/" element={<Home />}/>
-            <Route caseSensitive path="/chat" element={<Chat />}/>
             <Route caseSensitive path="/visuals/merge" element={<Merge />}/>
             <Route caseSensitive path="/visuals/quick" element={<Quick />}/>
             <Route caseSensitive path="/visuals/insertion" element={<Insert />}/>
@@ -105,7 +103,7 @@ function App() {
             <Route caseSensitive path="/visuals/test" element={<Test />}/>
             <Route caseSensitive path="/visuals/dfs" element={<DFS />}/>
             <Route caseSensitive path="/visuals/bfs" element={<BFS />}/>
-            <Route caseSensitive path="/chat/home" element={<HomePage />}/>
+            <Route caseSensitive path="/chat" element={<HomePage />}/>
             <Route caseSensitive path="/visuals/binarysearch" element={<Binary />}/>
             {!userLoggedIn && <Route caseSensitive path="/login" element={<Login />}/>}
             {!userLoggedIn && <Route caseSensitive path="/register" element={<Register />}/>}
@@ -124,3 +122,39 @@ function App() {
 }
 
 export default App;
+
+
+// import React, { useEffect, useState } from 'react';
+
+// function App() {
+//   const [isBottom, setIsBottom] = useState(false);
+
+//   useEffect(() => {
+//     function handleScroll() {
+//       const windowHeight = window.innerHeight;
+//       const documentHeight = document.documentElement.scrollHeight;
+//       const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+      
+//       if (windowHeight + scrollTop >= documentHeight) {
+//         setIsBottom(true);
+//       } else {
+//         setIsBottom(false);
+//       }
+//     }
+
+//     window.addEventListener('scroll', handleScroll);
+
+//     return () => {
+//       window.removeEventListener('scroll', handleScroll);
+//     };
+//   }, []);
+
+//   return (
+//     <div style={{ paddingBottom:'1000px' }}>
+//       {/* Your app content */}
+//       {isBottom && alert('reached bottom')}
+//     </div>
+//   );
+// }
+
+// export default App;

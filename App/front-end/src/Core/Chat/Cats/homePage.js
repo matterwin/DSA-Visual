@@ -22,6 +22,7 @@ const chatInfo = {
 
 function HomePage() {
   const [showLiveChat, setShowLiveChat] = useState(false);
+  const [isBottom, setIsBottom] = useState(false);
 
     useEffect(() => {
         const rememChat = readCookies('showChat');
@@ -35,6 +36,26 @@ function HomePage() {
         setShowLiveChat(!showLiveChat);
         createChatCookie(!showLiveChat);
     };
+
+    useEffect(() => {
+            function handleScroll() {
+              const windowHeight = window.innerHeight;
+              const documentHeight = document.documentElement.scrollHeight;
+              const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+              
+              if (windowHeight + scrollTop >= documentHeight) {
+                setIsBottom(true);
+              } else {
+                setIsBottom(false);
+              }
+            }
+        
+            window.addEventListener('scroll', handleScroll);
+        
+            return () => {
+              window.removeEventListener('scroll', handleScroll);
+            };
+          }, []);
 
   return (
       <div>
@@ -71,11 +92,11 @@ function HomePage() {
             <div className='teste'>
                 <PostBox />
                 <Divider sx={{ backgroundColor: 'silver', marginTop:'10px', marginBottom:'10px', width:'100%' }} />
-                <TabBox title1="Home" title2="For You" title1Link="/chat/home" title2Link="/chat/foryou" active1={true}/>
+                <TabBox title1="Home" title2="For You" title1Link="/chat" title2Link="/chat/foryou" active1={true}/>
                 {/* <div className='main-page-div'>
                     Hi
                 </div> */}
-                <UserPosts />
+                <UserPosts isBottom={isBottom}/>
             </div>
             
           </div>

@@ -32,7 +32,7 @@ const NavIn = () => {
               <a href="/" className="nav-link-div">
                 <h4 className="linkers">Home</h4>
               </a> 
-              <a href="/chat/home" className="nav-link-div">
+              <a href="/chat" className="nav-link-div">
                 <h4 className="linkers">Chat</h4>
               </a> 
               <Divider orientation="vertical" style={{ backgroundColor: 'grey', height: '25px', width:'1px' }} />
