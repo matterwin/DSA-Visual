@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect } from 'react'
 import CustomizedTooltip from '../../Custom/customTooltip'
 import ThumbUpOutlinedIcon from '@mui/icons-material/ThumbUpOutlined';
 import ThumbDownOffAltOutlinedIcon from '@mui/icons-material/ThumbDownOffAltOutlined';
@@ -22,15 +22,14 @@ const Loading = () => {
   );
 }
 
-const UserPosts = ({ isBottom }) => {
+const UserPosts = () => {
     const [feed, setFeed] = useState([]);
     const [loading, setLoading] = useState(true);
     const [page, setPage] = useState(1); // init page
-    // const [isBottom, setIsBottom] = useState(isBottom);
     const [totalPages, setTotalPages] = useState(1);
+    const [isBottom, setIsBottom] = useState(false);
     const [subtractTotalPages, setSubtractTotalPages] = useState(1);
-    const mapDivRef = useRef(null);
-    const [test, setTest] = useState(1);
+    const [loadingMorePages, setLoadingMorePages] = useState(false);
 
     const fetchFeed = async () => {
         if(totalPages > 0){
@@ -47,6 +46,7 @@ const UserPosts = ({ isBottom }) => {
             
                 setFeed((prevFeed) => [...prevFeed, ...data.feed]);
                 setLoading(false);
+                setLoadingMorePages(false);
                 console.log(data.feed);
                 setPage((prevPage) => prevPage + 1);
                 setTotalPages(data.totalPages - subtractTotalPages);
@@ -58,19 +58,39 @@ const UserPosts = ({ isBottom }) => {
     };
       
       useEffect(() => {
-        fetchFeed(); // Initial fetch\
+        fetchFeed(); // Initial fetch
       }, []);
 
       useEffect(() => {
-        if (isBottom) {
+        if (isBottom && !loading) {
+            setLoadingMorePages(true);
             fetchFeed();
+          }
+    }, [isBottom, loading]);
+
+      useEffect(() => {
+        function handleScroll() {
+          const windowHeight = window.innerHeight;
+          const documentHeight = document.documentElement.scrollHeight;
+          const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+          
+          if (windowHeight + scrollTop >= documentHeight) {
+            setIsBottom(true);
+          } else {
+            setIsBottom(false);
+          }
         }
-      }, [isBottom]);
+    
+        window.addEventListener('scroll', handleScroll);
+    
+        return () => {
+          window.removeEventListener('scroll', handleScroll);
+        };
+      }, []);
 
       const getFeed = () => {
         return feed.map((post) => (
             <div className='user-posts-container' key={post._id}>
-                 <button onClick={() => {setTest(prev => prev + 1)}}></button>
                 <div className='div-for-padding'>
                     <div className='split-side-container'>
                         <div className='left-contain-post'>
@@ -131,6 +151,7 @@ const UserPosts = ({ isBottom }) => {
         <div>
             {loading && <Loading />}
             {!loading && getFeed()}
+            {(loadingMorePages && <Loading />)} 
         </div>
     )
 }

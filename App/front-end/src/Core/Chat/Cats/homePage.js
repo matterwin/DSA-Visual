@@ -22,7 +22,6 @@ const chatInfo = {
 
 function HomePage() {
   const [showLiveChat, setShowLiveChat] = useState(false);
-  const [isBottom, setIsBottom] = useState(false);
 
     useEffect(() => {
         const rememChat = readCookies('showChat');
@@ -36,26 +35,6 @@ function HomePage() {
         setShowLiveChat(!showLiveChat);
         createChatCookie(!showLiveChat);
     };
-
-    useEffect(() => {
-            function handleScroll() {
-              const windowHeight = window.innerHeight;
-              const documentHeight = document.documentElement.scrollHeight;
-              const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
-              
-              if (windowHeight + scrollTop >= documentHeight) {
-                setIsBottom(true);
-              } else {
-                setIsBottom(false);
-              }
-            }
-        
-            window.addEventListener('scroll', handleScroll);
-        
-            return () => {
-              window.removeEventListener('scroll', handleScroll);
-            };
-          }, []);
 
   return (
       <div>
@@ -96,7 +75,7 @@ function HomePage() {
                 {/* <div className='main-page-div'>
                     Hi
                 </div> */}
-                <UserPosts isBottom={isBottom}/>
+                <UserPosts />
             </div>
             
           </div>
