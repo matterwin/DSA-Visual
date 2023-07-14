@@ -11,6 +11,7 @@ import Box from '@mui/material/Box';
 
 import './postBox.css'
 import './userPosts.css'
+import readCookies from '../../../Cookies/readCookies';
 
 const Loading = () => {
   return (
@@ -68,27 +69,101 @@ const UserPosts = () => {
           }
     }, [isBottom, loading]);
 
-      useEffect(() => {
+    useEffect(() => {
         function handleScroll() {
-          const windowHeight = window.innerHeight;
-          const documentHeight = document.documentElement.scrollHeight;
-          const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
-          
-          if (windowHeight + scrollTop >= documentHeight) {
+            const windowHeight = window.innerHeight;
+            const documentHeight = document.documentElement.scrollHeight;
+            const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+            
+            if (windowHeight + scrollTop >= documentHeight) {
             setIsBottom(true);
-          } else {
+            } else {
             setIsBottom(false);
-          }
+            }
         }
-    
-        window.addEventListener('scroll', handleScroll);
-    
-        return () => {
-          window.removeEventListener('scroll', handleScroll);
-        };
-      }, []);
 
-      const getFeed = () => {
+        window.addEventListener('scroll', handleScroll);
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
+
+    const likePost = async (specificPostId) => {
+        try {
+            const userId = readCookies('auth-token');
+            const postId = specificPostId;
+            console.log(userId);
+            console.log(postId);
+            const url = `http://localhost:5000/feed/homeFeed/like`;
+        
+            const response = await fetch(url, {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ userId, postId }),
+            });
+        
+            if (response.status !== 200) {
+                throw new Error("Already liked post");
+            }
+        
+            const data = await response.json();
+            console.log("data: " + data.msg);
+        
+            // Update the feed state with the updated likes count
+            setFeed((prevFeed) =>
+                prevFeed.map((post) => {
+                    if (post._id === specificPostId) {
+                        return { ...post, likeToDislikeCount: data.updatedLikeToDislikeCount };
+                    }
+                    return post;
+                })
+            );
+        } catch (err) {
+            console.log(err);
+        }
+    };
+
+    const dislikePost = async (specificPostId) => {
+        try {
+            const userId = readCookies('auth-token');
+            const postId = specificPostId;
+            console.log(userId);
+            console.log(postId);
+            const url = `http://localhost:5000/feed/homeFeed/dislike`;
+        
+            const response = await fetch(url, {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ userId, postId }),
+            });
+        
+            if (response.status !== 200) {
+                throw new Error("Already liked post");
+            }
+        
+            const data = await response.json();
+        
+            // Update the feed state with the updated likes count
+            setFeed((prevFeed) =>
+                prevFeed.map((post) => {
+                    if (post._id === specificPostId) {
+                        return { ...post, likeToDislikeCount: data.updatedLikeToDislikeCount };
+                    }
+                    return post;
+                })
+            );
+            
+        } catch (err) {
+            console.log(err);
+        }
+    };
+
+    const getFeed = () => {
         return feed.map((post) => (
             <div className='user-posts-container' key={post._id}>
                 <div className='div-for-padding'>
@@ -102,11 +177,11 @@ const UserPosts = () => {
                                 </CustomizedTooltip>
                                 <div className='like-counter-container'>
                                     <div className='new-icon-word-div-thumbs-up'>
-                                        <ThumbUpOutlinedIcon className='thumbs-up-icon' />
+                                        <ThumbUpOutlinedIcon className='thumbs-up-icon' onClick={() => likePost(post._id)}/>
                                     </div>
-                                    <p className='likes-text'>{post.likes.length}</p>
+                                    <p className='likes-text'>{post.likeToDislikeCount}</p>
                                     <div className='new-icon-word-div-thumbs-down'>
-                                        <ThumbDownOffAltOutlinedIcon className='thumbs-down-icon' />
+                                        <ThumbDownOffAltOutlinedIcon className='thumbs-down-icon' onClick={() => dislikePost(post._id)}/>
                                     </div>
                                 </div>
                             </div>
@@ -145,7 +220,7 @@ const UserPosts = () => {
                 </div>
             </div>
         ));
-      };
+    };
 
     return (
         <div>

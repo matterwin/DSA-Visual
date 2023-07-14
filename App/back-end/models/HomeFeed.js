@@ -6,8 +6,8 @@ const HomeFeedSchema = new mongoose.Schema({
     ref: 'User',
     required: true,
   },
-  title:{
-    type:String,
+  title: {
+    type: String,
     minlength: 1,
     maxlength: 20
   },
@@ -17,36 +17,42 @@ const HomeFeedSchema = new mongoose.Schema({
     maxlength: 400,
     required: true,
   },
-  likes:[
+  likes: [
     {
       type: mongoose.Schema.ObjectId,
       ref: 'User',
     },
   ],
-  dislikes:[
+  dislikes: [
     {
       type: mongoose.Schema.ObjectId,
       ref: 'User',
     },
   ],
-  replies:[
+  replies: [
     {
       type: mongoose.Schema.ObjectId,
       ref: 'User',
     },
   ],
-  hasUserLikedThis:{
-    type:Boolean,
-    default: false
+  hasUserLikedThis: {
+    type: Boolean,
+    default: false,
   },
-  hasUserDislikedThis:{
-    type:Boolean,
-    default: false
+  hasUserDislikedThis: {
+    type: Boolean,
+    default: false,
   },
   createdAt: {
     type: Date,
     default: Date.now,
   },
+}, {
+  toJSON: { virtuals: true },
+});
+
+HomeFeedSchema.virtual('likeToDislikeRatio').get(function () {
+  return this.likes.length - this.dislikes.length;
 });
 
 module.exports = mongoose.model('HomeFeed', HomeFeedSchema);

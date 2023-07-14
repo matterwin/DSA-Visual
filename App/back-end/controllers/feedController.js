@@ -5,7 +5,9 @@ const { StatusCodes } = require('http-status-codes');
 const CustomError = require('../errors');
 const moment = require('moment-timezone');
 
-const allPosts = async (req, res) => {
+const allPosts = async (req, res) => { //I can test if the user's info likes includes this post_.id and set the hasUserLiked
+  //so on the front end there can be a ternary exp of hasUserLiked and a the btn to like
+  // and the false would be a filled in icon
     try {
       const { userId } = req.body;
       const { page } = req.query;
@@ -31,6 +33,9 @@ const allPosts = async (req, res) => {
   
 
       const formattedPosts = posts.map((post) => {
+        // let likeToDislikeCount = post.likes.length - post.dislikes.length;
+        // if(likeToDislikeCount < 0) likeToDislikeCount = 0; can set to 0, but maybe we want to see the dislikes count
+
         const createdAt = moment(post.createdAt);
         const currentTimestamp = moment();
         const duration = moment.duration(currentTimestamp.diff(createdAt));
@@ -53,6 +58,7 @@ const allPosts = async (req, res) => {
         return {
           ...post.toObject(),
           createdAt: formattedDate,
+          likeToDislikeCount: post.likeToDislikeRatio,
         };
       });
     
@@ -104,56 +110,98 @@ const userPost = async (req, res) => {
     res.status(StatusCodes.CREATED).json({ post });
 };
 
-const likePost = async (req, res) => {
-    const { userId, postId } = req.body;
+const replyPost = async (req, res) => {
+  const { userId, postId, message } = req.body;
 
-    if(!userId){
+  if(!userId){
       throw new CustomError.BadRequestError('Provide userId');
-    }
+  }
 
-    if(!postId){
-      throw new CustomError.BadRequestError('Provide postId');
-    }
+  if(!postId){
+    throw new CustomError.BadRequestError('Provide postId');
+  }
 
-    const user = await User.findOne({ _id: userId }).select('-email -password');
-    if (!user) {
-      throw new CustomError.UnauthenticatedError('Invalid Credentials');
-    }
+  if(!message){
+      throw new CustomError.BadRequestError('Provide message');
+  }
 
-    const post = await HomeFeed.findOne({ _id: postId });
-    if (!post) {
-      throw new CustomError.BadRequestError(`User post: ${postId} does not exist.`);
-    }
+  const user = await User.findOne({ _id: userId }).select('-email -password');
+  if (!user) {
+    throw new CustomError.UnauthenticatedError('Invalid Credentials');
+  }
 
-    // See if the userId is already apart of the likes array
-    const alreadyLiked = await post.likes.includes(userId);
-    if (alreadyLiked) {
-      throw new CustomError.BadRequestError('You have already liked this post.');
-    }
+  const post = await HomeFeed.findOne({ _id: postId });
+  if (!post) {
+    throw new CustomError.BadRequestError(`User post: ${postId} does not exist.`);
+  }
 
-    // add the post to the user's liked list
-    const userListOfStuff = await UserInfo.findOne({ user: userId });
-    userListOfStuff.likes.push(post);
+  // const post = await HomeFeed.create({ user, title, message });
+  // need to finish reply
 
-    const alreadyDisliked = await post.dislikes.includes(userId);
-    if (alreadyDisliked) {
-      // Remove user from post.likes
-      const userIndex = post.dislikes.indexOf(userId);
-      post.dislikes.splice(userIndex, 1);
-
-      const userIndexForUserInfo = userListOfStuff.dislikes.indexOf(userId);
-      userListOfStuff.dislikes.splice(userIndexForUserInfo, 1);
-    }
-
-    // Save new userInfo list
-    await userListOfStuff.save();
-
-    // Add the user's like to the post
-    post.likes.push(user);
-    await post.save();
-
-    res.status(StatusCodes.OK).json({msg: `You've successfully liked this user post: ${postId}`});
+  res.status(StatusCodes.CREATED).json({ post });
 };
+
+const likePost = async (req, res) => {
+  const { userId, postId } = req.body;
+
+  if (!userId) {
+    throw new CustomError.BadRequestError('Provide userId');
+  }
+
+  if (!postId) {
+    throw new CustomError.BadRequestError('Provide postId');
+  }
+
+  const user = await User.findOne({ _id: userId }).select('-email -password');
+  if (!user) {
+    throw new CustomError.UnauthenticatedError('Invalid Credentials');
+  }
+
+  const post = await HomeFeed.findOne({ _id: postId });
+  if (!post) {
+    throw new CustomError.BadRequestError(`User post: ${postId} does not exist.`);
+  }
+
+  let likeToDislikeCount = post.likes.length - post.dislikes.length;
+
+  // Check if the userId is already a part of the likes array
+  const alreadyLiked = post.likes.includes(userId);
+  if (alreadyLiked) {
+    throw new CustomError.BadRequestError('You have already liked this post.');
+  } else {
+    likeToDislikeCount++;
+  }
+
+  // Add the post to the user's liked list
+  const userListOfStuff = await UserInfo.findOne({ user: userId });
+  userListOfStuff.likes.push(post);
+
+  const alreadyDisliked = post.dislikes.includes(userId);
+  if (alreadyDisliked) {
+    // Remove user from post.dislikes
+    const userIndex = post.dislikes.indexOf(userId);
+    post.dislikes.splice(userIndex, 1);
+
+    const userIndexForUserInfo = userListOfStuff.dislikes.indexOf(userId);
+    userListOfStuff.dislikes.splice(userIndexForUserInfo, 1);
+
+    likeToDislikeCount--;
+  }
+
+  // Save new userInfo list
+  await userListOfStuff.save();
+
+  // Add the user's like to the post
+  post.likes.push(user);
+  await post.save();
+
+  // Send the response with the updated likeToDislikeRatio
+  res.status(StatusCodes.OK).json({
+    msg: `You've successfully liked this user post: ${postId}`,
+    updatedLikeToDislikeCount: post.likeToDislikeRatio,
+  });
+};
+
 
 const dislikePost = async (req, res) => {
   const { userId, postId } = req.body;
@@ -176,10 +224,14 @@ const dislikePost = async (req, res) => {
     throw new CustomError.BadRequestError(`User post: ${postId} does not exist.`);
   }
 
+  var likeToDislikeCount = post.likes.length - post.dislikes.length;
+
   const alreadyDisliked = await post.dislikes.includes(userId);
   if (alreadyDisliked) {
     throw new CustomError.BadRequestError('You have already disliked this post.');
   }
+  else
+    likeToDislikeCount++;
 
   // add the post to the user's disliked list
   const userListOfStuff = await UserInfo.findOne({ user: userId });
@@ -194,6 +246,8 @@ const dislikePost = async (req, res) => {
     
     const userIndexForUserInfo = userListOfStuff.likes.indexOf(userId);
     userListOfStuff.likes.splice(userIndexForUserInfo, 1);
+
+    likeToDislikeCount--;
   }
   
   // Save new userInfo list
@@ -203,7 +257,14 @@ const dislikePost = async (req, res) => {
   post.dislikes.push(user);
   await post.save();
 
-  res.status(StatusCodes.OK).json({msg: `You've successfully disliked this user post: ${postId} ... hater`});
+  // keep track of curr count and adjust on the subsequent actions
+  // let likeToDislikeCount = post.likes.length - post.dislikes.length;
+  console.log(likeToDislikeCount);
+
+  res.status(StatusCodes.OK).json({
+    msg: `You've successfully disliked this user post: ${postId} ... hater`, 
+    updatedLikeToDislikeCount: post.likeToDislikeRatio,
+  });
 };
 
 const userInfo = async (req, res) => {
