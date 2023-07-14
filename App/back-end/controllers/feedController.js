@@ -9,11 +9,12 @@ const allPosts = async (req, res) => { //I can test if the user's info likes inc
   //so on the front end there can be a ternary exp of hasUserLiked and a the btn to like
   // and the false would be a filled in icon
     try {
-      const { userId } = req.body;
+      const { userId } = req.query;
       const { page } = req.query;
       const limit = 3;
 
       console.log(page);
+      console.log(userId);
   
       const totalCount = await HomeFeed.countDocuments({}); // Get total count of documents
       const totalPages = Math.ceil(totalCount / limit); // Calculate total number of pages
@@ -33,8 +34,9 @@ const allPosts = async (req, res) => { //I can test if the user's info likes inc
   
 
       const formattedPosts = posts.map((post) => {
-        // let likeToDislikeCount = post.likes.length - post.dislikes.length;
-        // if(likeToDislikeCount < 0) likeToDislikeCount = 0; can set to 0, but maybe we want to see the dislikes count
+        // should really compare it to the userInfoList of likes, or it may be better to do it this way 
+        const alreadyDisliked = post.dislikes.includes(userId);
+        const alreadyLiked = post.likes.includes(userId);
 
         const createdAt = moment(post.createdAt);
         const currentTimestamp = moment();
@@ -59,6 +61,8 @@ const allPosts = async (req, res) => { //I can test if the user's info likes inc
           ...post.toObject(),
           createdAt: formattedDate,
           likeToDislikeCount: post.likeToDislikeRatio,
+          hasDisliked: alreadyDisliked,
+          hasLiked: alreadyLiked
         };
       });
     
@@ -77,8 +81,6 @@ const allPosts = async (req, res) => { //I can test if the user's info likes inc
       });
     }
 };
-  
-// maybe pagination for a handful of posts, and for each handful check if the user has liked the post already
   
 const clearFeed = async (req, res) => {
     try {
@@ -162,14 +164,10 @@ const likePost = async (req, res) => {
     throw new CustomError.BadRequestError(`User post: ${postId} does not exist.`);
   }
 
-  let likeToDislikeCount = post.likes.length - post.dislikes.length;
-
   // Check if the userId is already a part of the likes array
   const alreadyLiked = post.likes.includes(userId);
   if (alreadyLiked) {
     throw new CustomError.BadRequestError('You have already liked this post.');
-  } else {
-    likeToDislikeCount++;
   }
 
   // Add the post to the user's liked list
@@ -184,8 +182,6 @@ const likePost = async (req, res) => {
 
     const userIndexForUserInfo = userListOfStuff.dislikes.indexOf(userId);
     userListOfStuff.dislikes.splice(userIndexForUserInfo, 1);
-
-    likeToDislikeCount--;
   }
 
   // Save new userInfo list
@@ -224,14 +220,10 @@ const dislikePost = async (req, res) => {
     throw new CustomError.BadRequestError(`User post: ${postId} does not exist.`);
   }
 
-  var likeToDislikeCount = post.likes.length - post.dislikes.length;
-
   const alreadyDisliked = await post.dislikes.includes(userId);
   if (alreadyDisliked) {
     throw new CustomError.BadRequestError('You have already disliked this post.');
   }
-  else
-    likeToDislikeCount++;
 
   // add the post to the user's disliked list
   const userListOfStuff = await UserInfo.findOne({ user: userId });
@@ -246,8 +238,6 @@ const dislikePost = async (req, res) => {
     
     const userIndexForUserInfo = userListOfStuff.likes.indexOf(userId);
     userListOfStuff.likes.splice(userIndexForUserInfo, 1);
-
-    likeToDislikeCount--;
   }
   
   // Save new userInfo list
@@ -256,10 +246,6 @@ const dislikePost = async (req, res) => {
   // Add the user's like to the post
   post.dislikes.push(user);
   await post.save();
-
-  // keep track of curr count and adjust on the subsequent actions
-  // let likeToDislikeCount = post.likes.length - post.dislikes.length;
-  console.log(likeToDislikeCount);
 
   res.status(StatusCodes.OK).json({
     msg: `You've successfully disliked this user post: ${postId} ... hater`, 
