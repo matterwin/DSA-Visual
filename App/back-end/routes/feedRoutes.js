@@ -6,6 +6,7 @@ const {
     clearFeed,
     userPost,
     likePost,
+    dislikePost,
     userInfo
 } = require('../controllers/feedController');
 
@@ -14,5 +15,6 @@ router.post('/homeFeed/userInfo', userInfo);
 router.delete('/homeFeed/clearFeed', clearFeed);
 router.post('/homeFeed/post', userPost);
 router.post('/homeFeed/like', likePost);
+router.post('/homeFeed/dislike', dislikePost);
 
 module.exports = router;

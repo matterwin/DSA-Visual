@@ -115,7 +115,7 @@ const UserPosts = () => {
                             <div className='top-contain'>
                                 <div className='left-top-div'>
                                     <p className='likes-text'>@{post.user.username} &nbsp;</p>
-                                    <p> • 6h</p>
+                                    <p> • {post.createdAt}</p>
                                 </div>
                                 <div className='right-top-div'>
                                     <CustomizedTooltip title="info">

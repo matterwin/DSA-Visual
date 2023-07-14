@@ -3,25 +3,7 @@ const HomeFeed = require('../models/HomeFeed');
 const UserInfo = require('../models/UserInfo');
 const { StatusCodes } = require('http-status-codes');
 const CustomError = require('../errors');
-
-// const allPosts = async (req, res) => {
-//     try {
-//         const { userId } = req.body;
-
-//         const posts = await HomeFeed.find({})
-//         .populate('user', '-_id -__v -password -email');
-
-//         const reversedPosts = posts.reverse();
-//         res.status(StatusCodes.OK).json({ count: reversedPosts.length, feed: reversedPosts });
-
-//     } catch (error) {
-//         // Handle any errors that occur during the operation
-//         console.error(error);
-//         return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
-//         error: 'Internal Server Error',
-//         });
-//     }
-// };
+const moment = require('moment-timezone');
 
 const allPosts = async (req, res) => {
     try {
@@ -47,13 +29,40 @@ const allPosts = async (req, res) => {
         .sort({ createdAt: -1 }) // Sort in descending order by createdAt
         .populate('user', '-_id -__v -password -email');
   
+
+      const formattedPosts = posts.map((post) => {
+        const createdAt = moment(post.createdAt);
+        const currentTimestamp = moment();
+        const duration = moment.duration(currentTimestamp.diff(createdAt));
+  
+        let formattedDate = '';
+        if (duration.asSeconds() < 60) {
+          formattedDate = `${Math.floor(duration.asSeconds())}s`;
+        } else if (duration.asMinutes() < 60) {
+          formattedDate = `${Math.floor(duration.asMinutes())}m`;
+        } else if (duration.asHours() < 24) {
+          formattedDate = `${Math.floor(duration.asHours())}hr`;
+        } else if (duration.asDays() < 30) {
+          formattedDate = `${Math.floor(duration.asDays())}d`;
+        } else if (duration.asMonths() < 12) {
+          formattedDate = `${Math.floor(duration.asMonths())}mon`;
+        } else {
+          formattedDate = `${Math.floor(duration.asYears())}yr`;
+        }
+  
+        return {
+          ...post.toObject(),
+          createdAt: formattedDate,
+        };
+      });
+    
       res.status(StatusCodes.OK).json({
-        count: posts.length,
+        count: formattedPosts.length,
         totalPages: totalPages,
         currentPage: page,
-        feed: posts,
+        feed: formattedPosts,
       });
-  
+
     } catch (error) {
       // Handle any errors that occur during the operation
       console.error(error);
@@ -61,7 +70,7 @@ const allPosts = async (req, res) => {
         error: 'Internal Server Error',
       });
     }
-  };
+};
   
 // maybe pagination for a handful of posts, and for each handful check if the user has liked the post already
   
@@ -99,27 +108,34 @@ const likePost = async (req, res) => {
     const { userId, postId } = req.body;
 
     if(!userId){
-        throw new CustomError.BadRequestError('Provide userId');
+      throw new CustomError.BadRequestError('Provide userId');
     }
 
     if(!postId){
-        throw new CustomError.BadRequestError('Provide postId');
+      throw new CustomError.BadRequestError('Provide postId');
     }
 
     const user = await User.findOne({ _id: userId }).select('-email -password');
     if (!user) {
-        throw new CustomError.UnauthenticatedError('Invalid Credentials');
+      throw new CustomError.UnauthenticatedError('Invalid Credentials');
     }
 
     const post = await HomeFeed.findOne({ _id: postId });
     if (!post) {
-        throw new CustomError.BadRequestError(`User post: ${postId} does not exist.`);
+      throw new CustomError.BadRequestError(`User post: ${postId} does not exist.`);
     }
 
     // See if the userId is already apart of the likes array
     const alreadyLiked = await post.likes.includes(userId);
     if (alreadyLiked) {
-        throw new CustomError.BadRequestError('You have already liked this post.');
+      throw new CustomError.BadRequestError('You have already liked this post.');
+    }
+
+    const alreadyDisliked = await post.dislikes.includes(userId);
+    if (alreadyDisliked) {
+      // Remove user from post.likes
+      const userIndex = post.dislikes.indexOf(userId);
+      post.dislikes.splice(userIndex, 1);
     }
 
     // add the post to the user's liked list
@@ -132,6 +148,52 @@ const likePost = async (req, res) => {
     await post.save();
 
     res.status(StatusCodes.OK).json({msg: `You've successfully liked this user post: ${postId}`});
+};
+
+const dislikePost = async (req, res) => {
+  const { userId, postId } = req.body;
+
+  if(!userId){
+      throw new CustomError.BadRequestError('Provide userId');
+  }
+
+  if(!postId){
+      throw new CustomError.BadRequestError('Provide postId');
+  }
+
+  const user = await User.findOne({ _id: userId }).select('-email -password');
+  if (!user) {
+    throw new CustomError.UnauthenticatedError('Invalid Credentials');
+  }
+
+  const post = await HomeFeed.findOne({ _id: postId });
+  if (!post) {
+    throw new CustomError.BadRequestError(`User post: ${postId} does not exist.`);
+  }
+
+  const alreadyDisliked = await post.dislikes.includes(userId);
+  if (alreadyDisliked) {
+    throw new CustomError.BadRequestError('You have already disliked this post.');
+  }
+
+  // See if the userId is already apart of the likes array
+  const alreadyLiked = await post.likes.includes(userId);
+  if (alreadyLiked) {
+    // Remove user from post.likes
+    const userIndex = post.likes.indexOf(userId);
+    post.likes.splice(userIndex, 1);
+  }
+
+  // add the post to the user's disliked list
+  const userListOfStuff = await UserInfo.findOne({ user: userId });
+  userListOfStuff.dislikes.push(post);
+  await userListOfStuff.save();
+
+  // Add the user's like to the post
+  post.dislikes.push(user);
+  await post.save();
+
+  res.status(StatusCodes.OK).json({msg: `You've successfully disliked this user post: ${postId} ... hater`});
 };
 
 const userInfo = async (req, res) => {
@@ -172,5 +234,6 @@ module.exports = {
     clearFeed,
     userPost,
     likePost,
+    dislikePost,
     userInfo
 }
