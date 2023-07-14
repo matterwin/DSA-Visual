@@ -131,16 +131,21 @@ const likePost = async (req, res) => {
       throw new CustomError.BadRequestError('You have already liked this post.');
     }
 
+    // add the post to the user's liked list
+    const userListOfStuff = await UserInfo.findOne({ user: userId });
+    userListOfStuff.likes.push(post);
+
     const alreadyDisliked = await post.dislikes.includes(userId);
     if (alreadyDisliked) {
       // Remove user from post.likes
       const userIndex = post.dislikes.indexOf(userId);
       post.dislikes.splice(userIndex, 1);
+
+      const userIndexForUserInfo = userListOfStuff.dislikes.indexOf(userId);
+      userListOfStuff.dislikes.splice(userIndexForUserInfo, 1);
     }
 
-    // add the post to the user's liked list
-    const userListOfStuff = await UserInfo.findOne({ user: userId });
-    userListOfStuff.likes.push(post);
+    // Save new userInfo list
     await userListOfStuff.save();
 
     // Add the user's like to the post
@@ -176,17 +181,22 @@ const dislikePost = async (req, res) => {
     throw new CustomError.BadRequestError('You have already disliked this post.');
   }
 
+  // add the post to the user's disliked list
+  const userListOfStuff = await UserInfo.findOne({ user: userId });
+  userListOfStuff.dislikes.push(post);
+
   // See if the userId is already apart of the likes array
   const alreadyLiked = await post.likes.includes(userId);
   if (alreadyLiked) {
     // Remove user from post.likes
     const userIndex = post.likes.indexOf(userId);
     post.likes.splice(userIndex, 1);
+    
+    const userIndexForUserInfo = userListOfStuff.likes.indexOf(userId);
+    userListOfStuff.likes.splice(userIndexForUserInfo, 1);
   }
-
-  // add the post to the user's disliked list
-  const userListOfStuff = await UserInfo.findOne({ user: userId });
-  userListOfStuff.dislikes.push(post);
+  
+  // Save new userInfo list
   await userListOfStuff.save();
 
   // Add the user's like to the post
