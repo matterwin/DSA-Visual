@@ -11,6 +11,7 @@ import ChatInfo from '../chatInfo';
 import { Divider } from '@mui/material';
 import PostBox from './postBox';
 import TabBox from './tabBox';
+import PostBoxModal from './postBoxModal';
 import UserPosts from './userPosts';
 
 import '../chat.css'
@@ -20,8 +21,13 @@ const chatInfo = {
     msg:'Your personal frontpage. Come here to view the most recent posts.'
 }
 
+const postDiv = () => {
+    return(<>test</>)
+}
+
 function HomePage() {
   const [showLiveChat, setShowLiveChat] = useState(false);
+  const [showPostBox, setShowBoxPost] = useState(false);
 
     useEffect(() => {
         const rememChat = readCookies('showChat');

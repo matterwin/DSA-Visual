@@ -42,11 +42,11 @@ const NavIn = () => {
                 </div>
               </CustomizedTooltip>
               <CustomDSANavBtn />
-              <CustomizedTooltip title={"Notification"}>
+              {/* <CustomizedTooltip title={"Notification"}>
                 <div className="nav-link-div-icons">
                   <NotificationsOutlinedIcon sx={{stroke: "#fff", strokeWidth: 0.7, padding: '0', margin:'0', cursor: 'pointer', color:'#fff', fontSize:'25px' }}/>
                 </div>
-              </CustomizedTooltip>             
+              </CustomizedTooltip>              */}
               <div className="nav-link-div-pp">
                 <CustomMenu />
               </div>

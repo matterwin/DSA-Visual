@@ -106,6 +106,16 @@
     stroke: red;
 }
 
+.thumbs-up-icon-filled-in{
+    stroke: #4d3939;
+    stroke-width: 0.4;
+    color:#4d3939;
+    font-size:22px;
+    font-style: bold;
+    color: red;
+    stroke: red;
+}
+
 /* thumbs-down */
 .new-icon-word-div-thumbs-down{
     padding: 5px;
@@ -128,6 +138,16 @@
 }
 
 .new-icon-word-div-thumbs-down:hover .thumbs-down-icon {
+    color: blue;
+    stroke: blue;
+}
+
+.thumbs-down-icon-filled{
+    stroke: #4d3939;
+    stroke-width: 0.4;
+    color:#4d3939;
+    font-size:22px;
+    font-style: bold;
     color: blue;
     stroke: blue;
 }

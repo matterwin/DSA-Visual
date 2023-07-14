@@ -4,12 +4,22 @@
     padding: 10px;
 }
 
+.box-contain-cols{
+    display: flex;
+    box-sizing: border-box;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+}
+
 .box-div{
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
     gap: 5px;
+    width: 100%;
 }
 
 .chat-cust-pfp-div {
@@ -41,6 +51,72 @@
     border-radius: 5px;
     color: black;
     background-color: transparent;
+    background-color:#6b515113;
     font-family: 'Inter';
     font-size: 15px;
+}
+
+.send-btn-invalid{
+    width: 100%;
+    box-sizing: border-box;
+    text-decoration: none;
+    border: 2px solid #ccc;
+    outline: none;
+    padding: 10px;
+    border-radius: 5px;
+    color: rgb(0, 0, 0);
+    background-color: #ccc;
+    box-shadow: rgba(0, 0, 0, 0.041) 5px 0px 5px 5px;
+    font-family: 'Inter';
+    font-size: 15px;
+    cursor: not-allowed;
+}
+
+.send-btn-valid{
+    width: 100%;
+    box-sizing: border-box;
+    text-decoration: none;
+    border: 2px solid #ccc;
+    outline: none;
+    padding: 10px;
+    border-radius: 5px;
+    color: rgb(0, 0, 0);
+    background-color: #a9c9a3;
+    box-shadow: rgba(0, 0, 0, 0.041) 5px 0px 5px 5px;
+    font-family: 'Inter';
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.send-btn-valid:hover{
+    background-color: #90ad8b;
+}
+
+.exit-btn-div{
+    padding: 0px;
+    padding-left: 3px;
+    padding-right: 3px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.exit-btn-div:hover{
+    background-color: #a5a5a56b;
+    background-color: rgba(255, 0, 0, 0.11);;
+}
+
+.send-it{
+    font-family: 'Inter';
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.exit-icon{
+    stroke-width: 0.4;
+    font-style: bold;
+    color: red;
+    stroke: red;
+    margin: 0;
+    padding: 0;
+    margin-top: 3px;
 }

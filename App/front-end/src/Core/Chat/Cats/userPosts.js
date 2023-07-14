@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import CustomizedTooltip from '../../Custom/customTooltip'
 import ThumbUpOutlinedIcon from '@mui/icons-material/ThumbUpOutlined';
+import ThumbUpIcon from '@mui/icons-material/ThumbUp';
+import ThumbDownIcon from '@mui/icons-material/ThumbDown';
 import ThumbDownOffAltOutlinedIcon from '@mui/icons-material/ThumbDownOffAltOutlined';
 import MoreHorizOutlinedIcon from '@mui/icons-material/MoreHorizOutlined';
 import MapsUgcOutlinedIcon from '@mui/icons-material/MapsUgcOutlined';
@@ -31,11 +33,13 @@ const UserPosts = () => {
     const [isBottom, setIsBottom] = useState(false);
     const [subtractTotalPages, setSubtractTotalPages] = useState(1);
     const [loadingMorePages, setLoadingMorePages] = useState(false);
+    const [endOfList, setEndOfList] = useState(false);
 
     const fetchFeed = async () => {
         if(totalPages > 0){
             try {
-                const url = `http://localhost:5000/feed/homeFeed/all?page=${page}`;
+                const userId = readCookies('auth-token');
+                const url = `http://localhost:5000/feed/homeFeed/all?page=${page}&userId=${userId}`;
             
                 const response = await fetch(url);
             
@@ -55,6 +59,11 @@ const UserPosts = () => {
             } catch (err) {
                 console.log(err);
             }
+        }
+        else{
+            setLoading(false);
+            setLoadingMorePages(false);
+            setEndOfList(true);
         }
     };
       
@@ -164,62 +173,66 @@ const UserPosts = () => {
     };
 
     const getFeed = () => {
-        return feed.map((post) => (
-            <div className='user-posts-container' key={post._id}>
-                <div className='div-for-padding'>
-                    <div className='split-side-container'>
-                        <div className='left-contain-post'>
-                            <div className='top-level-div'>
-                                <CustomizedTooltip title={post.user.username}>
-                                    <div className="chat-cust-pfp-div">
-                                        <img className="chat-cust-profile-pic" src={post.user.profilePic} alt="ProfilePicture" />    
-                                    </div>
-                                </CustomizedTooltip>
-                                <div className='like-counter-container'>
-                                    <div className='new-icon-word-div-thumbs-up'>
-                                        <ThumbUpOutlinedIcon className='thumbs-up-icon' onClick={() => likePost(post._id)}/>
-                                    </div>
-                                    <p className='likes-text'>{post.likeToDislikeCount}</p>
-                                    <div className='new-icon-word-div-thumbs-down'>
-                                        <ThumbDownOffAltOutlinedIcon className='thumbs-down-icon' onClick={() => dislikePost(post._id)}/>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className='top-and-text-div'>
-                            <div className='top-contain'>
-                                <div className='left-top-div'>
-                                    <p className='likes-text'>@{post.user.username} &nbsp;</p>
-                                    <p> • {post.createdAt}</p>
-                                </div>
-                                <div className='right-top-div'>
-                                    <CustomizedTooltip title="info">
-                                        <MoreHorizOutlinedIcon sx={{stroke: "#4d3939", strokeWidth: 0.4, color:'#4d3939', fontSize:'22px', fontStyle:'bold'}}/>
+        return feed.map((post) => {
+            return (
+                <div className='user-posts-container' key={post._id}>
+                    <div className='div-for-padding'>
+                        <div className='split-side-container'>
+                            <div className='left-contain-post'>
+                                <div className='top-level-div'>
+                                    <CustomizedTooltip title={post.user.username}>
+                                        <div className="chat-cust-pfp-div">
+                                            <img className="chat-cust-profile-pic" src={post.user.profilePic} alt="ProfilePicture" />    
+                                        </div>
                                     </CustomizedTooltip>
+                                    <div className='like-counter-container'>
+                                        <div className='new-icon-word-div-thumbs-up'>
+                                            { !post.hasLiked && <ThumbUpOutlinedIcon className='thumbs-up-icon' onClick={() => likePost(post._id)}/>}
+                                            { post.hasLiked && <ThumbUpIcon className='thumbs-up-icon-filled-in' />}
+                                        </div>
+                                        <p className='likes-text' style={{ color: post.hasLiked ? 'red' : post.hasDisliked ? 'blue' : 'inherit' }}>{post.likeToDislikeCount}</p>
+                                        <div className='new-icon-word-div-thumbs-down'>
+                                            { !post.hasDisliked && <ThumbDownOffAltOutlinedIcon className='thumbs-down-icon' onClick={() => dislikePost(post._id)}/> }
+                                            { post.hasDisliked && <ThumbDownIcon className='thumbs-down-icon-filled' /> }
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <div>
-                                <p className='title-text'>{post.title}</p>
-                                <p className='post-text'>{post.message}</p>
+                            <div className='top-and-text-div'>
+                                <div className='top-contain'>
+                                    <div className='left-top-div'>
+                                        <p className='likes-text'>@{post.user.username} &nbsp;</p>
+                                        <p> • {post.createdAt}</p>
+                                    </div>
+                                    <div className='right-top-div'>
+                                        <CustomizedTooltip title="info">
+                                            <MoreHorizOutlinedIcon sx={{stroke: "#4d3939", strokeWidth: 0.4, color:'#4d3939', fontSize:'22px', fontStyle:'bold'}}/>
+                                        </CustomizedTooltip>
+                                    </div>
+                                </div>
+                                <div>
+                                    <p className='title-text'>{post.title}</p>
+                                    <p className='post-text'>{post.message}</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <Divider sx={{ backgroundColor: 'silver', marginTop:'10px', marginBottom:'10px', width:'100%' }} />
-                    <div className='bottom-post-div'>
-                        <div className='center-row-align'>
-                            <div className='new-icon-word-div-replies'>
-                                <MapsUgcOutlinedIcon className='replies-icon' />
-                                <p className='replies-text' style={{ fontWeight:'500' }}>{post.replies.length} Replies</p>
+                        <Divider sx={{ backgroundColor: 'silver', marginTop:'10px', marginBottom:'10px', width:'100%' }} />
+                        <div className='bottom-post-div'>
+                            <div className='center-row-align'>
+                                <div className='new-icon-word-div-replies'>
+                                    <MapsUgcOutlinedIcon className='replies-icon' />
+                                    <p className='replies-text' style={{ fontWeight:'500' }}>{post.replies.length} Replies</p>
+                                </div>
                             </div>
-                        </div>
-                        <div className='new-icon-word-div-repost'>
-                            <SyncOutlinedIcon className='repost-icon' />
-                            <p className='repost-text' style={{ fontWeight:'500' }}>Repost</p>
+                            <div className='new-icon-word-div-repost'>
+                                <SyncOutlinedIcon className='repost-icon' />
+                                <p className='repost-text' style={{ fontWeight:'500' }}>Repost</p>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        ));
+            );
+        });
     };
 
     return (
@@ -227,6 +240,7 @@ const UserPosts = () => {
             {loading && <Loading />}
             {!loading && getFeed()}
             {(loadingMorePages && <Loading />)} 
+            {endOfList && <p>no more posts</p>}
         </div>
     )
 }
