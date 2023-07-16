@@ -10,6 +10,11 @@
     /* box-shadow: rgb(0, 0, 0, 0.2) 0px 4px 20px 1px; */
 }
 
+.inside-nav{
+    margin-left: 400px;
+    margin-right: 400px;
+}
+
 .left-side{
     margin-right: auto;
     display: flex;
@@ -212,12 +217,5 @@
     text-decoration: none;
     /* font-weight: 600; */
     font-size: 30px;
-}
-
-.inside-nav{
-    margin-left: 211px;
-    margin-right: 211px;
-    margin-left: 400px;
-    margin-right: 400px;
 }
 
