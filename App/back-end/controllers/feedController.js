@@ -92,28 +92,35 @@ const clearFeed = async (req, res) => {
 };
 
 const userPost = async (req, res) => {
-    const { userId, title, message } = req.body;
+  const { userId, title, message } = req.body;
 
-    if(!userId){
-        throw new CustomError.BadRequestError('Provide userId');
-    }
+  if (!userId) {
+    throw new CustomError.BadRequestError('Provide userId');
+  }
 
-    if(!message){
-        throw new CustomError.BadRequestError('Provide message');
-    }
+  if (!message) {
+    throw new CustomError.BadRequestError('Provide message');
+  }
 
-    const user = await User.findOne({ _id: userId }).select('-email -password');
-    if (!user) {
-        throw new CustomError.UnauthenticatedError('Invalid Credentials');
-    }
+  const user = await User.findOne({ _id: userId }).select('-email -password');
+  if (!user) {
+    throw new CustomError.UnauthenticatedError('Invalid Credentials');
+  }
 
-    const post = await HomeFeed.create({ user, title, message });
+  const post = await HomeFeed.create({ user, title, message });
 
-    // Add the post to the user's liked list
-    const userListOfStuff = await UserInfo.findOne({ user: userId });
-    userListOfStuff.posts.push(post);
+  // Use the postId from the created post object
+  const postId = post._id;
 
-    res.status(StatusCodes.CREATED).json({ post });
+  // Add the post to the user's liked list
+  const userListOfStuff = await UserInfo.findOne({ user: userId });
+  userListOfStuff.posts.push(post);
+
+  // Save the userListOfStuff after adding the new post
+  await userListOfStuff.save();
+
+  // Send the postId in the response
+  res.status(StatusCodes.CREATED).json({ postId });
 };
 
 const replyPost = async (req, res) => {

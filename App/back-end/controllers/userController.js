@@ -1,5 +1,4 @@
 const User = require('../models/User');
-const HomeFeed = require('../models/HomeFeed');
 const UserInfo = require('../models/UserInfo');
 const { StatusCodes } = require('http-status-codes');
 const CustomError = require('../errors');
