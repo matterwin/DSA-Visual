@@ -67,11 +67,11 @@ const UserPosts = () => {
         }
     };
       
-      useEffect(() => {
+    useEffect(() => {
         fetchFeed(); // Initial fetch
-      }, []);
+    }, []);
 
-      useEffect(() => {
+    useEffect(() => {
         if (isBottom && !loading) {
             setLoadingMorePages(true);
             fetchFeed();
