@@ -98,12 +98,12 @@
 }
 
 .new-icon-word-div-thumbs-up:hover{
-    background-color: rgba(255, 0, 0, 0.11);
+    background-color: #a5a5a53f;
 }
 
 .new-icon-word-div-thumbs-up:hover .thumbs-up-icon {
-    color: red;
-    stroke: red;
+    color: #a9c9a3;
+    stroke: #a9c9a3;
 }
 
 .thumbs-up-icon-filled-in{
@@ -112,8 +112,8 @@
     color:#4d3939;
     font-size:22px;
     font-style: bold;
-    color: red;
-    stroke: red;
+    color: #a9c9a3;
+    stroke: #a9c9a3;
 }
 
 /* thumbs-down */
@@ -134,12 +134,12 @@
 }
 
 .new-icon-word-div-thumbs-down:hover{
-    background-color: rgba(0, 0, 255, 0.11);
+    background-color: #a5a5a51f;
 }
 
 .new-icon-word-div-thumbs-down:hover .thumbs-down-icon {
-    color: blue;
-    stroke: blue;
+    color: #7193ff;
+    stroke: #7193ff;
 }
 
 .thumbs-down-icon-filled{
@@ -148,8 +148,8 @@
     color:#4d3939;
     font-size:22px;
     font-style: bold;
-    color: blue;
-    stroke: blue;
+    color: #7193ff;
+    stroke: #7193ff;
 }
 
 /* replies */
@@ -176,8 +176,8 @@
 }
 
 .new-icon-word-div-replies:hover .replies-icon, .new-icon-word-div-replies:hover .replies-text{
-    color: blue;
-    stroke: blue;
+    color: #7193ff;
+    stroke: #7193ff;
 }
 
 /* repost */

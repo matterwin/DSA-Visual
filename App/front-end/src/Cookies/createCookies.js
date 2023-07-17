@@ -18,3 +18,7 @@ export function createChatCookie(cookie) {
     cookies.set('showChat', cookie, { path: '/', secure: true});
 }
 
+export function createColorCookie(cookie) {
+    cookies.set('color', cookie, { path: '/', secure: true});
+}
+

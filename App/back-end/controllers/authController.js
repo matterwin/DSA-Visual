@@ -56,7 +56,7 @@ const generateRandomColor = () => {
       isValidColor = !isExcludedColor;
     }
   
-    return color;
+    return color.substring(1,color.length);
 };
 
 const register = async (req,res) => {

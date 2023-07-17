@@ -200,7 +200,7 @@ const UserPosts = () => {
                                             { !post.hasLiked && <ThumbUpOutlinedIcon className='thumbs-up-icon' onClick={() => likePost(post._id)}/>}
                                             { post.hasLiked && <ThumbUpIcon className='thumbs-up-icon-filled-in' />}
                                         </div>
-                                        <p className='likes-text' style={{ color: post.hasLiked ? 'red' : post.hasDisliked ? 'blue' : 'inherit' }}>{post.likeToDislikeCount}</p>
+                                        <p className='likes-text' style={{ color: post.hasLiked ? '#a9c9a3' : post.hasDisliked ? '#7193ff' : 'inherit' }}>{post.likeToDislikeCount}</p>
                                         <div className='new-icon-word-div-thumbs-down'>
                                             { !post.hasDisliked && <ThumbDownOffAltOutlinedIcon className='thumbs-down-icon' onClick={() => dislikePost(post._id)}/> }
                                             { post.hasDisliked && <ThumbDownIcon className='thumbs-down-icon-filled' /> }

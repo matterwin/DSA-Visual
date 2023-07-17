@@ -17,18 +17,31 @@ const UserPanel = () => {
     const pp = readCookies('pp');
     const username = readCookies('name');
     const color = readCookies('color');
+    const auth = readCookies('auth-token');
 
     return (
         <div>
+            {auth}
             <div className='user-panel-container'>
-                <div className='color-bg'></div>      
+                <div className='color-bg' style={{ backgroundColor:`#${color}`}} />      
                 <div className='info-divs'>
                     <div className='info-centering'>
                         <a href={'/' + username} className="user-panel-pfp-div">
                             <img className="user-panel-profile-pic" src={pp} alt="ProfilePicture" />                         
                         </a>
                         <p className='user-panel-username'>{username}</p>
-                        <p className='user-panel-follow'>0 Following | 0 Followers</p>
+                        <div className='user-stats-div'>
+                            <div className='col-stats'>
+                                <p className='user-panel-follow'>0</p>
+                                <p className='user-panel-follow'>Posts</p>
+                            </div> 
+                            <Divider sx={{ backgroundColor: '#ccc', width:'2px', height:'40px' }}/>
+                            <div className='col-stats'>
+                                <p className='user-panel-follow'>0</p>
+                                <p className='user-panel-follow'>Likes</p>
+                            </div>
+                        </div>
+                        
                     </div> 
                     <Divider sx={{ backgroundColor: '#ccc', width:'100%', marginTop:'10px', marginBottom:'10px' }} />
                     <a href={'/' + username} className='row-nav-div'>

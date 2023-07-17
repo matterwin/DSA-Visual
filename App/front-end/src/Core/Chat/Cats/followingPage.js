@@ -11,16 +11,24 @@ import ChatInfo from '../chatInfo';
 import { Divider } from '@mui/material';
 import PostBox from './postBox';
 import TabBox from './tabBox';
+import PostBoxModal from './postBoxModal';
+import UserPanel from '../userPanel';
+import UserPosts from './userPosts';
 
 import '../chat.css'
 
 const chatInfo = {
-    title:'Following',
-    msg:'Your following page. Check in on what your following is saying.'
+    title:'Home',
+    msg:'Your personal frontpage. Come here to view the most recent posts.'
+}
+
+const postDiv = () => {
+    return(<>test</>)
 }
 
 function FollowingPage() {
-  const [showLiveChat, setShowLiveChat] = useState();
+  const [showLiveChat, setShowLiveChat] = useState(false);
+  const [showPostBox, setShowBoxPost] = useState(false);
 
     useEffect(() => {
         const rememChat = readCookies('showChat');
@@ -64,15 +72,20 @@ function FollowingPage() {
         </div>
         <div className="chat-container">
           <div className="left-side-chat">
-              <ChatNav />
+                <UserPanel />
+                <ChatNav /> 
           </div>
           <div className="center-side-chat">
+            <div className='teste'>
                 <PostBox />
                 <Divider sx={{ backgroundColor: 'silver', marginTop:'10px', marginBottom:'10px', width:'100%' }} />
                 <TabBox title1="Home" title2="Following" title1Link="/chat" title2Link="/chat/following" active2={true}/>
-                <div className='main-page-div'>
+                {/* <div className='main-page-div'>
                     Hi
-                </div>
+                </div> */}
+                <UserPosts />
+            </div>
+            
           </div>
           <div className="right-side-chat">
             <ChatInfo title={chatInfo.title} msg={chatInfo.msg} />

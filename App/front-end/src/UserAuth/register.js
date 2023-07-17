@@ -9,7 +9,7 @@ import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import ErrorOutlinedIcon from '@mui/icons-material/ErrorOutlined';
 import CheckIcon from '@mui/icons-material/Check';
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
-import { createAuthCookie, createNameCookie, createProfilePicCookie } from '../Cookies/createCookies';
+import { createAuthCookie, createNameCookie, createProfilePicCookie, createColorCookie } from '../Cookies/createCookies';
 import CustomizedTooltip from '../Core/Custom/customTooltip';
 import "./userauth.css";
 
@@ -255,6 +255,7 @@ function Register() {
                 createAuthCookie(data.cookie);
                 createNameCookie(data.name);
                 createProfilePicCookie(data.profilePic);
+                createColorCookie(data.color);
                 setLoading(false);
 
                 window.location.href = '/';

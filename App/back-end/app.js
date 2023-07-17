@@ -27,6 +27,7 @@ const authRouter = require('./routes/authRoutes');
 const livechatRouter = require('./routes/livechatRoutes')
 const feedRouter = require('./routes/feedRoutes');
 const uploadRouter = require('./routes/uploadRoutes');
+const userRouter = require('./routes/userRoutes');
 
 // middleware
 const notFoundMiddleware = require('./middleware/not-found');
@@ -45,6 +46,7 @@ app.use('/auth', authRouter);
 app.use('/livechat', livechatRouter);
 app.use('/upload', uploadRouter);
 app.use('/feed', feedRouter);
+app.use('/user', userRouter);
 
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);

@@ -109,6 +109,10 @@ const userPost = async (req, res) => {
 
     const post = await HomeFeed.create({ user, title, message });
 
+    // Add the post to the user's liked list
+    const userListOfStuff = await UserInfo.findOne({ user: userId });
+    userListOfStuff.posts.push(post);
+
     res.status(StatusCodes.CREATED).json({ post });
 };
 
@@ -253,44 +257,10 @@ const dislikePost = async (req, res) => {
   });
 };
 
-const userInfo = async (req, res) => {
-    const { userId } = req.body;
-  
-    if (!userId) {
-      throw new CustomError.BadRequestError('Provide userId');
-    }
-  
-    const user = await User.findOne({ _id: userId });
-    if (!user) {
-      throw new CustomError.UnauthenticatedError('Invalid Credentials');
-    }
-  
-    const userInfo = await UserInfo.findOne({ user })
-      .populate('user', '-_id -__v -password -email')
-      .populate('posts')
-      .populate('likes')
-      .populate('dislikes')
-      .populate('replies');
-  
-    const { posts, likes, dislikes, replies } = userInfo;
-  
-    const numberOf = {
-      posts: posts.length,
-      likes: likes.length,
-      dislikes: dislikes.length,
-      replies: replies.length,
-    };
-  
-    res.status(StatusCodes.OK).json({
-      userInfo: { ...userInfo.toObject(), numberOf },
-    });
-};
-  
 module.exports = {
     allPosts,
     clearFeed,
     userPost,
     likePost,
     dislikePost,
-    userInfo
 }
