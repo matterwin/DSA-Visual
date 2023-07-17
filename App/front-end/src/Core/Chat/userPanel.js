@@ -1,27 +1,64 @@
-import React from 'react'
-import './userPanel.css'
+import React, { useState, useEffect } from 'react'
 import readCookies from '../../Cookies/readCookies'
 import CottageOutlinedIcon from '@mui/icons-material/CottageOutlined';
-import FollowTheSignsOutlinedIcon from '@mui/icons-material/FollowTheSignsOutlined';
-import Person2OutlinedIcon from '@mui/icons-material/Person2Outlined';
-import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
-import NotificationsOutlinedIcon from '@mui/icons-material/NotificationsOutlined';
-import MailOutlinedIcon from '@mui/icons-material/MailOutlined';
-import Diversity3OutlinedIcon from '@mui/icons-material/Diversity3Outlined';
-import WhatshotOutlinedIcon from '@mui/icons-material/WhatshotOutlined';
-import EmojiObjectsOutlinedIcon from '@mui/icons-material/EmojiObjectsOutlined';
 import { Divider } from '@mui/material';
+import CircularProgress from '@mui/material/CircularProgress';
+import Box from '@mui/material/Box';
+
+import './userPanel.css'
+
+const Loading = () => {
+    return (
+      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+        <Box sx={{ display: 'flex' }}>
+          <CircularProgress style={{ color: '#a9c9a3' }} />
+        </Box>
+      </div>
+    );
+}
 
 const UserPanel = () => {
-
+    const [loading, setLoading] = useState(true);
+    const [numberOf, setNumberOf] = useState();
     const pp = readCookies('pp');
     const username = readCookies('name');
     const color = readCookies('color');
     const auth = readCookies('auth-token');
 
+    const fetchInfo = async () => {
+        try {
+            const userId = readCookies('auth-token');
+            const url = `http://localhost:5000/user/numberOf`;
+        
+            const response = await fetch(url, {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ userId }),
+            });
+        
+            if (response.status !== 200) {
+                throw new Error("Info went wrong");
+            }
+        
+            const data = await response.json();
+        
+
+            console.log(data.userInfo.numberOf);
+            setNumberOf(data.userInfo.numberOf);
+            setLoading(false);
+        } catch (err) {
+            console.log(err);
+        }
+    }
+
+    useEffect(() => {
+        fetchInfo(); // Initial fetch
+    }, []);
+
     return (
         <div>
-            {auth}
             <div className='user-panel-container'>
                 <div className='color-bg' style={{ backgroundColor:`#${color}`}} />      
                 <div className='info-divs'>
@@ -31,15 +68,20 @@ const UserPanel = () => {
                         </a>
                         <p className='user-panel-username'>{username}</p>
                         <div className='user-stats-div'>
-                            <div className='col-stats'>
-                                <p className='user-panel-follow'>0</p>
-                                <p className='user-panel-follow'>Posts</p>
-                            </div> 
-                            <Divider sx={{ backgroundColor: '#ccc', width:'2px', height:'40px' }}/>
-                            <div className='col-stats'>
-                                <p className='user-panel-follow'>0</p>
-                                <p className='user-panel-follow'>Likes</p>
-                            </div>
+                            {loading && <Loading />}
+                            {!loading && 
+                            <>
+                                <div className='col-stats'>
+                                    <p className='user-panel-follow'>{numberOf.posts}</p>
+                                    <p className='user-panel-follow-p'>Posts</p>
+                                </div> 
+                                <Divider sx={{ backgroundColor: '#ccc', width:'2px', height:'40px' }}/>
+                                <div className='col-stats'>
+                                    <p className='user-panel-follow'>{numberOf.likes}</p>
+                                    <p className='user-panel-follow-p'>Likes</p>
+                                </div>
+                            </>
+                            }                          
                         </div>
                         
                     </div> 

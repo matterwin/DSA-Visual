@@ -91,6 +91,13 @@
     font-weight: 400;
 }
 
+.user-panel-follow-p{
+    color: #ffffffa1;
+    font-family: 'Inter';
+    font-size: 15px;
+    font-weight: 400;
+}
+
 .user-panel-pfp-div:hover + .user-panel-username {
     text-decoration: underline;
     text-decoration-color: #a9c9a3;

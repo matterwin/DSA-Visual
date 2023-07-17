@@ -52,10 +52,10 @@ function ChatNav() {
                         <CottageOutlinedIcon  sx={{stroke: "#fff", strokeWidth: 0.4, color:'#efeff1', fontSize:'22px', fontStyle:'bold'}}/>
                         <p className='p-in-navs'>Home</p>
                     </a>
-                    <a href='/chat/following' className='row-nav-div'>
+                    {/* <a href='/chat/following' className='row-nav-div'>
                         <FollowTheSignsOutlinedIcon  sx={{stroke: "#fff", strokeWidth: 0.4, color:'#efeff1', fontSize:'22px', fontStyle:'bold'}}/>
                         <p className='p-in-navs'>Following</p>
-                    </a>
+                    </a> */}
                     <Divider sx={{ backgroundColor: '#ccc', width:'100%', marginTop:'10px', marginBottom:'10px' }} />
                     <p className='title-chat'>Communities</p>
                     <div className='row-nav-div'>
