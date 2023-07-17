@@ -51,7 +51,6 @@ const NavIn = () => {
                 <CustomMenu />
               </div>
             </div>
-
           </div>
         </div>
       </div>
