@@ -125,7 +125,12 @@ const UserPosts = () => {
             setFeed((prevFeed) =>
                 prevFeed.map((post) => {
                     if (post._id === specificPostId) {
-                        return { ...post, likeToDislikeCount: data.updatedLikeToDislikeCount };
+                        return { 
+                            ...post, 
+                            likeToDislikeCount: data.updatedLikeToDislikeCount,
+                            hasLiked: true,
+                            hasDisliked: false  
+                        };
                     }
                     return post;
                 })
@@ -161,7 +166,12 @@ const UserPosts = () => {
             setFeed((prevFeed) =>
                 prevFeed.map((post) => {
                     if (post._id === specificPostId) {
-                        return { ...post, likeToDislikeCount: data.updatedLikeToDislikeCount };
+                        return { 
+                            ...post, 
+                            likeToDislikeCount: data.updatedLikeToDislikeCount, 
+                            hasDisliked: true,
+                            hasLiked: false
+                        };
                     }
                     return post;
                 })

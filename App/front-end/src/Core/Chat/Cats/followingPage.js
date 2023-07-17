@@ -69,7 +69,7 @@ function FollowingPage() {
           <div className="center-side-chat">
                 <PostBox />
                 <Divider sx={{ backgroundColor: 'silver', marginTop:'10px', marginBottom:'10px', width:'100%' }} />
-                <TabBox title1="Following" title1Link="/chat/following" active1={true}/>
+                <TabBox title1="Home" title2="Following" title1Link="/chat" title2Link="/chat/following" active2={true}/>
                 <div className='main-page-div'>
                     Hi
                 </div>

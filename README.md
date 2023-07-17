@@ -10,3 +10,6 @@ Theta notation represents the average-case or tight bound of an algorithm's perf
 
 // make visuals hard-coded, make notes dynamic, and just get the number of sections, subsections, desc's, whatever
 //          returned from json file, and just return that many components to the main home page or whatever
+
+
+// create a init loading screen to store the user info first, so check if there is an auth cookie, and then dynamically call for the user info if that cookie exists

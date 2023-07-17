@@ -1,6 +1,15 @@
 .box-contain{
     background-color: #fff;
+    border: transparent 2px solid;
     border-radius: 5px;
+    padding: 10px;
+}
+
+.box-contain-active{
+    background-color: #fff;
+    border-radius: 5px;
+    border: #a9c9a3 2px solid;
+    box-shadow: rgba(0, 0, 0, .15) 0px 0px 10px 10px;
     padding: 10px;
 }
 

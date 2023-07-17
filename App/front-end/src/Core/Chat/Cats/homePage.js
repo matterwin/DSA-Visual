@@ -12,6 +12,7 @@ import { Divider } from '@mui/material';
 import PostBox from './postBox';
 import TabBox from './tabBox';
 import PostBoxModal from './postBoxModal';
+import UserPanel from '../userPanel';
 import UserPosts from './userPosts';
 
 import '../chat.css'
@@ -71,7 +72,8 @@ function HomePage() {
         </div>
         <div className="chat-container">
           <div className="left-side-chat">
-              <ChatNav />
+                <UserPanel />
+                <ChatNav /> 
           </div>
           <div className="center-side-chat">
             <div className='teste'>

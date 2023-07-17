@@ -75,33 +75,6 @@ function ChatNav() {
                         <EmojiObjectsOutlinedIcon sx={{stroke: "#fff", strokeWidth: 0.4, color:highlight, fontSize:'22px', fontStyle:'bold'}}/>
                         <p className='p-in-navs'>resources</p>
                     </div>
-                    <Divider sx={{ backgroundColor: '#ccc', width:'100%', marginTop:'10px', marginBottom:'10px' }} />
-                    {/* <div className='title-in-navs'> */}
-                        <p className='title-chat'>Other</p>
-                    {/* </div> */}
-                    <a href={'/' + username} className='row-nav-div'>
-                        <div className="cust-pfp-div-chat">
-                            <img className="cust-profile-pic-chat" src={pp} alt="ProfilePicture" />                         
-                        </div>
-                        <p className='p-in-navs'>Profile</p>
-                    </a>
-                    <div className='row-nav-div'>
-                        <CottageOutlinedIcon  sx={{stroke: "#fff", strokeWidth: 0.4, color:'#efeff1', fontSize:'22px', fontStyle:'bold'}}/>
-                        <p className='p-in-navs'>Your Posts</p>
-                    </div>
-                    <div className='row-nav-div'>
-                        <MailOutlinedIcon  sx={{stroke: "#fff", strokeWidth: 0.4, color:'#efeff1', fontSize:'22px', fontStyle:'bold'}}/>
-                        <p className='p-in-navs'>Messages</p>
-                    </div>
-                    <div className='row-nav-div'>
-                        <NotificationsOutlinedIcon  sx={{stroke: "#fff", strokeWidth: 0.4, color:'#efeff1', fontSize:'22px', fontStyle:'bold'}}/>
-                        <p className='p-in-navs'>Notifications</p>
-                    </div>
-                    <Divider sx={{ backgroundColor: '#ccc', width:'100%', marginTop:'10px', marginBottom:'10px' }} />
-                    <div className='row-nav-div-post'>
-                        {/* <AddOutlinedIcon  sx={{stroke: "#fff", strokeWidth: 0.4, color:'#efeff1', fontSize:'22px', fontStyle:'bold'}}/> */}
-                        <p className='p-in-navs' style={{ fontWeight:'600' }}>Create Post</p>
-                    </div>
                 </div>
             </div>
         // </div>

@@ -53,7 +53,7 @@ const PostBox = () => {
     }
 
     return (
-        <div className='box-contain'>
+        <div className={`box-contain ${showPostBox ? 'box-contain-active' : ''}`}>
             <div className='box-contain-cols'>
                 <div className='box-div'>
                     <CustomizedTooltip title={username}>

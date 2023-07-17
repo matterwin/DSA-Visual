@@ -86,7 +86,7 @@ const register = async (req,res) => {
 
     await UserInfo.create({ user });
 
-    res.status(StatusCodes.CREATED).json({ cookie, name, profilePic });
+    res.status(StatusCodes.CREATED).json({ cookie, name, profilePic, color });
 }
 
 const login = async (req,res) => {
@@ -106,10 +106,11 @@ const login = async (req,res) => {
         throw new CustomError.UnauthenticatedError('Invalid Credentials');
     }
     
+    const color = user.color;
     const cookie = user._id;
     const name = user.username;
     const profilePic = user.profilePic;
-    res.status(StatusCodes.OK).json({ cookie, name, profilePic });
+    res.status(StatusCodes.OK).json({ cookie, name, profilePic, color });
 }
 
 const deleteAllUserAccounts = async (req, res) => {
