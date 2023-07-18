@@ -45,28 +45,30 @@ function HomePage() {
 
   return (
       <div>
-        <div className='sub-nav-container-chat' style={{zIndex:'1'}}>
-            <div className="sub-inside-nav">
-                <div className="sub-nav-l-r-container">
-                <div className="sub-left-side">
-                    <div className='sub-left-side-row-contain'>
-                      <div className='sub-nav-boxes'>
-                          <div className='sub-nav-icon-contain'>
-                          <p className='sub-nav-p' >f</p>
-                          </div>
-                      </div>
-                    </div>
-                </div>
-                {!showLiveChat &&
-                <div className='sub-right-side'>
-                    <div className='sub-nav-boxes-active' onClick={handleShowLiveChat}>
-                        <div className='sub-nav-icon-contain'>
-                        <SafetyDividerOutlinedIcon sx={{ stroke: "#fff", strokeWidth: 0.4, padding: '0', margin: '0', cursor: 'pointer', color: '#bbb', fontSize: '20px' }} />
-                        <p className='sub-nav-p'>Live chat</p>
+        <div className='postbox-div'>
+            <div className='sub-nav-container-chat' style={{zIndex:'1'}}>
+                <div className="sub-inside-nav">
+                    <div className="sub-nav-l-r-container">
+                    <div className="sub-left-side">
+                        <div className='sub-left-side-row-contain'>
+                        <div className='sub-nav-boxes'>
+                            <div className='sub-nav-icon-contain'>
+                            <p className='sub-nav-p' >f</p>
+                            </div>
+                        </div>
                         </div>
                     </div>
-                </div>
-                }
+                    {!showLiveChat &&
+                    <div className='sub-right-side'>
+                        <div className='sub-nav-boxes-active' onClick={handleShowLiveChat}>
+                            <div className='sub-nav-icon-contain'>
+                            <SafetyDividerOutlinedIcon sx={{ stroke: "#fff", strokeWidth: 0.4, padding: '0', margin: '0', cursor: 'pointer', color: '#bbb', fontSize: '20px' }} />
+                            <p className='sub-nav-p'>Live chat</p>
+                            </div>
+                        </div>
+                    </div>
+                    }
+                    </div>
                 </div>
             </div>
         </div>
@@ -77,8 +79,12 @@ function HomePage() {
           </div>
           <div className="center-side-chat">
             <div className='teste'>
-                <PostBox />
-                <Divider sx={{ backgroundColor: 'silver', marginTop:'10px', marginBottom:'10px', width:'100%' }} />
+                <div className='postbox-div'>
+                    <PostBox />
+                    <Divider sx={{ backgroundColor: 'silver', marginTop:'10px', marginBottom:'10px', width:'100%' }} />
+                </div>
+                
+                
                 {/* <TabBox title1="Home" title2="Following" title1Link="/chat" title2Link="/chat/following" active1={true}/> */}
                 <TabBox title1="Home" title1Link="/chat" active1={true}/>
                 {/* <div className='main-page-div'>

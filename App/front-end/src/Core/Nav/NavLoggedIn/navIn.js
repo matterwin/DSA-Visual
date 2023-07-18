@@ -7,6 +7,7 @@ import CustomizedTooltip from '../../Custom/customTooltip';
 import CustomMenu from '../../Custom/customMenu';
 import CustomDSANavBtn from '../../Custom/customDSANavBtn';
 import Oldsearch from '../oldsearch';
+import Footer from '../Footer/footer';
 import "../nav.css"
 import "./navIn.css"
 import "../subnav.css"
@@ -14,6 +15,7 @@ import "../subnav.css"
 const NavIn = () => {
 
   return (
+    <>
       <div className='nav-container'>
         <div className="inside-nav">
           <div className="nav-l-r-container">
@@ -53,7 +55,12 @@ const NavIn = () => {
             </div>
           </div>
         </div>
+        
       </div>
+      <div className='hide-footer'>
+        <Footer />
+      </div> 
+    </>
   )
 }
 

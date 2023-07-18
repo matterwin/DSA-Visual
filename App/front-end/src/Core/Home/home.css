@@ -3,7 +3,7 @@
   justify-content: center;
   align-items: flex-start;
   flex-direction: row;
-  gap: 10px;
+  /* gap: 10px; */
   margin-left: 400px;
   margin-right: 400px;
   margin-right: auto;
@@ -20,8 +20,9 @@
 }
 
 .right-side-home {
-  margin: 20px;
+  /* margin: 20px; */
   margin-right: 0px;
+  margin-left: 0px;
   display: flex;
   /* top: 115px; */
   
@@ -32,4 +33,30 @@
   background-color: #fff;
   margin-top: 20px;
   padding: 0px 20px 20px 20px;
+}
+
+@media screen and (max-width: 1155px){
+  .container {
+      width: auto;
+      margin-left: 20px;
+      margin-right: 20px;
+  }
+}
+
+@media screen and (max-width: 800px){
+  .left-side-home {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 800px){
+  .container {
+    width: auto;
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+
+  .center-side-home{
+    margin: 0px;
+  }
 }

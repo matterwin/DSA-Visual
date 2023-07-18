@@ -97,3 +97,39 @@
   padding: 10px;
   padding-bottom: 3000px ;
 }
+
+@media screen and (max-width: 1155px){
+  .right-side-chat{
+    display: none;
+  }
+
+  .chat-container {
+      width: auto;
+      margin-left: 20px;
+      margin-right: 20px;
+  }
+}
+
+@media screen and (max-width: 705px){
+  .left-side-chat{
+    display: none;
+  }
+}
+
+@media screen and (max-width: 500px){
+  .chat-container {
+    width: auto;
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+
+  .postbox-div{
+    display: none;
+  }
+
+  .center-side-chat{
+    /* border-right: #A9C9A3 solid 1px; */
+    /* background-color: #fff; */
+    margin-top: 0px;
+  }
+}
