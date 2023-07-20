@@ -13,6 +13,7 @@ import ChatNav from './Core/Chat/chatNav';
 import ForYouPage from './Core/Chat/Cats/foryouPage';
 import HomePage from './Core/Chat/Cats/homePage';
 import FollowingPage from './Core/Chat/Cats/followingPage';
+import ProfilePage from './Core/Chat/Cats/profilePage';
 
 // import CustomSnackbar from './Core/Custom/customSnackbar';
 
@@ -108,8 +109,9 @@ function App() {
             {!userLoggedIn && <Route caseSensitive path="/login" element={<Login />}/>}
             {!userLoggedIn && <Route caseSensitive path="/register" element={<Register />}/>}
             {userLoggedIn && <Route caseSensitive path="/chat/following" element={<FollowingPage />}/>}
+            {userLoggedIn && <Route caseSensitive path="/:username" element={<ProfilePage />}/>}
             {userLoggedIn && <Route caseSensitive path="/chat/foryou" element={<ForYouPage />}/>}
-            {userLoggedIn && <Route caseSensitive path="/:username" element={<Profile />} />}
+            {/* {userLoggedIn && <Route caseSensitive path="/:username" element={<Profile />} />} */}
             {userLoggedIn && <Route caseSensitive path="/settings/profile" element={<SettingsProfile />}/>}
             {userLoggedIn && <Route caseSensitive path="/settings/chat" element={<SettingsChat />}/>}
             {userLoggedIn && <Route caseSensitive path="/settings/notifications" element={<SettingsNotif />}/>}

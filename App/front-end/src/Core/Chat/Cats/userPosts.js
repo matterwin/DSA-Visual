@@ -234,10 +234,10 @@ const UserPosts = () => {
                                     <p className='replies-text' style={{ fontWeight:'500' }}>{post.replies.length} Replies</p>
                                 </div>
                             </div>
-                            <div className='new-icon-word-div-repost'>
+                            {/* <div className='new-icon-word-div-repost'>
                                 <SyncOutlinedIcon className='repost-icon' />
                                 <p className='repost-text' style={{ fontWeight:'500' }}>Repost</p>
-                            </div>
+                            </div> */}
                         </div>
                     </div>
                 </div>

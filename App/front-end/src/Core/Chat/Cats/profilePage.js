@@ -22,11 +22,7 @@ const chatInfo = {
     msg:'Your personal frontpage. Come here to view the most recent posts.'
 }
 
-const postDiv = () => {
-    return(<>test</>)
-}
-
-function HomePage() {
+function ProfilePage() {
   const [showLiveChat, setShowLiveChat] = useState(false);
   const [showPostBox, setShowBoxPost] = useState(false);
 
@@ -79,18 +75,7 @@ function HomePage() {
           </div>
           <div className="center-side-chat">
             <div className='teste'>
-                <div className='postbox-div'>
-                    <PostBox />
-                    <Divider sx={{ backgroundColor: 'silver', marginTop:'10px', marginBottom:'10px', width:'100%' }} />
-                </div>
-                
-                
-                {/* <TabBox title1="Home" title2="Following" title1Link="/chat" title2Link="/chat/following" active1={true}/> */}
-                <TabBox title1="Home" title1Link="/chat" active1={true} onClick={() => window.location.reload()}/>
-                {/* <div className='main-page-div'>
-                    Hi
-                </div> */}
-                <UserPosts />
+                {/* //here you set up the profile page */}
             </div>
             
           </div>
@@ -112,4 +97,4 @@ function HomePage() {
   );
 }
 
-export default HomePage
+export default ProfilePage
