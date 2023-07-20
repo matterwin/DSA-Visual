@@ -1,30 +1,20 @@
 import React, { useEffect, useState } from 'react';
-import ChatNav from '../chatNav';
-import Extra from '../../Home/Extra/extra';
-import { createChatCookie } from '../../../Cookies/createCookies';
-import readCookies from '../../../Cookies/readCookies';
-import Subnavchat from '.././subnavchat';
 import { NavLink } from 'react-router-dom';
+import ChatNav from '../../chatNav';
+import Extra from '../../../Home/Extra/extra';
+import { createChatCookie } from '../../../../Cookies/createCookies';
+import readCookies from '../../../../Cookies/readCookies';
 import SafetyDividerOutlinedIcon from '@mui/icons-material/SafetyDividerOutlined';
-import DescriptionOutlinedIcon from '@mui/icons-material/DescriptionOutlined';
-import ChatInfo from '../chatInfo';
-import { Divider } from '@mui/material';
-import PostBox from './postBox';
-import TabBox from './tabBox';
-import PostBoxModal from './postBoxModal';
-import UserPanel from '../userPanel';
-import UserPosts from './userPosts';
+import UserPanel from '../../userPanel';
 
-import '../chat.css'
+import '../../chat.css'
+import './profilePage.css'
 
-const chatInfo = {
-    title:'Home',
-    msg:'Your personal frontpage. Come here to view the most recent posts.'
-}
-
-function ProfilePage() {
-  const [showLiveChat, setShowLiveChat] = useState(false);
-  const [showPostBox, setShowBoxPost] = useState(false);
+function ProfileLikes() {
+    const [showLiveChat, setShowLiveChat] = useState(false);
+    const pp = readCookies('pp');
+    const color = readCookies('color');
+    const username = readCookies('name');
 
     useEffect(() => {
         const rememChat = readCookies('showChat');
@@ -75,12 +65,31 @@ function ProfilePage() {
           </div>
           <div className="center-side-chat">
             <div className='teste'>
-                {/* //here you set up the profile page */}
-            </div>
-            
+                <div className='backg-for-profile-div'>
+                    <div className='color-bg-profile-page' style={{ backgroundColor:`#${color}`}} />
+                        <div className='div-for-everything-else-in-profile'>
+                            <div className='basic-info-div'>
+                                <div className="prof-page-pfp-div">
+                                    <img className="prof-page-profile-pic" src={pp} alt="ProfilePicture" />                         
+                                </div>
+                                <p className='username-p-prof-page'>{username}</p>
+                            </div> 
+                        </div>  
+                        <div className='container-for-tabs'>
+                            <NavLink end to={'/' + username} className={({ isActive }) => (isActive ? 'div-of-tab-words-active' : 'div-of-tab-words')}>
+                                <p className='tab-p-more'>Posts</p>
+                            </NavLink>
+                            <NavLink end to={'/' + username + '/replies'} className={({ isActive }) => (isActive ? 'div-of-tab-words-active' : 'div-of-tab-words')}>
+                                <p className='tab-p-more'>Replies</p>
+                            </NavLink>
+                            <NavLink end to={'/' + username + '/likes'} className={({ isActive }) => (isActive ? 'div-of-tab-words-active' : 'div-of-tab-words')}>
+                                <p className='tab-p-more'>Likes</p>
+                            </NavLink>
+                        </div>
+                    </div>
+                </div>
           </div>
           <div className="right-side-chat">
-            <ChatInfo title={chatInfo.title} msg={chatInfo.msg} />
             {!showLiveChat && 
             <>
                 <div className='open-btn'>
@@ -97,4 +106,4 @@ function ProfilePage() {
   );
 }
 
-export default ProfilePage
+export default ProfileLikes

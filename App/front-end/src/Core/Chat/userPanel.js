@@ -92,10 +92,14 @@ const UserPanel = () => {
                         </div>
                         <p className='p-in-navs'>Profile</p>
                     </a>
-                    <div className='row-nav-div'>
+                    <a href={'/' + username} className='row-nav-div'>
                         <CottageOutlinedIcon  sx={{stroke: "#fff", strokeWidth: 0.4, color:'#efeff1', fontSize:'22px', fontStyle:'bold'}}/>
                         <p className='p-in-navs'>Your Posts</p>
-                    </div>
+                    </a>
+                    <a href={'/' + username + '/likes'} className='row-nav-div'>
+                        <CottageOutlinedIcon  sx={{stroke: "#fff", strokeWidth: 0.4, color:'#efeff1', fontSize:'22px', fontStyle:'bold'}}/>
+                        <p className='p-in-navs'>Your Likes</p>
+                    </a>
                     {/* <div className='row-nav-div'>
                         <MailOutlinedIcon  sx={{stroke: "#fff", strokeWidth: 0.4, color:'#efeff1', fontSize:'22px', fontStyle:'bold'}}/>
                         <p className='p-in-navs'>Messages</p>

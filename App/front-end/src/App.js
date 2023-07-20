@@ -8,12 +8,12 @@ import Home from './Core/Home/home';
 import NavIn from './Core/Nav/NavLoggedIn/navIn';
 import NavOut from './Core/Nav/NavLoggedOut/navOut';
 import Notfound from './Core/NotFound/notfound';
-import Chat from './Core/Chat/chat';
-import ChatNav from './Core/Chat/chatNav';
+import ProfileLikes from './Core/Chat/Cats/Profile/profileLikes';
+import ProfileReplies from './Core/Chat/Cats/Profile/profileReplies';
 import ForYouPage from './Core/Chat/Cats/foryouPage';
 import HomePage from './Core/Chat/Cats/homePage';
 import FollowingPage from './Core/Chat/Cats/followingPage';
-import ProfilePage from './Core/Chat/Cats/profilePage';
+import ProfilePage from './Core/Chat/Cats/Profile/profilePage';
 
 // import CustomSnackbar from './Core/Custom/customSnackbar';
 
@@ -110,8 +110,9 @@ function App() {
             {!userLoggedIn && <Route caseSensitive path="/register" element={<Register />}/>}
             {userLoggedIn && <Route caseSensitive path="/chat/following" element={<FollowingPage />}/>}
             {userLoggedIn && <Route caseSensitive path="/:username" element={<ProfilePage />}/>}
+            {userLoggedIn && <Route caseSensitive path="/:username/replies" element={<ProfileReplies />}/>}
+            {userLoggedIn && <Route caseSensitive path="/:username/likes" element={<ProfileLikes />}/>}
             {userLoggedIn && <Route caseSensitive path="/chat/foryou" element={<ForYouPage />}/>}
-            {/* {userLoggedIn && <Route caseSensitive path="/:username" element={<Profile />} />} */}
             {userLoggedIn && <Route caseSensitive path="/settings/profile" element={<SettingsProfile />}/>}
             {userLoggedIn && <Route caseSensitive path="/settings/chat" element={<SettingsChat />}/>}
             {userLoggedIn && <Route caseSensitive path="/settings/notifications" element={<SettingsNotif />}/>}

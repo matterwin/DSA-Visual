@@ -1,0 +1,103 @@
+.backg-for-profile-div{
+    border-left: 1px solid #fff;
+    border-right: 1px solid #fff;
+    padding-bottom: 1000px;
+}
+
+.div-for-everything-else-in-profile{
+    padding:15px;
+}
+
+.color-bg-profile-page{
+    /* background-color: rgba(255, 0, 0, 0.37); */
+    width: 100%;
+    padding: 75px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    box-sizing: border-box;
+}
+
+.basic-info-div{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 15px;
+}
+
+.prof-page-pfp-div {
+    margin-top: -60px;
+    width: 85px;
+    height: 85px;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: #f4f4f5;
+    cursor: pointer; 
+    border: #4d3939 solid 3px;
+    transition: border-radius 0.2s ease-in-out;
+}
+
+.prof-page-profile-pic{
+    width: 100%;
+    height: 100%;
+    object-fit:cover;
+    transition: transform .2s;
+    border-radius: 50%;
+}
+
+.username-p-prof-page{
+    color: #fff;
+    font-weight: 700;
+    font-size: 20px;
+    font-family: 'Inter';
+}
+
+.container-for-tabs{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    border-bottom: 1px solid #fff;
+}
+
+.div-of-tab-words{
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    
+    flex: 1; /* Distribute equal space for each tab */
+}
+
+.div-of-tab-words:hover{
+    background-color:rgb(119, 113, 113)9;
+    background-color: rgba(255, 0, 0, 0.062);
+    background-color: #4d393922;
+}
+
+.div-of-tab-words-active{
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    background-color: #4d393922;
+    flex: 1; /* Distribute equal space for each tab */
+}
+
+.div-of-tab-words-active:hover{
+    background-color:rgb(119, 113, 113)9;
+    background-color: rgba(255, 0, 0, 0.062);
+    background-color: #4d393922;
+}
+
+.tab-p-more{
+    color: #fff;
+    font-weight: 500;
+    font-size: 15px;
+    font-family: 'Inter';
+}
