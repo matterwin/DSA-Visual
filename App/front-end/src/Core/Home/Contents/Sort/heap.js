@@ -1,26 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import { NavLink } from "react-router-dom";
-import Filesys from './FileSys/filesys';
-import Readme from './Readme/readme';
-import Extra from './Extra/extra';
+import Filesys from '../.././FileSys/filesys';
+import Readme from '../.././Readme/readme';
+import Extra from '../.././Extra/extra';
 import DescriptionOutlinedIcon from '@mui/icons-material/DescriptionOutlined';
 import CodeOutlinedIcon from '@mui/icons-material/CodeOutlined';
 import SmsOutlinedIcon from '@mui/icons-material/SmsOutlined';
 import GraphicEqOutlinedIcon from '@mui/icons-material/GraphicEqOutlined';
 import SafetyDividerOutlinedIcon from '@mui/icons-material/SafetyDividerOutlined';
-import { exports } from './FileSys/allInfo';
-import readCookies from '../../Cookies/readCookies';
-import { createChatCookie } from '../../Cookies/createCookies';
+import { exports } from '../.././FileSys/allInfo';
 
-import "../../App.css"
-import "./home.css"
+// import "../../../App.css"
+// import "../../home.css"
 
-function Home() {
-    const [focusedFile, setFocusedFile] = useState(exports.merge);
-
-    const handleFocusedFile = () => {
-        setFocusedFile(focusedFile);
-    };
+function HeapHome() {
+    const [focusedFile, setFocusedFile] = useState(exports.heap);
 
     return (
         <div>
@@ -60,7 +54,7 @@ function Home() {
             </div>
             <div className="container">
                 <div className="left-side-home">
-                    <Filesys/>
+                    <Filesys />
                 </div>
                 <div className="center-side-home">
                     <Readme focusedFile={focusedFile} />
@@ -70,4 +64,4 @@ function Home() {
     );
 }
 
-export default Home;
+export default HeapHome;

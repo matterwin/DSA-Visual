@@ -13,3 +13,7 @@ Theta notation represents the average-case or tight bound of an algorithm's perf
 
 
 // create a init loading screen to store the user info first, so check if there is an auth cookie, and then dynamically call for the user info if that cookie exists
+
+//need to figure out smart way to do home page,
+// a. keep original idea and set valid urls inside the app
+// b. do what we changed: create sep component pages and just use navlink to navigate around (also keep exports page and render smartly there)

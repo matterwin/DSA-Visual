@@ -3,21 +3,7 @@ import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import Children from './children';
 
-const Folder = ({ name, isOpen, handleOpen, index, items, list}) => {
-  const [focusChildIndex, setFocusChildIndexes] = useState(list);
-  const [cIndex, setcIndex] = useState(-1);
-
-  const handleChildFocus = (index) => {
-    if (focusChildIndex.includes(index)) {
-      setFocusChildIndexes(focusChildIndex.filter((i) => i !== index));
-      setcIndex(0);
-    } else {
-      setFocusChildIndexes([...focusChildIndex, index]);
-      setcIndex(index);
-    }
-
-    console.log(index);
-  };
+const Folder = ({ name, isOpen, handleOpen, index, items}) => {
 
   return (
     <div className='pfolder-contain'>
@@ -32,16 +18,15 @@ const Folder = ({ name, isOpen, handleOpen, index, items, list}) => {
       {items && (
         <div className='child-content'>
           {items.map((item, itemIndex) => (
-            <Children
-              key={itemIndex}
-              childName={item}
-              isOpen={isOpen}
-              childIndex={itemIndex}
-              items={items}
-              onClick={handleChildFocus}
-              cIndex={cIndex} // Pass cIndex as a prop
-              setcIndex={setcIndex} // Pass setcIndex as a prop
-            />
+            <a href={'/' + item.toLowerCase()}>
+              <Children
+                key={itemIndex}
+                childName={item}
+                isOpen={isOpen}
+                childIndex={itemIndex}
+                items={items}
+              />
+            </a>
           ))}
         </div>
       )}

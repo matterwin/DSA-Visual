@@ -17,6 +17,15 @@ import ProfilePage from './Core/Chat/Cats/Profile/profilePage';
 
 // import CustomSnackbar from './Core/Custom/customSnackbar';
 
+//home page components
+import BubbleHome from './Core/Home/Contents/Sort/bubble';
+import MergeHome from './Core/Home/Contents/Sort/merge';
+import InsertHome from './Core/Home/Contents/Sort/insert';
+import SelectionHome from './Core/Home/Contents/Sort/selection';
+import TopologicalHome from './Core/Home/Contents/Sort/topological';
+import QuickHome from './Core/Home/Contents/Sort/quick';
+import HeapHome from './Core/Home/Contents/Sort/heap';
+
 //visuals -- sorting
 import Test from './Core/Visuals/Sort/test';
 import Merge from './Core/Visuals/Sort/Merge';
@@ -62,6 +71,12 @@ function App() {
                     || (userLoggedIn && pathname === '/settings/profile')
                     || (userLoggedIn && pathname === '/settings/chat')
                     || (userLoggedIn && pathname === '/settings/notifications')
+                    || pathname === '/merge'
+                    || pathname === '/quick'
+                    || pathname === '/insert'
+                    || pathname === '/bubble'
+                    || pathname === '/topological'
+                    || pathname === '/heap'
                     || pathname === '/visuals/merge'
                     || pathname === '/visuals/quick'
                     || pathname === '/visuals/insertion'
@@ -105,6 +120,13 @@ function App() {
             <Route caseSensitive path="/visuals/dfs" element={<DFS />}/>
             <Route caseSensitive path="/visuals/bfs" element={<BFS />}/>
             <Route caseSensitive path="/chat" element={<HomePage />}/>
+            <Route caseSensitive path="/bubble" element={<BubbleHome />}/>
+            <Route caseSensitive path="/merge" element={<MergeHome />}/>
+            <Route caseSensitive path="/quick" element={<QuickHome />}/>
+            <Route caseSensitive path="/insert" element={<InsertHome />}/>
+            <Route caseSensitive path="/topological" element={<TopologicalHome />}/>
+            <Route caseSensitive path="/heap" element={<HeapHome />}/>
+            <Route caseSensitive path="/selection" element={<SelectionHome />}/>
             <Route caseSensitive path="/visuals/binarysearch" element={<Binary />}/>
             {!userLoggedIn && <Route caseSensitive path="/login" element={<Login />}/>}
             {!userLoggedIn && <Route caseSensitive path="/register" element={<Register />}/>}
