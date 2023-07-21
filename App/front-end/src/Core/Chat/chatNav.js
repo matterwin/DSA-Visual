@@ -1,13 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { NavLink } from 'react-router-dom';
 import CottageOutlinedIcon from '@mui/icons-material/CottageOutlined';
-import FollowTheSignsOutlinedIcon from '@mui/icons-material/FollowTheSignsOutlined';
-import Person2OutlinedIcon from '@mui/icons-material/Person2Outlined';
-import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
-import NotificationsOutlinedIcon from '@mui/icons-material/NotificationsOutlined';
-import MailOutlinedIcon from '@mui/icons-material/MailOutlined';
-import Diversity3OutlinedIcon from '@mui/icons-material/Diversity3Outlined';
-import WhatshotOutlinedIcon from '@mui/icons-material/WhatshotOutlined';
 import EmojiObjectsOutlinedIcon from '@mui/icons-material/EmojiObjectsOutlined';
 import readCookies from '../../Cookies/readCookies';
 import CS from '../../Images/cs.png'
