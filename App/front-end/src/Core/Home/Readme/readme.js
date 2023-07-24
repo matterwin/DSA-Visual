@@ -6,8 +6,6 @@ import { Divider } from '@mui/material';
 
 function Readme({focusedFile}){
 
-  console.log(focusedFile);
-
   return (
     <div className='readme-container'>
       {/* <div className='tabs-readme-container'>

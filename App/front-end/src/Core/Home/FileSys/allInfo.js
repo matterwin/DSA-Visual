@@ -1,5 +1,5 @@
 const merge = {
-    title: 'Merge',
+    title: 'Merge Sort',
     note: '• Divide and Conquer algorithm',
     desc: 'Merge sort is an efficient, stable, and comparison-based sorting algorithm. It follows the divide and conquer approach to sort an array. The algorithm divides the input array into two halves, recursively sorts them, and then merges the sorted halves to produce the final sorted array.',
     sections: [
@@ -24,7 +24,7 @@ const merge = {
   };
   
   const quick = {
-    title: 'Quick',
+    title: 'Quick Sort',
     note: '• Divide and Conquer algorithm',
     desc: 'Quick sort is a highly efficient, comparison-based sorting algorithm. It follows the divide and conquer approach to sort an array. The algorithm selects an element called the pivot, partitions the array around the pivot, and recursively sorts the subarrays on either side of the pivot.',
     sections: [
@@ -43,11 +43,26 @@ const merge = {
     ]
   };
 
-const insertion = {
-    title: 'Merge',
+  const insertion = {
+    title: 'Insertion Sort',
     note: '• Divide and Conquer algorithm',
-    desc: 'Consequat fugiat Lorem et dolor non eu minim labore qui labore anim veniam. Quis ipsum nostrud nostrud reprehenderit incididunt. Nostrud velit ex elit mollit et officia aliqua sint culpa deserunt aliqua.'
-};
+    desc: 'Consequat fugiat Lorem et dolor non eu minim labore qui labore anim veniam. Quis ipsum nostrud nostrud reprehenderit incididunt. Nostrud velit ex elit mollit et officia aliqua sint culpa deserunt aliqua.',
+    sections: [
+      {
+        title: 'Algorithm',
+        content: '1. Choose a pivot element from the array.\n2. Partition the array such that all elements smaller than the pivot are placed before it, and all elements greater than the pivot are placed after it.\n3. Recursively apply the above steps to the subarrays on both sides of the pivot.'
+      },
+      {
+        title: 'Time Complexity',
+        content: 'The time complexity of quick sort depends on the choice of pivot and partitioning strategy. On average, it has a time complexity of O(n log n), where n is the number of elements in the array. In the worst case, it can have a time complexity of O(n^2). However, its average-case performance is generally very good.'
+      },
+      {
+        title: 'Space Complexity',
+        content: 'Quick sort has a space complexity of O(log n) for the recursive function calls, where n is the number of elements in the array. It performs in-place sorting, meaning it does not require additional space proportional to the input size.'
+      }
+    ]
+  };
+
 
 const bubble = {
     title: 'Bubble sort',

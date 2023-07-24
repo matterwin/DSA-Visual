@@ -15,16 +15,9 @@ import HomePage from './Core/Chat/Cats/homePage';
 import FollowingPage from './Core/Chat/Cats/followingPage';
 import ProfilePage from './Core/Chat/Cats/Profile/profilePage';
 
-// import CustomSnackbar from './Core/Custom/customSnackbar';
+import RequestedPage from './Core/Home/requestedPage';
 
-//home page components
-import BubbleHome from './Core/Home/Contents/Sort/bubble';
-import MergeHome from './Core/Home/Contents/Sort/merge';
-import InsertHome from './Core/Home/Contents/Sort/insert';
-import SelectionHome from './Core/Home/Contents/Sort/selection';
-import TopologicalHome from './Core/Home/Contents/Sort/topological';
-import QuickHome from './Core/Home/Contents/Sort/quick';
-import HeapHome from './Core/Home/Contents/Sort/heap';
+// import CustomSnackbar from './Core/Custom/customSnackbar';
 
 //visuals -- sorting
 import Test from './Core/Visuals/Sort/test';
@@ -73,7 +66,7 @@ function App() {
                     || (userLoggedIn && pathname === '/settings/notifications')
                     || pathname === '/merge'
                     || pathname === '/quick'
-                    || pathname === '/insert'
+                    || pathname === '/insertion'
                     || pathname === '/bubble'
                     || pathname === '/topological'
                     || pathname === '/heap'
@@ -119,15 +112,17 @@ function App() {
             <Route caseSensitive path="/visuals/test" element={<Test />}/>
             <Route caseSensitive path="/visuals/dfs" element={<DFS />}/>
             <Route caseSensitive path="/visuals/bfs" element={<BFS />}/>
-            <Route caseSensitive path="/chat" element={<HomePage />}/>
-            <Route caseSensitive path="/bubble" element={<BubbleHome />}/>
-            <Route caseSensitive path="/merge" element={<MergeHome />}/>
-            <Route caseSensitive path="/quick" element={<QuickHome />}/>
-            <Route caseSensitive path="/insert" element={<InsertHome />}/>
-            <Route caseSensitive path="/topological" element={<TopologicalHome />}/>
-            <Route caseSensitive path="/heap" element={<HeapHome />}/>
-            <Route caseSensitive path="/selection" element={<SelectionHome />}/>
             <Route caseSensitive path="/visuals/binarysearch" element={<Binary />}/>
+
+            <Route caseSensitive path="/chat" element={<HomePage />}/>
+            <Route caseSensitive path="/merge" element={<RequestedPage f="merge" />}/>
+            <Route caseSensitive path="/quick" element={<RequestedPage f="quick" />}/>
+            <Route caseSensitive path="/bubble" element={<RequestedPage f="bubble" />}/>
+            <Route caseSensitive path="/insertion" element={<RequestedPage f="insertion" />}/>
+            <Route caseSensitive path="/topological" element={<RequestedPage f="topological" />}/>
+            <Route caseSensitive path="/heap" element={<RequestedPage f="heap" />}/>
+            <Route caseSensitive path="/selection" element={<RequestedPage f="selection" />}/>
+
             {!userLoggedIn && <Route caseSensitive path="/login" element={<Login />}/>}
             {!userLoggedIn && <Route caseSensitive path="/register" element={<Register />}/>}
             {userLoggedIn && <Route caseSensitive path="/chat/following" element={<FollowingPage />}/>}
@@ -138,6 +133,7 @@ function App() {
             {userLoggedIn && <Route caseSensitive path="/settings/profile" element={<SettingsProfile />}/>}
             {userLoggedIn && <Route caseSensitive path="/settings/chat" element={<SettingsChat />}/>}
             {userLoggedIn && <Route caseSensitive path="/settings/notifications" element={<SettingsNotif />}/>}
+            
             <Route path="*" element={<Notfound />} />
           </Routes>
 

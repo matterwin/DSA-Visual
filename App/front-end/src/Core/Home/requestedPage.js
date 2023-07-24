@@ -1,24 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import { NavLink } from "react-router-dom";
-import Filesys from '../.././FileSys/filesys';
-import Readme from '../.././Readme/readme';
-import Extra from '../.././Extra/extra';
+import Filesys from './FileSys/filesys';
+import Readme from './Readme/readme';
+// import Extra from '../.././Extra/extra';
 import DescriptionOutlinedIcon from '@mui/icons-material/DescriptionOutlined';
 import CodeOutlinedIcon from '@mui/icons-material/CodeOutlined';
 import SmsOutlinedIcon from '@mui/icons-material/SmsOutlined';
 import GraphicEqOutlinedIcon from '@mui/icons-material/GraphicEqOutlined';
 import SafetyDividerOutlinedIcon from '@mui/icons-material/SafetyDividerOutlined';
-import { exports } from '../.././FileSys/allInfo';
+import { exports } from './FileSys/allInfo';
 
-// import "../../../App.css"
-// import "../../home.css"
+import "../../App.css"
+import "./home.css"
 
-function InsertHome() {
-    const [focusedFile, setFocusedFile] = useState(exports.insertion);
-
-    const handleFocusedFile = () => {
-        setFocusedFile(focusedFile);
-    };
+function RequestedPage({f}) {
+    const [file, setFile] = useState(() => exports[f]);
 
     return (
         <div>
@@ -61,11 +57,11 @@ function InsertHome() {
                     <Filesys />
                 </div>
                 <div className="center-side-home">
-                    <Readme focusedFile={focusedFile} />
+                    <Readme focusedFile={file} />
                 </div>
             </div>
         </div>
     );
 }
 
-export default InsertHome;
+export default RequestedPage;
