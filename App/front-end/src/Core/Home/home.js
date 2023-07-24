@@ -16,12 +16,6 @@ import "../../App.css"
 import "./home.css"
 
 function Home() {
-    const [focusedFile, setFocusedFile] = useState(exports.merge);
-
-    const handleFocusedFile = () => {
-        setFocusedFile(focusedFile);
-    };
-
     return (
         <div>
             <div className='sub-nav-container'>
@@ -60,10 +54,12 @@ function Home() {
             </div>
             <div className="container">
                 <div className="left-side-home">
-                    <Filesys/>
+                    <Filesys />
                 </div>
                 <div className="center-side-home">
-                    <Readme focusedFile={focusedFile} />
+                    {Object.values(exports).map((value, index) => (
+                        <Readme key={index} focusedFile={value} />
+                    ))}
                 </div>
             </div>
         </div>
