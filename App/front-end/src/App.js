@@ -61,6 +61,8 @@ function App() {
                     || pathname === '/login'
                     || pathname === '/register'
                     || pathname === '/' + name
+                    || pathname === '/' + name + '/replies'
+                    || pathname === '/' + name + '/likes'
                     || (userLoggedIn && pathname === '/settings/profile')
                     || (userLoggedIn && pathname === '/settings/chat')
                     || (userLoggedIn && pathname === '/settings/notifications')
@@ -69,6 +71,7 @@ function App() {
                     || pathname === '/insertion'
                     || pathname === '/bubble'
                     || pathname === '/topological'
+                    || pathname === '/selection'
                     || pathname === '/heap'
                     || pathname === '/visuals/merge'
                     || pathname === '/visuals/quick'

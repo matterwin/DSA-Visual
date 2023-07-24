@@ -17,3 +17,6 @@ Theta notation represents the average-case or tight bound of an algorithm's perf
 //need to figure out smart way to do home page,
 // a. keep original idea and set valid urls inside the app
 // b. do what we changed: create sep component pages and just use navlink to navigate around (also keep exports page and render smartly there)
+
+//fix that issue, but now the smarter way would do it like openaiapi ref where they just throw every page at you and you can just scroll instead of only
+//relying on the navbar. and as the user scrolls the navbar should highlight where you are at and open/close the respected folders of the page you're on
