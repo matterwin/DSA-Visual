@@ -37,7 +37,7 @@ const NavIn = () => {
               <a href="/chat" className="nav-link-div">
                 <h4 className="linkers">Chat</h4>
               </a> 
-              <Divider orientation="vertical" style={{ backgroundColor: 'grey', height: '25px', width:'1px' }} />
+              <Divider className='divider-div' orientation="vertical" style={{ backgroundColor: 'grey', height: '25px', width:'1px' }} />
               <CustomizedTooltip title={"Add Post"}>
                 <div className="nav-link-div-icons">
                   <AddOutlinedIcon sx={{stroke: "#fff", strokeWidth: 1.4, padding: '0', margin:'0', cursor: 'pointer', color:'#fff', fontSize:'25px'}}/>
@@ -53,6 +53,13 @@ const NavIn = () => {
                 <CustomMenu />
               </div>
             </div>
+          </div>
+          <div className='small-screen-nav'>
+            <a href="/">
+                <h3 className="headline">H</h3>
+            </a>
+            <Oldsearch />
+            <CustomMenu />
           </div>
         </div>
         
