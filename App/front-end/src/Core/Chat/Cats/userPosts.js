@@ -8,6 +8,11 @@ import MoreHorizOutlinedIcon from '@mui/icons-material/MoreHorizOutlined';
 import MapsUgcOutlinedIcon from '@mui/icons-material/MapsUgcOutlined';
 import SyncOutlinedIcon from '@mui/icons-material/SyncOutlined';
 import { Divider } from '@mui/material';
+import KeyboardDoubleArrowUpOutlinedIcon from '@mui/icons-material/KeyboardDoubleArrowUpOutlined';
+import KeyboardDoubleArrowDownOutlinedIcon from '@mui/icons-material/KeyboardDoubleArrowDownOutlined';
+import ModeCommentOutlinedIcon from '@mui/icons-material/ModeCommentOutlined';
+import NavigationOutlinedIcon from '@mui/icons-material/NavigationOutlined';
+import NavigationIcon from '@mui/icons-material/Navigation';
 import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
 
@@ -195,29 +200,15 @@ const UserPosts = () => {
                                             <img className="chat-cust-profile-pic" src={post.user.profilePic} alt="ProfilePicture" />    
                                         </div>
                                     </CustomizedTooltip>
-                                    <div className='like-counter-container'>
-                                        <div className='new-icon-word-div-thumbs-up'>
-                                            { !post.hasLiked && <ThumbUpOutlinedIcon className='thumbs-up-icon' onClick={() => likePost(post._id)}/>}
-                                            { post.hasLiked && <ThumbUpIcon className='thumbs-up-icon-filled-in' />}
-                                        </div>
-                                        <p className='likes-text' style={{ color: post.hasLiked ? '#a9c9a3' : post.hasDisliked ? '#7193ff' : 'inherit' }}>{post.likeToDislikeCount}</p>
-                                        <div className='new-icon-word-div-thumbs-down'>
-                                            { !post.hasDisliked && <ThumbDownOffAltOutlinedIcon className='thumbs-down-icon' onClick={() => dislikePost(post._id)}/> }
-                                            { post.hasDisliked && <ThumbDownIcon className='thumbs-down-icon-filled' /> }
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                             <div className='top-and-text-div'>
                                 <div className='top-contain'>
                                     <div className='left-top-div'>
-                                        <p className='likes-text'>@{post.user.username} &nbsp;</p>
-                                        <p> • {post.createdAt}</p>
+                                        <p className='likes-text'>@{post.user.username} &nbsp;</p>                                        
                                     </div>
-                                    <div className='right-top-div'>
-                                        <CustomizedTooltip title="info">
-                                            <MoreHorizOutlinedIcon sx={{stroke: "#4d3939", strokeWidth: 0.4, color:'#4d3939', fontSize:'22px', fontStyle:'bold'}}/>
-                                        </CustomizedTooltip>
+                                    <div className='right-top-div-new'>
+                                        <p>{post.createdAt}</p>
                                     </div>
                                 </div>
                                 <div>
@@ -229,9 +220,25 @@ const UserPosts = () => {
                         <Divider sx={{ backgroundColor: 'silver', marginTop:'10px', marginBottom:'10px', width:'100%' }} />
                         <div className='bottom-post-div'>
                             <div className='center-row-align'>
+                                <div className='like-counter-container'>
+                                    <div className='new-icon-word-div-thumbs-up'>
+                                        { !post.hasLiked && <NavigationOutlinedIcon className='thumbs-up-icon' onClick={() => likePost(post._id)}/>}
+                                        { post.hasLiked && <NavigationIcon className='thumbs-up-icon-filled-in' />}
+                                    </div>
+                                    <p className='likes-text' style={{ color: post.hasLiked ? '#a9c9a3' : post.hasDisliked ? '#7193ff' : 'inherit' }}>{post.likeToDislikeCount}</p>
+                                    <div className='new-icon-word-div-thumbs-down'>
+                                        { !post.hasDisliked && <NavigationOutlinedIcon className='thumbs-down-icon' onClick={() => dislikePost(post._id)}/> }
+                                        { post.hasDisliked && <NavigationIcon className='thumbs-down-icon-filled' /> }
+                                    </div>
+                                </div>
                                 <div className='new-icon-word-div-replies'>
-                                    <MapsUgcOutlinedIcon className='replies-icon' />
+                                    <ModeCommentOutlinedIcon className='replies-icon' />
                                     <p className='replies-text' style={{ fontWeight:'500' }}>{post.replies.length} Replies</p>
+                                </div>
+                                <div className='right-top-div'>
+                                    <CustomizedTooltip title="info">
+                                        <MoreHorizOutlinedIcon sx={{stroke: "#4d3939", strokeWidth: 0.4, color:'#4d3939', fontSize:'22px', fontStyle:'bold'}}/>
+                                    </CustomizedTooltip>
                                 </div>
                             </div>
                             {/* <div className='new-icon-word-div-repost'>

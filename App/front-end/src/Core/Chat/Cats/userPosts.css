@@ -32,9 +32,9 @@
 .bottom-post-div{
     display: flex;
     flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    gap: 5px;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 8px;
     width: 100%;
 }
 
@@ -61,7 +61,7 @@
 
 .like-counter-container{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: flex-start;
     align-items: center;
     gap: 5px;
@@ -82,7 +82,7 @@
 
 /* thumbs-up */
 .new-icon-word-div-thumbs-up{
-    padding: 5px;
+    padding: 3px;
     border-radius: 5px;
     cursor: pointer;
     margin: 0px;
@@ -93,7 +93,7 @@
     stroke: #4d3939;
     stroke-width: 0.4;
     color:#4d3939;
-    font-size:22px;
+    font-size:32px;
     font-style: bold;
 }
 
@@ -110,7 +110,7 @@
     stroke: #4d3939;
     stroke-width: 0.4;
     color:#4d3939;
-    font-size:22px;
+    font-size:32px;
     font-style: bold;
     color: #a9c9a3;
     stroke: #a9c9a3;
@@ -118,7 +118,7 @@
 
 /* thumbs-down */
 .new-icon-word-div-thumbs-down{
-    padding: 5px;
+    padding: 3px;
     border-radius: 5px;
     cursor: pointer;
     margin: 0px;
@@ -129,7 +129,8 @@
     stroke: #4d3939;
     stroke-width: 0.4;
     color:#4d3939;
-    font-size:22px;
+    font-size:32px;
+    transform: scaleY(-1);
     font-style: bold;
 }
 
@@ -146,10 +147,11 @@
     stroke: #4d3939;
     stroke-width: 0.4;
     color:#4d3939;
-    font-size:22px;
+    font-size:32px;
     font-style: bold;
     color: #7193ff;
     stroke: #7193ff;
+    transform: scaleY(-1);
 }
 
 /* replies */
@@ -265,9 +267,17 @@
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
+    display: none;
 }
 
 .right-top-div{
+    margin-left: auto;
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.right-top-div-new{
     margin-left: auto;
     padding: 5px;
     border-radius: 5px;
