@@ -95,7 +95,7 @@ const PostBox = () => {
                         <input 
                             autoFocus={showPostBox} 
                             className='prop-box' 
-                            onChange={(e) => setTitle(e.target.value)} 
+                            onChange={(q) => setTitle(q.target.value)} 
                             value={title} type="text" 
                             placeholder="Title (optional)"/>
                         <input 

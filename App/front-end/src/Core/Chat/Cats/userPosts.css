@@ -267,7 +267,6 @@
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
-    display: none;
 }
 
 .right-top-div{
@@ -275,6 +274,9 @@
     padding: 5px;
     border-radius: 5px;
     cursor: pointer;
+    opacity: 0;
+    /* Add transition for smooth fading effect */
+    transition: opacity 0.3s ease;
 }
 
 .right-top-div-new{
@@ -295,4 +297,9 @@
     justify-content: flex-start;
     align-items: flex-start;
     gap: 5px;
+}
+
+.user-posts-container:hover .right-top-div {
+    /* Set opacity to 1 on hover to fade it in */
+    opacity: 1;
 }

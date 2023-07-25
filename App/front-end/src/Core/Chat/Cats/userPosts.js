@@ -14,6 +14,7 @@ import ModeCommentOutlinedIcon from '@mui/icons-material/ModeCommentOutlined';
 import NavigationOutlinedIcon from '@mui/icons-material/NavigationOutlined';
 import NavigationIcon from '@mui/icons-material/Navigation';
 import CircularProgress from '@mui/material/CircularProgress';
+import BubbleChartOutlinedIcon from '@mui/icons-material/BubbleChartOutlined';
 import Box from '@mui/material/Box';
 
 import './postBox.css'
@@ -205,7 +206,7 @@ const UserPosts = () => {
                             <div className='top-and-text-div'>
                                 <div className='top-contain'>
                                     <div className='left-top-div'>
-                                        <p className='likes-text'>@{post.user.username} &nbsp;</p>                                        
+                                        <p className='likes-text'>{post.user.username} &nbsp;</p>                                        
                                     </div>
                                     <div className='right-top-div-new'>
                                         <p>{post.createdAt}</p>
@@ -232,7 +233,7 @@ const UserPosts = () => {
                                     </div>
                                 </div>
                                 <div className='new-icon-word-div-replies'>
-                                    <ModeCommentOutlinedIcon className='replies-icon' />
+                                    <BubbleChartOutlinedIcon className='replies-icon' />
                                     <p className='replies-text' style={{ fontWeight:'500' }}>{post.replies.length} Replies</p>
                                 </div>
                                 <div className='right-top-div'>
@@ -257,7 +258,7 @@ const UserPosts = () => {
             {loading && <Loading />}
             {!loading && getFeed()}
             {(loadingMorePages && <Loading />)} 
-            {endOfList && <p>no more posts</p>}
+            {/* {endOfList && <p>no more posts</p>} */}
         </div>
     )
 }
