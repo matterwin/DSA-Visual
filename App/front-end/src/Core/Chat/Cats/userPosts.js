@@ -222,15 +222,27 @@ const UserPosts = () => {
                         <div className='bottom-post-div'>
                             <div className='center-row-align'>
                                 <div className='like-counter-container'>
-                                    <div className='new-icon-word-div-thumbs-up'>
-                                        { !post.hasLiked && <NavigationOutlinedIcon className='thumbs-up-icon' onClick={() => likePost(post._id)}/>}
-                                        { post.hasLiked && <NavigationIcon className='thumbs-up-icon-filled-in' />}
-                                    </div>
+                                    { !post.hasLiked &&
+                                        <div className='new-icon-word-div-thumbs-up' onClick={() => likePost(post._id)}>
+                                            <NavigationOutlinedIcon className='thumbs-up-icon' />
+                                        </div>
+                                    }
+                                    { post.hasLiked && 
+                                        <div className='new-icon-word-div-thumbs-up'>
+                                            <NavigationIcon className='thumbs-up-icon-filled-in' />
+                                        </div>
+                                    }
                                     <p className='likes-text' style={{ color: post.hasLiked ? '#a9c9a3' : post.hasDisliked ? '#7193ff' : 'inherit' }}>{post.likeToDislikeCount}</p>
-                                    <div className='new-icon-word-div-thumbs-down'>
-                                        { !post.hasDisliked && <NavigationOutlinedIcon className='thumbs-down-icon' onClick={() => dislikePost(post._id)}/> }
-                                        { post.hasDisliked && <NavigationIcon className='thumbs-down-icon-filled' /> }
-                                    </div>
+                                    { !post.hasDisliked &&
+                                        <div className='new-icon-word-div-thumbs-down' onClick={() => dislikePost(post._id)}>
+                                            <NavigationOutlinedIcon className='thumbs-down-icon' />                                        
+                                        </div>
+                                    }
+                                    { post.hasDisliked &&
+                                        <div className='new-icon-word-div-thumbs-down'>
+                                            <NavigationIcon className='thumbs-down-icon-filled' />
+                                        </div>
+                                    }
                                 </div>
                                 <div className='new-icon-word-div-replies'>
                                     <BubbleChartOutlinedIcon className='replies-icon' />
