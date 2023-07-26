@@ -80,7 +80,7 @@ function ProfileLikes() {
                                 <p className='tab-p-more'>Posts</p>
                             </NavLink>
                             <NavLink end to={'/' + username + '/replies'} className={({ isActive }) => (isActive ? 'div-of-tab-words-active' : 'div-of-tab-words')}>
-                                <p className='tab-p-more'>Replies</p>
+                                <p className='tab-p-more'>Comments</p>
                             </NavLink>
                             <NavLink end to={'/' + username + '/likes'} className={({ isActive }) => (isActive ? 'div-of-tab-words-active' : 'div-of-tab-words')}>
                                 <p className='tab-p-more'>Likes</p>
