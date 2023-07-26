@@ -25,6 +25,7 @@ function Filesys() {
         <Folder name='Complextities' isOpen={openIndexes.includes(5)} handleOpen={handleOpen} index={5} items={['Big-O','Big-Θ','Big-Ω','Space']} />
         <Folder name='Dynamic Programming' isOpen={openIndexes.includes(6)} handleOpen={handleOpen} index={6} items={['Greedy']} />
         <Folder name='Bit Manipulation' isOpen={openIndexes.includes(7)} handleOpen={handleOpen} index={7} items={['Kernighan']} />
+        <Folder name='Advice' isOpen={openIndexes.includes(7)} handleOpen={handleOpen} index={7} items={['Interview Prep, Communication, Problem Approach, Leetcode, Projects']} />
       </div>
     </div>
   );
