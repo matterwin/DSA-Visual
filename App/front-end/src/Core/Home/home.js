@@ -16,6 +16,12 @@ import "../../App.css"
 import "./home.css"
 
 function Home() {
+    const [focusOn, SetFocusOn] = useState('Merge');
+
+    const handleNavFocus = (fileName) => {
+        SetFocusOn(fileName);
+    }
+
     return (
         <div>
             <div className='sub-nav-container'>
@@ -54,11 +60,11 @@ function Home() {
             </div>
             <div className="container">
                 <div className="left-side-home">
-                    <Filesys />
+                    <Filesys focusOnto={focusOn}/>
                 </div>
                 <div className="center-side-home">
                     {Object.values(exports).map((value, index) => (
-                        <Readme key={index} focusedFile={value} />
+                        <Readme key={index} focusedFile={value} handleNavFocus={handleNavFocus} />
                     ))}
                 </div>
             </div>

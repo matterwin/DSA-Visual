@@ -4,7 +4,7 @@ import './readme.css'
 import '../../../Fonts/fonts.css'
 import { Divider } from '@mui/material';
 
-function Readme({focusedFile}){
+function Readme({focusedFile, handleNavFocus} ){
   const myRef = useRef();
 
   useEffect(() => {
@@ -17,10 +17,8 @@ function Readme({focusedFile}){
     const callback = (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          console.log('User has scrolled to the Readme component');
-          // You can also log the name of the Readme index here if it's available in the focusedFile object.
-          // For example, if the name is stored in a property called "name":
-          // console.log('Readme name:', focusedFile.name);
+          console.log(focusedFile.title);
+          handleNavFocus(focusedFile.title);
         }
       });
     };
