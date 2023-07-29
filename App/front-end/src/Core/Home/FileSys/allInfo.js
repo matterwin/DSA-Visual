@@ -166,6 +166,226 @@ const merge = {
     ]
   };
 
+  const singly = {
+    title: 'Singly Linked List',
+    note: '• Divide and Conquer algorithm',
+    desc: 'Consequat fugiat Lorem et dolor non eu minim labore qui labore anim veniam. Quis ipsum nostrud nostrud reprehenderit incididunt. Nostrud velit ex elit mollit et officia aliqua sint culpa deserunt aliqua.',
+    sections: [
+      {
+        title: 'Algorithm',
+        content: '1. Choose a pivot element from the array.\n2. Partition the array such that all elements smaller than the pivot are placed before it, and all elements greater than the pivot are placed after it.\n3. Recursively apply the above steps to the subarrays on both sides of the pivot.'
+      },
+      {
+        title: 'Time Complexity',
+        content: 'The time complexity of quick sort depends on the choice of pivot and partitioning strategy. On average, it has a time complexity of O(n log n), where n is the number of elements in the array. In the worst case, it can have a time complexity of O(n^2). However, its average-case performance is generally very good.'
+      },
+      {
+        title: 'Space Complexity',
+        content: 'Quick sort has a space complexity of O(log n) for the recursive function calls, where n is the number of elements in the array. It performs in-place sorting, meaning it does not require additional space proportional to the input size.'
+      }
+    ]
+  };
+
+  const doubly = {
+    title: 'Doubly Linked List',
+    note: '• Divide and Conquer algorithm',
+    desc: 'Consequat fugiat Lorem et dolor non eu minim labore qui labore anim veniam. Quis ipsum nostrud nostrud reprehenderit incididunt. Nostrud velit ex elit mollit et officia aliqua sint culpa deserunt aliqua.',
+    sections: [
+      {
+        title: 'Algorithm',
+        content: '1. Choose a pivot element from the array.\n2. Partition the array such that all elements smaller than the pivot are placed before it, and all elements greater than the pivot are placed after it.\n3. Recursively apply the above steps to the subarrays on both sides of the pivot.'
+      },
+      {
+        title: 'Time Complexity',
+        content: 'The time complexity of quick sort depends on the choice of pivot and partitioning strategy. On average, it has a time complexity of O(n log n), where n is the number of elements in the array. In the worst case, it can have a time complexity of O(n^2). However, its average-case performance is generally very good.'
+      },
+      {
+        title: 'Space Complexity',
+        content: 'Quick sort has a space complexity of O(log n) for the recursive function calls, where n is the number of elements in the array. It performs in-place sorting, meaning it does not require additional space proportional to the input size.'
+      }
+    ]
+  };
+
+  const stacks = {
+    title: 'Stack',
+    note: '• Divide and Conquer algorithm',
+    desc: 'Consequat fugiat Lorem et dolor non eu minim labore qui labore anim veniam. Quis ipsum nostrud nostrud reprehenderit incididunt. Nostrud velit ex elit mollit et officia aliqua sint culpa deserunt aliqua.',
+    sections: [
+      {
+        title: 'Algorithm',
+        content: '1. Choose a pivot element from the array.\n2. Partition the array such that all elements smaller than the pivot are placed before it, and all elements greater than the pivot are placed after it.\n3. Recursively apply the above steps to the subarrays on both sides of the pivot.'
+      },
+      {
+        title: 'Time Complexity',
+        content: 'The time complexity of quick sort depends on the choice of pivot and partitioning strategy. On average, it has a time complexity of O(n log n), where n is the number of elements in the array. In the worst case, it can have a time complexity of O(n^2). However, its average-case performance is generally very good.'
+      },
+      {
+        title: 'Space Complexity',
+        content: 'Quick sort has a space complexity of O(log n) for the recursive function calls, where n is the number of elements in the array. It performs in-place sorting, meaning it does not require additional space proportional to the input size.'
+      }
+    ]
+  };
+
+  const queues = {
+    title: 'Queue',
+    note: '• Divide and Conquer algorithm',
+    desc: 'Consequat fugiat Lorem et dolor non eu minim labore qui labore anim veniam. Quis ipsum nostrud nostrud reprehenderit incididunt. Nostrud velit ex elit mollit et officia aliqua sint culpa deserunt aliqua.',
+    sections: [
+      {
+        title: 'Algorithm',
+        content: '1. Choose a pivot element from the array.\n2. Partition the array such that all elements smaller than the pivot are placed before it, and all elements greater than the pivot are placed after it.\n3. Recursively apply the above steps to the subarrays on both sides of the pivot.'
+      },
+      {
+        title: 'Time Complexity',
+        content: 'The time complexity of quick sort depends on the choice of pivot and partitioning strategy. On average, it has a time complexity of O(n log n), where n is the number of elements in the array. In the worst case, it can have a time complexity of O(n^2). However, its average-case performance is generally very good.'
+      },
+      {
+        title: 'Space Complexity',
+        content: 'Quick sort has a space complexity of O(log n) for the recursive function calls, where n is the number of elements in the array. It performs in-place sorting, meaning it does not require additional space proportional to the input size.'
+      }
+    ]
+  };
+
+  const priorityqueues = {
+    title: 'Priority Queue',
+    note: '• Divide and Conquer algorithm',
+    desc: 'Consequat fugiat Lorem et dolor non eu minim labore qui labore anim veniam. Quis ipsum nostrud nostrud reprehenderit incididunt. Nostrud velit ex elit mollit et officia aliqua sint culpa deserunt aliqua.',
+    sections: [
+      {
+        title: 'Algorithm',
+        content: '1. Choose a pivot element from the array.\n2. Partition the array such that all elements smaller than the pivot are placed before it, and all elements greater than the pivot are placed after it.\n3. Recursively apply the above steps to the subarrays on both sides of the pivot.'
+      },
+      {
+        title: 'Time Complexity',
+        content: 'The time complexity of quick sort depends on the choice of pivot and partitioning strategy. On average, it has a time complexity of O(n log n), where n is the number of elements in the array. In the worst case, it can have a time complexity of O(n^2). However, its average-case performance is generally very good.'
+      },
+      {
+        title: 'Space Complexity',
+        content: 'Quick sort has a space complexity of O(log n) for the recursive function calls, where n is the number of elements in the array. It performs in-place sorting, meaning it does not require additional space proportional to the input size.'
+      }
+    ]
+  };
+
+  const binaryTree = {
+    title: 'Binary Tree',
+    note: '• Divide and Conquer algorithm',
+    desc: 'Consequat fugiat Lorem et dolor non eu minim labore qui labore anim veniam. Quis ipsum nostrud nostrud reprehenderit incididunt. Nostrud velit ex elit mollit et officia aliqua sint culpa deserunt aliqua.',
+    sections: [
+      {
+        title: 'Algorithm',
+        content: '1. Choose a pivot element from the array.\n2. Partition the array such that all elements smaller than the pivot are placed before it, and all elements greater than the pivot are placed after it.\n3. Recursively apply the above steps to the subarrays on both sides of the pivot.'
+      },
+      {
+        title: 'Time Complexity',
+        content: 'The time complexity of quick sort depends on the choice of pivot and partitioning strategy. On average, it has a time complexity of O(n log n), where n is the number of elements in the array. In the worst case, it can have a time complexity of O(n^2). However, its average-case performance is generally very good.'
+      },
+      {
+        title: 'Space Complexity',
+        content: 'Quick sort has a space complexity of O(log n) for the recursive function calls, where n is the number of elements in the array. It performs in-place sorting, meaning it does not require additional space proportional to the input size.'
+      }
+    ]
+  };
+
+  const bst = {
+    title: 'Binary Search Tree',
+    note: '• Divide and Conquer algorithm',
+    desc: 'Consequat fugiat Lorem et dolor non eu minim labore qui labore anim veniam. Quis ipsum nostrud nostrud reprehenderit incididunt. Nostrud velit ex elit mollit et officia aliqua sint culpa deserunt aliqua.',
+    sections: [
+      {
+        title: 'Algorithm',
+        content: '1. Choose a pivot element from the array.\n2. Partition the array such that all elements smaller than the pivot are placed before it, and all elements greater than the pivot are placed after it.\n3. Recursively apply the above steps to the subarrays on both sides of the pivot.'
+      },
+      {
+        title: 'Time Complexity',
+        content: 'The time complexity of quick sort depends on the choice of pivot and partitioning strategy. On average, it has a time complexity of O(n log n), where n is the number of elements in the array. In the worst case, it can have a time complexity of O(n^2). However, its average-case performance is generally very good.'
+      },
+      {
+        title: 'Space Complexity',
+        content: 'Quick sort has a space complexity of O(log n) for the recursive function calls, where n is the number of elements in the array. It performs in-place sorting, meaning it does not require additional space proportional to the input size.'
+      }
+    ]
+  };
+
+  const heapTree = {
+    title: 'Heap',
+    note: '• Divide and Conquer algorithm',
+    desc: 'Consequat fugiat Lorem et dolor non eu minim labore qui labore anim veniam. Quis ipsum nostrud nostrud reprehenderit incididunt. Nostrud velit ex elit mollit et officia aliqua sint culpa deserunt aliqua.',
+    sections: [
+      {
+        title: 'Algorithm',
+        content: '1. Choose a pivot element from the array.\n2. Partition the array such that all elements smaller than the pivot are placed before it, and all elements greater than the pivot are placed after it.\n3. Recursively apply the above steps to the subarrays on both sides of the pivot.'
+      },
+      {
+        title: 'Time Complexity',
+        content: 'The time complexity of quick sort depends on the choice of pivot and partitioning strategy. On average, it has a time complexity of O(n log n), where n is the number of elements in the array. In the worst case, it can have a time complexity of O(n^2). However, its average-case performance is generally very good.'
+      },
+      {
+        title: 'Space Complexity',
+        content: 'Quick sort has a space complexity of O(log n) for the recursive function calls, where n is the number of elements in the array. It performs in-place sorting, meaning it does not require additional space proportional to the input size.'
+      }
+    ]
+  };
+
+  const trie = {
+    title: 'Trie',
+    note: '• Divide and Conquer algorithm',
+    desc: 'Consequat fugiat Lorem et dolor non eu minim labore qui labore anim veniam. Quis ipsum nostrud nostrud reprehenderit incididunt. Nostrud velit ex elit mollit et officia aliqua sint culpa deserunt aliqua.',
+    sections: [
+      {
+        title: 'Algorithm',
+        content: '1. Choose a pivot element from the array.\n2. Partition the array such that all elements smaller than the pivot are placed before it, and all elements greater than the pivot are placed after it.\n3. Recursively apply the above steps to the subarrays on both sides of the pivot.'
+      },
+      {
+        title: 'Time Complexity',
+        content: 'The time complexity of quick sort depends on the choice of pivot and partitioning strategy. On average, it has a time complexity of O(n log n), where n is the number of elements in the array. In the worst case, it can have a time complexity of O(n^2). However, its average-case performance is generally very good.'
+      },
+      {
+        title: 'Space Complexity',
+        content: 'Quick sort has a space complexity of O(log n) for the recursive function calls, where n is the number of elements in the array. It performs in-place sorting, meaning it does not require additional space proportional to the input size.'
+      }
+    ]
+  };
+
+  const avl = {
+    title: 'AVL Tree',
+    note: '• Divide and Conquer algorithm',
+    desc: 'Consequat fugiat Lorem et dolor non eu minim labore qui labore anim veniam. Quis ipsum nostrud nostrud reprehenderit incididunt. Nostrud velit ex elit mollit et officia aliqua sint culpa deserunt aliqua.',
+    sections: [
+      {
+        title: 'Algorithm',
+        content: '1. Choose a pivot element from the array.\n2. Partition the array such that all elements smaller than the pivot are placed before it, and all elements greater than the pivot are placed after it.\n3. Recursively apply the above steps to the subarrays on both sides of the pivot.'
+      },
+      {
+        title: 'Time Complexity',
+        content: 'The time complexity of quick sort depends on the choice of pivot and partitioning strategy. On average, it has a time complexity of O(n log n), where n is the number of elements in the array. In the worst case, it can have a time complexity of O(n^2). However, its average-case performance is generally very good.'
+      },
+      {
+        title: 'Space Complexity',
+        content: 'Quick sort has a space complexity of O(log n) for the recursive function calls, where n is the number of elements in the array. It performs in-place sorting, meaning it does not require additional space proportional to the input size.'
+      }
+    ]
+  };
+
+  const redblack = {
+    title: 'Red-Black Tree',
+    note: '• Divide and Conquer algorithm',
+    desc: 'Consequat fugiat Lorem et dolor non eu minim labore qui labore anim veniam. Quis ipsum nostrud nostrud reprehenderit incididunt. Nostrud velit ex elit mollit et officia aliqua sint culpa deserunt aliqua.',
+    sections: [
+      {
+        title: 'Algorithm',
+        content: '1. Choose a pivot element from the array.\n2. Partition the array such that all elements smaller than the pivot are placed before it, and all elements greater than the pivot are placed after it.\n3. Recursively apply the above steps to the subarrays on both sides of the pivot.'
+      },
+      {
+        title: 'Time Complexity',
+        content: 'The time complexity of quick sort depends on the choice of pivot and partitioning strategy. On average, it has a time complexity of O(n log n), where n is the number of elements in the array. In the worst case, it can have a time complexity of O(n^2). However, its average-case performance is generally very good.'
+      },
+      {
+        title: 'Space Complexity',
+        content: 'Quick sort has a space complexity of O(log n) for the recursive function calls, where n is the number of elements in the array. It performs in-place sorting, meaning it does not require additional space proportional to the input size.'
+      }
+    ]
+  };
+
 export const exports = {
     merge,
     quick,
@@ -174,5 +394,16 @@ export const exports = {
     heap,
     selection,
     topological,
-    binary
+    binary,
+    singly,
+    doubly,
+    stacks,
+    queues,
+    priorityqueues,
+    binaryTree,
+    bst,
+    heapTree,
+    trie,
+    avl,
+    redblack
 };

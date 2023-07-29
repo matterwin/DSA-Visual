@@ -4,7 +4,6 @@ import Folder from './folder';
 
 function Filesys({ focusOnto }) {
   const [openIndexes, setOpenIndexes] = useState([]);
-  const file = focusOnto;
 
   useEffect(() => {
     // Find the index of the folder containing the focused file
@@ -40,6 +39,17 @@ function Filesys({ focusOnto }) {
     'Selection Sort': 0,
     'Topological Sort': 0,
     'Binary Search': 1,
+    'Singly Linked List': 2,
+    'Doubly Linked List': 2,
+    'Stack': 2,
+    'Queue': 2,
+    'Priority Queue': 2,
+    'Binary Tree': 2,
+    'Binary Search Tree': 2,
+    'Heap': 2,
+    'Trie': 2,
+    'AVL Tree': 2,
+    'Red-Black Tree': 2,
   };
 
   const handleOpen = (index) => {
