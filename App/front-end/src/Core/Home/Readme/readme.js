@@ -1,13 +1,46 @@
-import React from 'react'
+import React, { useEffect, useRef } from 'react';
 import Tabs from '../tabs';
 import './readme.css'
 import '../../../Fonts/fonts.css'
 import { Divider } from '@mui/material';
 
 function Readme({focusedFile}){
+  const myRef = useRef();
+
+  useEffect(() => {
+    const options = {
+      root: null, // Use the viewport as the root
+      rootMargin: '0px',
+      threshold: 1.0, // Fully visible in the viewport triggers the callback
+    };
+
+    const callback = (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          console.log('User has scrolled to the Readme component');
+          // You can also log the name of the Readme index here if it's available in the focusedFile object.
+          // For example, if the name is stored in a property called "name":
+          // console.log('Readme name:', focusedFile.name);
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(callback, options);
+    if (myRef.current) {
+      observer.observe(myRef.current);
+    }
+
+    // Clean up the observer when the component is unmounted
+    return () => {
+      if (myRef.current) {
+        observer.unobserve(myRef.current);
+      }
+    };
+  }, [focusedFile]);
+  
 
   return (
-    <div className='readme-container'>
+    <div className='readme-container' ref={myRef}>
       {/* <div className='tabs-readme-container'>
           <Tabs />
       </div> */}
