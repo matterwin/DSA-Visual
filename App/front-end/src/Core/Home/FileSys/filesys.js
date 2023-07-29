@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './filesys.css';
 import Folder from './folder';
 
-function Filesys({ focusOnto }) {
+function Filesys({ focusOnto, handleClick }) {
   const [openIndexes, setOpenIndexes] = useState([]);
 
   useEffect(() => {
@@ -64,15 +64,15 @@ function Filesys({ focusOnto }) {
     <div className='fs-contain'>
       <a href="/" className='ref'>Reference</a>
       <div className='fs-folders-contain'>
-        <Folder name='Sort' isOpen={openIndexes.includes(0)} file={focusOnto} handleOpen={handleOpen} index={0} items={['Merge','Quick','Insertion','Bubble','Heap','Selection','Topological']} />
-        <Folder name='Search' isOpen={openIndexes.includes(1)} file={focusOnto} handleOpen={handleOpen} index={1} items={['Binary']} />
-        <Folder name='Structs' isOpen={openIndexes.includes(2)} file={focusOnto} handleOpen={handleOpen} index={2} items={['Singly','Doubly','Stacks','Queues','Priority Queues']} />
-        <Folder name='Trees' isOpen={openIndexes.includes(3)} file={focusOnto} handleOpen={handleOpen} index={3} items={['Binary','BST','Heap','Trie','AVL','Red-Black']} />
-        <Folder name='Traversals' isOpen={openIndexes.includes(4)} file={focusOnto} handleOpen={handleOpen} index={4} items={['BFS','DFS','Dijkstra','Bellman','Bidirectional','Prims','Kruskals']} />
-        <Folder name='Complextities' isOpen={openIndexes.includes(5)} file={focusOnto} handleOpen={handleOpen} index={5} items={['Big-O','Big-Θ','Big-Ω','Space']} />
-        <Folder name='Dynamic Programming' isOpen={openIndexes.includes(6)} file={focusOnto} handleOpen={handleOpen} index={6} items={['Greedy']} />
-        <Folder name='Bit Manipulation' isOpen={openIndexes.includes(7)} file={focusOnto} handleOpen={handleOpen} index={7} items={['Kernighan']} />
-        <Folder name='Advice' isOpen={openIndexes.includes(8)} file={focusOnto} handleOpen={handleOpen} index={8} items={['Interview Prep', 'Communication', 'Problem Approach', 'Leetcode', 'Projects']} />
+        <Folder handleClick={handleClick} name='Sort' isOpen={openIndexes.includes(0)} file={focusOnto} handleOpen={handleOpen} index={0} items={['Merge','Quick','Insertion','Bubble','Heap','Selection','Topological']} />
+        <Folder handleClick={handleClick} name='Search' isOpen={openIndexes.includes(1)} file={focusOnto} handleOpen={handleOpen} index={1} items={['Binary']} />
+        <Folder handleClick={handleClick} name='Structs' isOpen={openIndexes.includes(2)} file={focusOnto} handleOpen={handleOpen} index={2} items={['Singly','Doubly','Stack','Queue','Priority Queue']} />
+        <Folder handleClick={handleClick} name='Trees' isOpen={openIndexes.includes(3)} file={focusOnto} handleOpen={handleOpen} index={3} items={['Binary','BST','Heap','Trie','AVL','Red-Black']} />
+        <Folder handleClick={handleClick} name='Traversals' isOpen={openIndexes.includes(4)} file={focusOnto} handleOpen={handleOpen} index={4} items={['BFS','DFS','Dijkstra','Bellman','Bidirectional','Prims','Kruskals']} />
+        <Folder handleClick={handleClick} name='Complextities' isOpen={openIndexes.includes(5)} file={focusOnto} handleOpen={handleOpen} index={5} items={['Big-O','Big-Θ','Big-Ω','Space']} />
+        <Folder handleClick={handleClick} name='Dynamic Programming' isOpen={openIndexes.includes(6)} file={focusOnto} handleOpen={handleOpen} index={6} items={['Greedy']} />
+        <Folder handleClick={handleClick} name='Bit Manipulation' isOpen={openIndexes.includes(7)} file={focusOnto} handleOpen={handleOpen} index={7} items={['Kernighan']} />
+        <Folder handleClick={handleClick} name='Advice' isOpen={openIndexes.includes(8)} file={focusOnto} handleOpen={handleOpen} index={8} items={['Interview Prep', 'Communication', 'Problem Approach', 'Leetcode', 'Projects']} />
       </div>
     </div>
   );

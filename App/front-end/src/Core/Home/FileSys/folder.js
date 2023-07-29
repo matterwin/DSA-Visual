@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import Children from './children';
 
 import './filesys.css'
 
-const Folder = ({ name, isOpen, handleOpen, index, items, file}) => {
-            // console.log(file)
+const Folder = ({ name, isOpen, handleOpen, index, items, file, handleClick}) => {
+
   return (
     <div className='pfolder-contain'>
       <div className='fs-arrow' onClick={() => handleOpen(index)}>
@@ -20,10 +20,8 @@ const Folder = ({ name, isOpen, handleOpen, index, items, file}) => {
       {items && (
         <div className='child-content'>
           {items.map((item, itemIndex) => (
-
-            <a
+            <div
               key={itemIndex}
-              href={'/' + item.toLowerCase()}
             >
               <Children
                 key={itemIndex}
@@ -32,8 +30,9 @@ const Folder = ({ name, isOpen, handleOpen, index, items, file}) => {
                 childIndex={itemIndex}
                 items={items}
                 focusOnFile={file.includes(item)}
+                handleClick={handleClick}
               />
-            </a>
+            </div>
           ))}
         </div>
       )}

@@ -1,26 +1,29 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { NavLink } from "react-router-dom";
 import Filesys from './FileSys/filesys';
 import Readme from './Readme/readme';
-import Extra from './Extra/extra';
 import DescriptionOutlinedIcon from '@mui/icons-material/DescriptionOutlined';
 import CodeOutlinedIcon from '@mui/icons-material/CodeOutlined';
 import SmsOutlinedIcon from '@mui/icons-material/SmsOutlined';
 import GraphicEqOutlinedIcon from '@mui/icons-material/GraphicEqOutlined';
-import SafetyDividerOutlinedIcon from '@mui/icons-material/SafetyDividerOutlined';
 import { exports } from './FileSys/allInfo';
-import readCookies from '../../Cookies/readCookies';
-import { createChatCookie } from '../../Cookies/createCookies';
+
 
 import "../../App.css"
 import "./home.css"
 
 function Home() {
     const [focusOn, SetFocusOn] = useState('Merge Sort');
+    const [readmeRef, setReadmeRef] = useState(null);
 
     const handleNavFocus = (fileName) => {
         SetFocusOn(fileName);
     }
+
+    const handleClick = (ref) => {
+        setReadmeRef(ref);
+    }; 
+
 
     return (
         <div>
@@ -60,11 +63,11 @@ function Home() {
             </div>
             <div className="container">
                 <div className="left-side-home">
-                    <Filesys focusOnto={focusOn}/>
+                    <Filesys focusOnto={focusOn} handleClick={handleClick}/>
                 </div>
                 <div className="center-side-home">
                     {Object.values(exports).map((value, index) => (
-                        <Readme key={index} focusedFile={value} handleNavFocus={handleNavFocus} />
+                        <Readme key={index} focusedFile={value} handleNavFocus={handleNavFocus} refProp={readmeRef} />
                     ))}
                 </div>
             </div>
