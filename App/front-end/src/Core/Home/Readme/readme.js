@@ -8,7 +8,7 @@ function Readme({focusedFile, handleNavFocus, refProp}){
 
   useEffect(() => {
     if(focusedFile.title.includes(refProp)){
-       myRef.current?.scrollIntoView({ behavior: "auto", block: "center", inline: "nearest" });
+       myRef.current?.scrollIntoView({ behavior: "smooth", block: "center", inline: "nearest" });
     }
   }, [refProp]);
 
@@ -44,9 +44,7 @@ function Readme({focusedFile, handleNavFocus, refProp}){
 
   return (
     <div ref={myRef}>
-
-
-    <div className='readme-container' >
+      <div className='readme-container' >
         {/* <div className='tabs-readme-container'>
             <Tabs />
         </div> */}
@@ -80,7 +78,8 @@ function Readme({focusedFile, handleNavFocus, refProp}){
           <div className='section'>
             <p>{focusedFile.sections[2].content}</p>   
           </div>
-        </div>    </div>
+        </div>    
+      </div>
     </div>
   )
 }
