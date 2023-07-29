@@ -10,35 +10,37 @@ function Filesys({ focusOnto }) {
     // Find the index of the folder containing the focused file
     const foundIndex = findFolderIndex(focusOnto);
 
-    // If the focusOnto file is found, open the folder corresponding to that file
-    if (foundIndex !== -1) {
-      setOpenIndexes((prevOpenIndexes) => {
-        if (!prevOpenIndexes.includes(foundIndex)) {
-          return [...prevOpenIndexes, foundIndex];
-        }
+    // Close the previously opened folder, if any
+    setOpenIndexes((prevOpenIndexes) => {
+      if (foundIndex !== -1 && !prevOpenIndexes.includes(foundIndex)) {
+        // If the focusOnto file is found and the folder is not already open, close the previous folder and open the current one
+        return [foundIndex];
+      } else {
+        // If the focusOnto file is not found or the folder is already open, keep the previous open folders as they are
         return prevOpenIndexes;
-      });
-    }
+      }
+    });
   }, [focusOnto]);
 
   const findFolderIndex = (file) => {
-    // Loop through the items of each folder to find the index of the folder containing the file
-    for (let i = 0; i < folders.length; i++) {
-      const folderItems = folders[i].items;
-      if (folderItems.includes(file)) {
-        console.log(file + " matches " + folderItems[i]);
-        return i;
-      }
+    const folderIndex = folders[file];
+    if (folderIndex !== undefined) {
+      // console.log(file + " matches " + folders2[folderIndex].name);
+      return folderIndex;
     }
     return -1; // File not found in any folder
   };
 
-    // Define your folder data here with the respective items
-    const folders = [
-      { name: 'Sort', items: ['Merge Sort', 'Quick Sort', 'Insertion Sort', 'Bubble Sort', 'Heap Sort', 'Selection Sort', 'Topological Sort'] },
-      { name: 'Search', items: ['Binary'] },
-      // Add other folders with their items here
-    ];
+  const folders = {
+    'Merge Sort': 0,
+    'Quick Sort': 0,
+    'Insertion Sort': 0,
+    'Bubble Sort': 0,
+    'Heap Sort': 0,
+    'Selection Sort': 0,
+    'Topological Sort': 0,
+    'Binary Search': 1,
+  };
 
   const handleOpen = (index) => {
     if (openIndexes.includes(index)) {

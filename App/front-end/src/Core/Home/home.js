@@ -16,7 +16,7 @@ import "../../App.css"
 import "./home.css"
 
 function Home() {
-    const [focusOn, SetFocusOn] = useState('Merge');
+    const [focusOn, SetFocusOn] = useState('Merge Sort');
 
     const handleNavFocus = (fileName) => {
         SetFocusOn(fileName);
