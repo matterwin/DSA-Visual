@@ -73,6 +73,7 @@ function Filesys({ focusOnto, handleClick }) {
         <Folder handleClick={handleClick} name='Dynamic Programming' isOpen={openIndexes.includes(6)} file={focusOnto} handleOpen={handleOpen} index={6} items={['Greedy']} />
         <Folder handleClick={handleClick} name='Bit Manipulation' isOpen={openIndexes.includes(7)} file={focusOnto} handleOpen={handleOpen} index={7} items={['Kernighan']} />
         <Folder handleClick={handleClick} name='Advice' isOpen={openIndexes.includes(8)} file={focusOnto} handleOpen={handleOpen} index={8} items={['Interview Prep', 'Communication', 'Problem Approach', 'Leetcode', 'Projects']} />
+        <Folder handleClick={handleClick} name='Math' isOpen={openIndexes.includes(9)} file={focusOnto} handleOpen={handleOpen} index={9} items={['Euclid']}/>
       </div>
     </div>
   );
