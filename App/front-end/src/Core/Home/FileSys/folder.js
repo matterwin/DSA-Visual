@@ -3,8 +3,10 @@ import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import Children from './children';
 
-const Folder = ({ name, isOpen, handleOpen, index, items}) => {
+import './filesys.css'
 
+const Folder = ({ name, isOpen, handleOpen, index, items, file}) => {
+            // console.log(file)
   return (
     <div className='pfolder-contain'>
       <div className='fs-arrow' onClick={() => handleOpen(index)}>
@@ -18,13 +20,18 @@ const Folder = ({ name, isOpen, handleOpen, index, items}) => {
       {items && (
         <div className='child-content'>
           {items.map((item, itemIndex) => (
-            <a href={'/' + item.toLowerCase()}>
+
+            <a
+              key={itemIndex}
+              href={'/' + item.toLowerCase()}
+            >
               <Children
                 key={itemIndex}
                 childName={item}
                 isOpen={isOpen}
                 childIndex={itemIndex}
                 items={items}
+                focusOnFile={file.includes(item)}
               />
             </a>
           ))}

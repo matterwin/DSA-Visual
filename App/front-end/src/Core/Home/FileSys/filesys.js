@@ -44,12 +44,12 @@ function Filesys({ focusOnto }) {
     'Stack': 2,
     'Queue': 2,
     'Priority Queue': 2,
-    'Binary Tree': 2,
-    'Binary Search Tree': 2,
-    'Heap': 2,
-    'Trie': 2,
-    'AVL Tree': 2,
-    'Red-Black Tree': 2,
+    'Binary Tree': 3,
+    'Binary Search Tree': 3,
+    'Heap': 3,
+    'Trie': 3,
+    'AVL Tree': 3,
+    'Red-Black Tree': 3,
   };
 
   const handleOpen = (index) => {
@@ -62,17 +62,17 @@ function Filesys({ focusOnto }) {
 
   return (
     <div className='fs-contain'>
-      <p className='ref'>Reference</p>
+      <a href="/" className='ref'>Reference</a>
       <div className='fs-folders-contain'>
-        <Folder name='Sort' isOpen={openIndexes.includes(0)} handleOpen={handleOpen} index={0} items={['Merge','Quick','Insertion','Bubble','Heap','Selection','Topological']} />
-        <Folder name='Search' isOpen={openIndexes.includes(1)} handleOpen={handleOpen} index={1} items={['Binary']} />
-        <Folder name='Structs' isOpen={openIndexes.includes(2)} handleOpen={handleOpen} index={2} items={['Singly','Doubly','Stacks','Queues','Priority Queues']} />
-        <Folder name='Trees' isOpen={openIndexes.includes(3)} handleOpen={handleOpen} index={3} items={['Binary','BST','Heap','Trie','AVL','Red-Black']} />
-        <Folder name='Traversals' isOpen={openIndexes.includes(4)} handleOpen={handleOpen} index={4} items={['BFS','DFS','Dijkstra','Bellman','Bidirectional','Prims','Kruskals']} />
-        <Folder name='Complextities' isOpen={openIndexes.includes(5)} handleOpen={handleOpen} index={5} items={['Big-O','Big-Θ','Big-Ω','Space']} />
-        <Folder name='Dynamic Programming' isOpen={openIndexes.includes(6)} handleOpen={handleOpen} index={6} items={['Greedy']} />
-        <Folder name='Bit Manipulation' isOpen={openIndexes.includes(7)} handleOpen={handleOpen} index={7} items={['Kernighan']} />
-        <Folder name='Advice' isOpen={openIndexes.includes(8)} handleOpen={handleOpen} index={8} items={['Interview Prep', 'Communication', 'Problem Approach', 'Leetcode', 'Projects']} />
+        <Folder name='Sort' isOpen={openIndexes.includes(0)} file={focusOnto} handleOpen={handleOpen} index={0} items={['Merge','Quick','Insertion','Bubble','Heap','Selection','Topological']} />
+        <Folder name='Search' isOpen={openIndexes.includes(1)} file={focusOnto} handleOpen={handleOpen} index={1} items={['Binary']} />
+        <Folder name='Structs' isOpen={openIndexes.includes(2)} file={focusOnto} handleOpen={handleOpen} index={2} items={['Singly','Doubly','Stacks','Queues','Priority Queues']} />
+        <Folder name='Trees' isOpen={openIndexes.includes(3)} file={focusOnto} handleOpen={handleOpen} index={3} items={['Binary','BST','Heap','Trie','AVL','Red-Black']} />
+        <Folder name='Traversals' isOpen={openIndexes.includes(4)} file={focusOnto} handleOpen={handleOpen} index={4} items={['BFS','DFS','Dijkstra','Bellman','Bidirectional','Prims','Kruskals']} />
+        <Folder name='Complextities' isOpen={openIndexes.includes(5)} file={focusOnto} handleOpen={handleOpen} index={5} items={['Big-O','Big-Θ','Big-Ω','Space']} />
+        <Folder name='Dynamic Programming' isOpen={openIndexes.includes(6)} file={focusOnto} handleOpen={handleOpen} index={6} items={['Greedy']} />
+        <Folder name='Bit Manipulation' isOpen={openIndexes.includes(7)} file={focusOnto} handleOpen={handleOpen} index={7} items={['Kernighan']} />
+        <Folder name='Advice' isOpen={openIndexes.includes(8)} file={focusOnto} handleOpen={handleOpen} index={8} items={['Interview Prep', 'Communication', 'Problem Approach', 'Leetcode', 'Projects']} />
       </div>
     </div>
   );
