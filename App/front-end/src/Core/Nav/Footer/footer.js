@@ -35,9 +35,9 @@ const Footer = () => {
                         {({ isActive }) => (
                             <>
                             {isActive ? (
-                                <AutoStoriesIcon  sx={{stroke: "#a9c9a3", strokeWidth: 0.4, color:'#a9c9a3', fontSize:'25px', fontStyle:'bold'}}/>
+                                <AutoStoriesIcon  sx={{cursor: 'pointer', stroke: "#a9c9a3", strokeWidth: 0.4, color:'#a9c9a3', fontSize:'25px', fontStyle:'bold'}}/>
                             ) : (
-                                <AutoStoriesOutlinedIcon  sx={{stroke: "#fff", strokeWidth: 0.4, color:'#efeff1', fontSize:'25px', fontStyle:'bold'}}/>
+                                <AutoStoriesOutlinedIcon  sx={{cursor: 'pointer', stroke: "#fff", strokeWidth: 0.4, color:'#efeff1', fontSize:'25px', fontStyle:'bold'}}/>
                             )}
                             <p className='footer-notes'>Chat</p>
                             </>

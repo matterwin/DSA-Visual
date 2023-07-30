@@ -239,7 +239,7 @@
 
 @media screen and (max-width: 515px){
     .hide-footer{
-        display: flex
+        display: flex;
     }
 
     .nav-link-div, .nav-link-div-icons, .divider-div, .left-side, .nav-link-div-pp{

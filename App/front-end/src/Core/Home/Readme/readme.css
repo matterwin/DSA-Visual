@@ -19,20 +19,33 @@
     padding: 0;
     margin: 0;
     margin-bottom: 10px;
-    padding-bottom: 30px;
+    padding-bottom: 20px;
     padding-top: 20px;
     border-bottom: #A9C9A3 solid 1px;
+    box-sizing: border-box;
+    font-family: 'Rubik', sans-serif;
+    font-family: 'Ubuntu', sans-serif;
+    font-family: 'Numans', sans-serif;
+}
+
+.divider-home{
+    background-color: #f4f4f5;
+    height: 1px;
+    width:100%;
+    margin-bottom:15px;
 }
 
 .file-desc{
     font-family: 'Inter', sans-serif;
     margin-bottom:15px;
+    color: #4d3939;
 }
 
 .title-note{
     padding: 0;
     margin: 0;
     margin-bottom:15px;
+    color: #4d3939;
 }
 
 .tabs-readme-container{
@@ -43,8 +56,20 @@
 .section{
     margin-top: 10px;
     background-color: #ccc;
+    padding: 10px;
+    box-sizing: border-box;
     border-radius: 3px;
     width:100%;
+    color: #4d3939;
+}
+
+.code-container{
+    /* width: 100%; */
+    height: 350px;
+    overflow-y: scroll;
+    /* font-family: 'Inter'; */
+    box-sizing: border-box;
+    overflow-x: scroll;
 }
 
 .section-div{
@@ -58,6 +83,6 @@
 }
 
 .section-title{
-    color: #ccc;
+    color: #4d3939;
     font-size: 22px;
 }
