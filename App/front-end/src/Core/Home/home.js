@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { NavLink } from "react-router-dom";
 import Filesys from './FileSys/filesys';
 import Readme from './Readme/readme';
@@ -15,6 +15,10 @@ import "./home.css"
 function Home() {
     const [focusOn, SetFocusOn] = useState('Merge Sort');
     const [readmeRef, setReadmeRef] = useState(null);
+
+    useEffect(() => {
+        document.title = "Home | Heyso";
+    }, []);
 
     const handleNavFocus = (fileName) => {
         SetFocusOn(fileName);

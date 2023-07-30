@@ -26,11 +26,13 @@
 
 .file-desc{
     font-family: 'Inter', sans-serif;
+    margin-bottom:15px;
 }
 
 .title-note{
     padding: 0;
     margin: 0;
+    margin-bottom:15px;
 }
 
 .tabs-readme-container{

@@ -17,6 +17,10 @@ function ProfilePage() {
     const username = readCookies('name');
 
     useEffect(() => {
+        document.title = "Profile | Heyso";
+    }, []);
+
+    useEffect(() => {
         const rememChat = readCookies('showChat');
         if(rememChat === 'true')
             setShowLiveChat(true);

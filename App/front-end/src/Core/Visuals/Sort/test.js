@@ -12,6 +12,10 @@ const Test = () => {
   const arrayLength = Math.floor(Math.random() * (50 - 10 + 1)) + 10;
 
   useEffect(() => {
+    document.title = "Visuals | Heyso";
+  }, []);
+
+  useEffect(() => {
     generate();
   }, []);
 

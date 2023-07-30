@@ -148,7 +148,7 @@ const merge = {
 
   const binary = {
     title: 'Binary Search',
-    note: '• Divide and Conquer algorithm',
+    note: 'Divide and Conquer algorithm',
     desc: 'Consequat fugiat Lorem et dolor non eu minim labore qui labore anim veniam. Quis ipsum nostrud nostrud reprehenderit incididunt. Nostrud velit ex elit mollit et officia aliqua sint culpa deserunt aliqua.',
     sections: [
       {

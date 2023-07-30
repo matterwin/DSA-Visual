@@ -27,8 +27,12 @@ const postDiv = () => {
 }
 
 function HomePage() {
-  const [showLiveChat, setShowLiveChat] = useState(false);
-  const [showPostBox, setShowBoxPost] = useState(false);
+    const [showLiveChat, setShowLiveChat] = useState(false);
+    const [showPostBox, setShowBoxPost] = useState(false);
+
+    useEffect(() => {
+        document.title = "Chat | Heyso";
+    }, []);
 
     useEffect(() => {
         const rememChat = readCookies('showChat');

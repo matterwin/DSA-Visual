@@ -55,7 +55,7 @@ function Readme({focusedFile, handleNavFocus, refProp}){
         <div>
             <p className='file-desc'>{focusedFile.desc}</p>
         </div>
-        <Divider orientation="horizontal" style={{ backgroundColor: '#f4f4f5', height: '1px', width:'100%' }} />
+        <Divider orientation="horizontal" style={{ backgroundColor: '#f4f4f5', height: '1px', width:'100%', marginBottom:'15px' }} />
         <div className='section-div'>
           <p className='section-title' style={{ fontFamily: 'roobert' }}>{focusedFile.sections[0].title}</p>
           <div className='section'>
@@ -65,14 +65,14 @@ function Readme({focusedFile, handleNavFocus, refProp}){
             <p>{focusedFile.sections[0].content[3]}</p>
           </div>
         </div>
-        <Divider orientation="horizontal" style={{ backgroundColor: '#f4f4f5', height: '1px', width:'100%' }} />
+        <Divider orientation="horizontal" style={{ backgroundColor: '#f4f4f5', height: '1px', width:'100%', marginBottom:'15px' }} />
         <div className='section-div'>
           <p className='section-title' style={{ fontFamily: 'roobert' }}>{focusedFile.sections[1].title}</p>
           <div className='section'>
             <p>{focusedFile.sections[1].content}</p>   
           </div>
         </div>
-        <Divider orientation="horizontal" style={{ backgroundColor: '#f4f4f5', height: '1px', width:'100%' }} />
+        <Divider orientation="horizontal" style={{ backgroundColor: '#f4f4f5', height: '1px', width:'100%', marginBottom:'15px' }} />
         <div className='section-div'>
           <p className='section-title' style={{ fontFamily: 'roobert' }}>{focusedFile.sections[2].title}</p>
           <div className='section'>
