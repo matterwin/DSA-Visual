@@ -20,7 +20,33 @@ const merge = {
         title: 'Space Complexity',
         content: 'Merge sort has a space complexity of O(n), where n is the number of elements in the array. It requires additional space to store the temporary arrays during the merging step.'
       }
-    ]
+    ],
+    code:
+`public static void merge(int[] l, int[] r, int[] a){
+  int i=0, j=0;
+
+  // Simply check which element to put back into a
+  while(i+j < a.length){
+      if(j == r.length || (i < l.length && l[i] < r[j]))
+          a[i+j] = l[i++];
+      else
+          a[i+j] = r[j++];
+  }
+}
+    
+public static void mergeSort(int[] a){
+  int len = a.length;
+  if(len < 2) return;
+
+  int mid = len / 2;
+  int[] l = Arrays.copyOfRange(a, 0, mid);
+  int[] r = Arrays.copyOfRange(a, mid, len);
+
+  // Divide and conquer all the way to only having 1 element, and then merge and combine the two arrays recursively.
+  mergeSort(l);
+  mergeSort(r);
+  merge(l, r, a);
+}`
   };
   
   const quick = {

@@ -41,7 +41,9 @@ import SettingsNotif from './Core/Profile/Settings/settingsNotif';
 
 import readCookies from './Cookies/readCookies';
 import { createChatCookie } from './Cookies/createCookies';
+
 import './App.css';
+import 'prismjs/themes/prism.css';
 
 function App() {
 

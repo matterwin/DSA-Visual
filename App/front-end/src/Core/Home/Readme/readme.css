@@ -11,7 +11,32 @@
     padding-bottom: 150px;
     margin-bottom: 50px;;
     background-color: rgb(255, 255, 255);
+    /* background-color: #4d3939; */
     box-shadow: rgba(0, 0, 0, .15) 0px 0px 10px 10px;
+    /* width: 800px; */
+    width: 100%;
+    /* width:inherit; */
+    box-sizing: border-box;
+}
+
+/* .tes{
+    width: 50%;
+    box-sizing: border-box;
+} */
+
+.testea{
+    background-color: red;
+    padding: 50px;
+}
+
+.te-p{
+    flex-basis: calc(50% - 40px);
+}
+
+.te{
+    /* position: relative; */
+    width: 100%;
+    height: 100px;
 }
 
 .title-of-panel{
@@ -26,6 +51,8 @@
     font-family: 'Rubik', sans-serif;
     font-family: 'Ubuntu', sans-serif;
     font-family: 'Numans', sans-serif;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 800;
 }
 
 .divider-home{
@@ -36,7 +63,9 @@
 }
 
 .file-desc{
-    font-family: 'Inter', sans-serif;
+    /* font-family: 'Inter', sans-serif; */
+    font-family: 'Segoe UI';
+    font-weight: 300;
     margin-bottom:15px;
     color: #4d3939;
 }
@@ -46,6 +75,8 @@
     margin: 0;
     margin-bottom:15px;
     color: #4d3939;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 300;
 }
 
 .tabs-readme-container{
@@ -63,14 +94,23 @@
     color: #4d3939;
 }
 
-.code-container{
-    /* width: 100%; */
-    height: 350px;
+/* .code-container{
+    width: 100%;
+    height: 250px;
     overflow-y: scroll;
-    /* font-family: 'Inter'; */
+    font-family: 'Inter';
     box-sizing: border-box;
     overflow-x: scroll;
-}
+} */
+
+.code-container {
+    width: inherit;
+    height: 150px;
+    overflow-y: auto;
+    padding: 0;
+    margin: 0;
+    font-family: 'Inter'; /* This can be adjusted to your preferred font */
+  }
 
 .section-div{
     width:100%;
@@ -78,11 +118,18 @@
 
 .section p{
     color: black;
-    font-family: Arial, Helvetica, sans-serif;
+    /* font-family: Arial, Helvetica, sans-serif; */
     font-family: 'Inter', sans-serif;
+    /* font-family: 'Poppins', sans-serif; */
+    /* font-family: 'Segoe UIi'; */
+    /* font-family: "Roboto", sans-serif; */
+    /* font-family: 'R'; */
+    /* font-weight: 300;  */
 }
 
 .section-title{
     color: #4d3939;
     font-size: 22px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
 }
