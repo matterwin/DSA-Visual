@@ -13,7 +13,7 @@ function Readme({focusedFile, handleNavFocus, refProp}){
 
   useEffect(() => {
     if(focusedFile.title.includes(refProp)){
-       myRef.current?.scrollIntoView({ behavior: "smooth", block: "end", inline: "nearest" });
+       myRef.current?.scrollIntoView({ behavior: "smooth", block: "center", inline: "center" });
     }
   }, [refProp]);
 
@@ -55,7 +55,8 @@ function Readme({focusedFile, handleNavFocus, refProp}){
           </div> */}
           <div style={{width:'100%'}} >
               <h1 className='title-of-panel'>{focusedFile.title}</h1>
-              {/* <Divider orientation="horizontal" className='divider-home' style={{ marginBottom:'15px' }}/> */}
+              <p className='title-note'>Last Updated: 30 July 2023</p>
+              <Divider orientation="horizontal" className='divider-home' style={{ marginBottom:'15px' }}/>
           </div>
           <div>
             <p className='title-note'>{focusedFile.note}</p>
@@ -63,7 +64,7 @@ function Readme({focusedFile, handleNavFocus, refProp}){
           </div>
           <Divider orientation="horizontal" className='divider-home' style={{ marginBottom:'15px' }}/>
           <div className='section-div'>
-            <p className='section-title' style={{ fontFamily: 'roobert' }}>{focusedFile.sections[0].title}</p>
+            <p className='section-title' >{focusedFile.sections[0].title}</p>
             <div className='section'>
               <p>{focusedFile.sections[0].content[0]}</p>   
               <p>{focusedFile.sections[0].content[1]}</p>
@@ -86,19 +87,21 @@ function Readme({focusedFile, handleNavFocus, refProp}){
             </div>
           </div>   
           
-          <Divider orientation="horizontal" className='divider-home' style={{ marginBottom:'15px', marginTop:'15px' }}/>
-          <p className='section-title' style={{ marginBottom:'15px' }}>Code</p>
-          {/* {code && 
+          {/* {code && <>
+            <Divider orientation="horizontal" className='divider-home' style={{ marginBottom:'15px', marginTop:'15px' }}/>  
+            <p className='section-title'>Code</p>
             <div className='te'>
-              <SyntaxHighlighter
-                language="java"
-                style={dracula}
-                wrapLines={true}
-                customStyle={{ width: '100%', height:'100%', boxSizing:'border-box' }}
+              <SyntaxHighlighter 
+              wrapLines={true} 
+              showLineNumbers 
+              language="java" 
+              style={dracula} 
+              customStyle={{ fontSize:'15px', boxSizing: "border-box", backgroundColor:'transparent', padding:'0', margin:'0', whiteSpace: 'pre', width: '100%', display: 'block' }}
               >
                 {code}
               </SyntaxHighlighter>
             </div>
+          </>
           } */}
         </div>
     </div>
