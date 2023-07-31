@@ -87,22 +87,23 @@ function Readme({focusedFile, handleNavFocus, refProp}){
             </div>
           </div>   
           
-          {/* {code && <>
-            <Divider orientation="horizontal" className='divider-home' style={{ marginBottom:'15px', marginTop:'15px' }}/>  
-            <p className='section-title'>Code</p>
-            <div className='te'>
-              <SyntaxHighlighter 
+          {code && <>
+          <Divider orientation="horizontal" className='divider-home' style={{ marginBottom:'15px', marginTop:'15px' }}/>  
+          <p className='section-title'>Code</p>
+          <p className='title-note'>Example with recursion</p>
+          <pre className='custom-syntax-highlighter' style={{width: '100%', boxSizing:'border-box',overflowX: 'auto',background:', rgb(43, 43, 43)',color: 'rgb(248, 248, 242)'}}>
+            <SyntaxHighlighter 
               wrapLines={true} 
               showLineNumbers 
               language="java" 
               style={dracula} 
-              customStyle={{ fontSize:'15px', boxSizing: "border-box", backgroundColor:'transparent', padding:'0', margin:'0', whiteSpace: 'pre', width: '100%', display: 'block' }}
-              >
-                {code}
-              </SyntaxHighlighter>
-            </div>
-          </>
-          } */}
+              customStyle={{ width: '100% !important', boxSizing:'border-box', fontSize: '15px', backgroundColor: 'transparent', padding: '0', margin: '0' }}
+            >
+              {code}
+            </SyntaxHighlighter>
+          </pre>
+        </>
+        }
         </div>
     </div>
   )
