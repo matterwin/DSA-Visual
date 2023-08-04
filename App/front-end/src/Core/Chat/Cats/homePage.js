@@ -59,7 +59,7 @@ function HomePage() {
                                 <CustomDSANavBtnReplica />
                             </div>
                         </div>
-                        {!showLiveChat &&
+                        {/* {!showLiveChat &&
                         <div className='sub-right-side'>
                             <div className='sub-nav-boxes-active' onClick={handleShowLiveChat}>
                                 <div className='sub-nav-icon-contain'>
@@ -68,7 +68,7 @@ function HomePage() {
                                 </div>
                             </div>
                         </div>
-                        }
+                        } */}
                     </div>
                 </div>
             </div>
@@ -96,7 +96,7 @@ function HomePage() {
             
           </div>
           <div className="right-side-chat">
-            <ChatInfo title={chatInfo.title} msg={chatInfo.msg} />
+            <ChatInfo title={chatInfo.title} msg={chatInfo.msg} showButton={true}/>
             {/* {!showLiveChat && 
             <>
                 <div className='open-btn'>

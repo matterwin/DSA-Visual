@@ -6,9 +6,16 @@ import { createChatCookie } from '../../../../Cookies/createCookies';
 import readCookies from '../../../../Cookies/readCookies';
 import SafetyDividerOutlinedIcon from '@mui/icons-material/SafetyDividerOutlined';
 import UserPanel from '../../userPanel';
+import CustomDSANavBtnReplica from '../../../Custom/customDSABtnReplica';
+import ChatInfo from '../../chatInfo';
 
 import '../../chat.css'
 import './profilePage.css'
+
+const chatInfo = {
+    title:'Profile',
+    msg:'Your profile page. Here you can see your likes and posts.'
+}
 
 function ProfilePage() {
     const [showLiveChat, setShowLiveChat] = useState(false);
@@ -28,10 +35,10 @@ function ProfilePage() {
             setShowLiveChat(false);
     }, []); 
   
-    const handleShowLiveChat = () => {
-        setShowLiveChat(!showLiveChat);
-        createChatCookie(!showLiveChat);
-    };
+    // const handleShowLiveChat = () => {
+    //     setShowLiveChat(!showLiveChat);
+    //     createChatCookie(!showLiveChat);
+    // };
 
   return (
     <div>   
@@ -41,14 +48,10 @@ function ProfilePage() {
                     <div className="sub-nav-l-r-container">
                         <div className="sub-left-side">
                             <div className='sub-left-side-row-contain'>
-                            <div className='sub-nav-boxes'>
-                                <div className='sub-nav-icon-contain'>
-                                <p className='sub-nav-p' >f</p>
-                                </div>
-                            </div>
+                                <CustomDSANavBtnReplica />
                             </div>
                         </div>
-                        {!showLiveChat &&
+                        {/* {!showLiveChat &&
                         <div className='sub-right-side'>
                             <div className='sub-nav-boxes-active' onClick={handleShowLiveChat}>
                                 <div className='sub-nav-icon-contain'>
@@ -57,7 +60,7 @@ function ProfilePage() {
                                 </div>
                             </div>
                         </div>
-                        }
+                        } */}
                     </div>
                 </div>
             </div>
@@ -83,9 +86,9 @@ function ProfilePage() {
                             <NavLink end to={'/' + username} className={({ isActive }) => (isActive ? 'div-of-tab-words-active' : 'div-of-tab-words')}>
                                 <p className='tab-p-more'>Posts</p>
                             </NavLink>
-                            <NavLink end to={'/' + username + '/replies'} className={({ isActive }) => (isActive ? 'div-of-tab-words-active' : 'div-of-tab-words')}>
+                            {/* <NavLink end to={'/' + username + '/replies'} className={({ isActive }) => (isActive ? 'div-of-tab-words-active' : 'div-of-tab-words')}>
                                 <p className='tab-p-more'>Replies</p>
-                            </NavLink>
+                            </NavLink> */}
                             <NavLink end to={'/' + username + '/likes'} className={({ isActive }) => (isActive ? 'div-of-tab-words-active' : 'div-of-tab-words')}>
                                 <p className='tab-p-more'>Likes</p>
                             </NavLink>
@@ -94,7 +97,8 @@ function ProfilePage() {
                 </div>
           </div>
           <div className="right-side-chat">
-            {!showLiveChat && 
+            <ChatInfo title={chatInfo.title} msg={chatInfo.msg} showButton={false}/>
+            {/* {!showLiveChat && 
             <>
                 <div className='open-btn'>
                     <div className='open-live-center' onClick={handleShowLiveChat}>
@@ -103,7 +107,7 @@ function ProfilePage() {
                 </div>
             </>
             }
-            {showLiveChat && <Extra showLiveChat handleShowLiveChat={handleShowLiveChat} />}
+            {showLiveChat && <Extra showLiveChat handleShowLiveChat={handleShowLiveChat} />} */}
           </div>
         </div>
     </div>
