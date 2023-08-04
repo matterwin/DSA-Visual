@@ -71,15 +71,15 @@ const UserPanel = () => {
                             {loading && <Loading />}
                             {!loading && 
                             <>
-                                <div className='col-stats'>
+                                <a href={'/' + username } className='col-stats'>
                                     <p className='user-panel-follow'>{numberOf.posts}</p>
                                     <p className='user-panel-follow-p'>Posts</p>
-                                </div> 
+                                </a> 
                                 <Divider sx={{ backgroundColor: '#ccc', width:'2px', height:'40px' }}/>
-                                <div className='col-stats'>
+                                <a href={'/' + username + '/likes' } className='col-stats'>
                                     <p className='user-panel-follow'>{numberOf.likes}</p>
                                     <p className='user-panel-follow-p'>Likes</p>
-                                </div>
+                                </a>
                             </>
                             }                          
                         </div>
@@ -92,14 +92,14 @@ const UserPanel = () => {
                         </div>
                         <p className='p-in-navs'>Profile</p>
                     </a>
-                    <a href={'/' + username} className='row-nav-div'>
+                    {/* <a href={'/' + username} className='row-nav-div'>
                         <CottageOutlinedIcon  sx={{stroke: "#fff", strokeWidth: 0.4, color:'#efeff1', fontSize:'22px', fontStyle:'bold'}}/>
                         <p className='p-in-navs'>Your Posts</p>
                     </a>
                     <a href={'/' + username + '/likes'} className='row-nav-div'>
                         <CottageOutlinedIcon  sx={{stroke: "#fff", strokeWidth: 0.4, color:'#efeff1', fontSize:'22px', fontStyle:'bold'}}/>
                         <p className='p-in-navs'>Your Likes</p>
-                    </a>
+                    </a> */}
                     {/* <div className='row-nav-div'>
                         <MailOutlinedIcon  sx={{stroke: "#fff", strokeWidth: 0.4, color:'#efeff1', fontSize:'22px', fontStyle:'bold'}}/>
                         <p className='p-in-navs'>Messages</p>

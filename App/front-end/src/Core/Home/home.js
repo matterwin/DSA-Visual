@@ -6,6 +6,8 @@ import DescriptionOutlinedIcon from '@mui/icons-material/DescriptionOutlined';
 import CodeOutlinedIcon from '@mui/icons-material/CodeOutlined';
 import SmsOutlinedIcon from '@mui/icons-material/SmsOutlined';
 import GraphicEqOutlinedIcon from '@mui/icons-material/GraphicEqOutlined';
+import CustomDSANavBtn from '../Custom/customDSANavBtn';
+import CustomDSANavBtnReplica from '../Custom/customDSABtnReplica';
 import { exports } from './FileSys/allInfo';
 
 
@@ -42,6 +44,7 @@ function Home() {
                                 <p className='sub-nav-p'>Readme</p>
                                 </div>
                             </NavLink>
+                            <CustomDSANavBtnReplica />
                             <NavLink end to="/code" className={({ isActive }) => (isActive ? 'sub-nav-boxes-active' : 'sub-nav-boxes')}>
                                 <div className='sub-nav-icon-contain'>
                                 <CodeOutlinedIcon sx={{ stroke: "#fff", strokeWidth: 0.4, padding: '0', margin: '0', cursor: 'pointer', color: '#bbb', fontSize: '20px' }} />
