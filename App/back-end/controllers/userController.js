@@ -51,10 +51,11 @@ const basicUserInfo = async(req, res) => {
     
     const username = user.username;
     const color = user.color;
+    const profPic = user.profilePic
     const firstname = user.firstname;
     const lastname = user.lastname;
     const bio = user.bio;
-    res.status(StatusCodes.OK).json({ msg: 'success', username, color, firstname, lastname, bio });
+    res.status(StatusCodes.OK).json({ msg: 'success', username, profPic, color, firstname, lastname, bio });
 }
 
 const likes = async (req, res) => {

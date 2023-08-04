@@ -8,6 +8,7 @@ import SafetyDividerOutlinedIcon from '@mui/icons-material/SafetyDividerOutlined
 import UserPanel from '../../userPanel';
 import CustomDSANavBtnReplica from '../../../Custom/customDSABtnReplica';
 import ChatInfo from '../../chatInfo';
+import { getData, setData } from '../../../../UserAuth/UserContext';
 
 import '../../chat.css'
 import './profilePage.css'
@@ -18,23 +19,11 @@ const chatInfo = {
 }
 
 function ProfilePage() {
-    const firstname = localStorage.getItem('first');
-    const lastname = localStorage.getItem('last');
-    const pp = readCookies('pp');
-    const color = readCookies('color');
-    const username = readCookies('name');
+    const userData = getData();
 
     useEffect(() => {
         document.title = "Profile | Heyso";
     }, []);
-
-    // useEffect(() => {
-    //     const rememChat = readCookies('showChat');
-    //     if(rememChat === 'true')
-    //         setShowLiveChat(true);
-    //     else
-    //         setShowLiveChat(false);
-    // }, []); 
 
   return (
     <div>   
@@ -47,16 +36,6 @@ function ProfilePage() {
                                 <CustomDSANavBtnReplica />
                             </div>
                         </div>
-                        {/* {!showLiveChat &&
-                        <div className='sub-right-side'>
-                            <div className='sub-nav-boxes-active' onClick={handleShowLiveChat}>
-                                <div className='sub-nav-icon-contain'>
-                                <SafetyDividerOutlinedIcon sx={{ stroke: "#fff", strokeWidth: 0.4, padding: '0', margin: '0', cursor: 'pointer', color: '#bbb', fontSize: '20px' }} />
-                                <p className='sub-nav-p'>Live chat</p>
-                                </div>
-                            </div>
-                        </div>
-                        } */}
                     </div>
                 </div>
             </div>
@@ -69,24 +48,25 @@ function ProfilePage() {
           <div className="center-side-chat">
             <div className='teste'>
                 <div className='backg-for-profile-div'>
-                    <div className='color-bg-profile-page' style={{ backgroundColor:`#${color}`}} />
+                    <div className='color-bg-profile-page' style={{ backgroundColor:`#${userData.color}`}} />
                         <div className='div-for-everything-else-in-profile'>
                             <div className='basic-info-div'>
                                 <div className="prof-page-pfp-div">
-                                    <img className="prof-page-profile-pic" src={pp} alt="ProfilePicture" />                         
+                                    <img className="prof-page-profile-pic" src={userData.pic} alt="ProfilePicture" />                         
                                 </div>
-                                <p className='username-p-prof-page'>{username}</p>
-                                <p className='username-p-prof-page'>{firstname} {lastname}</p>
+                                <p className='username-p-prof-page'>{userData.username}</p>
+                                <p className='username-p-prof-page'>{userData.first} {userData.last}</p>
+                                <p>{userData.bio}</p>
                             </div> 
                         </div>  
                         <div className='container-for-tabs'>
-                            <NavLink end to={'/' + username} className={({ isActive }) => (isActive ? 'div-of-tab-words-active' : 'div-of-tab-words')}>
+                            <NavLink end to={'/' + userData.username} className={({ isActive }) => (isActive ? 'div-of-tab-words-active' : 'div-of-tab-words')}>
                                 <p className='tab-p-more'>Posts</p>
                             </NavLink>
                             {/* <NavLink end to={'/' + username + '/replies'} className={({ isActive }) => (isActive ? 'div-of-tab-words-active' : 'div-of-tab-words')}>
                                 <p className='tab-p-more'>Replies</p>
                             </NavLink> */}
-                            <NavLink end to={'/' + username + '/likes'} className={({ isActive }) => (isActive ? 'div-of-tab-words-active' : 'div-of-tab-words')}>
+                            <NavLink end to={'/' + userData.username + '/likes'} className={({ isActive }) => (isActive ? 'div-of-tab-words-active' : 'div-of-tab-words')}>
                                 <p className='tab-p-more'>Likes</p>
                             </NavLink>
                         </div>
@@ -95,16 +75,6 @@ function ProfilePage() {
           </div>
           <div className="right-side-chat">
             <ChatInfo title={chatInfo.title} msg={chatInfo.msg} showButton={false}/>
-            {/* {!showLiveChat && 
-            <>
-                <div className='open-btn'>
-                    <div className='open-live-center' onClick={handleShowLiveChat}>
-                        <p style={{ color:'#fff', fontSize:'15px', fontFamily:'Inter' }}>Open Chat</p>
-                    </div>
-                </div>
-            </>
-            }
-            {showLiveChat && <Extra showLiveChat handleShowLiveChat={handleShowLiveChat} />} */}
           </div>
         </div>
     </div>

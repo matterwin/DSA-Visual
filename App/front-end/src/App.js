@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 //basics
@@ -42,18 +42,26 @@ import SettingsNotif from './Core/Profile/Settings/settingsNotif';
 import readCookies from './Cookies/readCookies';
 import { createChatCookie } from './Cookies/createCookies';
 
+import CircularProgress from '@mui/material/CircularProgress';
+import Box from '@mui/material/Box';
+
+import { getData, setData } from './UserAuth/UserContext'; 
 import './App.css';
 import 'prismjs/themes/prism.css';
 
-let userData = {
-  name: '',
-  color: '',
-  first: '',
-  last: '',
-  pic: ''
-}; //create a loading screen and fetch user data and store it as global
+const Loading = () => {
+  return (
+    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height:'100vh'}}>
+      <Box sx={{ display: 'flex', justifyContent: 'center',alignItems: 'center', flexDirection:'column', gap:'15px'  }}>
+        <p style={{color:'#a9c9a3', fontSize:'18px', fontFamily:'Inter'}}>Slow huh?</p>
+        <CircularProgress style={{ color: '#a9c9a3' }} />
+      </Box>
+    </div>
+  );
+}
 
 function App() {
+  const [loading, setLoading] = useState(true);
 
   const { pathname } = window.location;
   const userLoggedIn = (readCookies('auth-token')) ? true : false;
@@ -63,6 +71,39 @@ function App() {
   }
 
   if(userLoggedIn) var name = readCookies('name');
+
+  const fetchInfo = async () => {
+    try {
+        const userId = readCookies('auth-token');
+        const url = `http://localhost:5000/user/basicInfo`;
+    
+        const response = await fetch(url, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ userId }),
+        });
+    
+        if (response.status !== 200) {
+            throw new Error("Info went wrong");
+        }
+    
+        const data = await response.json();
+        setData(data.username, data.color, data.profPic, data.firstname, data.lastname, data.bio)
+        setLoading(false);
+        console.log(getData());
+    } catch (err) {
+        console.log(err);
+    }
+  }
+
+  useEffect(() => {
+    if(userLoggedIn)
+      fetchInfo(); // Initial fetch
+    else
+      setLoading(false);
+  }, []);
 
   const validPath = pathname === '/' 
                     || pathname === '/chat'
@@ -108,12 +149,12 @@ function App() {
 
   return (
     <div>
+
+      {loading && <Loading />}
        <Router>
 
           {HideNav}
           {ShowSettingsNavIf}
-          {/* {ShowChatNavIf} */}
-          {/* <CustomSnackbar message={"testing from app"}/> */}
 
           <Routes>
             <Route caseSensitive path="/" element={<Home />}/>

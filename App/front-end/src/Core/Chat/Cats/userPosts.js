@@ -206,7 +206,8 @@ const UserPosts = () => {
                             <div className='top-and-text-div'>
                                 <div className='top-contain'>
                                     <div className='left-top-div'>
-                                        <p className='likes-text'>{post.user.username} &nbsp;</p>                                        
+                                        <p className='likes-text'>{post.user.username} &nbsp;</p>   
+                                        <p>{post.user.firstname} {post.user.lastname}</p>                                     
                                     </div>
                                     <div className='right-top-div-new'>
                                         <p>{post.createdAt}</p>
@@ -254,10 +255,6 @@ const UserPosts = () => {
                                     </CustomizedTooltip>
                                 </div>
                             </div>
-                            {/* <div className='new-icon-word-div-repost'>
-                                <SyncOutlinedIcon className='repost-icon' />
-                                <p className='repost-text' style={{ fontWeight:'500' }}>Repost</p>
-                            </div> */}
                         </div>
                     </div>
                 </div>
