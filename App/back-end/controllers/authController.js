@@ -18,7 +18,10 @@ const basicUserInfo = async(req, res) => {
     
     const username = user.username;
     const color = user.color;
-    res.status(StatusCodes.OK).json({ msg: 'success', username, color });
+    const firstname = user.firstname;
+    const lastname = user.lastname;
+    const bio = user.bio;
+    res.status(StatusCodes.OK).json({ msg: 'success', username, firstname, lastname, bio, color });
 }
 
 const checkEmail = async (req,res) => {
@@ -60,7 +63,7 @@ const generateRandomColor = () => {
 };
 
 const register = async (req,res) => {
-    const { username, email, password } = req.body;
+    const { username, email, password, firstname, lastname } = req.body;
     console.log(req.body);
 
     const emailAlreadyExists = await User.findOne({ email });
@@ -73,13 +76,13 @@ const register = async (req,res) => {
         throw new CustomError.BadRequestError('Username already exists');
     }
 
-    if(!username || !email || !password){
+    if(!username || !email || !password || !firstname || !lastname){
         throw new CustomError.BadRequestError('Provide all auth values');
     }
 
     const color = generateRandomColor(); // Generate random hex color
 
-    const user = await User.create({ username, email, password, color });
+    const user = await User.create({ username, email, password, firstname, lastname, color });
     const cookie = user._id;
     const name = user.username;
     const profilePic = user.profilePic;

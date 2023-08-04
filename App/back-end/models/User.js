@@ -24,6 +24,22 @@ const UserSchema = new mongoose.Schema({
         required: [true, 'Provide password'],
         minlength: 6,
     },
+    firstname:{
+        type: String,
+        required: [true, 'Provide firstname'],
+        minlength:2,
+        maxlength:26
+    },
+    lastname:{
+        type: String,
+        required: [true, 'Provide lastname'],
+        minlength:2,
+        maxlength:26
+    },
+    bio:{
+        type: String,
+        maxlength: 250
+    },
     profilePic:{
         type: String,
         default: 'https://res.cloudinary.com/dkqbgiqgu/image/upload/v1688311832/file-upload/tmp-2-1688311833137_yi10la.jpg'
@@ -37,7 +53,7 @@ const UserSchema = new mongoose.Schema({
 UserSchema.pre('save', async function () {
     if (!this.isModified('password')) return;
     const salt = await bcrypt.genSalt(10);
-    this.password = bcrypt.hash(this.password, salt);
+    this.password = await bcrypt.hash(this.password, salt);
 });
 
 UserSchema.methods.comparePassword = async function (canditatePassword) {
