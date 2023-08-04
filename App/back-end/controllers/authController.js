@@ -113,7 +113,9 @@ const login = async (req,res) => {
     const cookie = user._id;
     const name = user.username;
     const profilePic = user.profilePic;
-    res.status(StatusCodes.OK).json({ cookie, name, profilePic, color });
+    const firstname = user.firstname;
+    const lastname = user.lastname;
+    res.status(StatusCodes.OK).json({ cookie, name, profilePic, color, firstname, lastname });
 }
 
 const deleteAllUserAccounts = async (req, res) => {

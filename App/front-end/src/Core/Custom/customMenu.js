@@ -37,6 +37,12 @@ function CustomMenu() {
         deleteCookies('name'); 
         deleteCookies('pp');
         deleteCookies('showChat') 
+        // Deleting items from localStorage
+        localStorage.removeItem('name');
+        localStorage.removeItem('color');
+        localStorage.removeItem('first');
+        localStorage.removeItem('last');
+        localStorage.removeItem('pic');
         window.location.href = '/';
     }
 

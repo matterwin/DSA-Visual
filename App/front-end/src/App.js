@@ -45,6 +45,14 @@ import { createChatCookie } from './Cookies/createCookies';
 import './App.css';
 import 'prismjs/themes/prism.css';
 
+let userData = {
+  name: '',
+  color: '',
+  first: '',
+  last: '',
+  pic: ''
+}; //create a loading screen and fetch user data and store it as global
+
 function App() {
 
   const { pathname } = window.location;

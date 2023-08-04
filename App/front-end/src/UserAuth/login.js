@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
 import EmailField from './emailfield';
@@ -16,6 +16,10 @@ const initialState = {
 };
 
 function Login() {
+    useEffect(() => {
+        document.title = "Log | Heyso";
+    }, []);
+
     const [values, setValues] = useState(initialState);
     const [continueBtn, setContinueBtn] = useState('handleEmailSubmit');
     const [showEditBtn, setShowEditBtn] = useState(false);
@@ -140,6 +144,11 @@ function Login() {
                 createColorCookie(data.color);
                 
                 setLoading(false);
+                localStorage.setItem('name', data.name);
+                localStorage.setItem('color', data.color);
+                localStorage.setItem('first', data.firstname);
+                localStorage.setItem('last', data.lastname);
+                localStorage.setItem('pic', data.profilePic);
                 window.location.href = '/';
             })
             .catch((err) => {console.log(err);});

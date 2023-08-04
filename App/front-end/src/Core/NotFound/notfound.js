@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import Divider from '@mui/material/Divider';
 import './notfound.css'
 
@@ -6,6 +7,10 @@ function Notfound() {
     const handleReturnToHome = () => {
         window.location.href = '/';
     };
+
+    useEffect(() => {
+        document.title = "Not found :( | Heyso";
+    }, []);
 
     return (
     <div className="nf-container">

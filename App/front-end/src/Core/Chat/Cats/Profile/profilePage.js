@@ -18,7 +18,8 @@ const chatInfo = {
 }
 
 function ProfilePage() {
-    const [showLiveChat, setShowLiveChat] = useState(false);
+    const firstname = localStorage.getItem('first');
+    const lastname = localStorage.getItem('last');
     const pp = readCookies('pp');
     const color = readCookies('color');
     const username = readCookies('name');
@@ -27,18 +28,13 @@ function ProfilePage() {
         document.title = "Profile | Heyso";
     }, []);
 
-    useEffect(() => {
-        const rememChat = readCookies('showChat');
-        if(rememChat === 'true')
-            setShowLiveChat(true);
-        else
-            setShowLiveChat(false);
-    }, []); 
-  
-    // const handleShowLiveChat = () => {
-    //     setShowLiveChat(!showLiveChat);
-    //     createChatCookie(!showLiveChat);
-    // };
+    // useEffect(() => {
+    //     const rememChat = readCookies('showChat');
+    //     if(rememChat === 'true')
+    //         setShowLiveChat(true);
+    //     else
+    //         setShowLiveChat(false);
+    // }, []); 
 
   return (
     <div>   
@@ -80,6 +76,7 @@ function ProfilePage() {
                                     <img className="prof-page-profile-pic" src={pp} alt="ProfilePicture" />                         
                                 </div>
                                 <p className='username-p-prof-page'>{username}</p>
+                                <p className='username-p-prof-page'>{firstname} {lastname}</p>
                             </div> 
                         </div>  
                         <div className='container-for-tabs'>

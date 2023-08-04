@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
 import EmailField from './emailfield';
@@ -20,6 +20,10 @@ const initialState = {
 };
 
 function Register() {
+    useEffect(() => {
+        document.title = "Reg | Heyso";
+    }, []);
+
     const [values, setValues] = useState(initialState);
     const [continueBtn, setContinueBtn] = useState('handleEmailSubmit');
     const [showEditBtn, setShowEditBtn] = useState(false);
