@@ -38,31 +38,7 @@ function Home() {
                     <div className="sub-nav-l-r-container">
                         <div className="sub-left-side">
                             <div className='sub-left-side-row-contain'>
-                            <NavLink end to="/readme" className={({ isActive }) => (isActive ? 'sub-nav-boxes-active' : 'sub-nav-boxes')}>
-                                <div className='sub-nav-icon-contain'>
-                                <DescriptionOutlinedIcon sx={{ stroke: "#fff", strokeWidth: 0.4, padding: '0', margin: '0', cursor: 'pointer', color: '#bbb', fontSize: '20px' }} />
-                                <p className='sub-nav-p'>Readme</p>
-                                </div>
-                            </NavLink>
-                            <CustomDSANavBtnReplica />
-                            <NavLink end to="/code" className={({ isActive }) => (isActive ? 'sub-nav-boxes-active' : 'sub-nav-boxes')}>
-                                <div className='sub-nav-icon-contain'>
-                                <CodeOutlinedIcon sx={{ stroke: "#fff", strokeWidth: 0.4, padding: '0', margin: '0', cursor: 'pointer', color: '#bbb', fontSize: '20px' }} />
-                                <p className='sub-nav-p'>Code</p>
-                                </div>
-                            </NavLink>
-                            <NavLink end to="/visuals" className={({ isActive }) => (isActive ? 'sub-nav-boxes-active' : 'sub-nav-boxes')}>
-                                <div className='sub-nav-icon-contain'>
-                                <GraphicEqOutlinedIcon sx={{ stroke: "#fff", strokeWidth: 0.4, padding: '0', margin: '0', cursor: 'pointer', color: '#bbb', fontSize: '20px' }} />
-                                <p className='sub-nav-p'>Visuals</p>
-                                </div>
-                            </NavLink>
-                            <NavLink end to="/comments" className={({ isActive }) => (isActive ? 'sub-nav-boxes-active' : 'sub-nav-boxes')}>
-                                <div className='sub-nav-icon-contain'>
-                                <SmsOutlinedIcon sx={{ stroke: "#fff", strokeWidth: 0.4, padding: '0', margin: '0', cursor: 'pointer', color: '#bbb', fontSize: '20px' }} />
-                                <p className='sub-nav-p'>Comments</p>
-                                </div>
-                            </NavLink>
+                                <CustomDSANavBtnReplica />
                             </div>
                         </div>
                     </div>      

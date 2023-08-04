@@ -1,0 +1,27 @@
+.sub-nav-boxes:hover{
+    background-color: #4b4b4b6b;
+    background-color: #2424246b;
+    border: 1px solid #ccc;
+}
+
+.rep-dsa-nav-menu-div-contain{
+    background-color: #887777;
+    background-color: #6b5151;
+    padding: 10px;
+    margin-top: 5px;
+    box-shadow: rgba(0, 0, 0, .15) 0px 0px 10px 10px;
+    border-radius: 7px;
+    z-index: 2;
+    position: absolute;
+    width: 200px;
+    /* transform: translateX(-100%); */
+    /* margin-left: 40px; */
+    z-index: 3;
+}
+
+.sub-nav-replica{
+    color: #fff;
+    font-family: 'Inter';
+    font-size: 15px;
+    font-weight: 600;
+}

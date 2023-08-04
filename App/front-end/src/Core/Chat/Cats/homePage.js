@@ -12,6 +12,7 @@ import { Divider } from '@mui/material';
 import PostBox from './postBox';
 import TabBox from './tabBox';
 import PostBoxModal from './postBoxModal';
+import CustomDSANavBtnReplica from '../../Custom/customDSABtnReplica';
 import UserPanel from '../userPanel';
 import UserPosts from './userPosts';
 
@@ -55,11 +56,7 @@ function HomePage() {
                     <div className="sub-nav-l-r-container">
                         <div className="sub-left-side">
                             <div className='sub-left-side-row-contain'>
-                            <div className='sub-nav-boxes'>
-                                <div className='sub-nav-icon-contain'>
-                                <p className='sub-nav-p' >f</p>
-                                </div>
-                            </div>
+                                <CustomDSANavBtnReplica />
                             </div>
                         </div>
                         {!showLiveChat &&
@@ -100,7 +97,7 @@ function HomePage() {
           </div>
           <div className="right-side-chat">
             <ChatInfo title={chatInfo.title} msg={chatInfo.msg} />
-            {!showLiveChat && 
+            {/* {!showLiveChat && 
             <>
                 <div className='open-btn'>
                     <div className='open-live-center' onClick={handleShowLiveChat}>
@@ -109,7 +106,7 @@ function HomePage() {
                 </div>
             </>
             }
-            {showLiveChat && <Extra showLiveChat handleShowLiveChat={handleShowLiveChat} />}
+            {showLiveChat && <Extra showLiveChat handleShowLiveChat={handleShowLiveChat} />} */}
           </div>
         </div>
     </div>

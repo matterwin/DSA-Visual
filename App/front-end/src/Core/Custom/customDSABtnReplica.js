@@ -6,6 +6,7 @@ import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
 import CustomizedTooltip from './customTooltip';
 import Divider from '@mui/material/Divider';
 import './customDSANavBtn.css';
+import './customDSABtnReplica.css';
 
 
 function CustomDSANavBtnReplica() {
@@ -38,14 +39,15 @@ function CustomDSANavBtnReplica() {
                 className='dsa-menu-parent'
                 ref={menuRef}
             >
-                <CustomizedTooltip title={"Visuals"}>
-                    <div className="nav-link-div-icons">
-                        <GraphicEqOutlinedIcon sx={{stroke: "#fff", strokeWidth: 0.7, padding: '0', margin:'0', cursor: 'pointer', color:'#fff', fontSize:'25px' }}/>
+                <div className='vis-sub-nav-boxes-active'>
+                    <div className='sub-nav-icon-contain'>
+                    <GraphicEqOutlinedIcon sx={{stroke: "#fff", strokeWidth: 0.4, padding: '0', margin:'0', cursor: 'pointer', color:'#bbb', fontSize:'20px' }}/>
+                      <p className='sub-nav-p'>Visuals</p>
                     </div>
-                </CustomizedTooltip>
+                </div>
             </div>
             {isOpen &&
-                <div className='dsa-nav-menu-div-contain'>
+                <div className='rep-dsa-nav-menu-div-contain'>
 
                     <p className='title-dsa'>Sort</p>
                     <a href="/visuals/test">

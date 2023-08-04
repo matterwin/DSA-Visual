@@ -48,7 +48,7 @@ function ChatNav() {
                         <FollowTheSignsOutlinedIcon  sx={{stroke: "#fff", strokeWidth: 0.4, color:'#efeff1', fontSize:'22px', fontStyle:'bold'}}/>
                         <p className='p-in-navs'>Following</p>
                     </a> */}
-                    <Divider sx={{ backgroundColor: '#ccc', width:'100%', marginTop:'10px', marginBottom:'10px' }} />
+                    {/* <Divider sx={{ backgroundColor: '#ccc', width:'100%', marginTop:'10px', marginBottom:'10px' }} />
                     <p className='title-chat'>Communities</p>
                     <div className='row-nav-div'>
                         <div className="cust-pfp-div-chat">
@@ -57,7 +57,6 @@ function ChatNav() {
                         <p className='p-in-navs'>csccareer</p>
                     </div>
                     <div className='row-nav-div'>
-                        {/* <WhatshotOutlinedIcon  sx={{stroke: "#fff", strokeWidth: 0.4, color:highlightTrends, fontSize:'23px', fontStyle:'bold'}}/> */}
                         <div className="cust-pfp-div-chat">
                             <img className="cust-profile-pic-chat" src={Fire} alt="ProfilePicture" />                         
                         </div>
@@ -66,7 +65,7 @@ function ChatNav() {
                     <div className='row-nav-div' onMouseEnter={() => setHighlight('gold')} onMouseLeave={startFlicker}>
                         <EmojiObjectsOutlinedIcon sx={{stroke: "#fff", strokeWidth: 0.4, color:highlight, fontSize:'22px', fontStyle:'bold'}}/>
                         <p className='p-in-navs'>resources</p>
-                    </div>
+                    </div> */}
                 </div>
             </div>
         // </div>
