@@ -189,9 +189,9 @@ const UserPosts = () => {
     };
 
     const getFeed = () => {
-        return feed.map((post) => {
+        return feed.map((post, index) => {
             return (
-                <div className='user-posts-container' key={post._id}>
+                <div className={`user-posts-container ${loading ? '' : 'bubble-animation'}`} key={post._id} style={{ transitionDelay: `${index * 100.2}s` }}>
                     <div className='div-for-padding'>
                         <div className='split-side-container'>
                             <div className='left-contain-post'>
@@ -206,18 +206,18 @@ const UserPosts = () => {
                             <div className='top-and-text-div'>
                                 <div className='top-contain'>
                                     <div className='left-top-div'>
-                                        <p className='likes-text'>{post.user.username} &nbsp;</p>   
-                                        <p>{post.user.firstname} {post.user.lastname}</p>                                     
+                                        <p className='likes-text'>{post.user.firstname} {post.user.lastname}</p> 
+                                        <p className='username-at'>@{post.user.username} &nbsp;</p>                                
                                     </div>
                                     <div className='right-top-div-new'>
                                         <p>{post.createdAt}</p>
                                     </div>
                                 </div>
-                                <div>
-                                    <p className='title-text'>{post.title}</p>
-                                    <p className='post-text'>{post.message}</p>
-                                </div>
                             </div>
+                        </div>
+                        <div>
+                            <p className='title-text'>{post.title}</p>
+                            <p className='post-text'>{post.message}</p>
                         </div>
                         <Divider sx={{ backgroundColor: 'silver', marginTop:'10px', marginBottom:'10px', width:'100%' }} />
                         <div className='bottom-post-div'>
@@ -229,26 +229,26 @@ const UserPosts = () => {
                                         </div>
                                     }
                                     { post.hasLiked && 
-                                        <div className='new-icon-word-div-thumbs-up'>
+                                        <div className='new-icon-word-div-thumbs-up-active'>
                                             <NavigationIcon className='thumbs-up-icon-filled-in' />
                                         </div>
                                     }
                                     <p className='likes-text' style={{ color: post.hasLiked ? '#a9c9a3' : post.hasDisliked ? '#7193ff' : 'inherit' }}>{post.likeToDislikeCount}</p>
                                     { !post.hasDisliked &&
                                         <div className='new-icon-word-div-thumbs-down' onClick={() => dislikePost(post._id)}>
-                                            <NavigationOutlinedIcon className='thumbs-down-icon' />                                        
+                                            <NavigationOutlinedIcon className='thumbs-down-icon'/>                                        
                                         </div>
                                     }
                                     { post.hasDisliked &&
-                                        <div className='new-icon-word-div-thumbs-down'>
+                                        <div className='new-icon-word-div-thumbs-down-active'>
                                             <NavigationIcon className='thumbs-down-icon-filled' />
                                         </div>
                                     }
                                 </div>
-                                <div className='new-icon-word-div-replies'>
+                                {/* <div className='new-icon-word-div-replies'>
                                     <BubbleChartOutlinedIcon className='replies-icon' />
                                     <p className='replies-text' style={{ fontWeight:'500' }}>{post.replies.length} Replies</p>
-                                </div>
+                                </div> */}
                                 <div className='right-top-div'>
                                     <CustomizedTooltip title="info">
                                         <MoreHorizOutlinedIcon sx={{stroke: "#4d3939", strokeWidth: 0.4, color:'#4d3939', fontSize:'22px', fontStyle:'bold'}}/>

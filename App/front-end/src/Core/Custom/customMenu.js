@@ -6,6 +6,7 @@ import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
 import deleteCookies from '../../Cookies/deleteCookies';
 import Divider from '@mui/material/Divider';
 import CustomizedTooltip from './customTooltip';
+import { getData } from '../../UserAuth/UserContext';
 import './customMenu.css';
 import readCookies from '../../Cookies/readCookies';
 
@@ -14,6 +15,7 @@ function CustomMenu() {
     const menuRef = useRef(null);
     const username = readCookies('name');
     const pp = readCookies('pp')
+    const userData = getData();
 
     useEffect(() => {
         document.addEventListener('click', handleClickOutside);
@@ -55,7 +57,7 @@ function CustomMenu() {
             >
                 <CustomizedTooltip title={"Profile"}>
                     <div className="cust-pfp-div">
-                        <img className="cust-profile-pic" src={pp} alt="ProfilePicture" />                         
+                        <img className="cust-profile-pic" src={userData.pic} alt="ProfilePicture" />                         
                     </div>
                 </CustomizedTooltip>  
             </div>
@@ -65,7 +67,7 @@ function CustomMenu() {
                         <div className='submenu-prof-div'>
                             <div className="submenu-cust-pfp-div">
                                 <a href={'/' + username}>
-                                    <img className="submenu-cust-profile-pic" src={pp} alt="ProfilePicture" />  
+                                    <img className="submenu-cust-profile-pic" src={userData.pic} alt="ProfilePicture" />  
                                 </a>    
                             </div>
                             <p className='username-submenu'>{username}</p>

@@ -56,7 +56,6 @@
     justify-content: flex-start;
     align-items: center;
     gap: 5px;
-    
 }
 
 .like-counter-container{
@@ -89,11 +88,19 @@
     margin-bottom: -5px;
 }
 
+.new-icon-word-div-thumbs-up-active{
+    padding: 3px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 0px;
+    margin-bottom: -5px;
+    background-color: #a5a5a53f;
+}
+
 .thumbs-up-icon{
     stroke: #4d3939;
     stroke-width: 0.4;
     color:#4d3939;
-    font-size:32px;
     font-style: bold;
 }
 
@@ -110,7 +117,6 @@
     stroke: #4d3939;
     stroke-width: 0.4;
     color:#4d3939;
-    font-size:32px;
     font-style: bold;
     color: #a9c9a3;
     stroke: #a9c9a3;
@@ -125,11 +131,33 @@
     margin-bottom: -5px;
 }
 
+.new-icon-word-div-thumbs-down-active{
+    padding: 3px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 0px;
+    margin-bottom: -5px;
+    background-color: #a5a5a53f;
+}
+
+.bubble-animation {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: bubbleFadeIn 0.5s ease forwards;
+  transition-delay: 100.2s; /* Add a delay here */
+}
+
+@keyframes bubbleFadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .thumbs-down-icon{
     stroke: #4d3939;
     stroke-width: 0.4;
     color:#4d3939;
-    font-size:32px;
     transform: scaleY(-1);
     font-style: bold;
 }
@@ -147,7 +175,6 @@
     stroke: #4d3939;
     stroke-width: 0.4;
     color:#4d3939;
-    font-size:32px;
     font-style: bold;
     color: #7193ff;
     stroke: #7193ff;
@@ -241,7 +268,8 @@
 .post-text{
     font-family: 'Inter';
     font-family: "Roboto", sans-serif;
-    font-size: 15px;
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 16px;
     font-weight: 400;
     color: #4d3939;
 }
@@ -265,9 +293,15 @@
 
 .left-top-div{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: flex-start;
-    align-items: center;
+    align-items: flex-start;
+}
+
+.username-at{
+    color: #414141;
+    font-family: 'Inter';
+    font-size: 12px;
 }
 
 .right-top-div{
