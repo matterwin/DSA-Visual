@@ -97,6 +97,7 @@ function HomePage() {
           </div>
           <div className="right-side-chat">
             <ChatInfo title={chatInfo.title} msg={chatInfo.msg} showButton={true}/>
+            <p className='copyright'>© 2023 Matthew Erwin</p>
             {/* {!showLiveChat && 
             <>
                 <div className='open-btn'>

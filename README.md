@@ -46,3 +46,7 @@ Examples of how to apply Merge Sort to different types of data, such as sorting 
 Tips for optimizing the algorithm in specific situations, if applicable.
 
 Any additional insights, tips, or considerations that could be useful for someone trying to understand or implement Merge Sort.
+
+#To do:
+frontend user likes and posts list
+do sort by feature for chat
