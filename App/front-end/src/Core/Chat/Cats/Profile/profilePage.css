@@ -7,6 +7,8 @@
     padding:15px;
     background-color: #4d3939;
     background-color: #fff;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
 }
 
 .color-bg-profile-page{
@@ -51,11 +53,27 @@
     border-radius: 50%;
 }
 
-.username-p-prof-page{
+.name-p-prof-page{
     color: #fff;
     color: #4d3939;
     font-weight: 700;
     font-size: 20px;
+    font-family: 'Inter';
+}
+
+.username-p-prof-page{
+    color: #6b5151;
+    font-weight: 400;
+    font-size: 17px;
+    font-family: 'Segoe UI';
+    margin-top: -15px;
+}
+
+.bio{
+    color: #fff;
+    color: #4d3939;
+    font-weight: 600;
+    font-size: 15px;
     font-family: 'Inter';
 }
 
@@ -65,7 +83,7 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-evenly;
-    border-bottom: 1px solid #fff;
+    /* border-bottom: 1px solid #fff; */
     background-color: #fff;
     background-color: #6b5151;
 }

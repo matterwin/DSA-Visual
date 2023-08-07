@@ -150,7 +150,7 @@ const modifyBio = async (req, res) => {
     // Return a response indicating success
     res.status(StatusCodes.OK).json({
         message: 'Bio updated successfully',
-        user: user
+        newBio: user.bio
     });
 };
 

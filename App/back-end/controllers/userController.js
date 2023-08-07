@@ -130,6 +130,8 @@ const listOfLikedPosts = async (req, res) => {
     const alreadyLiked = post.likes.includes(userId);
 
     const createdAt = moment(post.createdAt);
+    const formattedCreatedAt = createdAt.format("DD MMM YYYY"); // Format the createdAt date
+
     const currentTimestamp = moment();
     const duration = moment.duration(currentTimestamp.diff(createdAt));
 
@@ -150,6 +152,7 @@ const listOfLikedPosts = async (req, res) => {
 
     return {
       ...post.toObject(),
+      createdAt: formattedCreatedAt, // Use the formatted date
       postedAgo: formattedDate,
       likeToDislikeCount: post.likeToDislikeRatio,
       hasDisliked: alreadyDisliked,
@@ -160,12 +163,12 @@ const listOfLikedPosts = async (req, res) => {
   const numberOf = { likes: paginatedLikes.length };
 
   res.status(StatusCodes.OK).json({
-      totalPages: totalPages,
-      currentPage: page,
-      numberOf, 
-      likes: paginatedLikes,
+    totalPages: totalPages,
+    currentPage: page,
+    numberOf,
+    likes: paginatedLikes,
   });
-}
+};
 
 const numberOf = async (req, res) => {
     const { userId } = req.body;

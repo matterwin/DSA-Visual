@@ -10,7 +10,7 @@
     flex-direction: row;
     justify-content: space-evenly;
     align-items: center;
-    padding: 15px;
+    padding: 20px;
     /* border-radius: 5px; */
     background-color: #6b5151;
     cursor: pointer;
@@ -23,6 +23,7 @@
 .tab-box-div:hover{
     width: 100%;
     background-color: #ccc;
+    background-color: #a5a5a56b;
 }
 
 .tab-box-p{

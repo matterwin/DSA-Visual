@@ -11,7 +11,6 @@ import readCookies from '../../../../Cookies/readCookies';
 
 import '../postBox.css'
 import '../userPosts.css'
-import { getData } from '../../../../UserAuth/UserContext';
 
 const Loading = () => {
   return (
@@ -202,7 +201,7 @@ const UserLikes = () => {
                                         <p className='username-at'>@{post.user.username} &nbsp;</p>                                
                                     </div>
                                     <div className='right-top-div-new'>
-                                        <p>{post.createdAt}</p>
+                                        <p>{post.postedAgo}</p>
                                     </div>
                                 </div>
                             </div>

@@ -1,15 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import ChatNav from '../../chatNav';
-import Extra from '../../../Home/Extra/extra';
-import { createChatCookie } from '../../../../Cookies/createCookies';
-import readCookies from '../../../../Cookies/readCookies';
-import SafetyDividerOutlinedIcon from '@mui/icons-material/SafetyDividerOutlined';
+import { Divider } from '@mui/material';
 import UserPanel from '../../userPanel';
 import CustomDSANavBtnReplica from '../../../Custom/customDSABtnReplica';
 import ChatInfo from '../../chatInfo';
 import { getData, setData } from '../../../../UserAuth/UserContext';
 import UserLikes from './userLikes';
+import MarkUnreadChatAltOutlinedIcon from '@mui/icons-material/MarkUnreadChatAltOutlined';
+import TabBox from '../tabBox';
 
 import '../../chat.css'
 import './profilePage.css'
@@ -51,23 +50,26 @@ function ProfileLikes() {
                                     <div className="prof-page-pfp-div">
                                         <img className="prof-page-profile-pic" src={userData.pic} alt="ProfilePicture" />                         
                                     </div>
-                                    <p className='username-p-prof-page'>{userData.username}</p>
-                                    <p className='username-p-prof-page'>{userData.first} {userData.last}</p>
-                                    <p>{userData.bio}</p>
-                                </div> 
+                                    <p className='name-p-prof-page'>{userData.first} {userData.last}</p>
+                                    <p className='username-p-prof-page'>@{userData.username}</p>
+                                    <p className='bio'>{userData.bio}</p>
+                                </div>
                             </div>  
-                            <div className='container-for-tabs'>
+                            <Divider sx={{ backgroundColor: 'silver', marginTop:'10px', marginBottom:'10px', width:'100%' }} />
+                            <TabBox title1="Posts" title1Link={'/' + userData.username}  active2={true} title2="Likes" title2Link={'/' + userData.username + '/likes'} onClick={() => window.location.reload()}/>
+                            {/* <div className='container-for-tabs'>
                                 <NavLink 
                                     end to={'/' + userData.username} 
                                     className={({ isActive }) => (isActive ? 'div-of-tab-words-active' : 'div-of-tab-words')}>
                                     <p className='tab-p-more'>Posts</p>
                                 </NavLink>
+                                
                                 <NavLink 
                                     end to={'/' + userData.username + '/likes'} 
                                     className={({ isActive }) => (isActive ? 'div-of-tab-words-active' : 'div-of-tab-words')}>
                                     <p className='tab-p-more'>Likes</p>
                                 </NavLink>
-                            </div>
+                            </div> */}
                             <div className='likes-div'>
                                 <UserLikes />
                             </div>
