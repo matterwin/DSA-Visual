@@ -60,16 +60,8 @@ function ProfilePage() {
                         </div>  
                         <Divider sx={{ backgroundColor: 'silver', marginTop:'10px', marginBottom:'10px', width:'100%' }} />
                         <TabBox title1="Posts" title1Link={'/' + userData.username}  active1={true} title2="Likes" title2Link={'/' + userData.username + '/likes'} onClick={() => window.location.reload()}/>
-                        {/* <div className='container-for-tabs'>
-                            <NavLink end to={'/' + userData.username} className={({ isActive }) => (isActive ? 'div-of-tab-words-active' : 'div-of-tab-words')}>
-                                <p className='tab-p-more'>Posts</p>
-                            </NavLink>
-                            <NavLink end to={'/' + userData.username + '/likes'} className={({ isActive }) => (isActive ? 'div-of-tab-words-active' : 'div-of-tab-words')}>
-                                <p className='tab-p-more'>Likes</p>
-                            </NavLink>
-                        </div> */}
                         <div className='likes-div'>
-                            <UserPostsList />
+                            <UserPostsList/>
                         </div>
                     </div>
                 </div>

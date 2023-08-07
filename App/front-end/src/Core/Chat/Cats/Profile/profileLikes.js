@@ -7,8 +7,10 @@ import CustomDSANavBtnReplica from '../../../Custom/customDSABtnReplica';
 import ChatInfo from '../../chatInfo';
 import { getData, setData } from '../../../../UserAuth/UserContext';
 import UserLikes from './userLikes';
-import MarkUnreadChatAltOutlinedIcon from '@mui/icons-material/MarkUnreadChatAltOutlined';
+import ThreePIcon from '@mui/icons-material/ThreeP';
+import NavigationIcon from '@mui/icons-material/Navigation';
 import TabBox from '../tabBox';
+import CustomizedTooltip from '../../../Custom/customTooltip';
 
 import '../../chat.css'
 import './profilePage.css'
@@ -54,22 +56,23 @@ function ProfileLikes() {
                                     <p className='username-p-prof-page'>@{userData.username}</p>
                                     <p className='bio'>{userData.bio}</p>
                                 </div>
+                                <div className='icons-div-profile'>
+                                    <div className='row-container-p-icons'>
+                                        <CustomizedTooltip title="Posts">
+                                            <ThreePIcon className='profile-icons-blue' style={{ fontSize:'15px' }}/>
+                                        </CustomizedTooltip>
+                                        <p className='count-p-icons'>3298</p>
+                                    </div>
+                                    <div className='row-container-p-icons'>
+                                        <CustomizedTooltip title="Likes">
+                                            <NavigationIcon className='profile-icons-green' style={{ fontSize:'15px' }} />
+                                        </CustomizedTooltip>
+                                        <p className='count-p-icons'>444</p>
+                                    </div>
+                                </div>
                             </div>  
                             <Divider sx={{ backgroundColor: 'silver', marginTop:'10px', marginBottom:'10px', width:'100%' }} />
                             <TabBox title1="Posts" title1Link={'/' + userData.username}  active2={true} title2="Likes" title2Link={'/' + userData.username + '/likes'} onClick={() => window.location.reload()}/>
-                            {/* <div className='container-for-tabs'>
-                                <NavLink 
-                                    end to={'/' + userData.username} 
-                                    className={({ isActive }) => (isActive ? 'div-of-tab-words-active' : 'div-of-tab-words')}>
-                                    <p className='tab-p-more'>Posts</p>
-                                </NavLink>
-                                
-                                <NavLink 
-                                    end to={'/' + userData.username + '/likes'} 
-                                    className={({ isActive }) => (isActive ? 'div-of-tab-words-active' : 'div-of-tab-words')}>
-                                    <p className='tab-p-more'>Likes</p>
-                                </NavLink>
-                            </div> */}
                             <div className='likes-div'>
                                 <UserLikes />
                             </div>

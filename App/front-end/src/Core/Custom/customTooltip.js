@@ -17,7 +17,7 @@ const NewTooltip = styled(({ className, ...props }) => (
     fontSize: '13px',
     fontFamily:'Inter',
     color:'black',
-    fontWeight:'700'
+    fontWeight:'700',
   },
 }));
 

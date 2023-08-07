@@ -145,3 +145,44 @@
     /* margin-bottom: -20px; */
     border-bottom: 5px solid transparent;
 }
+
+.profile-icons-green{
+    background-color: #a9c9a3;
+    padding: 3px;
+    border-radius: 50%;
+    color: #fff;
+    stroke: #4d3939;
+    font-size: 2px;
+}
+
+.profile-icons-blue{
+    background-color: #7193ff;
+    padding: 3px;
+    border-radius: 50%;
+    color: #fff;
+    stroke: #4d3939;
+    font-size: 2px;
+}
+
+.icons-div-profile{
+    margin-top: 15px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 7px;
+}
+
+.count-p-icons{
+    font-family: 'Segoe UI', sans-serif;
+    color: #4d3939;
+    font-weight: 500;
+}
+
+.row-container-p-icons{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 2px;
+}
