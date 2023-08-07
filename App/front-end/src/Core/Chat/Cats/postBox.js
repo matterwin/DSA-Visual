@@ -25,24 +25,35 @@ const PostBox = () => {
     const pp = readCookies('pp')
     const username = readCookies('name');
 
-    const handleSend = async() => {
+    const handleSend = async () => {
         setLoading(true);
         const url = `http://localhost:5000/feed/homeFeed/post`;
-
+    
         const userId = readCookies('auth-token');
-
+    
+        const requestBody = {
+            userId,
+            message
+        };
+        requestBody.message = message;
+    
+        if (title) {
+            requestBody.title = title;
+        }
+    
         const response = await fetch(url, {
             method: 'POST',
             headers: {
-              'Content-Type': 'application/json',
+                'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ userId, title, message }),
+            body: JSON.stringify(requestBody),
         });
-
+    
         // const data = await response.json();
         handleClose();
         window.location.reload();
     }
+    
 
     const handleClose = () => {
         setShowBoxPost(false);

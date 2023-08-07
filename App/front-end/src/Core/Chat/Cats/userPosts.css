@@ -36,6 +36,8 @@
     align-items: flex-start;
     gap: 8px;
     width: 100%;
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
 
 .center-row-align{
@@ -306,12 +308,13 @@
 
 .right-top-div{
     margin-left: auto;
-    padding: 5px;
+    padding: 3px;
     border-radius: 5px;
     cursor: pointer;
     opacity: 0;
     /* Add transition for smooth fading effect */
     transition: opacity 0.3s ease;
+    margin-bottom: -5px;
 }
 
 .right-top-div-new{

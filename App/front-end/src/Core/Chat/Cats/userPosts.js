@@ -219,7 +219,7 @@ const UserPosts = () => {
                             <p className='title-text'>{post.title}</p>
                             <p className='post-text'>{post.message}</p>
                         </div>
-                        <Divider sx={{ backgroundColor: 'silver', marginTop:'10px', marginBottom:'10px', width:'100%' }} />
+                        <Divider sx={{ backgroundColor: 'silver', marginTop:'10px', width:'100%' }} />
                         <div className='bottom-post-div'>
                             <div className='center-row-align'>
                                 <div className='like-counter-container'>
@@ -251,7 +251,7 @@ const UserPosts = () => {
                                 </div> */}
                                 <div className='right-top-div'>
                                     <CustomizedTooltip title="info">
-                                        <MoreHorizOutlinedIcon sx={{stroke: "#4d3939", strokeWidth: 0.4, color:'#4d3939', fontSize:'22px', fontStyle:'bold'}}/>
+                                        <MoreHorizOutlinedIcon sx={{stroke: "#4d3939", strokeWidth: 0.4, color:'#4d3939', fontSize:'22px', fontStyle:'bold', margin:'0', padding:'0'}}/>
                                     </CustomizedTooltip>
                                 </div>
                             </div>
