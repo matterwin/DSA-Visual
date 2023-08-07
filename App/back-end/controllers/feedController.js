@@ -210,10 +210,16 @@ const allPostsForUser = async (req, res) => {
   
 const clearFeed = async (req, res) => {
     try {
-        await HomeFeed.deleteMany();
-        res.status(StatusCodes.OK).json({ msg: 'Feed has been cleared'});
+      await HomeFeed.deleteMany();
+      
+      // Reset UserInfo
+      await UserInfo.updateMany({}, { $set: { likes: [] } });
+      await UserInfo.updateMany({}, { $set: { dislikes: [] } });
+      await UserInfo.updateMany({}, { $set: { posts: [] } });
+
+      res.status(StatusCodes.OK).json({ msg: 'Feed has been cleared'});
     } catch (error) {
-        throw new CustomError.InternalServerError('Error deleting feed posts');
+      throw new CustomError.InternalServerError('Error deleting feed posts'); 
     }
 };
 

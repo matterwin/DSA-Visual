@@ -52,6 +52,8 @@ function ProfileLikes() {
                                         <img className="prof-page-profile-pic" src={userData.pic} alt="ProfilePicture" />                         
                                     </div>
                                     <p className='username-p-prof-page'>{userData.username}</p>
+                                    <p className='username-p-prof-page'>{userData.first} {userData.last}</p>
+                                    <p>{userData.bio}</p>
                                 </div> 
                             </div>  
                             <div className='container-for-tabs'>

@@ -151,7 +151,8 @@ function App() {
     <div>
 
       {loading && <Loading />}
-       <Router>
+      {!loading && 
+        <Router>
 
           {HideNav}
           {ShowSettingsNavIf}
@@ -192,6 +193,7 @@ function App() {
           </Routes>
 
         </Router>
+      }
     </div>
   );
 }

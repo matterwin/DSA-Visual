@@ -127,10 +127,38 @@ const deleteAllUserAccounts = async (req, res) => {
     }
 };
 
+
+const modifyBio = async (req, res) => {
+    const { userId } = req.body;
+    const { bio } = req.body;
+  
+    if (!userId) {
+      throw new CustomError.BadRequestError('Provide userId');
+    }
+  
+    const user = await User.findOne({ _id: userId });
+    if (!user) {
+        throw new CustomError.BadRequestError('userId is invalid');
+    }
+
+    // Update the bio field
+    user.bio = bio;
+
+    // Save the updated user document
+    await user.save();
+
+    // Return a response indicating success
+    res.status(StatusCodes.OK).json({
+        message: 'Bio updated successfully',
+        user: user
+    });
+};
+
 module.exports = {
     basicUserInfo,
     checkEmail,
     register,
     login,
-    deleteAllUserAccounts
+    deleteAllUserAccounts,
+    modifyBio
 }

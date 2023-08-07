@@ -9,6 +9,8 @@ import UserPanel from '../../userPanel';
 import CustomDSANavBtnReplica from '../../../Custom/customDSABtnReplica';
 import ChatInfo from '../../chatInfo';
 import { getData, setData } from '../../../../UserAuth/UserContext';
+import UserLikes from './userLikes';
+import UserPostsList from './userPostsList';
 
 import '../../chat.css'
 import './profilePage.css'
@@ -63,12 +65,12 @@ function ProfilePage() {
                             <NavLink end to={'/' + userData.username} className={({ isActive }) => (isActive ? 'div-of-tab-words-active' : 'div-of-tab-words')}>
                                 <p className='tab-p-more'>Posts</p>
                             </NavLink>
-                            {/* <NavLink end to={'/' + username + '/replies'} className={({ isActive }) => (isActive ? 'div-of-tab-words-active' : 'div-of-tab-words')}>
-                                <p className='tab-p-more'>Replies</p>
-                            </NavLink> */}
                             <NavLink end to={'/' + userData.username + '/likes'} className={({ isActive }) => (isActive ? 'div-of-tab-words-active' : 'div-of-tab-words')}>
                                 <p className='tab-p-more'>Likes</p>
                             </NavLink>
+                        </div>
+                        <div className='likes-div'>
+                            <UserPostsList />
                         </div>
                     </div>
                 </div>

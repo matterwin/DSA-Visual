@@ -3,6 +3,7 @@ const UserInfo = require('../models/UserInfo');
 const { StatusCodes } = require('http-status-codes');
 const CustomError = require('../errors');
 const moment = require('moment-timezone');
+const HomeFeed = require('../models/HomeFeed');
 
 const allUserInfo = async (req, res) => {
     const { userId } = req.body;
@@ -72,7 +73,6 @@ const likes = async (req, res) => {
     }
 
     const userInfo = await UserInfo.findOne({ user })
-      .populate('user', '-_id -__v -password -email')
       .populate('likes')
 
     const { likes } = userInfo;
@@ -106,7 +106,7 @@ const listOfLikedPosts = async (req, res) => {
     path: 'likes',
     populate: {
       path: 'user',
-      select: '-_id -__v -password -email'
+      select: 'username firstname lastname profilePic color'
     }
   })
 
@@ -150,7 +150,7 @@ const listOfLikedPosts = async (req, res) => {
 
     return {
       ...post.toObject(),
-      createdAt: formattedDate,
+      postedAgo: formattedDate,
       likeToDislikeCount: post.likeToDislikeRatio,
       hasDisliked: alreadyDisliked,
       hasLiked: alreadyLiked,
@@ -163,7 +163,7 @@ const listOfLikedPosts = async (req, res) => {
       totalPages: totalPages,
       currentPage: page,
       numberOf, 
-      likes: paginatedLikes 
+      likes: paginatedLikes,
   });
 }
 
@@ -247,11 +247,11 @@ const posts = async (req, res) => {
 }
 
 module.exports = {
-    allUserInfo,
-    basicUserInfo,
-    likes,
-    listOfLikedPosts,
-    dislikes,
-    posts,
-    numberOf,
+  allUserInfo,
+  basicUserInfo,
+  likes,
+  listOfLikedPosts,
+  dislikes,
+  posts,
+  numberOf,
 }
