@@ -84,7 +84,7 @@ const allPosts = async (req, res) => {
         .skip(skip)
         .limit(limit)
         .sort({ createdAt: -1 }) // Sort in descending order by createdAt
-        .populate('user', '-_id -__v -password -email');
+        .populate('user', '-_id -__v -password -email -bio');
   
 
       const formattedPosts = posts.map((post) => {

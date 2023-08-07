@@ -75,6 +75,7 @@ function ProfilePage() {
           </div>
           <div className="right-side-chat">
             <ChatInfo title={chatInfo.title} msg={chatInfo.msg} showButton={false}/>
+            <p className='copyright'>© 2023 Matthew Erwin</p>
           </div>
         </div>
     </div>

@@ -92,7 +92,7 @@ function App() {
         const data = await response.json();
         setData(data.username, data.color, data.profPic, data.firstname, data.lastname, data.bio)
         setLoading(false);
-        console.log(getData());
+        // console.log(getData());
     } catch (err) {
         console.log(err);
     }

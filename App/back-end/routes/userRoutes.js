@@ -14,7 +14,7 @@ const {
 router.post('/allInfo', allUserInfo);
 router.post('/basicInfo', basicUserInfo);
 router.post('/likes', likes);
-router.post('/listOfLikes', listOfLikedPosts)
+router.get('/listOfLikes', listOfLikedPosts)
 router.post('/dislikes', dislikes);
 router.post('/posts', posts);
 router.post('/numberOf', numberOf);

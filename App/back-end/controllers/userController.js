@@ -102,8 +102,13 @@ const listOfLikedPosts = async (req, res) => {
   }
 
   const userInfo = await UserInfo.findOne({ user })
-      .populate('user', '-_id -__v -password -email')
-      .populate('likes')
+  .populate({
+    path: 'likes',
+    populate: {
+      path: 'user',
+      select: '-_id -__v -password -email'
+    }
+  })
 
   const { likes } = userInfo;
 
@@ -121,6 +126,9 @@ const listOfLikedPosts = async (req, res) => {
   }
 
   const paginatedLikes = reversedLikes.slice(skip, skip + limit).map((post) => {
+    const alreadyDisliked = post.dislikes.includes(userId);
+    const alreadyLiked = post.likes.includes(userId);
+
     const createdAt = moment(post.createdAt);
     const currentTimestamp = moment();
     const duration = moment.duration(currentTimestamp.diff(createdAt));
@@ -143,63 +151,21 @@ const listOfLikedPosts = async (req, res) => {
     return {
       ...post.toObject(),
       createdAt: formattedDate,
+      likeToDislikeCount: post.likeToDislikeRatio,
+      hasDisliked: alreadyDisliked,
+      hasLiked: alreadyLiked,
     };
   });
 
   const numberOf = { likes: paginatedLikes.length };
 
   res.status(StatusCodes.OK).json({
-      userInfo: { 
-        totalPages: totalPages,
-        currentPage: page,
-        numberOf, 
-        likes: paginatedLikes 
-      },
+      totalPages: totalPages,
+      currentPage: page,
+      numberOf, 
+      likes: paginatedLikes 
   });
 }
-
-
-// const listOfLikedPosts = async (req, res) => {
-//   const { userId } = req.query;
-//   const { page } = req.query;
-//   const limit = 5;
-
-//   if (!userId) {
-//       throw new CustomError.BadRequestError('Provide userId');
-//   }
-
-//   const user = await User.findOne({ _id: userId });
-//   if (!user) {
-//       throw new CustomError.BadRequestError('userId is invalid');
-//   }
-
-//   const userInfo = await UserInfo.findOne({ user })
-//       .populate('user', '-_id -__v -password -email')
-//       .populate('likes')
-
-//   const { likes } = userInfo;
-
-//   // Reverse the likes array
-//   const reversedLikes = likes.reverse();
-
-//   const totalCount = reversedLikes.length;
-//   const totalPages = Math.ceil(totalCount / limit);
-
-//   let skip = (page - 1) * limit;
-
-//   // Calculate the skip value for fetching all previous pages
-//   if (page > 1) {
-//       skip = (page - 1) * limit + limit * (page - 2);
-//   }
-
-//   const paginatedLikes = reversedLikes.slice(skip, skip + limit);
-
-//   const numberOf = { likes: paginatedLikes.length };
-
-//   res.status(StatusCodes.OK).json({
-//       userInfo: { numberOf, likes: paginatedLikes },
-//   });
-// }
 
 const numberOf = async (req, res) => {
     const { userId } = req.body;

@@ -35,14 +35,6 @@ const HomeFeedSchema = new mongoose.Schema({
       ref: 'User',
     },
   ],
-  hasUserLikedThis: {
-    type: Boolean,
-    default: false,
-  },
-  hasUserDislikedThis: {
-    type: Boolean,
-    default: false,
-  },
   createdAt: {
     type: Date,
     default: Date.now,

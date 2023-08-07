@@ -1,11 +1,12 @@
-.backg-for-profile-div{
+/* .backg-for-profile-div{
     border-left: 1px solid #fff;
     border-right: 1px solid #fff;
-    padding-bottom: 1000px;
-}
+} */
 
 .div-for-everything-else-in-profile{
     padding:15px;
+    background-color: #4d3939;
+    background-color: #fff;
 }
 
 .color-bg-profile-page{
@@ -25,6 +26,10 @@
     gap: 15px;
 }
 
+.likes-div{
+    margin-top: 10px;
+}
+
 .prof-page-pfp-div {
     margin-top: -60px;
     width: 85px;
@@ -34,6 +39,7 @@
     background-color: #f4f4f5;
     cursor: pointer; 
     border: #4d3939 solid 3px;
+    border: #fff solid 3px;
     transition: border-radius 0.2s ease-in-out;
 }
 
@@ -47,6 +53,7 @@
 
 .username-p-prof-page{
     color: #fff;
+    color: #4d3939;
     font-weight: 700;
     font-size: 20px;
     font-family: 'Inter';
@@ -59,6 +66,8 @@
     align-items: center;
     justify-content: space-evenly;
     border-bottom: 1px solid #fff;
+    background-color: #fff;
+    background-color: #6b5151;
 }
 
 .div-of-tab-words{
@@ -87,6 +96,7 @@
     cursor: pointer;
     background-color: #4d393922;
     background-color: #a5a5a56b;
+    background-color: #6b5151;
     flex: 1; /* Distribute equal space for each tab */
 }
 
@@ -100,9 +110,9 @@
 .div-of-tab-words-active .tab-p-more{
     padding-bottom: 15px;
     margin-bottom: -20px;
-    border-bottom: 5px solid#a9c9a3;
-    border-bottom-right-radius: 3px;
+    border-bottom: 3px solid #a9c9a3;
     border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
     font-weight: 800;
     color: #fff;
 }

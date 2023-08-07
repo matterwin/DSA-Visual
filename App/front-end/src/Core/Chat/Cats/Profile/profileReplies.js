@@ -90,16 +90,6 @@ function ProfileReplies() {
                 </div>
           </div>
           <div className="right-side-chat">
-            {!showLiveChat && 
-            <>
-                <div className='open-btn'>
-                    <div className='open-live-center' onClick={handleShowLiveChat}>
-                        <p style={{ color:'#fff', fontSize:'15px', fontFamily:'Inter' }}>Open Chat</p>
-                    </div>
-                </div>
-            </>
-            }
-            {showLiveChat && <Extra showLiveChat handleShowLiveChat={handleShowLiveChat} />}
           </div>
         </div>
     </div>

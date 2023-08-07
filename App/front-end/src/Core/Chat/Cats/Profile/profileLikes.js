@@ -9,6 +9,7 @@ import UserPanel from '../../userPanel';
 import CustomDSANavBtnReplica from '../../../Custom/customDSABtnReplica';
 import ChatInfo from '../../chatInfo';
 import { getData, setData } from '../../../../UserAuth/UserContext';
+import UserLikes from './userLikes';
 
 import '../../chat.css'
 import './profilePage.css'
@@ -42,9 +43,9 @@ function ProfileLikes() {
                     <ChatNav /> 
                 </div>
                 <div className="center-side-chat">
-                <div className='teste'>
-                    <div className='backg-for-profile-div'>
-                        <div className='color-bg-profile-page' style={{ backgroundColor:`#${userData.color}`}} />
+                    <div className='teste'>
+                        <div className='backg-for-profile-div'>
+                            <div className='color-bg-profile-page' style={{ backgroundColor:`#${userData.color}`}} />
                             <div className='div-for-everything-else-in-profile'>
                                 <div className='basic-info-div'>
                                     <div className="prof-page-pfp-div">
@@ -54,21 +55,26 @@ function ProfileLikes() {
                                 </div> 
                             </div>  
                             <div className='container-for-tabs'>
-                                <NavLink end to={'/' + userData.username} className={({ isActive }) => (isActive ? 'div-of-tab-words-active' : 'div-of-tab-words')}>
+                                <NavLink 
+                                    end to={'/' + userData.username} 
+                                    className={({ isActive }) => (isActive ? 'div-of-tab-words-active' : 'div-of-tab-words')}>
                                     <p className='tab-p-more'>Posts</p>
                                 </NavLink>
-                                {/* <NavLink end to={'/' + username + '/replies'} className={({ isActive }) => (isActive ? 'div-of-tab-words-active' : 'div-of-tab-words')}>
-                                    <p className='tab-p-more'>Comments</p>
-                                </NavLink> */}
-                                <NavLink end to={'/' + userData.username + '/likes'} className={({ isActive }) => (isActive ? 'div-of-tab-words-active' : 'div-of-tab-words')}>
+                                <NavLink 
+                                    end to={'/' + userData.username + '/likes'} 
+                                    className={({ isActive }) => (isActive ? 'div-of-tab-words-active' : 'div-of-tab-words')}>
                                     <p className='tab-p-more'>Likes</p>
                                 </NavLink>
+                            </div>
+                            <div className='likes-div'>
+                                <UserLikes />
                             </div>
                         </div>
                     </div>
                 </div>
                 <div className="right-side-chat">
-                <ChatInfo title={chatInfo.title} msg={chatInfo.msg} showButton={false}/>
+                    <ChatInfo title={chatInfo.title} msg={chatInfo.msg} showButton={false}/>
+                    <p className='copyright'>© 2023 Matthew Erwin</p>
                 </div>
             </div>
         </div>
