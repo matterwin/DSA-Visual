@@ -251,7 +251,7 @@ const UserPosts = () => {
                                 </div> */}
                                 <div className='right-top-div'>
                                     <CustomizedTooltip title="info">
-                                        <MoreHorizOutlinedIcon sx={{stroke: "#4d3939", strokeWidth: 0.4, color:'#4d3939', fontSize:'22px', fontStyle:'bold', margin:'0', padding:'0'}}/>
+                                        <MoreHorizOutlinedIcon className='more-info'/>
                                     </CustomizedTooltip>
                                 </div>
                             </div>

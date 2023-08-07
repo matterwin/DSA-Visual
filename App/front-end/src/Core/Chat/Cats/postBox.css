@@ -121,7 +121,7 @@
 }
 
 .exit-icon{
-    stroke-width: 0.4;
+    stroke-width: 0;
     font-style: bold;
     color: red;
     stroke: red;

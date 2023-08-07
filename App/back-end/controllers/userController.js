@@ -2,6 +2,7 @@ const User = require('../models/User');
 const UserInfo = require('../models/UserInfo');
 const { StatusCodes } = require('http-status-codes');
 const CustomError = require('../errors');
+const moment = require('moment-timezone');
 
 const allUserInfo = async (req, res) => {
     const { userId } = req.body;
@@ -71,17 +72,134 @@ const likes = async (req, res) => {
     }
 
     const userInfo = await UserInfo.findOne({ user })
-    .populate('user', '-_id -__v -password -email')
-    .populate('likes')
+      .populate('user', '-_id -__v -password -email')
+      .populate('likes')
 
     const { likes } = userInfo;
+
+    // Reverse the likes array
+    const reversedLikes = likes.reverse();
   
-    const numberOf = { likes: likes.length };
-  
+    const numberOf = { likes: reversedLikes.length };
+
     res.status(StatusCodes.OK).json({
-      userInfo: { numberOf, likes },
+        userInfo: { numberOf, likes: reversedLikes },
     });
 }
+
+const listOfLikedPosts = async (req, res) => {
+  const { userId } = req.query;
+  const { page } = req.query;
+  const limit = 5;
+
+  if (!userId) {
+      throw new CustomError.BadRequestError('Provide userId');
+  }
+
+  const user = await User.findOne({ _id: userId });
+  if (!user) {
+      throw new CustomError.BadRequestError('userId is invalid');
+  }
+
+  const userInfo = await UserInfo.findOne({ user })
+      .populate('user', '-_id -__v -password -email')
+      .populate('likes')
+
+  const { likes } = userInfo;
+
+  // Reverse the likes array
+  const reversedLikes = likes.reverse();
+
+  const totalCount = reversedLikes.length;
+  const totalPages = Math.ceil(totalCount / limit);
+
+  let skip = (page - 1) * limit;
+
+  // Calculate the skip value for fetching all previous pages
+  if (page > 1) {
+      skip = (page - 1) * limit + limit * (page - 2);
+  }
+
+  const paginatedLikes = reversedLikes.slice(skip, skip + limit).map((post) => {
+    const createdAt = moment(post.createdAt);
+    const currentTimestamp = moment();
+    const duration = moment.duration(currentTimestamp.diff(createdAt));
+
+    let formattedDate = '';
+    if (duration.asSeconds() < 60) {
+      formattedDate = `${Math.floor(duration.asSeconds())}s`;
+    } else if (duration.asMinutes() < 60) {
+      formattedDate = `${Math.floor(duration.asMinutes())}m`;
+    } else if (duration.asHours() < 24) {
+      formattedDate = `${Math.floor(duration.asHours())}hr`;
+    } else if (duration.asDays() < 30) {
+      formattedDate = `${Math.floor(duration.asDays())}d`;
+    } else if (duration.asMonths() < 12) {
+      formattedDate = `${Math.floor(duration.asMonths())}mon`;
+    } else {
+      formattedDate = `${Math.floor(duration.asYears())}yr`;
+    }
+
+    return {
+      ...post.toObject(),
+      createdAt: formattedDate,
+    };
+  });
+
+  const numberOf = { likes: paginatedLikes.length };
+
+  res.status(StatusCodes.OK).json({
+      userInfo: { 
+        totalPages: totalPages,
+        currentPage: page,
+        numberOf, 
+        likes: paginatedLikes 
+      },
+  });
+}
+
+
+// const listOfLikedPosts = async (req, res) => {
+//   const { userId } = req.query;
+//   const { page } = req.query;
+//   const limit = 5;
+
+//   if (!userId) {
+//       throw new CustomError.BadRequestError('Provide userId');
+//   }
+
+//   const user = await User.findOne({ _id: userId });
+//   if (!user) {
+//       throw new CustomError.BadRequestError('userId is invalid');
+//   }
+
+//   const userInfo = await UserInfo.findOne({ user })
+//       .populate('user', '-_id -__v -password -email')
+//       .populate('likes')
+
+//   const { likes } = userInfo;
+
+//   // Reverse the likes array
+//   const reversedLikes = likes.reverse();
+
+//   const totalCount = reversedLikes.length;
+//   const totalPages = Math.ceil(totalCount / limit);
+
+//   let skip = (page - 1) * limit;
+
+//   // Calculate the skip value for fetching all previous pages
+//   if (page > 1) {
+//       skip = (page - 1) * limit + limit * (page - 2);
+//   }
+
+//   const paginatedLikes = reversedLikes.slice(skip, skip + limit);
+
+//   const numberOf = { likes: paginatedLikes.length };
+
+//   res.status(StatusCodes.OK).json({
+//       userInfo: { numberOf, likes: paginatedLikes },
+//   });
+// }
 
 const numberOf = async (req, res) => {
     const { userId } = req.body;
@@ -166,6 +284,7 @@ module.exports = {
     allUserInfo,
     basicUserInfo,
     likes,
+    listOfLikedPosts,
     dislikes,
     posts,
     numberOf,

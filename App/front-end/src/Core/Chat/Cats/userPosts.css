@@ -37,7 +37,7 @@
     gap: 8px;
     width: 100%;
     margin-top: 5px;
-    margin-bottom: 5px;
+    /* margin-bottom: 5px; */
 }
 
 .center-row-align{
@@ -80,14 +80,13 @@
     background-color: #a5a5a56b;
 }
 
-
 /* thumbs-up */
 .new-icon-word-div-thumbs-up{
     padding: 3px;
     border-radius: 5px;
     cursor: pointer;
     margin: 0px;
-    margin-bottom: -5px;
+    /* margin-bottom: -5px; */
 }
 
 .new-icon-word-div-thumbs-up-active{
@@ -95,7 +94,7 @@
     border-radius: 5px;
     cursor: pointer;
     margin: 0px;
-    margin-bottom: -5px;
+    /* margin-bottom: -5px; */
     background-color: #a5a5a53f;
 }
 
@@ -104,6 +103,7 @@
     stroke-width: 0.4;
     color:#4d3939;
     font-style: bold;
+    margin-top: 3px;
 }
 
 .new-icon-word-div-thumbs-up:hover{
@@ -122,6 +122,7 @@
     font-style: bold;
     color: #a9c9a3;
     stroke: #a9c9a3;
+    margin-top: 3px;
 }
 
 /* thumbs-down */
@@ -130,7 +131,7 @@
     border-radius: 5px;
     cursor: pointer;
     margin: 0px;
-    margin-bottom: -5px;
+    /* margin-bottom: -5px; */
 }
 
 .new-icon-word-div-thumbs-down-active{
@@ -138,7 +139,7 @@
     border-radius: 5px;
     cursor: pointer;
     margin: 0px;
-    margin-bottom: -5px;
+    /* margin-bottom: -5px; */
     background-color: #a5a5a53f;
 }
 
@@ -162,6 +163,7 @@
     color:#4d3939;
     transform: scaleY(-1);
     font-style: bold;
+    margin-top: 3px;
 }
 
 .new-icon-word-div-thumbs-down:hover{
@@ -308,13 +310,13 @@
 
 .right-top-div{
     margin-left: auto;
-    padding: 3px;
+    padding:3px;
     border-radius: 5px;
     cursor: pointer;
     opacity: 0;
     /* Add transition for smooth fading effect */
     transition: opacity 0.3s ease;
-    margin-bottom: -5px;
+    /* margin-bottom: -5px; */
 }
 
 .right-top-div-new{
@@ -324,8 +326,21 @@
     cursor: pointer;
 }
 
+.more-info{
+    stroke:#4d3939;
+    stroke-width: 0.4;
+    color:#4d3939;
+    font-size:22px;
+    font-style:bold;
+    margin:0;
+    padding:0;
+    margin-top: 3px;
+}
+
 .right-top-div:hover{
     background-color: #a5a5a56b;
+    background-color: #a5a5a51f;
+    background-color: #a5a5a53f;
 }
 
 .top-and-text-div{
