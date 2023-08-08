@@ -9,6 +9,7 @@ import { getData, setData } from '../../../../UserAuth/UserContext';
 import UserLikes from './userLikes';
 import ThreePIcon from '@mui/icons-material/ThreeP';
 import NavigationIcon from '@mui/icons-material/Navigation';
+import readCookies from '../../../../Cookies/readCookies';
 import TabBox from '../tabBox';
 import CustomizedTooltip from '../../../Custom/customTooltip';
 
@@ -22,6 +23,38 @@ const chatInfo = {
 
 function ProfileLikes() {
     const userData = getData();
+    const [numberOf, setNumberOf] = useState([]);
+
+    useEffect(() => {
+        document.title = "Likes | Heyso";
+    }, []);
+
+    const getCounts = async() => {
+        const userId = readCookies('auth-token');
+        const url = `http://localhost:5000/user/numberOf`;
+
+        const response = await fetch(url, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ userId }),
+        });
+    
+    
+        if (response.status !== 200) {
+            throw new Error("Feed went wrong");
+        }
+    
+        const data = await response.json();
+    
+        setNumberOf(data.numberOf);
+        // setLoading(false);
+    }
+
+    useEffect(() => {
+        getCounts();
+    },[])
 
     return (
         <div>   
@@ -61,7 +94,7 @@ function ProfileLikes() {
                                         <CustomizedTooltip title="Posts">
                                             <div className='tq'>
                                                 <ThreePIcon className='profile-icons-blue' style={{ fontSize:'15px' }}/>
-                                                <p className='count-p-icons'>3298</p>
+                                                <p className='count-p-icons'>{numberOf.posts}</p>
                                             </div>
                                         </CustomizedTooltip>
                                     </div>
@@ -69,7 +102,7 @@ function ProfileLikes() {
                                         <CustomizedTooltip title="Likes">
                                             <div className='tq'>
                                                 <NavigationIcon className='profile-icons-green' style={{ fontSize:'15px' }} />
-                                                <p className='count-p-icons'>444</p>
+                                                <p className='count-p-icons'>{numberOf.likes}</p>
                                             </div>
                                         </CustomizedTooltip>
                                     </div>

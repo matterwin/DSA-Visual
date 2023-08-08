@@ -44,9 +44,7 @@ const UserPanel = () => {
         
             const data = await response.json();
         
-
-            console.log(data.userInfo.numberOf);
-            setNumberOf(data.userInfo.numberOf);
+            setNumberOf(data.numberOf);
             setLoading(false);
         } catch (err) {
             console.log(err);

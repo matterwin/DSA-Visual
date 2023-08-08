@@ -195,7 +195,7 @@ const numberOf = async (req, res) => {
     };
   
     res.status(StatusCodes.OK).json({
-      userInfo: { numberOf },
+      numberOf: numberOf
     });
 }
 
