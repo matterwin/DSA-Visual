@@ -66,7 +66,57 @@
     justify-content: center;
     font-weight: 400;
   }
-  
+
+  .sort-by{
+    font-family: 'Segoe UI';
+    color: #ccc;
+    margin-bottom: 15px;
+    /* margin-top: -10px; */
+  }
+
+  .sort-type {
+    font-family: 'Segoe UI';
+    color: #fff;
+    /* background-color: #6b5151; */
+    /* padding: 2px; */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    /* margin-bottom: 15px; */
+    box-sizing: border-box;
+    cursor: pointer;
+    /* border-radius: 5px; */
+}
+
+.sort-divider-div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    gap: 8px;
+}
+
+/* .q{
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  box-sizing: border-box;
+  gap: 2px;
+} */
+
+.remaining-divider {
+    flex-grow: 1;
+    height: 1px;
+    margin: 0;
+}
+
   .open-btn{
     position: relative;
     background-color: #bdbdbd;

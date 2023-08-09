@@ -83,12 +83,12 @@ const PostBox = () => {
                     <>
                         {isPostValid &&       
                             <button className='send-btn-valid' onClick={handleSend}>
-                                <p className='send-it'>Send ...</p>
+                                <p className='send-it'>Post</p>
                             </button>            
                         }
                         {!isPostValid &&       
                             <button className='send-btn-invalid'>
-                                <p className='send-it'>Send ...</p>
+                                <p className='send-it'>Post</p>
                             </button>            
                         }
                     </> 

@@ -51,7 +51,7 @@ import 'prismjs/themes/prism.css';
 
 const Loading = () => {
   return (
-    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height:'100vh'}}>
+    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height:'75vh'}}>
       <Box sx={{ display: 'flex', justifyContent: 'center',alignItems: 'center', flexDirection:'column', gap:'15px'  }}>
         <p style={{color:'#a9c9a3', fontSize:'18px', fontFamily:'Inter'}}>Slow huh?</p>
         <CircularProgress style={{ color: '#a9c9a3' }} />

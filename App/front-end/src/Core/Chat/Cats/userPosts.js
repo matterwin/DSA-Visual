@@ -223,7 +223,7 @@ const UserPosts = () => {
                             <p className='title-text'>{post.title}</p>
                             <p className='post-text'>{post.message}</p>
                         </div>
-                        <Divider sx={{ backgroundColor: 'silver', marginTop:'10px', width:'100%' }} />
+                        <Divider sx={{ backgroundColor: 'silver', marginTop:'20px', marginBottom:'-5px', width:'100%' }} />
                         <div className='bottom-post-div'>
                             <div className='center-row-align'>
                                 <div className='like-counter-container'>

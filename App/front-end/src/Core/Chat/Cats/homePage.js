@@ -13,8 +13,10 @@ import PostBox from './postBox';
 import TabBox from './tabBox';
 import PostBoxModal from './postBoxModal';
 import CustomDSANavBtnReplica from '../../Custom/customDSABtnReplica';
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import UserPanel from '../userPanel';
 import UserPosts from './userPosts';
+import CustomSortButton from '../../Custom/customSortButton';
 
 import '../chat.css'
 
@@ -82,7 +84,10 @@ function HomePage() {
             <div className='teste'>
                 <div className='postbox-div'>
                     <PostBox />
-                    <Divider sx={{ backgroundColor: 'silver', marginTop:'10px', marginBottom:'10px', width:'100%' }} />
+                    <div className='sort-divider-div'>
+                        <Divider className='remaining-divider' sx={{ backgroundColor: 'silver' }} />
+                        <CustomSortButton />
+                    </div>
                 </div>
                 
                 
@@ -91,6 +96,10 @@ function HomePage() {
                 {/* <div className='main-page-div'>
                     Hi
                 </div> */}
+                {/* <div className='sort-divider-div'>
+<span className='sort-type'>Recency<ArrowDropDownIcon/></span>
+                </div> */}
+                                    
                 <UserPosts />
             </div>
             

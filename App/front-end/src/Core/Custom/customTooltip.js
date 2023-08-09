@@ -4,7 +4,7 @@ import Tooltip, { tooltipClasses } from '@mui/material/Tooltip';
 
 const NewTooltip = styled(({ className, ...props }) => (
   <Tooltip {...props} arrow classes={{ popper: className }} />
-))(({ theme, color, textColor }) => ({
+))(({ theme, color, textcolor }) => ({
   [`& .${tooltipClasses.arrow}`]: {
     color: color,
     "&:before": {
@@ -16,7 +16,7 @@ const NewTooltip = styled(({ className, ...props }) => (
     padding: '5px 5px 5px 5px',
     fontSize: '13px',
     fontFamily: 'Inter',
-    color: textColor,
+    color: textcolor,
     fontWeight: '700',
   },
 }));
@@ -24,8 +24,8 @@ const NewTooltip = styled(({ className, ...props }) => (
 export default function CustomizedTooltip({ title, color, textColor, children }) {
   return (
     <div>
-      <NewTooltip title={title} color={color} textColor={textColor}>
-        <div style={{ color: textColor }}>{children}</div>
+      <NewTooltip title={title} color={color} textcolor={textColor}>
+        <div>{children}</div>
       </NewTooltip>
     </div>
   );

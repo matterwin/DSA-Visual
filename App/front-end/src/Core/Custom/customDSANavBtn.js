@@ -11,7 +11,7 @@ import './customDSANavBtn.css';
 function CustomDSANavBtn() {
     const [isOpen, setIsOpen] = useState(false);
     const menuRef = useRef(null);
-    const [showDSABtn, setShowDSABtn] = useState(true)
+    const [showDSABtn, setShowDSABtn] = useState(false)
 
     useEffect(() => {
         document.addEventListener('click', handleClickOutside);

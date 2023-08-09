@@ -1,0 +1,19 @@
+.menu-parent2{
+    position: relative;
+    z-index: 3;
+}
+
+.menu-div-contain2{
+    background-color: #887777;
+    background-color: #6b5151;
+    padding: 10px;
+    margin-top: 5px;
+    box-shadow: rgba(0, 0, 0, .15) 0px 0px 10px 10px;
+    border-radius: 7px;
+    z-index: 2;
+    position: absolute;
+    width: 200px;
+    transform: translateX(-100%);
+    margin-left: 80px;
+    z-index: 3;
+}

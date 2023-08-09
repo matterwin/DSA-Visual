@@ -17,6 +17,7 @@
 
 .div-for-padding{
     padding: 10px;
+    padding-bottom: 0px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -42,7 +43,7 @@
     align-items: flex-start;
     gap: 8px;
     width: 100%;
-    margin-top: 5px;
+    /* margin-top: 5px; */
     /* margin-bottom: 5px; */
 }
 
@@ -51,7 +52,7 @@
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
-    gap: 5px;
+    /* gap: 5px; */
 }
 
 .left-contain-post{
@@ -88,20 +89,20 @@
 
 /* thumbs-up */
 .new-icon-word-div-thumbs-up{
-    padding: 3px;
-    border-radius: 5px;
+    /* padding: 3px;
+    border-radius: 5px; */
     cursor: pointer;
     margin: 0px;
     /* margin-bottom: -5px; */
 }
 
 .new-icon-word-div-thumbs-up-active{
-    padding: 3px;
-    border-radius: 5px;
+    /* padding: 3px;
+    border-radius: 5px; */
     cursor: pointer;
     margin: 0px;
     /* margin-bottom: -5px; */
-    background-color: #a5a5a53f;
+    /* background-color: #a5a5a53f; */
 }
 
 .thumbs-up-icon{
@@ -109,12 +110,15 @@
     stroke-width: 0.4;
     color:#4d3939;
     font-style: bold;
-    margin-top: 3px;
+    margin-top: 5px;
+    padding: 5px;
+    border-radius: 3px;
+    cursor: pointer;
 }
 
-.new-icon-word-div-thumbs-up:hover{
+/* .new-icon-word-div-thumbs-up:hover{
     background-color: #a5a5a53f;
-}
+} */
 
 .new-icon-word-div-thumbs-up:hover .thumbs-up-icon {
     color: #a9c9a3;
@@ -128,25 +132,29 @@
     font-style: bold;
     color: #a9c9a3;
     stroke: #a9c9a3;
-    margin-top: 3px;
+    margin-top: 5px;
+    padding: 5px;
+    border-radius: 3px;
+    background-color: #a5a5a53f;
+    cursor: pointer;
 }
 
 /* thumbs-down */
 .new-icon-word-div-thumbs-down{
-    padding: 3px;
-    border-radius: 5px;
+    /* padding: 3px;
+    border-radius: 5px; */
     cursor: pointer;
     margin: 0px;
     /* margin-bottom: -5px; */
 }
 
 .new-icon-word-div-thumbs-down-active{
-    padding: 3px;
-    border-radius: 5px;
+    /* padding: 3px;
+    border-radius: 5px; */
     cursor: pointer;
     margin: 0px;
     /* margin-bottom: -5px; */
-    background-color: #a5a5a53f;
+    /* background-color: #a5a5a53f; */
 }
 
 .bubble-animation {
@@ -169,12 +177,21 @@
     color:#4d3939;
     transform: scaleY(-1);
     font-style: bold;
-    margin-top: 3px;
+    margin-top: 5px;
+    padding: 5px;
+    border-radius: 3px;
+    cursor: pointer;
 }
 
-.new-icon-word-div-thumbs-down:hover{
+
+.thumbs-up-icon:hover, .thumbs-down-icon:hover{
     background-color: #a5a5a51f;
+    background-color: #a5a5a53f;
 }
+
+/* .new-icon-word-div-thumbs-down:hover{
+    background-color: #a5a5a51f;
+} */
 
 .new-icon-word-div-thumbs-down:hover .thumbs-down-icon {
     color: #7193ff;
@@ -189,6 +206,11 @@
     color: #7193ff;
     stroke: #7193ff;
     transform: scaleY(-1);
+    margin-top: 5px;
+    padding: 5px;
+    border-radius: 3px;
+    background-color: #a5a5a53f;
+    cursor: pointer;
 }
 
 /* replies */
@@ -340,14 +362,21 @@
     font-style:bold;
     margin:0;
     padding:0;
-    margin-top: 3px;
+    margin-top: 5px;
+    padding: 5px;
+    border-radius: 3px;
+    cursor: pointer;
 }
 
-.right-top-div:hover{
+.more-info:hover{
+    background-color: #a5a5a53f;
+}
+
+/* .right-top-div:hover{
     background-color: #a5a5a56b;
     background-color: #a5a5a51f;
     background-color: #a5a5a53f;
-}
+} */
 
 .top-and-text-div{
     width: 100%;
