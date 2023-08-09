@@ -64,7 +64,9 @@ const UserPanel = () => {
                         <a href={'/' + username} className="user-panel-pfp-div">
                             <img className="user-panel-profile-pic" src={pp} alt="ProfilePicture" />                         
                         </a>
-                        <p className='user-panel-username'>{username}</p>
+                        <a href={'/' + username} className='l'>
+                            <p className='user-panel-username'>{username}</p>
+                        </a>
                         <div className='user-stats-div'>
                             {loading && <Loading />}
                             {!loading && 

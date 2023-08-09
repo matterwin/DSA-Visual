@@ -55,7 +55,7 @@ function CustomMenu() {
                 className='menu-parent'
                 ref={menuRef}
             >
-                <CustomizedTooltip title={"Profile"}>
+                <CustomizedTooltip title={"Profile"} color="#f8f8f8" textColor="black">
                     <div className="cust-pfp-div">
                         <img className="cust-profile-pic" src={userData.pic} alt="ProfilePicture" />                         
                     </div>

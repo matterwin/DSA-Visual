@@ -188,7 +188,7 @@ const UserPostsList = () => {
                         <div className='split-side-container'>
                             <div className='left-contain-post'>
                                 <div className='top-level-div'>
-                                    <CustomizedTooltip title={post.user.username}>
+                                    <CustomizedTooltip title={post.user.username} color="#4d3939" textColor="#fff">
                                         <div className="chat-cust-pfp-div">
                                             <img className="chat-cust-profile-pic" src={post.user.profilePic} alt="ProfilePicture" />    
                                         </div>
@@ -242,7 +242,7 @@ const UserPostsList = () => {
                                     <p className='replies-text' style={{ fontWeight:'500' }}>{post.replies.length} Replies</p>
                                 </div> */}
                                 <div className='right-top-div'>
-                                    <CustomizedTooltip title="info">
+                                    <CustomizedTooltip title="info" color="#4d3939" textColor="#fff">
                                         <MoreHorizOutlinedIcon className='more-info'/>
                                     </CustomizedTooltip>
                                 </div>

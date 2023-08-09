@@ -38,7 +38,7 @@ function CustomDSANavBtn() {
                 className='dsa-menu-parent'
                 ref={menuRef}
             >
-                <CustomizedTooltip title={"Visuals"}>
+                <CustomizedTooltip title={"Visuals"} color="#f8f8f8" textColor="black">
                     <div className="nav-link-div-icons">
                         <GraphicEqOutlinedIcon sx={{stroke: "#fff", strokeWidth: 0.7, padding: '0', margin:'0', cursor: 'pointer', color:'#fff', fontSize:'25px' }}/>
                     </div>

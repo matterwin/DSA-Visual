@@ -98,7 +98,12 @@
     font-weight: 400;
 }
 
-.user-panel-pfp-div:hover + .user-panel-username {
+.user-panel-pfp-div:hover + a .user-panel-username {
+    text-decoration: underline;
+    text-decoration-color: #a9c9a3;
+}
+
+.user-panel-username:hover{
     text-decoration: underline;
     text-decoration-color: #a9c9a3;
 }

@@ -38,7 +38,7 @@ const NavIn = () => {
                 <h4 className="linkers">Chat</h4>
               </a> 
               <Divider className='divider-div' orientation="vertical" style={{ backgroundColor: 'grey', height: '25px', width:'1px' }} />
-              <CustomizedTooltip title={"Add Post"}>
+              <CustomizedTooltip title={"Add Post"} color="#f8f8f8" textColor="black">
                 <div className="nav-link-div-icons">
                   <AddOutlinedIcon sx={{stroke: "#fff", strokeWidth: 1.4, padding: '0', margin:'0', cursor: 'pointer', color:'#fff', fontSize:'25px'}}/>
                 </div>

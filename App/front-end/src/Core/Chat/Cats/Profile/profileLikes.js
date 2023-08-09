@@ -91,7 +91,7 @@ function ProfileLikes() {
                                 </div>
                                 <div className='icons-div-profile'>
                                     <div className='row-container-p-icons'>
-                                        <CustomizedTooltip title="Posts">
+                                        <CustomizedTooltip title="Posts" color="#4d3939" textColor="#fff">
                                             <div className='tq'>
                                                 <ThreePIcon className='profile-icons-blue' style={{ fontSize:'15px' }}/>
                                                 <p className='count-p-icons'>{numberOf.posts}</p>
@@ -99,7 +99,7 @@ function ProfileLikes() {
                                         </CustomizedTooltip>
                                     </div>
                                     <div className='row-container-p-icons'>
-                                        <CustomizedTooltip title="Likes">
+                                        <CustomizedTooltip title="Likes" color="#4d3939" textColor="#fff">
                                             <div className='tq'>
                                                 <NavigationIcon className='profile-icons-green' style={{ fontSize:'15px' }} />
                                                 <p className='count-p-icons'>{numberOf.likes}</p>
