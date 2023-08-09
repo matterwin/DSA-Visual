@@ -3,6 +3,7 @@ import readCookies from '../../../Cookies/readCookies'
 import CustomizedTooltip from '../../Custom/customTooltip'
 import HighlightOffOutlinedIcon from '@mui/icons-material/HighlightOffOutlined';
 import CircularProgress from '@mui/material/CircularProgress';
+import CloseIcon from '@mui/icons-material/Close';
 import Box from '@mui/material/Box';
 import './postBox.css'
 
@@ -95,7 +96,7 @@ const PostBox = () => {
                     }
                     { showPostBox && 
                         <div className='exit-btn-div' onClick={handleClose}>
-                            <HighlightOffOutlinedIcon className='exit-icon' style={{ fontSize:'40' }}/>
+                            <CloseIcon className='exit-icon' style={{ fontSize:'40' }}/>
                         </div> 
                     }
                 </div>

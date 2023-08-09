@@ -48,5 +48,6 @@ Tips for optimizing the algorithm in specific situations, if applicable.
 Any additional insights, tips, or considerations that could be useful for someone trying to understand or implement Merge Sort.
 
 #To do:
-frontend user likes and posts list
+allow users to edit profile
 do sort by feature for chat
+add modal for post
