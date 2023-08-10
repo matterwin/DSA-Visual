@@ -12,6 +12,7 @@ import ThreePIcon from '@mui/icons-material/ThreeP';
 import NavigationIcon from '@mui/icons-material/Navigation';
 import readCookies from '../../../../Cookies/readCookies';
 import CustomizedTooltip from '../../../Custom/customTooltip';
+import ModeEditOutlineOutlinedIcon from '@mui/icons-material/ModeEditOutlineOutlined';
 
 import '../../chat.css'
 import './profilePage.css'
@@ -82,9 +83,18 @@ function ProfilePage() {
                     <div className='color-bg-profile-page' style={{ backgroundColor:`#${userData.color}`}} />
                         <div className='div-for-everything-else-in-profile'>
                             <div className='basic-info-div'>
-                                <div className="prof-page-pfp-div">
-                                    <img className="prof-page-profile-pic" src={userData.pic} alt="ProfilePicture" />                         
+                                <div className='top-div-offsets'>
+                                    <div className="prof-page-pfp-div">
+                                        <img className="prof-page-profile-pic" src={userData.pic} alt="ProfilePicture" />     
+                            
+                                    </div>
                                 </div>
+                                <div className='edit-icon-div'>
+                                    <CustomizedTooltip title='Edit' color="#4d3939" textColor="#fff">
+                                        <ModeEditOutlineOutlinedIcon className='icon-edit' style={{ fontSize: '35px' }} />
+                                    </CustomizedTooltip>
+                                </div> 
+                           
                                 <p className='name-p-prof-page'>{userData.first} {userData.last}</p>
                                 <p className='username-p-prof-page'>@{userData.username}</p>
                                 <p className='bio'>{userData.bio}</p>

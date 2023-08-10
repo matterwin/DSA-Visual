@@ -6,7 +6,7 @@ import './customSortButton.css'
 
 const CustomSortButton = ({ setSortBy }) => {
     const [isOpen, setIsOpen] = useState(false);
-    const [sortType, setSortType] = useState('Newest'); // State to store the sort type
+    const [sortType, setSortType] = useState(localStorage.getItem('sortType')); // State to store the sort type
     const menuRef = useRef(null);
 
     useEffect(() => {
@@ -21,6 +21,7 @@ const CustomSortButton = ({ setSortBy }) => {
     };
 
     const handleSortTypeChange = (newSortType) => {
+        localStorage.setItem('sortType', newSortType);
         setSortBy(newSortType);
         setSortType(newSortType);
         setIsOpen(false); // Close the dropdown after selecting a sort type

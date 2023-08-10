@@ -32,15 +32,17 @@ const postDiv = () => {
 function HomePage() {
     const [showLiveChat, setShowLiveChat] = useState(false);
     const [showPostBox, setShowBoxPost] = useState(false);
-    const [sortBy, setSortBy] = useState('Newest');
 
     useEffect(() => {
+        const existingSortType = localStorage.getItem('sortType');
+        if (existingSortType === null || existingSortType === undefined) {
+            localStorage.setItem('sortType', 'Newest');
+            setSortBy(localStorage.getItem('sortType'));
+        }
         document.title = "Chat | Heyso";
     }, []);
 
-    // useEffect(() => {
-    //     console.log(sortBy);
-    // }, [sortBy]);
+    const [sortBy, setSortBy] = useState(localStorage.getItem('sortType'));
 
     useEffect(() => {
         const rememChat = readCookies('showChat');
@@ -94,18 +96,14 @@ function HomePage() {
                         <CustomSortButton setSortBy={setSortBy}/>
                     </div>
                 </div>
-                
-                
-                {/* <TabBox title1="Home" title2="Following" title1Link="/chat" title2Link="/chat/following" active1={true}/> */}
-                <TabBox title1="Home" title1Link="/chat" active1={true} onClick={() => window.location.reload()}/>
-                {/* <div className='main-page-div'>
-                    Hi
-                </div> */}
-                {/* <div className='sort-divider-div'>
-<span className='sort-type'>Recency<ArrowDropDownIcon/></span>
-                </div> */}
-                                    
-                <UserPosts sortBy={sortBy}/>
+                <div className='disappear-on-small-screen'>
+                    <TabBox title1="Home" title1Link="/chat" active1={true} onClick={() => window.location.reload()} />
+                </div>
+                <div className='sort-divider-div-small-screen'>
+                    <Divider className='remaining-divider' sx={{ backgroundColor: 'silver' }} />
+                    <CustomSortButton setSortBy={setSortBy}/>
+                </div>               
+                <UserPosts setSortBy={setSortBy} sortBy={sortBy}/>
             </div>
             
           </div>

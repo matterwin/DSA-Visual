@@ -32,10 +32,38 @@
     margin-top: 10px;
 }
 
+.edit-icon-div{
+    margin-left: auto;
+    margin-top: -40px;
+    margin-bottom: -20px;
+}
+
+.icon-edit{
+    padding: 5px;
+    cursor: pointer;
+    border-radius: 50%;
+    color: #4d3939;
+    /* stroke: red; */
+}
+
+.icon-edit:hover{
+    background-color: #a5a5a56b;
+}
+
+.top-div-offsets{
+    margin-top: -90px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-end;
+    width: 100%;
+    box-sizing: border-box;
+}
+
 .prof-page-pfp-div {
-    margin-top: -60px;
-    width: 85px;
-    height: 85px;
+    /* margin-top: -60px; */
+    width: 105px;
+    height: 105px;
     border-radius: 50%;
     overflow: hidden;
     background-color: #f4f4f5;

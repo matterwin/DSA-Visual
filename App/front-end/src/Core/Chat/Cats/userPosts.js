@@ -31,7 +31,7 @@ const Loading = () => { //height: '30vh'
   );
 }
 
-const UserPosts = ({ sortBy }) => {
+const UserPosts = ({ setSortBy, sortBy }) => {
     const [feed, setFeed] = useState([]);
     const [loading, setLoading] = useState(true);
     const [page, setPage] = useState(1); // init page
@@ -40,6 +40,7 @@ const UserPosts = ({ sortBy }) => {
     const [subtractTotalPages, setSubtractTotalPages] = useState(1);
     const [loadingMorePages, setLoadingMorePages] = useState(false);
     const [endOfList, setEndOfList] = useState(false);
+    const [sort, setSort] = useState()
 
     useEffect(() => {
         setTotalPages(1);
@@ -49,14 +50,16 @@ const UserPosts = ({ sortBy }) => {
         setEndOfList(false);
         setLoading(true);
         setFeed([]);
-        // fetchFeed();
+        fetchFeed(false);
     }, [sortBy]);
 
-    const fetchFeed = async () => {
+    const fetchFeed = async (pass) => {
+        console.log(totalPages);
         if(totalPages > 0){
             try {
                 const userId = readCookies('auth-token');
-                const url = `http://localhost:5000/feed/homeFeed/allSortBy?page=${page}&userId=${userId}&sortBy=${sortBy}`;
+                const getSortType = localStorage.getItem('sortType');
+                const url = `http://localhost:5000/feed/homeFeed/allSortBy?page=${page}&userId=${userId}&sortBy=${getSortType}`;
             
                 const response = await fetch(url);
             
@@ -65,11 +68,12 @@ const UserPosts = ({ sortBy }) => {
                 }
             
                 const data = await response.json();
-                
-                setFeed((prevFeed) => [...prevFeed, ...data.feed]);
+                if(pass) //not working
+                    setFeed(data.feed);
+                else 
+                    setFeed((prevFeed) => [...prevFeed, ...data.feed]);
                 setLoading(false);
                 setLoadingMorePages(false);
-                console.log(data.feed);
                 setPage((prevPage) => prevPage + 1);
                 setTotalPages(data.totalPages - subtractTotalPages);
                 setSubtractTotalPages((prev) => prev + 1);
@@ -78,11 +82,24 @@ const UserPosts = ({ sortBy }) => {
             }
         }
         else{
+            console.log('test');
             setLoading(false);
             setLoadingMorePages(false);
             setEndOfList(true);
         }
     };
+
+    function handleChange(){
+        setLoading(true);
+        setTotalPages(1);
+        setPage(1);
+        setSubtractTotalPages(1);
+        setLoadingMorePages(false);
+        setEndOfList(false);
+        setFeed([]);
+        setPage(1); // Reset the page to 1
+        fetchFeed(true);
+    }
       
     // useEffect(() => {
     //     fetchFeed(); // Initial fetch
@@ -227,6 +244,11 @@ const UserPosts = ({ sortBy }) => {
                                     <div className='right-top-div-new'>
                                         <p>{post.postedAgo}</p>
                                     </div>
+                                    {/* <button onClick={() => handleChange('Newest')}>New</button>
+                                    <button onClick={() => handleChange('Oldest')}>Old</button>
+                                    <button onClick={() => handleChange('Likes')}>Likes</button>
+                                    <button onClick={() => handleChange('Dislikes')}>Dislikes</button> */}
+                                    <button onClick={() => handleChange()}>refresh</button>
                                 </div>
                             </div>
                         </div>
