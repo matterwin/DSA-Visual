@@ -154,11 +154,73 @@ const modifyBio = async (req, res) => {
     });
 };
 
+const modifyFirstname = async (req, res) => {
+    const { userId } = req.body;
+    const { firstname } = req.body;
+  
+    if (!userId) {
+      throw new CustomError.BadRequestError('Provide userId');
+    }
+  
+    const user = await User.findOne({ _id: userId });
+    if (!user) {
+        throw new CustomError.BadRequestError('userId is invalid');
+    }
+
+    if(!firstname){
+        throw new CustomError.BadRequestError('Provide firstname');
+    }
+
+    // Update the bio field
+    user.firstname = firstname;
+
+    // Save the updated user document
+    await user.save();
+
+    // Return a response indicating success
+    res.status(StatusCodes.OK).json({
+        message: 'Firstname updated successfully',
+        newFirstname: user.firstname
+    });
+};
+
+const modifyLastname = async (req, res) => {
+    const { userId } = req.body;
+    const { lastname } = req.body;
+  
+    if (!userId) {
+      throw new CustomError.BadRequestError('Provide userId');
+    }
+  
+    const user = await User.findOne({ _id: userId });
+    if (!user) {
+        throw new CustomError.BadRequestError('userId is invalid');
+    }
+
+    if(!lastname){
+        throw new CustomError.BadRequestError('Provide firstname');
+    }
+
+    // Update the bio field
+    user.lastname = lastname;
+
+    // Save the updated user document
+    await user.save();
+
+    // Return a response indicating success
+    res.status(StatusCodes.OK).json({
+        message: 'Lastname updated successfully',
+        newLastname: user.lastname
+    });
+};
+
 module.exports = {
     basicUserInfo,
     checkEmail,
     register,
     login,
     deleteAllUserAccounts,
-    modifyBio
+    modifyBio,
+    modifyFirstname,
+    modifyLastname
 }
