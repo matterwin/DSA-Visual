@@ -136,6 +136,96 @@ const allPosts = async (req, res) => {
     }
 };
 
+const allPostsSortBy = async (req, res) => {
+  try {
+    const { userId } = req.query;
+    const { sortBy } = req.query;
+    console.log(sortBy);
+    const { page } = req.query;
+    const limit = 10;
+
+    console.log(page);
+    console.log(userId);
+
+    const totalCount = await HomeFeed.countDocuments({}); // Get total count of documents
+    const totalPages = Math.ceil(totalCount / limit); // Calculate total number of pages
+
+    let skip = (page - 1) * limit;
+
+    // Calculate the skip value for fetching all previous pages
+    if (page > 1) {
+      skip = (page - 1) * limit + limit * (page - 2);
+    }
+
+    let sortOption = { createdAt: -1 }; // Default sorting by newest
+
+    // Determine the sorting option based on the sortBy parameter
+    if (sortBy === 'Newest') {
+      // No need to set anything here since it's the default
+    } else if (sortBy === 'Oldest') {
+      sortOption = { createdAt: 1 };
+    } else if (sortBy === 'Likes') {
+      sortOption = { likes: -1, createdAt: -1 };
+    } else if (sortBy === 'Dislikes') {
+      sortOption = { dislikeRatio: -1, createdAt: -1 };
+    }
+
+    const posts = await HomeFeed.find({})
+      .skip(skip)
+      .limit(limit)
+      .sort(sortOption) // Apply the selected sorting option
+      .populate('user', '-_id -__v -password -email -bio');
+
+
+    const formattedPosts = posts.map((post) => {
+      // should really compare it to the userInfoList of likes, or it may be better to do it this way 
+      const alreadyDisliked = post.dislikes.includes(userId);
+      const alreadyLiked = post.likes.includes(userId);
+
+      const createdAt = moment(post.createdAt);
+      const currentTimestamp = moment();
+      const duration = moment.duration(currentTimestamp.diff(createdAt));
+
+      let formattedDate = '';
+      if (duration.asSeconds() < 60) {
+        formattedDate = `${Math.floor(duration.asSeconds())}s`;
+      } else if (duration.asMinutes() < 60) {
+        formattedDate = `${Math.floor(duration.asMinutes())}m`;
+      } else if (duration.asHours() < 24) {
+        formattedDate = `${Math.floor(duration.asHours())}hr`;
+      } else if (duration.asDays() < 30) {
+        formattedDate = `${Math.floor(duration.asDays())}d`;
+      } else if (duration.asMonths() < 12) {
+        formattedDate = `${Math.floor(duration.asMonths())}mon`;
+      } else {
+        formattedDate = `${Math.floor(duration.asYears())}yr`;
+      }
+
+      return {
+        ...post.toObject(),
+        postedAgo: formattedDate,
+        likeToDislikeCount: post.likeToDislikeRatio,
+        hasDisliked: alreadyDisliked,
+        hasLiked: alreadyLiked
+      };
+    });
+  
+    res.status(StatusCodes.OK).json({
+      count: formattedPosts.length,
+      totalPages: totalPages,
+      currentPage: page,
+      feed: formattedPosts,
+    });
+
+  } catch (error) {
+    // Handle any errors that occur during the operation
+    console.error(error);
+    return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
+      error: 'Internal Server Error',
+    });
+  }
+};
+
 const allPostsForUser = async (req, res) => {
   try {
     const { userId } = req.query;
@@ -399,6 +489,7 @@ module.exports = {
     allPosts,
     allPostsNoLimit,
     allPostsForUser,
+    allPostsSortBy,
     clearFeed,
     userPost,
     likePost,

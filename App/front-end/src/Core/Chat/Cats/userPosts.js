@@ -21,9 +21,9 @@ import './postBox.css'
 import './userPosts.css'
 import readCookies from '../../../Cookies/readCookies';
 
-const Loading = () => {
+const Loading = () => { //height: '30vh'
   return (
-    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '30vh' }}>
+    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
       <Box sx={{ display: 'flex' }}>
         <CircularProgress style={{ color: '#a9c9a3' }} />
       </Box>
@@ -31,7 +31,7 @@ const Loading = () => {
   );
 }
 
-const UserPosts = () => {
+const UserPosts = ({ sortBy }) => {
     const [feed, setFeed] = useState([]);
     const [loading, setLoading] = useState(true);
     const [page, setPage] = useState(1); // init page
@@ -41,11 +41,22 @@ const UserPosts = () => {
     const [loadingMorePages, setLoadingMorePages] = useState(false);
     const [endOfList, setEndOfList] = useState(false);
 
+    useEffect(() => {
+        setTotalPages(1);
+        setPage(1);
+        setSubtractTotalPages(1);
+        setLoadingMorePages(false);
+        setEndOfList(false);
+        setLoading(true);
+        setFeed([]);
+        // fetchFeed();
+    }, [sortBy]);
+
     const fetchFeed = async () => {
         if(totalPages > 0){
             try {
                 const userId = readCookies('auth-token');
-                const url = `http://localhost:5000/feed/homeFeed/all?page=${page}&userId=${userId}`;
+                const url = `http://localhost:5000/feed/homeFeed/allSortBy?page=${page}&userId=${userId}&sortBy=${sortBy}`;
             
                 const response = await fetch(url);
             
@@ -54,7 +65,7 @@ const UserPosts = () => {
                 }
             
                 const data = await response.json();
-            
+                
                 setFeed((prevFeed) => [...prevFeed, ...data.feed]);
                 setLoading(false);
                 setLoadingMorePages(false);
@@ -73,9 +84,9 @@ const UserPosts = () => {
         }
     };
       
-    useEffect(() => {
-        fetchFeed(); // Initial fetch
-    }, []);
+    // useEffect(() => {
+    //     fetchFeed(); // Initial fetch
+    // }, []);
 
     useEffect(() => {
         if (isBottom && !loading) {
@@ -214,7 +225,7 @@ const UserPosts = () => {
                                         <p className='username-at'>@{post.user.username} &nbsp;</p>                                
                                     </div>
                                     <div className='right-top-div-new'>
-                                        <p>{post.createdAt}</p>
+                                        <p>{post.postedAgo}</p>
                                     </div>
                                 </div>
                             </div>

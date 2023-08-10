@@ -15,7 +15,7 @@ import { getData } from '../../../../UserAuth/UserContext';
 
 const Loading = () => {
   return (
-    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '30vh' }}>
+    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
       <Box sx={{ display: 'flex' }}>
         <CircularProgress style={{ color: '#a9c9a3' }} />
       </Box>

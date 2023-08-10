@@ -32,10 +32,15 @@ const postDiv = () => {
 function HomePage() {
     const [showLiveChat, setShowLiveChat] = useState(false);
     const [showPostBox, setShowBoxPost] = useState(false);
+    const [sortBy, setSortBy] = useState('Newest');
 
     useEffect(() => {
         document.title = "Chat | Heyso";
     }, []);
+
+    // useEffect(() => {
+    //     console.log(sortBy);
+    // }, [sortBy]);
 
     useEffect(() => {
         const rememChat = readCookies('showChat');
@@ -86,7 +91,7 @@ function HomePage() {
                     <PostBox />
                     <div className='sort-divider-div'>
                         <Divider className='remaining-divider' sx={{ backgroundColor: 'silver' }} />
-                        <CustomSortButton />
+                        <CustomSortButton setSortBy={setSortBy}/>
                     </div>
                 </div>
                 
@@ -100,7 +105,7 @@ function HomePage() {
 <span className='sort-type'>Recency<ArrowDropDownIcon/></span>
                 </div> */}
                                     
-                <UserPosts />
+                <UserPosts sortBy={sortBy}/>
             </div>
             
           </div>

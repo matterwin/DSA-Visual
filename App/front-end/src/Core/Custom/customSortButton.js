@@ -4,7 +4,7 @@ import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
 
 import './customSortButton.css'
 
-const CustomSortButton = () => {
+const CustomSortButton = ({ setSortBy }) => {
     const [isOpen, setIsOpen] = useState(false);
     const [sortType, setSortType] = useState('Newest'); // State to store the sort type
     const menuRef = useRef(null);
@@ -21,6 +21,7 @@ const CustomSortButton = () => {
     };
 
     const handleSortTypeChange = (newSortType) => {
+        setSortBy(newSortType);
         setSortType(newSortType);
         setIsOpen(false); // Close the dropdown after selecting a sort type
     };
