@@ -167,7 +167,7 @@ const allPostsSortBy = async (req, res) => {
     } else if (sortBy === 'Likes') {
       sortOption = { likes: -1, createdAt: -1 };
     } else if (sortBy === 'Dislikes') {
-      sortOption = { dislikeRatio: -1, createdAt: -1 };
+      sortOption = { dislikes: -1, createdAt: -1 };
     }
 
     const posts = await HomeFeed.find({})
