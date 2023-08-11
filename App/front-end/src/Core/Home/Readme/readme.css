@@ -20,7 +20,10 @@
     box-shadow: rgba(0, 0, 0, .15) 0px 0px 10px 10px;
     /* width: 800px; */
     width: 100%;
+    /* width: 775px; */
+    /* width: 50%; */
     /* width:inherit; */
+    /* width: 225px; */
     box-sizing: border-box;
     /* border-radius: 5px; */
     /* font-family: Georgia; */
@@ -44,6 +47,7 @@
     padding: 0 !important;
     display: flex;
     flex: 1 0 auto;
+    width: 100%;
 }
 
 .custom-syntax-highlighter > * {
@@ -166,7 +170,26 @@
 }
 
 @media screen and (max-width: 800px){
-    .readme-container{
-        width: 500px;
+    .readmse-container{
+        width: 250px;
+        /* width: 50%; */
+    }
+}
+
+@media screen and (max-width: 600px){
+    .readmse-container{
+        /* width: 500px; */
+        /* width: 50%; */
+        margin-left: 0px;
+        margin-right: 0px;
+        padding: 0px 10px 10px 10px;
+    }
+}
+
+@media screen and (max-width: 1045px){
+    .readmse-container{
+        /* width: 500px; */
+        width: 50%;
+
     }
 }

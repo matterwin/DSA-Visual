@@ -22,6 +22,7 @@
     font-family: 'Inter';
     width: 100%;
     box-sizing: border-box;
+    border: 1px solid #fff;
 }
 
 .textarea-box-profile{
@@ -37,7 +38,7 @@
     resize: none;
     height: 100px;
     overflow-y: scroll;
-    overflow-x: hidden;
+    border: 1px solid #fff;
 }
 
 .about-you{

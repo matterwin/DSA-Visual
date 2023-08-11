@@ -48,7 +48,7 @@ function Readme({focusedFile, handleNavFocus, refProp}){
   
 
   return (
-    <div ref={myRef}>
+    <div ref={myRef} style={{ width:'100%', boxSizing:'border-box' }}>
       <div className='readme-container' >
           {/* <div className='tabs-readme-container'>
               <Tabs />
@@ -87,7 +87,7 @@ function Readme({focusedFile, handleNavFocus, refProp}){
             </div>
           </div>   
           
-          {/* {code && <>
+          {code && <>
           <Divider orientation="horizontal" className='divider-home' style={{ marginBottom:'15px', marginTop:'15px' }}/>  
           <p className='section-title'>Code</p>
           <p className='title-note'>Example with recursion</p>
@@ -103,7 +103,7 @@ function Readme({focusedFile, handleNavFocus, refProp}){
             </SyntaxHighlighter>
           </pre>
         </>
-        } */}
+        }
         </div>
     </div>
   )

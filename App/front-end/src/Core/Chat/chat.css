@@ -26,6 +26,8 @@
     gap: 10px;
     /* top: 115px; */
     top: 75px;
+    /* width: 225px; */
+    box-sizing: border-box;
     /* width: 15%; */
     /* width: 25%; */
   }
@@ -43,16 +45,21 @@
     gap: 10px;
     z-index: 0;
     /* width: 280px; */
-    width: 25%; /*weird that this works*/
+    /* width: 25%; weird that this works */
+    /* width: 225px; */
+    box-sizing: border-box;
   }
-  
+
   .center-side-chat{
+    margin-top: 20px;
     /* border-right: #A9C9A3 solid 1px; */
     /* background-color: #fff; */
-    margin-top: 20px;
     /* padding: 0px 20px 20px 20px; */
-    width: 100%;
+    /* width: 100%; */
+    /* width: 50%; */
+    width: 550px;
     margin-bottom: 200px;
+    box-sizing: border-box;
   }
 
   .copyright{

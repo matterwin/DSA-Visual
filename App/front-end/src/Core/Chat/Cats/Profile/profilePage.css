@@ -26,6 +26,7 @@
     align-items: flex-start;
     justify-content: flex-start;
     gap: 15px;
+    width: 100%;
 }
 
 .likes-div{
@@ -90,6 +91,9 @@
     word-wrap: break-word;
     overflow-x: auto;
     white-space: normal;
+    width: 50%;
+    overflow-wrap: break-word;
+    box-sizing: border-box;
 }
 
 .username-p-prof-page{
@@ -106,6 +110,9 @@
     font-weight: 600;
     font-size: 15px;
     font-family: 'Inter';
+    width: 100%;
+    overflow-wrap: break-word;
+    box-sizing: border-box;
 }
 
 .container-for-tabs{
