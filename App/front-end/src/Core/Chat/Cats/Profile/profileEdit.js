@@ -108,9 +108,11 @@ function ProfileEdit() {
                                     <div className="prof-page-pfp-div">
                                         <img className="prof-page-profile-pic" src={userData.pic} alt="ProfilePicture" />     
                                     </div>
+                                    <div className='name-n-username-div'>
+                                        <p className='name-p-prof-page'>{firstName} {lastName}</p>
+                                        <p className='username-p-prof-page'>@{userData.username}</p>
+                                    </div>
                                 </div>
-                                <p className='name-p-prof-page'>{firstName} {lastName}</p>
-                                <p className='username-p-prof-page'>@{userData.username}</p>
                                 <p className='bio'>{bio}</p>
                             </div> 
                         </div>  

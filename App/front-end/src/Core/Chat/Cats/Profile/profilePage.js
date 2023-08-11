@@ -86,7 +86,10 @@ function ProfilePage() {
                                 <div className='top-div-offsets'>
                                     <div className="prof-page-pfp-div">
                                         <img className="prof-page-profile-pic" src={userData.pic} alt="ProfilePicture" />     
-                            
+                                    </div>
+                                    <div className='name-n-username-div'>
+                                        <p className='name-p-prof-page'>{userData.first} {userData.last}</p>
+                                        <p className='username-p-prof-page'>@{userData.username}</p>
                                     </div>
                                 </div>
                                 <div className='edit-icon-div'>
@@ -97,8 +100,7 @@ function ProfilePage() {
                                     </a>
                                 </div> 
                            
-                                <p className='name-p-prof-page'>{userData.first} {userData.last}</p>
-                                <p className='username-p-prof-page'>@{userData.username}</p>
+
                                 <p className='bio'>{userData.bio}</p>
                             </div> 
                             <div className='icons-div-profile'>
