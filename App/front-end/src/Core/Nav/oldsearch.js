@@ -37,9 +37,13 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     transition: theme.transitions.create('width'),
     width: '100%',
     [theme.breakpoints.up('sm')]: {
-      width: '16ch',
+      // width: '16ch',
+      // '&:focus': {
+      //   width: '22ch',
+      // },
+      width: '100%',
       '&:focus': {
-        width: '22ch',
+        width: '100%',
       },
     },
   },
@@ -52,8 +56,9 @@ export default function Oldsearch() {
     setInputValue(event.target.value);
   };
 
+    //added this style width to take the whole space on navbar
   return (
-    <Search hasInput={inputValue.length > 0}>
+    <Search hasInput={inputValue.length > 0} style={{ width: '100%' }}> 
       <SearchIconWrapper>
         <SearchIcon />
       </SearchIconWrapper>
@@ -62,6 +67,7 @@ export default function Oldsearch() {
         inputProps={{ 'aria-label': 'search' }}
         value={inputValue}
         onChange={handleInputChange}
+        style={{ width: '100%' }}
       />
     </Search>
   );

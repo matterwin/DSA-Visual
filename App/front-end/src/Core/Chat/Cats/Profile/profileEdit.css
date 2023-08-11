@@ -1,0 +1,56 @@
+.profile-nav-container{
+    /* border-bottom: 1px solid red; */
+    background-color: #4d3939;
+}
+
+.profile-nav{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    margin: 5px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding: 5px;
+}
+
+.save-profile-btn{
+    padding: 5px;
+    margin-left: auto;
+}
+
+.save-p-text{
+    font-family: 'Inter';
+    font-size: 18px;
+    color: #fff;
+}
+
+.save-p{
+    font-family: 'Inter';
+    font-size: 18px;
+    font-weight: 600;
+    color: #fff;
+    padding: 10px;
+    margin: -10px;
+    margin-right: 0px;
+    background-color: #a5a5a53f;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.go-back-arrow {
+    stroke: #4d3939;
+    stroke-width: 0.4;
+    color:#4d3939;
+    font-style: bold;
+    color: #7193ff;
+    stroke: #7193ff;
+    color: #ccc;
+    stroke: #ccc;
+    transform: scaleX(-1);
+    margin-top: 5px;
+    padding: 5px;
+    border-radius: 3px;
+    /* background-color: #a5a5a53f; */
+    cursor: pointer;
+}

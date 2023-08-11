@@ -13,16 +13,18 @@ import NavigationIcon from '@mui/icons-material/Navigation';
 import readCookies from '../../../../Cookies/readCookies';
 import CustomizedTooltip from '../../../Custom/customTooltip';
 import ModeEditOutlineOutlinedIcon from '@mui/icons-material/ModeEditOutlineOutlined';
+import EastIcon from '@mui/icons-material/East';
 
 import '../../chat.css'
 import './profilePage.css'
+import './profileEdit.css'
 
 const chatInfo = {
     title:'Profile',
     msg:'Your profile page. Here you can see your likes and posts.'
 }
 
-function ProfilePage() {
+function ProfileEdit() {
     const userData = getData();
     const [numberOf, setNumberOf] = useState([]);
 
@@ -59,6 +61,17 @@ function ProfilePage() {
 
   return (
     <div>   
+        <div className='profile-nav-container'>
+            <div className='profile-nav'>
+                <div>
+                    <a href={'/' + userData.username }>
+                        <EastIcon className='go-back-arrow' />
+                    </a>
+                </div>
+                <p className='save-p-text' style={{ marginLeft:'10px' }}>Edit Profile</p>
+                <div className='save-profile-btn'><p className='save-p'>Save</p></div>
+            </div>
+        </div>
         <div className='postbox-div'>
             <div className='sub-nav-container-chat' style={{zIndex:'1'}}>
                 <div className="sub-inside-nav">
@@ -80,51 +93,19 @@ function ProfilePage() {
           <div className="center-side-chat">
             <div className='teste'>
                 <div className='backg-for-profile-div'>
-                    <div className='color-bg-profile-page' style={{ backgroundColor:`#${userData.color}`}} />
+                    <div className='color-bg-profile-page' style={{ backgroundColor:`#${userData.color}`, borderRadius: '0px'}} />
                         <div className='div-for-everything-else-in-profile'>
                             <div className='basic-info-div'>
                                 <div className='top-div-offsets'>
                                     <div className="prof-page-pfp-div">
                                         <img className="prof-page-profile-pic" src={userData.pic} alt="ProfilePicture" />     
-                            
                                     </div>
                                 </div>
-                                <div className='edit-icon-div'>
-                                    <a href={'/' + userData.username + '/edit'} >
-                                        <CustomizedTooltip title='Edit' color="#4d3939" textColor="#fff">
-                                            <ModeEditOutlineOutlinedIcon className='icon-edit' style={{ fontSize: '35px' }} />
-                                        </CustomizedTooltip>
-                                    </a>
-                                </div> 
-                           
                                 <p className='name-p-prof-page'>{userData.first} {userData.last}</p>
                                 <p className='username-p-prof-page'>@{userData.username}</p>
                                 <p className='bio'>{userData.bio}</p>
                             </div> 
-                            <div className='icons-div-profile'>
-                                <div className='row-container-p-icons'>
-                                    <CustomizedTooltip title="Posts" color="#4d3939" textColor="#fff">
-                                        <div className='tq'>
-                                            <ThreePIcon className='profile-icons-blue' style={{ fontSize:'15px' }}/>
-                                            <p className='count-p-icons'>{numberOf.posts}</p>
-                                        </div>
-                                    </CustomizedTooltip>
-                                </div>
-                                <div className='row-container-p-icons'>
-                                    <CustomizedTooltip title="Likes" color="#4d3939" textColor="#fff">
-                                        <div className='tq'>
-                                            <NavigationIcon className='profile-icons-green' style={{ fontSize:'15px' }} />
-                                            <p className='count-p-icons'>{numberOf.likes}</p>
-                                        </div>
-                                    </CustomizedTooltip>
-                                </div>
-                            </div>
                         </div>  
-                        <Divider sx={{ backgroundColor: 'silver', marginTop:'10px', marginBottom:'10px', width:'100%' }} />
-                        <TabBox title1="Posts" title1Link={'/' + userData.username}  active1={true} title2="Likes" title2Link={'/' + userData.username + '/likes'} onClick={() => window.location.reload()}/>
-                        <div className='likes-div'>
-                            <UserPostsList/>
-                        </div>
                     </div>
                 </div>
           </div>
@@ -137,4 +118,4 @@ function ProfilePage() {
   );
 }
 
-export default ProfilePage
+export default ProfileEdit

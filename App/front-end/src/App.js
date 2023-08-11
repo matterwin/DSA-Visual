@@ -14,6 +14,7 @@ import ForYouPage from './Core/Chat/Cats/foryouPage';
 import HomePage from './Core/Chat/Cats/homePage';
 import FollowingPage from './Core/Chat/Cats/followingPage';
 import ProfilePage from './Core/Chat/Cats/Profile/profilePage';
+import ProfileEdit from './Core/Chat/Cats/Profile/profileEdit';
 
 import RequestedPage from './Core/Home/requestedPage';
 
@@ -112,6 +113,7 @@ function App() {
                     || pathname === '/login'
                     || pathname === '/register'
                     || pathname === '/' + name
+                    // || pathname === '/' + name + '/edit'
                     || pathname === '/' + name + '/replies'
                     || pathname === '/' + name + '/likes'
                     || (userLoggedIn && pathname === '/settings/profile')
@@ -182,6 +184,7 @@ function App() {
             {!userLoggedIn && <Route caseSensitive path="/register" element={<Register />}/>}
             {userLoggedIn && <Route caseSensitive path="/chat/following" element={<FollowingPage />}/>}
             {userLoggedIn && <Route caseSensitive path="/:username" element={<ProfilePage />}/>}
+            {userLoggedIn && <Route caseSensitive path="/:username/edit" element={<ProfileEdit />}/>}
             {userLoggedIn && <Route caseSensitive path="/:username/replies" element={<ProfileReplies />}/>}
             {userLoggedIn && <Route caseSensitive path="/:username/likes" element={<ProfileLikes />}/>}
             {userLoggedIn && <Route caseSensitive path="/chat/foryou" element={<ForYouPage />}/>}

@@ -14,9 +14,11 @@
 .left-side-home {
   margin: 20px;
   margin-left: 0px;
+  /* margin-right: 0px; */
   position: sticky;
   display: flex;
   top: 115px;
+  /* border-right: 1px solid silver; */
 }
 
 .right-side-home {
@@ -33,6 +35,8 @@
   /* background-color: #ffffff; */
   margin-top: 20px;
   /* padding: 0px 20px 20px 20px; */
+  /* background-color: #6b5151;
+  background-color: #fff; */
   display: flex;
   justify-content: center;
   align-items: flex-start;
