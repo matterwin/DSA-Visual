@@ -14,6 +14,7 @@ import readCookies from '../../../../Cookies/readCookies';
 import CustomizedTooltip from '../../../Custom/customTooltip';
 import ModeEditOutlineOutlinedIcon from '@mui/icons-material/ModeEditOutlineOutlined';
 import EastIcon from '@mui/icons-material/East';
+import CustomForms from './customForms';
 
 import '../../chat.css'
 import './profilePage.css'
@@ -27,6 +28,9 @@ const chatInfo = {
 function ProfileEdit() {
     const userData = getData();
     const [numberOf, setNumberOf] = useState([]);
+    const [firstName, setFirstName] = useState(userData.first);
+    const [lastName, setLastName] = useState(userData.last);
+    const [bio, setBio] = useState(userData.bio);
 
     useEffect(() => {
         document.title = "Profile | Heyso";
@@ -58,6 +62,10 @@ function ProfileEdit() {
     useEffect(() => {
         getCounts();
     },[])
+
+    const handleFirstNameChange = (e) => {
+        setFirstName(e);
+    }
 
   return (
     <div>   
@@ -101,13 +109,28 @@ function ProfileEdit() {
                                         <img className="prof-page-profile-pic" src={userData.pic} alt="ProfilePicture" />     
                                     </div>
                                 </div>
-                                <p className='name-p-prof-page'>{userData.first} {userData.last}</p>
+                                <p className='name-p-prof-page'>{firstName} {lastName}</p>
                                 <p className='username-p-prof-page'>@{userData.username}</p>
-                                <p className='bio'>{userData.bio}</p>
+                                <p className='bio'>{bio}</p>
                             </div> 
                         </div>  
                     </div>
                 </div>
+                <Divider sx={{ backgroundColor: 'silver', marginTop:'10px', marginBottom:'10px', width:'100%' }} />
+                <TabBox title1="Edit Profile" active1={true} onClick={() => window.location.reload()} />
+                {/* <CustomForms label="First name*" defaultValue={firstName} showTextAreaInstead={false} handleFirstNameChange={handleFirstNameChange}/>
+                <CustomForms label="Last name*" defaultValue={lastName} showTextAreaInstead={false}/>
+                <CustomForms label="Bio" defaultValue={bio} showTextAreaInstead={true}/> */}
+                <p className='about-you'>About you</p>
+                <CustomForms label="First name*" defaultValue={firstName} value={firstName} onChange={setFirstName} showTextAreaInstead={false}/>
+                <CustomForms label="Last name*" defaultValue={lastName} value={lastName} onChange={setLastName} showTextAreaInstead={false}/>
+                <CustomForms label="Bio" defaultValue={bio} value={bio} onChange={setBio} showTextAreaInstead={true}/>
+                <Divider sx={{ backgroundColor: 'silver', marginTop:'10px', marginBottom:'10px', width:'100%' }} />
+                <p className='about-you'>Social</p>
+                <CustomForms label="Github" defaultValue={lastName} value={lastName}  showTextAreaInstead={false}/>
+                <CustomForms label="LinkedIn" defaultValue="twitter,com" value={bio}  showTextAreaInstead={false}/>
+                <Divider sx={{ backgroundColor: 'silver', marginTop:'10px', marginBottom:'10px', width:'100%' }} />
+                <TabBox title1="Settings" active1={true} onClick={() => window.location.reload()}/>
           </div>
           <div className="right-side-chat">
             <ChatInfo title={chatInfo.title} msg={chatInfo.msg} showButton={false}/>

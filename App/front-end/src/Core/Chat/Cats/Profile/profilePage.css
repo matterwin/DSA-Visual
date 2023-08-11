@@ -87,6 +87,9 @@
     font-weight: 700;
     font-size: 20px;
     font-family: 'Inter';
+    word-wrap: break-word;
+    overflow-x: auto;
+    white-space: normal;
 }
 
 .username-p-prof-page{

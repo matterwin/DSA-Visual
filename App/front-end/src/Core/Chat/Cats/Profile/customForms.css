@@ -1,0 +1,49 @@
+.label-text{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 18px;
+    color: #ccc;
+}
+
+.form-div{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 10px;
+}
+
+.input-box-profile{
+    text-decoration: none;
+    border: none;
+    outline: none;
+    padding: 10px;
+    font-size: 18px;
+    border-radius: 3px;
+    font-family: 'Inter';
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.textarea-box-profile{
+    text-decoration: none;
+    border: none;
+    outline: none;
+    padding: 10px;
+    font-family: 'Inter';
+    font-size: 18px;
+    border-radius: 3px;
+    width: 100%;
+    box-sizing: border-box;
+    resize: none;
+    height: 100px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.about-you{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 18px;
+    color: #fff;
+    font-weight: 500;
+    padding: 10px;
+}
