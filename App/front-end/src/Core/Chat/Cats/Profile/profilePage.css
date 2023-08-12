@@ -17,6 +17,8 @@
 .color-bg-profile-page{
     /* background-color: rgba(255, 0, 0, 0.37); */
     width: 100%;
+    min-height: 100px;
+    max-height: 100px;
     padding: 75px;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
@@ -31,6 +33,30 @@
     justify-content: flex-start;
     gap: 15px;
     width: 100%;
+}
+
+.edit-profile-btn-test{
+    margin-top: 15px;
+    background-color:#a9c9a3;
+    padding:5px;
+    width:100%;
+    box-sizing:border-box;
+    border-radius:15px;
+    transition: background-color 0.3s ease;
+}
+
+.edit-profile-btn-test:hover{
+    background-color: #6c8168;
+}
+
+.edit-p-tag-test{
+    color: #111;
+    font-weight: 500;
+    font-size: 15px;
+    font-family: 'Inter';
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .likes-div{
@@ -78,8 +104,8 @@
 
 .prof-page-pfp-div {
     /* margin-top: -60px; */
-    width: 105px;
-    height: 105px;
+    width: 55px;
+    height: 55px;
     border-radius: 50%;
     overflow: hidden;
     background-color: transparent;
@@ -87,14 +113,14 @@
     /* border: #4d3939 solid 3px; */
     /* border: #fff solid 3px; */
     transition: border-radius 0.2s ease-in-out;
-    outline-offset: 3px;
+    outline-offset: 2px;
     outline: 3px solid #4d3939;
     flex-shrink: 0; /* Prevent shrinking of this container */
 }
 
 .prof-page-profile-pic{
-    width: 105px;
-    height: 105px;
+    width: 55px;
+    height: 55px;
     object-fit:cover;
     transition: transform .2s;
     border-radius: 50%;
@@ -104,7 +130,7 @@
     color: #fff;
     color: #4d3939;
     font-weight: 700;
-    font-size: 20px;
+    font-size: 18px;
     font-family: 'Inter';
     word-wrap: break-word;
     overflow-x: auto;
@@ -117,14 +143,14 @@
 .username-p-prof-page{
     color: #6b5151;
     font-weight: 400;
-    font-size: 17px;
+    font-size: 16px;
     font-family: 'Segoe UI';
 }
 
 .bio{
     color: #fff;
     color: #4d3939;
-    font-weight: 600;
+    font-weight: 500;
     font-size: 15px;
     font-family: 'Inter';
     width: 100%;

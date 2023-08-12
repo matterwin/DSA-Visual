@@ -15,6 +15,9 @@ import CustomizedTooltip from '../../../Custom/customTooltip';
 import ModeEditOutlineOutlinedIcon from '@mui/icons-material/ModeEditOutlineOutlined';
 import EastIcon from '@mui/icons-material/East';
 import CustomForms from './customForms';
+import PhotoCameraOutlinedIcon from '@mui/icons-material/PhotoCameraOutlined';
+import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
+import DeleteForeverOutlinedIcon from '@mui/icons-material/DeleteForeverOutlined';
 
 import '../../chat.css'
 import './profilePage.css'
@@ -63,10 +66,6 @@ function ProfileEdit() {
         getCounts();
     },[])
 
-    const handleFirstNameChange = (e) => {
-        setFirstName(e);
-    }
-
   return (
     <div>   
         <div className='profile-nav-container'>
@@ -101,7 +100,17 @@ function ProfileEdit() {
           <div className="center-side-chat">
             <div className='teste'>
                 <div className='backg-for-profile-div'>
-                    <div className='color-bg-profile-page' style={{ backgroundColor:`#${userData.color}`, borderRadius: '0px'}} />
+                    <div 
+                        className='color-bg-profile-page' 
+                        style={{  background: `#${userData.color}`, borderRadius: '0px'}}
+                    >
+                        <CustomizedTooltip title='Edit Image' color="#4d3939" textColor="#fff">
+                            <PhotoCameraOutlinedIcon className='icons-for-bg' style={{ fontSize: '30px' }}/>
+                        </CustomizedTooltip>
+                        <CustomizedTooltip title='Delete Image' color="#4d3939" textColor="#fff">
+                            <DeleteForeverOutlinedIcon className='icons-for-bg' style={{ fontSize: '30px' }}/>
+                        </CustomizedTooltip>
+                    </div>
                         <div className='div-for-everything-else-in-profile'>
                             <div className='basic-info-div'>
                                 <div className='top-div-offsets'>

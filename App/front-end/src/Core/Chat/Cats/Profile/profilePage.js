@@ -92,15 +92,13 @@ function ProfilePage() {
                                         <p className='username-p-prof-page'>@{userData.username}</p>
                                     </div>
                                 </div>
-                                <div className='edit-icon-div'>
+                                {/* <div className='edit-icon-div'>
                                     <a href={'/' + userData.username + '/edit'} >
                                         <CustomizedTooltip title='Edit' color="#4d3939" textColor="#fff">
                                             <ModeEditOutlineOutlinedIcon className='icon-edit' style={{ fontSize: '35px' }} />
                                         </CustomizedTooltip>
                                     </a>
-                                </div> 
-                           
-
+                                </div>  */}
                                 <p className='bio'>{userData.bio}</p>
                             </div> 
                             <div className='icons-div-profile'>
@@ -121,6 +119,11 @@ function ProfilePage() {
                                     </CustomizedTooltip>
                                 </div>
                             </div>
+                            <a href={'/' + userData.username + '/edit'}>
+                                <div className='edit-profile-btn-test' href={'/' + userData.username + '/edit'} >
+                                    <p className='edit-p-tag-test'>Edit Profile</p>
+                                </div>
+                            </a>
                         </div>  
                         <Divider sx={{ backgroundColor: 'silver', marginTop:'10px', marginBottom:'10px', width:'100%' }} />
                         <TabBox title1="Posts" title1Link={'/' + userData.username}  active1={true} title2="Likes" title2Link={'/' + userData.username + '/likes'} onClick={() => window.location.reload()}/>

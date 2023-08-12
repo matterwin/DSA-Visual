@@ -12,6 +12,9 @@
     margin-top: 0px;
     margin-bottom: 0px;
     padding: 5px;
+    margin-right: auto;
+    margin-left: auto;
+    width: 1100px;
 }
 
 .save-profile-btn{
@@ -38,6 +41,30 @@
     cursor: pointer;
 }
 
+.color-bg-profile-page{
+    /* background-color: rgba(255, 0, 0, 0.37); */
+    width: 100%;
+    padding: 75px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    box-sizing: border-box;
+    padding-bottom: 115px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.icons-for-bg{
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 50%;
+    background-color: #00000052;
+    color: #e2e2e2;
+    /* stroke: #fff; */
+}
+
 .go-back-arrow {
     stroke: #4d3939;
     stroke-width: 0.4;
@@ -53,4 +80,19 @@
     border-radius: 3px;
     /* background-color: #a5a5a53f; */
     cursor: pointer;
+}
+
+@media screen and (max-width: 1155px){
+    .profile-nav{
+        width: auto;
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+}
+
+@media screen and (max-width: 500px){
+    .profile-nav{
+        margin-left: 0px;
+        margin-right: 0px;
+    }
 }
