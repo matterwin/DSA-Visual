@@ -91,10 +91,22 @@ function Readme({focusedFile, handleNavFocus, refProp}){
           <Divider orientation="horizontal" className='divider-home' style={{ marginBottom:'15px', marginTop:'15px' }}/>  
           <p className='section-title'>Code</p>
           <p className='title-note'>Example with recursion</p>
-          <pre className='custom-syntax-highlighter' style={{width: '100% !important', boxSizing:'border-box',overflowX: 'auto',background:', rgb(43, 43, 43)',color: 'rgb(248, 248, 242)'}}>
+          <div className='title-of-code'>
+            <p className='code-p-tag'>Recursive Merge</p>
+          </div>
+          <pre className='custom-syntax-highlighter' style={{width: '100% !important', boxSizing:'border-box',overflowX: 'auto'}}>
             <SyntaxHighlighter 
-              wrapLines={true} 
-              showLineNumbers 
+              wrapLines
+              showLineNumbers
+              // showInlineLineNumbers 
+              lineNumberContainerStyle={{
+                paddingRight: '80px', // Adjust padding as needed
+                margin: '0', // Reset margin
+              }}
+              lineNumberStyle={{
+                paddingleft: '80px', // Adjust padding as needed
+                marginLeft: '-20px', // Reset margin
+              }}
               language="java" 
               style={dracula} 
               customStyle={{ width: '100% !important', boxSizing:'border-box', fontSize: '15px', backgroundColor: 'transparent', padding: '0', margin: '0' }}

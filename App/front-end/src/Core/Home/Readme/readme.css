@@ -34,13 +34,15 @@
     /* width: 550px; */
     /* margin-top:15px; */
     min-height: 44px;
-    max-height: 250px;
+    height: 250px;
     /* overflow-y: scroll;
     overflow-x: scroll; */
     /* padding: 12px 16px; */
     padding-left: 0px;
     background-color: #202123;
     border-radius: 5px;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
     width: 100%;
     box-sizing: border-box;
     margin: 0 !important;
@@ -48,17 +50,41 @@
     display: flex;
     flex: 1 0 auto;
     width: 100%;
+    resize: vertical;
 }
 
 .custom-syntax-highlighter > * {
     width: 100%;
     box-sizing: border-box;
     flex: 1 0 auto;
-    padding: 0 !important;
-    margin: 0 !important;
+    padding: 0px !important;
+    /* padding-left: -15px !important; */
+    padding-top: 15px !important;
+    padding-bottom: 15px !important;
+    margin: 0px !important;
     border: 1px solid #bbb;
-  box-shadow: 0 5px 50px rgba(30, 20, 10, .1);
-  margin: 0 !important; /* some themes try to override this */
+    box-shadow: 0 5px 50px rgba(30, 20, 10, .1);
+    border-radius: 0px;
+    outline: none;
+    border: none;
+}
+
+.title-of-code{
+    background-color: #353740;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    margin:0; 
+    padding: 8px;
+    padding-left: 10px;
+    width:100%;
+    box-sizing: border-box;
+}
+
+.code-p-tag {
+    font-size: 15px;
+    font-family: 'Inter';
+    color: #fff;
+    font-weight: 400;
 }
 
 .title-of-panel{
