@@ -1,15 +1,18 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import './readme.css'
 import '../../../Fonts/fonts.css'
 import { Divider } from '@mui/material';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { dracula } from 'react-syntax-highlighter/dist/esm/styles/prism';
-
-import Highlight from 'react-highlight'
+import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 
 function Readme({focusedFile, handleNavFocus, refProp}){
   const code = focusedFile.code;
   const myRef = useRef();
+  const [state, setState] = useState({ height: 200 });
+  const [isHolding, setIsHolding] = useState(false);
+  const [isYDirPos, setIsYDirPos] = useState(false);
+  const [color, setColor] = useState('#353740')
 
   useEffect(() => {
     if(focusedFile.title.includes(refProp)){
@@ -46,6 +49,65 @@ function Readme({focusedFile, handleNavFocus, refProp}){
     };
   }, [focusedFile]);
   
+  const increaseHeight = () => {
+    setState((prevState) => ({
+      ...prevState,
+      height: prevState.height + 8,
+    }));
+  }
+  
+  const decreaseHeight = () => {
+    setState((prevState) => ({
+      ...prevState,
+      height: prevState.height - 8,
+    }));
+  }
+
+  const adjustHeight = (event) => {
+    // Calculate the change in y-direction
+    const deltaY = event.movementY;
+  
+    // Determine whether to increase or decrease height based on deltaY
+    if (deltaY > 0) {
+      setIsYDirPos(false);
+      increaseHeight();
+    } else if (deltaY < 0) {
+      setIsYDirPos(true);
+      decreaseHeight();
+    }
+  }
+
+  const changeToGreen = () => {
+    setColor('#A9C9A3');
+  }
+
+  const changeToGrey = () => {
+    setColor('#353740');
+  }
+
+  const handleMouseUp = () => {
+    setColor('#353740');
+    setIsHolding(false);
+    window.removeEventListener('mousemove', adjustHeight);
+    document.body.style.userSelect = ''; // Re-enable user selection
+  };
+
+  const handleMouseDown = () => {
+    setColor('#A9C9A3');
+    setIsHolding(true);
+    window.addEventListener('mousemove', adjustHeight);
+    window.addEventListener('mouseup', handleMouseUp);
+    document.body.style.userSelect = 'none'; // Disable user selection
+  };
+
+  useEffect(() => {
+    const adjustHeightRef = adjustHeight;
+
+    // Clean up the event listener when the component unmounts
+    return () => {
+      window.removeEventListener('mousemove', adjustHeightRef);
+    };
+  }, []);
 
   return (
     <div ref={myRef} style={{ width:'100%', boxSizing:'border-box' }}>
@@ -94,15 +156,18 @@ function Readme({focusedFile, handleNavFocus, refProp}){
           <div className='title-of-code'>
             <p className='code-p-tag'>Recursive Merge</p>
           </div>
-          <pre className='custom-syntax-highlighter' style={{width: '100% !important', boxSizing:'border-box',overflowX: 'auto'}}>
+          <pre
+              className='custom-syntax-highlighter'
+              style={{
+                width: '100% !important',
+                boxSizing: 'border-box',
+                overflowX: 'auto',
+                height: `${state.height}px`, // Set the height dynamically
+              }}
+            >
             <SyntaxHighlighter 
               wrapLines
               showLineNumbers
-              // showInlineLineNumbers 
-              lineNumberContainerStyle={{
-                paddingRight: '80px', // Adjust padding as needed
-                margin: '0', // Reset margin
-              }}
               lineNumberStyle={{
                 paddingleft: '80px', // Adjust padding as needed
                 marginLeft: '-20px', // Reset margin
@@ -114,6 +179,18 @@ function Readme({focusedFile, handleNavFocus, refProp}){
               {code}
             </SyntaxHighlighter>
           </pre>
+          <div 
+            className='resize-div'
+            style={{ backgroundColor: color }}
+            onMouseEnter={changeToGreen}
+            onMouseDown={handleMouseDown}
+            onMouseLeave={!isHolding ? changeToGrey : undefined}
+            onMouseUp={handleMouseUp}
+          >
+           <MoreHorizIcon style={{ color:'#fff' }}/>
+          </div>
+          {isHolding ? <p>Holding: true</p> : <p>Holding: false</p>}
+          {isYDirPos ? <p>Pos: true</p> : <p>Pos: false</p>}
         </>
         }
         </div>
