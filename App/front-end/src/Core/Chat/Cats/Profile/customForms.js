@@ -10,7 +10,6 @@ const CustomForms = ({ label, defaultValue, value, onChange, showTextAreaInstead
                 !showTextAreaInstead &&
                 <input
                     type="text"
-                    defaultValue={defaultValue}
                     value={value}
                     onChange={(event) => onChange(event.target.value)} // Use the provided onChange function
                     className='input-box-profile'
@@ -19,7 +18,6 @@ const CustomForms = ({ label, defaultValue, value, onChange, showTextAreaInstead
             {
                 showTextAreaInstead &&
                 <textarea
-                    defaultValue={defaultValue}
                     value={value}
                     onChange={(event) => onChange(event.target.value)} // Use the provided onChange function
                     className='textarea-box-profile'

@@ -21,6 +21,7 @@ const uploadProfileImage = async (req, res) => {
 const changeProfileImage = async (req, res) => {
   const { userId } = req.params;
   console.log(req.params);
+  console.log("changeProfileImage called");
 
   if (!userId)
     throw new CustomError.BadRequestError('Provide userId');

@@ -34,6 +34,8 @@ function ProfileEdit() {
     const [firstName, setFirstName] = useState(userData.first);
     const [lastName, setLastName] = useState(userData.last);
     const [bio, setBio] = useState(userData.bio);
+    const [imageSelected, setImageSelected] = useState(null);
+    const [imagePreview, setImagePreview] = useState(null);
 
     useEffect(() => {
         document.title = "Profile | Heyso";
@@ -66,6 +68,43 @@ function ProfileEdit() {
         getCounts();
     },[])
 
+    const uploadImage = async() => {
+        const userId = readCookies('auth-token');
+        const url = `http://localhost:5000/upload/changePP/${userId}`;
+
+        console.log(imageSelected);
+        const formData = new FormData();
+        formData.append('image', imageSelected);
+
+        const res = await fetch(url, {
+            method: 'POST',
+            body: formData,
+        })
+
+        const data = await res.json();
+        console.log(data);
+    }
+
+    const handleImageSelect = (event) => {
+        const selectedImage = event.target.files[0];
+        setImageSelected(selectedImage);
+
+         // Read the selected image and set the preview
+        const reader = new FileReader();
+        reader.onload = (e) => {
+        setImagePreview(e.target.result);
+        };
+        reader.readAsDataURL(selectedImage);
+    };
+
+    const handleSave = () => {
+        if(imageSelected === null){
+            alert('no image is selected yet')
+            return;
+        }
+        uploadImage();
+    }
+
   return (
     <div>   
         <div className='profile-nav-container'>
@@ -76,7 +115,7 @@ function ProfileEdit() {
                     </a>
                 </div>
                 <p className='save-p-text' style={{ marginLeft:'10px' }}>Edit Profile</p>
-                <div className='save-profile-btn'><p className='save-p'>Save</p></div>
+                <div className='save-profile-btn' onClick={handleSave}><p className='save-p'>Save</p></div>
             </div>
         </div>
         <div className='postbox-div'>
@@ -104,18 +143,30 @@ function ProfileEdit() {
                         className='color-bg-profile-page' 
                         style={{  background: `#${userData.color}`, borderRadius: '0px'}}
                     >
-                        <CustomizedTooltip title='Edit Image' color="#4d3939" textColor="#fff">
-                            <PhotoCameraOutlinedIcon className='icons-for-bg' style={{ fontSize: '30px' }}/>
-                        </CustomizedTooltip>
+                        <input type="file" id="upload" hidden/>
+                        <label htmlFor="upload">
+                            <CustomizedTooltip title='Edit Image' color="#4d3939" textColor="#fff">
+                                <PhotoCameraOutlinedIcon className='icons-for-bg' style={{ fontSize: '30px' }}/>
+                            </CustomizedTooltip>
+                        </label>
                         <CustomizedTooltip title='Delete Image' color="#4d3939" textColor="#fff">
-                            <DeleteForeverOutlinedIcon className='icons-for-bg' style={{ fontSize: '30px' }}/>
+                            <DeleteForeverOutlinedIcon className='icons-for-bg' style={{ fontSize: '30px' }}       type="file"/>
                         </CustomizedTooltip>
+                        
                     </div>
                         <div className='div-for-everything-else-in-profile'>
                             <div className='basic-info-div'>
                                 <div className='top-div-offsets'>
                                     <div className="prof-page-pfp-div">
-                                        <img className="prof-page-profile-pic" src={userData.pic} alt="ProfilePicture" />     
+                                        <input type="file" id="upload-for-pfp" hidden onChange={handleImageSelect}/>
+                                        <label htmlFor="upload-for-pfp">
+                                            <PhotoCameraOutlinedIcon className='icons-for-bg-for-pfp' style={{ fontSize: '30px' }}/>  
+                                        </label>
+                                        {imagePreview !== null ? (
+                                            <img className="prof-page-profile-pic" src={imagePreview} alt="ProfilePreview" />
+                                        ) : (
+                                            <img className="prof-page-profile-pic" src={userData.pic} alt="ProfilePicture" />
+                                        )}
                                     </div>
                                     <div className='name-n-username-div'>
                                         <p className='name-p-prof-page'>{firstName} {lastName}</p>
@@ -124,7 +175,7 @@ function ProfileEdit() {
                                 </div>
                                 <p className='bio'>{bio}</p>
                             </div> 
-                        </div>  
+                        </div>
                     </div>
                 </div>
                 <Divider sx={{ backgroundColor: 'silver', marginTop:'10px', marginBottom:'10px', width:'100%' }} />
@@ -133,13 +184,13 @@ function ProfileEdit() {
                 <CustomForms label="Last name*" defaultValue={lastName} showTextAreaInstead={false}/>
                 <CustomForms label="Bio" defaultValue={bio} showTextAreaInstead={true}/> */}
                 <p className='about-you'>About you</p>
-                <CustomForms label="First name*" defaultValue={firstName} value={firstName} onChange={setFirstName} showTextAreaInstead={false}/>
-                <CustomForms label="Last name*" defaultValue={lastName} value={lastName} onChange={setLastName} showTextAreaInstead={false}/>
-                <CustomForms label="Bio" defaultValue={bio} value={bio} onChange={setBio} showTextAreaInstead={true}/>
+                <CustomForms label="First name*"  value={firstName} onChange={setFirstName} showTextAreaInstead={false}/>
+                <CustomForms label="Last name*"  value={lastName} onChange={setLastName} showTextAreaInstead={false}/>
+                <CustomForms label="Bio"  value={bio} onChange={setBio} showTextAreaInstead={true}/>
                 <Divider sx={{ backgroundColor: 'silver', marginTop:'10px', marginBottom:'10px', width:'100%' }} />
                 <p className='about-you'>Social</p>
-                <CustomForms label="Github" defaultValue={lastName} value={lastName}  showTextAreaInstead={false}/>
-                <CustomForms label="LinkedIn" defaultValue="twitter,com" value={bio}  showTextAreaInstead={false}/>
+                <CustomForms label="Github"  value={lastName}  showTextAreaInstead={false}/>
+                <CustomForms label="LinkedIn" value={bio}  showTextAreaInstead={false}/>
                 <Divider sx={{ backgroundColor: 'silver', marginTop:'10px', marginBottom:'10px', width:'100%' }} />
                 <TabBox title1="Settings" active1={true} onClick={() => window.location.reload()}/>
           </div>
