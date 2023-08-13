@@ -48,9 +48,9 @@ public static void mergeSort(int[] a){
   mergeSort(r);
   merge(l, r, a);
 }`
-  };
+};
   
-  const quick = {
+const quick = {
     title: 'Quick Sort',
     note: '• Divide and Conquer algorithm',
     desc: 'In-place Quick sort is an efficient, comparison-based sorting algorithm that follows the divide and conquer approach. Unlike the traditional Quick sort, it sorts the array in-place without requiring additional memory for new sub-arrays. It works by selecting a pivot element from the array and rearranging the elements around the pivot.',
@@ -72,10 +72,38 @@ public static void mergeSort(int[] a){
             title: 'Space Complexity',
             content: 'In-place Quick sort has a space complexity of O(log n) for the recursive call stack. Since it sorts the array in-place without using additional memory for sub-arrays, its auxiliary space complexity is O(1), making it memory-efficient.'
         }
-    ]
-}
+    ],
+    code:
+`private static void quickSort(int[] S, int a, int b) {
+  if (a >= b) return; // subarray is trivially sorted
+  int left = a;
+  int right = b-1;
+  int pivot = S[b];
+  int temp; // temp object used for swapping
+  while (left <= right) {
+      // scan until reaching value equal or larger than pivot (or right marker)
+      while (left <= right && (S[left] < pivot)) left++;
+      // scan until reaching value equal or smaller than pivot (or left marker)
+      while (left <= right && (S[right] > pivot)) right--;
+      if (left <= right) { // indices did not strictly cross
+          // so swap values and shrink range
+          temp = S[left];
+          S[left] = S[right];
+          S[right] = temp;
+          left++;
+          right--;
+      }
+  }
 
-
+  // put pivot into its final place (currently marked by left index)
+  temp = S[left];
+  S[left] = S[b];
+  S[b] = temp;
+  // make recursive calls
+  quickSort(S, a, left-1);
+  quickSort(S, left + 1, b);
+}`
+};
 
 const insertion = {
   title: 'Insertion Sort',

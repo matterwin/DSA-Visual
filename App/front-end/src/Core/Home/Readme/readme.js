@@ -59,15 +59,12 @@ function Readme({focusedFile, handleNavFocus, refProp}){
   }, [focusedFile]);
   
   const adjustHeight = (event) => {
-    if(resizeableHeight < 0) alert('less than 0')
     const deltaY = event.movementY;
     
     // Ensure the new height stays within bounds
-    if (resizeableHeight + deltaY > 0) {
-      setResizeableHeight((prev) => (
-        (prev + deltaY >= 0 && prev + deltaY < originalHeight) ? prev + deltaY : prev
-      ));
-    }
+    setResizeableHeight((prev) => (
+      (prev + deltaY >= 0 && prev + deltaY < originalHeight) ? prev + deltaY : prev
+    ));
   };
 
   const changeToGreen = () => {
@@ -174,8 +171,6 @@ function Readme({focusedFile, handleNavFocus, refProp}){
           >
            <MoreHorizIcon style={{ color:'#999' }}/>
           </div>
-          {resizeableHeight} : 
-          {originalHeight}
         </>
         }
         </div>

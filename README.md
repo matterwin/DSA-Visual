@@ -51,3 +51,4 @@ Any additional insights, tips, or considerations that could be useful for someon
 allow users to edit profile
 do sort by feature for chat
 add modal for post
+need to add minimal resizeAble height to have a threshold where its not too small, like have it as a min of 150px no matter the case
