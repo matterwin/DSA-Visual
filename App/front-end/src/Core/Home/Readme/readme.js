@@ -9,15 +9,25 @@ import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 function Readme({focusedFile, handleNavFocus, refProp}){
   const code = focusedFile.code;
   const myRef = useRef();
-  const [state, setState] = useState({ height: 200 });
   const [isHolding, setIsHolding] = useState(false);
   const [color, setColor] = useState('#353740')
+  const [originalHeight, setOriginalHeight] = useState(0);
+  const [resizeableHeight, setResizeableHeight] = useState();
 
   useEffect(() => {
     if(focusedFile.title.includes(refProp)){
        myRef.current?.scrollIntoView({ behavior: "smooth", block: "center", inline: "center" });
     }
   }, [refProp]);
+
+  useEffect(() => {
+    const preElement = document.querySelector('.custom-syntax-highlighter');
+    if (preElement) {
+      setOriginalHeight(preElement.clientHeight);
+      setResizeableHeight(preElement.clientHeight/2);
+    }
+
+  }, []);
 
   useEffect(() => {
     const options = {
@@ -49,12 +59,15 @@ function Readme({focusedFile, handleNavFocus, refProp}){
   }, [focusedFile]);
   
   const adjustHeight = (event) => {
+    if(resizeableHeight < 0) alert('less than 0')
     const deltaY = event.movementY;
-    setState((prevState) => ({
-      ...prevState,
-      height: prevState.height + deltaY,
-    }));
-  
+    
+    // Ensure the new height stays within bounds
+    if (resizeableHeight + deltaY > 0) {
+      setResizeableHeight((prev) => (
+        (prev + deltaY >= 0 && prev + deltaY < originalHeight) ? prev + deltaY : prev
+      ));
+    }
   };
 
   const changeToGreen = () => {
@@ -69,6 +82,7 @@ function Readme({focusedFile, handleNavFocus, refProp}){
     setColor('#353740');
     setIsHolding(false);
     window.removeEventListener('mousemove', adjustHeight);
+    window.removeEventListener('mouseup', handleMouseUp);
     document.body.style.userSelect = ''; // Re-enable user selection
   };
 
@@ -79,15 +93,6 @@ function Readme({focusedFile, handleNavFocus, refProp}){
     window.addEventListener('mouseup', handleMouseUp);
     document.body.style.userSelect = 'none'; // Disable user selection
   };
-
-  useEffect(() => {
-    const adjustHeightRef = adjustHeight;
-
-    // Clean up the event listener when the component unmounts
-    return () => {
-      window.removeEventListener('mousemove', adjustHeightRef);
-    };
-  }, []);
 
   return (
     <div ref={myRef} style={{ width:'100%', boxSizing:'border-box' }}>
@@ -142,7 +147,7 @@ function Readme({focusedFile, handleNavFocus, refProp}){
                 width: '100% !important',
                 boxSizing: 'border-box',
                 overflowX: 'auto',
-                height: `${state.height}px`, // Set the height dynamically
+                height: `${originalHeight !== 0 ? resizeableHeight : 'auto'}px`
               }}
             >
             <SyntaxHighlighter 
@@ -169,6 +174,8 @@ function Readme({focusedFile, handleNavFocus, refProp}){
           >
            <MoreHorizIcon style={{ color:'#999' }}/>
           </div>
+          {resizeableHeight} : 
+          {originalHeight}
         </>
         }
         </div>

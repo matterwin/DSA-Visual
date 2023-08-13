@@ -42,7 +42,8 @@ public static void mergeSort(int[] a){
   int[] l = Arrays.copyOfRange(a, 0, mid);
   int[] r = Arrays.copyOfRange(a, mid, len);
 
-  // Divide and conquer all the way to only having 1 element, and then merge and combine the two arrays recursively.
+  // Divide and conquer all the way to only having 1 element, 
+  // and then merge and combine the two arrays recursively.
   mergeSort(l);
   mergeSort(r);
   merge(l, r, a);
