@@ -11,7 +11,6 @@ function Readme({focusedFile, handleNavFocus, refProp}){
   const myRef = useRef();
   const [state, setState] = useState({ height: 200 });
   const [isHolding, setIsHolding] = useState(false);
-  const [isYDirPos, setIsYDirPos] = useState(false);
   const [color, setColor] = useState('#353740')
 
   useEffect(() => {
@@ -49,33 +48,14 @@ function Readme({focusedFile, handleNavFocus, refProp}){
     };
   }, [focusedFile]);
   
-  const increaseHeight = () => {
-    setState((prevState) => ({
-      ...prevState,
-      height: prevState.height + 8,
-    }));
-  }
-  
-  const decreaseHeight = () => {
-    setState((prevState) => ({
-      ...prevState,
-      height: prevState.height - 8,
-    }));
-  }
-
   const adjustHeight = (event) => {
-    // Calculate the change in y-direction
     const deltaY = event.movementY;
+    setState((prevState) => ({
+      ...prevState,
+      height: prevState.height + deltaY,
+    }));
   
-    // Determine whether to increase or decrease height based on deltaY
-    if (deltaY > 0) {
-      setIsYDirPos(false);
-      increaseHeight();
-    } else if (deltaY < 0) {
-      setIsYDirPos(true);
-      decreaseHeight();
-    }
-  }
+  };
 
   const changeToGreen = () => {
     setColor('#A9C9A3');
@@ -187,10 +167,8 @@ function Readme({focusedFile, handleNavFocus, refProp}){
             onMouseLeave={!isHolding ? changeToGrey : undefined}
             onMouseUp={handleMouseUp}
           >
-           <MoreHorizIcon style={{ color:'#fff' }}/>
+           <MoreHorizIcon style={{ color:'#999' }}/>
           </div>
-          {isHolding ? <p>Holding: true</p> : <p>Holding: false</p>}
-          {isYDirPos ? <p>Pos: true</p> : <p>Pos: false</p>}
         </>
         }
         </div>
