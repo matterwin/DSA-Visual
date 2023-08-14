@@ -52,3 +52,4 @@ allow users to edit profile
 do sort by feature for chat
 add modal for post
 need to add minimal resizeAble height to have a threshold where its not too small, like have it as a min of 150px no matter the case
+add search page like twitch mobile, do the exact same and make it just the size of the left, center, and right 
