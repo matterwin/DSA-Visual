@@ -15,7 +15,7 @@ import HomePage from './Core/Chat/Cats/homePage';
 import FollowingPage from './Core/Chat/Cats/followingPage';
 import ProfilePage from './Core/Chat/Cats/Profile/profilePage';
 import ProfileEdit from './Core/Chat/Cats/Profile/profileEdit';
-
+import SinglePost from './Core/Chat/Cats/singlePost'; 
 import RequestedPage from './Core/Home/requestedPage';
 
 // import CustomSnackbar from './Core/Custom/customSnackbar';
@@ -110,6 +110,7 @@ function App() {
                     || pathname === '/chat'
                     || pathname === '/chat/following'
                     || pathname === '/chat/foryou'
+                    || pathname === '/chat/foryou'
                     || pathname === '/login'
                     || pathname === '/register'
                     || pathname === '/' + name
@@ -172,6 +173,7 @@ function App() {
             <Route caseSensitive path="/visuals/binarysearch" element={<Binary />}/>
 
             <Route caseSensitive path="/chat" element={<HomePage />}/>
+            <Route caseSensitive path="/chat/post/:post" element={<SinglePost />}/>
             <Route caseSensitive path="/merge" element={<RequestedPage f="merge" />}/>
             <Route caseSensitive path="/quick" element={<RequestedPage f="quick" />}/>
             <Route caseSensitive path="/bubble" element={<RequestedPage f="bubble" />}/>

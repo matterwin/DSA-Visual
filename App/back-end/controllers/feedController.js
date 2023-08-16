@@ -297,6 +297,60 @@ const allPostsForUser = async (req, res) => {
     });
   }
 };
+
+const getSinglePost = async (req, res) => {
+  // const { id } = req.params; //should be params, since our authentication process with already have the userId/future jwt
+  const { userId } = req.query;
+  const { postId } = req.query;
+
+  try {
+    const post = await HomeFeed.findOne({ _id: postId })
+      .populate('user', 'username firstname lastname color profilePic');
+
+    if (!post) {
+      throw new CustomError.BadRequestError(`User post with ID ${postId} does not exist.`);
+    }
+
+    const alreadyDisliked = post.dislikes.includes(userId);
+    const alreadyLiked = post.likes.includes(userId);
+
+    const createdAt = moment(post.createdAt);
+    const currentTimestamp = moment();
+    const duration = moment.duration(currentTimestamp.diff(createdAt));
+
+    let formattedDate = '';
+    if (duration.asSeconds() < 60) {
+      formattedDate = `${Math.floor(duration.asSeconds())}s`;
+    } else if (duration.asMinutes() < 60) {
+      formattedDate = `${Math.floor(duration.asMinutes())}m`;
+    } else if (duration.asHours() < 24) {
+      formattedDate = `${Math.floor(duration.asHours())}hr`;
+    } else if (duration.asDays() < 30) {
+      formattedDate = `${Math.floor(duration.asDays())}d`;
+    } else if (duration.asMonths() < 12) {
+      formattedDate = `${Math.floor(duration.asMonths())}mon`;
+    } else {
+      formattedDate = `${Math.floor(duration.asYears())}yr`;
+    }
+
+    const formattedPost = {
+      ...post.toObject(),
+      postedAgo: formattedDate,
+      likeToDislikeCount: post.likeToDislikeRatio,
+      hasDisliked: alreadyDisliked,
+      hasLiked: alreadyLiked
+    };
+
+    res.status(StatusCodes.OK).json({
+      msg: `You've successfully got the post with ID: ${postId}`,
+      post: formattedPost
+    });
+  } catch (error) {
+    res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
+      error: 'An error occurred while fetching the post.'
+    });
+  }
+};
   
 const clearFeed = async (req, res) => {
     try {
@@ -490,6 +544,7 @@ module.exports = {
     allPostsNoLimit,
     allPostsForUser,
     allPostsSortBy,
+    getSinglePost,
     clearFeed,
     userPost,
     likePost,

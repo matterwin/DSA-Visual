@@ -2,8 +2,8 @@
     background-color: #fff;
     border-radius: 5px;
     margin-bottom: 10px;
-    cursor: pointer;
     /* border: 1.5px solid transparent; */
+    cursor: pointer;
     width: 100%;
 }
 
@@ -283,6 +283,10 @@
     color: #4d3939;
 }
 
+.likes-text:hover {
+    text-decoration: underline;
+}
+
 .replies-text{
     font-family: 'Inter';
     font-size: 15px;
@@ -304,6 +308,8 @@
     font-size: 16px;
     font-weight: 400;
     color: #4d3939;
+    cursor: text !important;
+    user-select: text !important;
 }
 
 .title-text{
@@ -312,6 +318,8 @@
     font-weight: 600;;
     color: #4d3939;
     margin-bottom: 10px;
+    cursor: text !important;
+    user-select: text !important;
 }
 
 .top-contain{

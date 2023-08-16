@@ -6,6 +6,7 @@ const {
     allPostsNoLimit,
     allPostsForUser,
     allPostsSortBy,
+    getSinglePost,
     clearFeed,
     userPost,
     likePost,
@@ -18,6 +19,8 @@ router.get('/homeFeed/allForUser', allPostsForUser);
 router.get('/homeFeed/allSortBy', allPostsSortBy);
 router.delete('/homeFeed/clearFeed', clearFeed);
 router.post('/homeFeed/post', userPost);
+// router.get('/homeFeed/post/:id', getSinglePost); //correct jwt version
+router.get('/homeFeed/getPost', getSinglePost);
 router.post('/homeFeed/like', likePost);
 router.post('/homeFeed/dislike', dislikePost);
 

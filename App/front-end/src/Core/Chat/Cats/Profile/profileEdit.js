@@ -109,13 +109,13 @@ function ProfileEdit() {
     <div>   
         <div className='profile-nav-container'>
             <div className='profile-nav'>
-                <div>
+                <CustomizedTooltip title="Go back" color="#4d3939" textColor="#fff">
                     <a href={'/' + userData.username }>
-                        <EastIcon className='go-back-arrow' />
+                        <EastIcon className='go-back-arrow' style={{ fontSize:'25px' }}/>
                     </a>
-                </div>
+                </CustomizedTooltip>
                 <p className='save-p-text' style={{ marginLeft:'10px' }}>Edit Profile</p>
-                <div className='save-profile-btn' onClick={handleSave}><p className='save-p'>Save</p></div>
+                <div className='save-profile-btn' onClick={handleSave}><h4  className='save-p'>Save</h4></div>
             </div>
         </div>
         <div className='postbox-div'>

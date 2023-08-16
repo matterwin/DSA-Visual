@@ -18,32 +18,35 @@
 }
 
 .save-profile-btn{
-    padding: 5px;
+    /* padding: 5px; */
     margin-left: auto;
+    border-radius: 5px;
+    background-color: #a5a5a53f;
+    padding: 10px;
+    transition: background-color 0.2s ease;
+    cursor: pointer;
 }
 
-.save-profile-btn:hover .save-p{
+.save-profile-btn:hover{
     background-color: #a9c9a3;
 }
 
 .save-p-text{
     font-family: 'Inter';
-    font-size: 18px;
+    /* font-size: 18px; */
     color: #fff;
 }
 
 .save-p{
     font-family: 'Inter';
-    font-size: 18px;
+    /* font-size: 18px; */
     font-weight: 600;
+    margin: 0;
+    padding: 0;
     color: #fff;
-    padding: 10px;
-    margin: -10px;
-    margin-right: 0px;
-    background-color: #a5a5a53f;
-    border-radius: 3px;
+    /* padding: 10px;
+    margin: -5px; */
     cursor: pointer;
-    transition: background-color 0.2s ease;
 }
 
 .color-bg-profile-page{
@@ -93,12 +96,24 @@
     color: #ccc;
     stroke: #ccc;
     transform: scaleX(-1);
-    margin-top: 5px;
+    /* margin-top: 5px; */
+    /* padding: 5px 10px 5px 10px;
+    padding: 7px; */
     padding: 5px;
-    border-radius: 3px;
+    /* margin-bottom: -5px; */
+    margin-top: 5px;
+    /* margin: -5px; */
+    /* margin-bottom: 1.5px; */
+    border-radius: 5px;
     /* background-color: #a5a5a53f; */
     cursor: pointer;
+    /* background-color: #a5a5a53f; */
+    /* transition: background-color 0.2s ease; */
 }
+
+/* .go-back-arrow:hover {
+    background-color: #a5a5a53f;
+} */
 
 @media screen and (max-width: 1155px){
     .profile-nav{

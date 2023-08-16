@@ -7,6 +7,7 @@ import ThumbDownOffAltOutlinedIcon from '@mui/icons-material/ThumbDownOffAltOutl
 import MoreHorizOutlinedIcon from '@mui/icons-material/MoreHorizOutlined';
 import MapsUgcOutlinedIcon from '@mui/icons-material/MapsUgcOutlined';
 import SyncOutlinedIcon from '@mui/icons-material/SyncOutlined';
+import { useNavigate } from "react-router-dom";
 import { Divider } from '@mui/material';
 import KeyboardDoubleArrowUpOutlinedIcon from '@mui/icons-material/KeyboardDoubleArrowUpOutlined';
 import KeyboardDoubleArrowDownOutlinedIcon from '@mui/icons-material/KeyboardDoubleArrowDownOutlined';
@@ -41,6 +42,7 @@ const UserPosts = ({ setSortBy, sortBy }) => {
     const [loadingMorePages, setLoadingMorePages] = useState(false);
     const [endOfList, setEndOfList] = useState(false);
     const [sort, setSort] = useState()
+    const navigate = useNavigate();
 
     useEffect(() => {
         setTotalPages(1);
@@ -216,7 +218,22 @@ const UserPosts = ({ setSortBy, sortBy }) => {
         }
     };
 
+    const handleNavigation = (postId) => {
+        window.location.href = `/chat/post/${postId}`;
+    };
+
     const getFeed = () => {
+        const handleSelection = (post) => {
+            const selectedText = window.getSelection().toString();
+            if (selectedText.length > 0) {
+              // User has selected text, prevent navigation
+              return;
+            }
+            // User hasn't selected text, perform navigation
+            handleNavigation(post);
+          };
+
+
         return feed.map((post, index) => {
             return (
                 <div
@@ -224,72 +241,68 @@ const UserPosts = ({ setSortBy, sortBy }) => {
                     key={post._id}
                     style={{ transitionDelay: `${index * 100.2}s` }}
                 >
-                    <div className='div-for-padding'>
-                        <div className='split-side-container'>
-                            <div className='left-contain-post'>
-                                <div className='top-level-div'>
-                                    <CustomizedTooltip title={post.user.username} color="#4d3939" textColor="#fff">
-                                        <div className="chat-cust-pfp-div">
-                                            <img className="chat-cust-profile-pic" src={post.user.profilePic} alt="ProfilePicture" />    
+                    <div
+                        className="clickable-container"
+                        onClick={() => handleSelection(post._id)}
+                    >
+                        <div className='div-for-padding'>
+                            <div className='split-side-container'>
+                                <div className='left-contain-post'>
+                                    <div className='top-level-div' onClick={(e) => e.preventDefault()}>
+                                        <CustomizedTooltip title={post.user.username} color="#4d3939" textColor="#fff">
+                                            <div className="chat-cust-pfp-div">
+                                                <img className="chat-cust-profile-pic" src={post.user.profilePic} alt="ProfilePicture" />    
+                                            </div>
+                                        </CustomizedTooltip>
+                                    </div>
+                                </div>
+                                <div className='top-and-text-div'>
+                                    <div className='top-contain'>
+                                        <div className='left-top-div' onClick={(e) => e.preventDefault()}>
+                                            <p className='likes-text'>{post.user.firstname} {post.user.lastname}</p> 
+                                            <p className='username-at'>@{post.user.username} &nbsp;</p>                                
                                         </div>
-                                    </CustomizedTooltip>
+                                        <div className='right-top-div-new'>
+                                            <p className='post-text'>{post.postedAgo}</p>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <div className='top-and-text-div'>
-                                <div className='top-contain'>
-                                    <div className='left-top-div'>
-                                        <p className='likes-text'>{post.user.firstname} {post.user.lastname}</p> 
-                                        <p className='username-at'>@{post.user.username} &nbsp;</p>                                
-                                    </div>
-                                    <div className='right-top-div-new'>
-                                        <p>{post.postedAgo}</p>
-                                    </div>
-                                    {/* <button onClick={() => handleChange('Newest')}>New</button>
-                                    <button onClick={() => handleChange('Oldest')}>Old</button>
-                                    <button onClick={() => handleChange('Likes')}>Likes</button>
-                                    <button onClick={() => handleChange('Dislikes')}>Dislikes</button> */}
-                                    <button onClick={() => handleChange()}>refresh</button>
-                                </div>
+                            <div>
+                                <p className='title-text'>{post.title}</p>
+                                <p className='post-text'>{post.message}</p>
                             </div>
-                        </div>
-                        <div>
-                            <p className='title-text'>{post.title}</p>
-                            <p className='post-text'>{post.message}</p>
-                        </div>
-                        <Divider sx={{ backgroundColor: 'silver', marginTop:'20px', marginBottom:'-5px', width:'100%' }} />
-                        <div className='bottom-post-div'>
-                            <div className='center-row-align'>
-                                <div className='like-counter-container'>
-                                    { !post.hasLiked &&
-                                        <div className='new-icon-word-div-thumbs-up' onClick={() => likePost(post._id)}>
-                                            <NavigationOutlinedIcon className='thumbs-up-icon' />
-                                        </div>
-                                    }
-                                    { post.hasLiked && 
-                                        <div className='new-icon-word-div-thumbs-up-active'>
-                                            <NavigationIcon className='thumbs-up-icon-filled-in' />
-                                        </div>
-                                    }
-                                    <p className='likes-text' style={{ color: post.hasLiked ? '#a9c9a3' : post.hasDisliked ? '#7193ff' : 'inherit' }}>{post.likeToDislikeCount}</p>
-                                    { !post.hasDisliked &&
-                                        <div className='new-icon-word-div-thumbs-down' onClick={() => dislikePost(post._id)}>
-                                            <NavigationOutlinedIcon className='thumbs-down-icon'/>                                        
-                                        </div>
-                                    }
-                                    { post.hasDisliked &&
-                                        <div className='new-icon-word-div-thumbs-down-active'>
-                                            <NavigationIcon className='thumbs-down-icon-filled' />
-                                        </div>
-                                    }
-                                </div>
-                                {/* <div className='new-icon-word-div-replies'>
-                                    <BubbleChartOutlinedIcon className='replies-icon' />
-                                    <p className='replies-text' style={{ fontWeight:'500' }}>{post.replies.length} Replies</p>
-                                </div> */}
-                                <div className='right-top-div'>
-                                    <CustomizedTooltip title="info" color="#4d3939" textColor="#fff">
-                                        <MoreHorizOutlinedIcon className='more-info'/>
-                                    </CustomizedTooltip>
+                            <Divider sx={{ backgroundColor: 'silver', marginTop:'20px', marginBottom:'-5px', width:'100%' }} />
+                            <div className='bottom-post-div'>
+                                <div className='center-row-align'>
+                                    <div className='like-counter-container' onClick={(e) => e.preventDefault()}>
+                                        { !post.hasLiked &&
+                                            <div className='new-icon-word-div-thumbs-up' onClick={() => likePost(post._id)}>
+                                                <NavigationOutlinedIcon className='thumbs-up-icon' />
+                                            </div>
+                                        }
+                                        { post.hasLiked && 
+                                            <div className='new-icon-word-div-thumbs-up-active'>
+                                                <NavigationIcon className='thumbs-up-icon-filled-in' />
+                                            </div>
+                                        }
+                                        <p className='likes-text' style={{ color: post.hasLiked ? '#a9c9a3' : post.hasDisliked ? '#7193ff' : 'inherit' }}>{post.likeToDislikeCount}</p>
+                                        { !post.hasDisliked &&
+                                            <div className='new-icon-word-div-thumbs-down' onClick={() => dislikePost(post._id)}>
+                                                <NavigationOutlinedIcon className='thumbs-down-icon'/>                                        
+                                            </div>
+                                        }
+                                        { post.hasDisliked &&
+                                            <div className='new-icon-word-div-thumbs-down-active'>
+                                                <NavigationIcon className='thumbs-down-icon-filled' />
+                                            </div>
+                                        }
+                                    </div>
+                                    <div className='right-top-div' onClick={(e) => e.preventDefault()}>
+                                        <CustomizedTooltip title="info" color="#4d3939" textColor="#fff">
+                                            <MoreHorizOutlinedIcon className='more-info'/>
+                                        </CustomizedTooltip>
+                                    </div>
                                 </div>
                             </div>
                         </div>
