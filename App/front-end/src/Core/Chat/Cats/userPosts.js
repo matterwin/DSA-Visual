@@ -44,6 +44,8 @@ const UserPosts = ({ setSortBy, sortBy }) => {
     const [sort, setSort] = useState()
     const navigate = useNavigate();
 
+    console.log('rerender');
+
     useEffect(() => {
         setTotalPages(1);
         setPage(1);
@@ -223,15 +225,13 @@ const UserPosts = ({ setSortBy, sortBy }) => {
     };
 
     const getFeed = () => {
-        const handleSelection = (post) => {
+        const handleSelection = (post, e) => {
             const selectedText = window.getSelection().toString();
             if (selectedText.length > 0) {
-              // User has selected text, prevent navigation
-              return;
+                return;
             }
-            // User hasn't selected text, perform navigation
             handleNavigation(post);
-          };
+        };
 
 
         return feed.map((post, index) => {
@@ -243,7 +243,7 @@ const UserPosts = ({ setSortBy, sortBy }) => {
                 >
                     <div
                         className="clickable-container"
-                        onClick={() => handleSelection(post._id)}
+                        onClick={(e) => handleSelection(post._id, e)}
                     >
                         <div className='div-for-padding'>
                             <div className='split-side-container'>
@@ -277,28 +277,36 @@ const UserPosts = ({ setSortBy, sortBy }) => {
                                 <div className='center-row-align'>
                                     <div className='like-counter-container' onClick={(e) => e.preventDefault()}>
                                         { !post.hasLiked &&
-                                            <div className='new-icon-word-div-thumbs-up' onClick={() => likePost(post._id)}>
+                                            <div className='new-icon-word-div-thumbs-up' onClick={(e) => { e.stopPropagation(); likePost(post._id); }}>
                                                 <NavigationOutlinedIcon className='thumbs-up-icon' />
                                             </div>
                                         }
                                         { post.hasLiked && 
-                                            <div className='new-icon-word-div-thumbs-up-active'>
+                                            <div className='new-icon-word-div-thumbs-up-active' onClick={(e) => { e.stopPropagation(); }}>
                                                 <NavigationIcon className='thumbs-up-icon-filled-in' />
                                             </div>
                                         }
-                                        <p className='likes-text' style={{ color: post.hasLiked ? '#a9c9a3' : post.hasDisliked ? '#7193ff' : 'inherit' }}>{post.likeToDislikeCount}</p>
+                                        <p className='likes-text' 
+                                            style={{ 
+                                                color: post.hasLiked ? '#a9c9a3' : post.hasDisliked 
+                                                ? '#7193ff' : 'inherit',
+                                                textDecoration: 'none'
+                                            }}
+                                        >
+                                            {post.likeToDislikeCount}
+                                        </p>
                                         { !post.hasDisliked &&
-                                            <div className='new-icon-word-div-thumbs-down' onClick={() => dislikePost(post._id)}>
+                                            <div className='new-icon-word-div-thumbs-down' onClick={(e) => { e.stopPropagation(); dislikePost(post._id); }}>
                                                 <NavigationOutlinedIcon className='thumbs-down-icon'/>                                        
                                             </div>
                                         }
                                         { post.hasDisliked &&
-                                            <div className='new-icon-word-div-thumbs-down-active'>
-                                                <NavigationIcon className='thumbs-down-icon-filled' />
+                                            <div className='new-icon-word-div-thumbs-down-active' onClick={(e) => { e.stopPropagation(); }}>
+                                                <NavigationIcon className='thumbs-down-icon-filled' onClick={(e) => e.preventDefault()}/>
                                             </div>
                                         }
                                     </div>
-                                    <div className='right-top-div' onClick={(e) => e.preventDefault()}>
+                                    <div className='right-top-div' onClick={(e) => { e.stopPropagation(); }}>
                                         <CustomizedTooltip title="info" color="#4d3939" textColor="#fff">
                                             <MoreHorizOutlinedIcon className='more-info'/>
                                         </CustomizedTooltip>

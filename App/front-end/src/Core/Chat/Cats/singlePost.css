@@ -1,0 +1,28 @@
+.extra-divs{
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+    /* background-color: red; */
+    justify-items: center;
+    align-items: center;
+}
+
+.icon-to-data-div{
+    display: flex;
+    flex-direction: row;
+    gap:5px;
+    /* background-color: red; */
+    justify-items: center;
+    align-items: center;
+    /* cursor: text !important;
+    user-select: text !important; */
+}
+
+.data-text{
+    font-family: 'Inter';
+    font-size: 15px;
+}
+
+.icon-to-data-div:hover .data-text{
+    text-decoration: underline;
+}

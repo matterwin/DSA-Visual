@@ -311,6 +311,12 @@ const getSinglePost = async (req, res) => {
       throw new CustomError.BadRequestError(`User post with ID ${postId} does not exist.`);
     }
 
+    const user = await User.findOne({ _id: userId }).select('-email -password');
+    if (!user) {
+      console.log('here'); //need to do extra steps to when the user isn't signed in
+      throw new CustomError.UnauthenticatedError('Invalid Credentials');
+    }
+
     const alreadyDisliked = post.dislikes.includes(userId);
     const alreadyLiked = post.likes.includes(userId);
 
@@ -333,12 +339,15 @@ const getSinglePost = async (req, res) => {
       formattedDate = `${Math.floor(duration.asYears())}yr`;
     }
 
+    const formattedCreatedAt = moment(post.createdAt).format('h:mm A · MMM D, YYYY');
+
     const formattedPost = {
       ...post.toObject(),
       postedAgo: formattedDate,
       likeToDislikeCount: post.likeToDislikeRatio,
       hasDisliked: alreadyDisliked,
-      hasLiked: alreadyLiked
+      hasLiked: alreadyLiked,
+      formattedCreatedAt: formattedCreatedAt
     };
 
     res.status(StatusCodes.OK).json({

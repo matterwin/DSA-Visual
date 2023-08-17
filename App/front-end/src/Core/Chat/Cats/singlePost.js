@@ -15,6 +15,7 @@ import NavigationOutlinedIcon from '@mui/icons-material/NavigationOutlined';
 import NavigationIcon from '@mui/icons-material/Navigation';
 import MoreHorizOutlinedIcon from '@mui/icons-material/MoreHorizOutlined';
 import Footer from '../../Nav/Footer/footer';
+import AccessTimeIcon from '@mui/icons-material/AccessTime';
 
 import './singlePost.css'
 
@@ -203,10 +204,22 @@ const SinglePost = () => {
 
                     </div>
                     <div className={`user-posts-container ${loading ? '' : 'bubble-animation'}`} style={{ animationDelay: '300ms' }}>
-                        <p>hi</p>
+                        <div className='extra-divs'>
+                            <CustomizedTooltip title={userPost.formattedCreatedAt} color="#4d3939" textColor="#fff">
+                                <div className='icon-to-data-div'>
+                                    <AccessTimeIcon style={{ color: '#4d3939', cursor:'pointer !important' }}/>
+                                    <p className='data-text'>{userPost.formattedCreatedAt}</p>
+                                </div>
+                            </CustomizedTooltip>
+
+                        </div>
                     </div>
                     <div className={`user-posts-container ${loading ? '' : 'bubble-animation'}`} style={{ animationDelay: '400ms' }}>
-                        <p>Comment Section</p>
+                        <div className='extra-divs'>
+                            <p>test</p>
+                            <p>test2</p>
+                            <p>test3</p>
+                        </div>
                     </div>
                 </div>
             );
