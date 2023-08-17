@@ -429,35 +429,35 @@ const getRepliesToPost = async (req, res) => {
       throw new CustomError.BadRequestError(`User post with ID ${postId} does not exist.`);
     }
 
-    // Format createdAt for replies
-    const formattedReplies = post.replies.map((reply) => {
-      const replyCreatedAt = moment(reply.createdAt);
-      const replyDuration = moment.duration(currentTimestamp.diff(replyCreatedAt));
+    const formattedReplies = post.replies.map((post) => {
+      const createdAt = moment(post.createdAt);
+      const currentTimestamp = moment();
+      const duration = moment.duration(currentTimestamp.diff(createdAt));
 
-      let formattedReplyDate = '';
-      if (replyDuration.asSeconds() < 60) {
-        formattedReplyDate = `${Math.floor(replyDuration.asSeconds())}s`;
-      } else if (replyDuration.asMinutes() < 60) {
-        formattedReplyDate = `${Math.floor(replyDuration.asMinutes())}m`;
-      } else if (replyDuration.asHours() < 24) {
-        formattedReplyDate = `${Math.floor(replyDuration.asHours())}hr`;
-      } else if (replyDuration.asDays() < 30) {
-        formattedReplyDate = `${Math.floor(replyDuration.asDays())}d`;
-      } else if (replyDuration.asMonths() < 12) {
-        formattedReplyDate = `${Math.floor(replyDuration.asMonths())}mon`;
+      let formattedDate = '';
+      if (duration.asSeconds() < 60) {
+        formattedDate = `${Math.floor(duration.asSeconds())}s`;
+      } else if (duration.asMinutes() < 60) {
+        formattedDate = `${Math.floor(duration.asMinutes())}m`;
+      } else if (duration.asHours() < 24) {
+        formattedDate = `${Math.floor(duration.asHours())}hr`;
+      } else if (duration.asDays() < 30) {
+        formattedDate = `${Math.floor(duration.asDays())}d`;
+      } else if (duration.asMonths() < 12) {
+        formattedDate = `${Math.floor(duration.asMonths())}mon`;
       } else {
-        formattedReplyDate = `${Math.floor(replyDuration.asYears())}yr`;
+        formattedDate = `${Math.floor(duration.asYears())}yr`;
       }
 
       return {
-        ...reply.toObject(),
-        createdAt: formattedReplyDate,
+        ...post.toObject(),
+        postedAgo: formattedDate,
       };
     });
 
     res.status(StatusCodes.OK).json({
       message: `Successfully received all replies to post ${postId}`,
-      replies: formattedReplies, // Return the populated replies array with formatted dates
+      replies: formattedReplies,
     });
   } catch (error) {
     res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({

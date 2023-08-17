@@ -7,6 +7,15 @@
     align-items: center;
 }
 
+.reply-container{
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    /* background-color: red; */
+    justify-items: flex-start;
+    align-items: center;
+}
+
 .icon-to-data-div{
     display: flex;
     flex-direction: row;
@@ -26,3 +35,13 @@
 .icon-to-data-div:hover .data-text{
     text-decoration: underline;
 }
+
+.new-icon-word-div-thumbs-up {
+    /* ... other styles */
+    transition: transform 0.3s;
+  }
+  
+  /* Apply the pop effect */
+  .new-icon-word-div-thumbs-up.pop {
+    transform: scale(1.2); /* Increase the size */
+  }
