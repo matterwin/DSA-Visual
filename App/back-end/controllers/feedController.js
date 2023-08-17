@@ -1,6 +1,7 @@
 const User = require('../models/User');
 const HomeFeed = require('../models/HomeFeed');
 const UserInfo = require('../models/UserInfo');
+const Replies = require('../models/Replies');
 const { StatusCodes } = require('http-status-codes');
 const CustomError = require('../errors');
 const moment = require('moment-timezone');
@@ -408,19 +409,68 @@ const userPost = async (req, res) => {
   res.status(StatusCodes.CREATED).json({ postId });
 };
 
-const replyPost = async (req, res) => {
+const getRepliesToPost = async (req, res) => {
+  const { postId } = req.params;
+
+  if (!postId) {
+    throw new CustomError.BadRequestError('Please provide postId.');
+  }
+
+  try {
+    const post = await HomeFeed.findOne({ _id: postId }).populate({
+      path: 'replies',
+      populate: {
+        path: 'user',
+        select: 'username firstname lastname color profilePic',
+      },
+    });
+
+    if (!post) {
+      throw new CustomError.BadRequestError(`User post with ID ${postId} does not exist.`);
+    }
+
+    // Format createdAt for replies
+    const formattedReplies = post.replies.map((reply) => {
+      const replyCreatedAt = moment(reply.createdAt);
+      const replyDuration = moment.duration(currentTimestamp.diff(replyCreatedAt));
+
+      let formattedReplyDate = '';
+      if (replyDuration.asSeconds() < 60) {
+        formattedReplyDate = `${Math.floor(replyDuration.asSeconds())}s`;
+      } else if (replyDuration.asMinutes() < 60) {
+        formattedReplyDate = `${Math.floor(replyDuration.asMinutes())}m`;
+      } else if (replyDuration.asHours() < 24) {
+        formattedReplyDate = `${Math.floor(replyDuration.asHours())}hr`;
+      } else if (replyDuration.asDays() < 30) {
+        formattedReplyDate = `${Math.floor(replyDuration.asDays())}d`;
+      } else if (replyDuration.asMonths() < 12) {
+        formattedReplyDate = `${Math.floor(replyDuration.asMonths())}mon`;
+      } else {
+        formattedReplyDate = `${Math.floor(replyDuration.asYears())}yr`;
+      }
+
+      return {
+        ...reply.toObject(),
+        createdAt: formattedReplyDate,
+      };
+    });
+
+    res.status(StatusCodes.OK).json({
+      message: `Successfully received all replies to post ${postId}`,
+      replies: formattedReplies, // Return the populated replies array with formatted dates
+    });
+  } catch (error) {
+    res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
+      error: 'An error occurred while fetching the replies.',
+    });
+  }
+};
+
+const replyToPost = async (req, res) => {
   const { userId, postId, message } = req.body;
 
-  if(!userId){
-      throw new CustomError.BadRequestError('Provide userId');
-  }
-
-  if(!postId){
-    throw new CustomError.BadRequestError('Provide postId');
-  }
-
-  if(!message){
-      throw new CustomError.BadRequestError('Provide message');
+  if (!userId || !postId || !message) {
+    throw new CustomError.BadRequestError('Please provide userId, postId, and message.');
   }
 
   const user = await User.findOne({ _id: userId }).select('-email -password');
@@ -430,13 +480,27 @@ const replyPost = async (req, res) => {
 
   const post = await HomeFeed.findOne({ _id: postId });
   if (!post) {
-    throw new CustomError.BadRequestError(`User post: ${postId} does not exist.`);
+    throw new CustomError.BadRequestError(`User post with ID ${postId} does not exist.`);
   }
 
-  // const post = await HomeFeed.create({ user, title, message });
-  // need to finish reply
+  // Create a new reply instance
+  const newReply = new Replies({
+    user: userId,
+    userPost: postId,
+    message: message,
+  });
 
-  res.status(StatusCodes.CREATED).json({ post });
+  // Save the new reply
+  const savedReply = await newReply.save();
+
+  // Update the HomeFeed document with the new reply
+  post.replies.push(savedReply._id);
+  await post.save();
+
+  res.status(StatusCodes.CREATED).json({
+    message: 'Reply successfully added.',
+    reply: savedReply,
+  });
 };
 
 const likePost = async (req, res) => {
@@ -549,13 +613,15 @@ const dislikePost = async (req, res) => {
 };
 
 module.exports = {
-    allPosts,
-    allPostsNoLimit,
-    allPostsForUser,
-    allPostsSortBy,
-    getSinglePost,
-    clearFeed,
-    userPost,
-    likePost,
-    dislikePost,
+  allPosts,
+  allPostsNoLimit,
+  allPostsForUser,
+  allPostsSortBy,
+  getSinglePost,
+  clearFeed,
+  userPost,
+  likePost,
+  dislikePost,
+  replyToPost,
+  getRepliesToPost
 }

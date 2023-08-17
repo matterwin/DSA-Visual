@@ -32,7 +32,7 @@ const HomeFeedSchema = new mongoose.Schema({
   replies: [
     {
       type: mongoose.Schema.ObjectId,
-      ref: 'User',
+      ref: 'Replies', // Reference the Replies model
     },
   ],
   createdAt: {

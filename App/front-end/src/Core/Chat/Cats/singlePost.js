@@ -16,6 +16,7 @@ import NavigationIcon from '@mui/icons-material/Navigation';
 import MoreHorizOutlinedIcon from '@mui/icons-material/MoreHorizOutlined';
 import Footer from '../../Nav/Footer/footer';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
+import BubbleChartOutlinedIcon from '@mui/icons-material/BubbleChartOutlined';
 
 import './singlePost.css'
 
@@ -136,7 +137,7 @@ const SinglePost = () => {
 
     const getPost = () => {
             return (
-                <div style={{ marginTop: '20px' }}>
+                <div>
                     <div className={`user-posts-container ${loading ? '' : 'bubble-animation'}`}>
                         <div>
                             <div className='div-for-padding'>
@@ -191,6 +192,10 @@ const SinglePost = () => {
                                                     <NavigationIcon className='thumbs-down-icon-filled' />
                                                 </div>
                                             }
+                                        </div>
+                                        <div className='new-icon-word-div-replies'>
+                                            <BubbleChartOutlinedIcon className='replies-icon' />
+                                            <p className='replies-text' style={{ fontWeight:'500' }}>{userPost.replies.length} Replies</p>
                                         </div>
                                         <div className='right-top-div' onClick={(e) => e.preventDefault()}>
                                             <CustomizedTooltip title="info" color="#4d3939" textColor="#fff">

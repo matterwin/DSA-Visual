@@ -142,20 +142,13 @@
 
 /* thumbs-down */
 .new-icon-word-div-thumbs-down{
-    /* padding: 3px;
-    border-radius: 5px; */
     cursor: pointer;
     margin: 0px;
-    /* margin-bottom: -5px; */
 }
 
 .new-icon-word-div-thumbs-down-active{
-    /* padding: 3px;
-    border-radius: 5px; */
     cursor: pointer;
     margin: 0px;
-    /* margin-bottom: -5px; */
-    /* background-color: #a5a5a53f; */
 }
 
 .bubble-animation {

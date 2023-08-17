@@ -306,6 +306,10 @@ const UserPosts = ({ setSortBy, sortBy }) => {
                                             </div>
                                         }
                                     </div>
+                                    <div className='new-icon-word-div-replies'>
+                                        <BubbleChartOutlinedIcon className='replies-icon' />
+                                        <p className='replies-text' style={{ fontWeight:'500' }}>{post.replies.length} Replies</p>
+                                    </div>
                                     <div className='right-top-div' onClick={(e) => { e.stopPropagation(); }}>
                                         <CustomizedTooltip title="info" color="#4d3939" textColor="#fff">
                                             <MoreHorizOutlinedIcon className='more-info'/>
