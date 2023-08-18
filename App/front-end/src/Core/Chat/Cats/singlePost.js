@@ -154,23 +154,86 @@ const SinglePost = () => {
         if (replies === null) {
             return null;
         }
-
+    
         return replies.map((reply, index) => {
-          return (
-            <div key={index}className={`user-posts-container ${loading ? '' : 'bubble-animation'}`} style={{ animationDelay: '500ms' }}>
-                <div>{reply.user.username}</div>
-                <div>{reply.user.firstname} {reply.user.lastname}</div>
-                <div>{reply.message}</div>
-            </div>
-          )
+            return (
+                <div key={index} className={`user-posts-container ${loading ? '' : 'bubble-animation'}`} style={{ animationDelay: '500ms' }}>
+                    <div className='div-for-padding-for-replies'>
+                        <div className='split-side-container'>
+                            <div className='left-contain-post'>
+                                <div className='top-level-div' onClick={(e) => e.preventDefault()}>
+                                    <CustomizedTooltip title={reply.user.username} color="#4d3939" textColor="#fff">
+                                        <div className="chat-cust-pfp-div">
+                                            <img className="chat-cust-profile-pic" src={reply.user.profilePic} alt="ProfilePicture" />
+                                        </div>
+                                    </CustomizedTooltip>
+                                </div>
+                            </div>
+                            <div className='top-and-text-div'>
+                                <div className='top-contain'>
+                                    <div className='left-top-div' onClick={(e) => e.preventDefault()}>
+                                        <p className='likes-text'>{reply.user.firstname} {reply.user.lastname}</p>
+                                        <p className='username-at'>@{reply.user.username} &nbsp;</p>
+                                    </div>
+                                    <div className='right-top-div-new'>
+                                        <p className='post-text'>{reply.postedAgo}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <p className='post-text'>{reply.message}</p>
+                        </div>
+                            <div className='bottom-post-div'>
+                                <div className='center-row-align'>
+                                    <div className='like-counter-container' onClick={(e) => e.preventDefault()}>
+                                        {/* { !userPost.hasLiked && */}
+                                            <div className='new-icon-word-div-thumbs-up'>
+                                                <NavigationOutlinedIcon className='thumbs-up-icon'  style={{ color:'red !important'}}  />
+                                            </div>
+                                        
+                                        {/* { userPost.hasLiked && 
+                                            <div className='new-icon-word-div-thumbs-up-active'>
+                                                <NavigationIcon className='thumbs-up-icon-filled-in' />
+                                            </div>
+                                        } */}
+                                        {/* <p className='likes-text' style={{ color: userPost.hasLiked ? '#a9c9a3' : userPost.hasDisliked ? '#7193ff' : 'inherit' }}>
+                                            {userPost.likeToDislikeCount}
+                                            </p> */}
+                                        {/* { !userPost.hasDisliked && */}
+                                            <div className='new-icon-word-div-thumbs-down' >
+                                                <NavigationOutlinedIcon className='thumbs-down-icon'  style={{ color:'red !important'}} />                                        
+                                            </div>
+                                        {/* } */}
+                                        {/* { userPost.hasDisliked &&
+                                            <div className='new-icon-word-div-thumbs-down-active'>
+                                                <NavigationIcon className='thumbs-down-icon-filled' />
+                                            </div>
+                                        } */}
+                                    </div>
+                                    {/* <div className='new-icon-word-div-replies'>
+                                        <BubbleChartOutlinedIcon className='replies-icon' />
+                                        <p className='replies-text' style={{ fontWeight:'500' }}>{userPost.replies.length} Replies</p>
+                                    </div> */}
+                                    <div className='right-top-div'>
+                                        <CustomizedTooltip title="info" color="#4d3939" textColor="#fff">
+                                            <MoreHorizOutlinedIcon className='more-info'/>
+                                        </CustomizedTooltip>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+            );
         });
     };
+    
       
 
     const getPost = () => {
-        return (
+        return (                
             <div>
-                <div className={`user-posts-container ${loading ? '' : 'bubble-animation'}`}>
+                <div className={`user-posts-container ${loading ? '' : 'bubble-animation'}`} style={{ animationDelay: '400ms' }}>
                     <div>
                         <div className='div-for-padding'>
                             <div className='split-side-container'>
@@ -248,12 +311,6 @@ const SinglePost = () => {
                                 <p className='data-text'>{userPost.formattedCreatedAt}</p>
                             </div>
                         </CustomizedTooltip>
-
-                    </div>
-                </div>
-                <div className={`user-posts-container ${loading ? '' : 'bubble-animation'}`} style={{ animationDelay: '400ms' }}>
-                    <div className='reply-container'>
-                        {getReplies()}
                     </div>
                 </div>
             </div>
@@ -293,6 +350,15 @@ const SinglePost = () => {
                 <div className="center-side-chat">
                     {loading && <Loading />}
                     {!loading && getPost()}
+                    <div className='comment-post-container'>
+                        <div className="chat-cust-pfp-div">
+                            <img className="chat-cust-profile-pic" src={userData.pic} alt="ProfilePicture" />
+                        </div>
+                        <textarea className='input-from-user'/>
+                    </div>
+                    <div className='reply-container'>
+                        {replies != null && getReplies()}
+                    </div>
                 </div>
                 <div className="right-side-chat">
                 <ChatInfo title={chatInfo.title} msg={chatInfo.msg} showButton={false}/>

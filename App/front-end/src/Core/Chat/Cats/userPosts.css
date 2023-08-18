@@ -73,7 +73,7 @@
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
-    gap: 5px;
+    /* gap: 5px; */
 }
 
 .likes-icon-div-up{
@@ -84,9 +84,9 @@
     margin-bottom: -5px;
 }
 
-.likes-icon-div-up:hover, .likes-icon-div-down:hover{
+/* .likes-icon-div-up:hover, .likes-icon-div-down:hover{
     background-color: #a5a5a56b;
-}
+} */
 
 /* thumbs-up */
 .new-icon-word-div-thumbs-up{
@@ -130,13 +130,14 @@
     stroke: #4d3939;
     stroke-width: 0.4;
     color:#4d3939;
+    color: grey;
     font-style: bold;
     color: #a9c9a3;
     stroke: #a9c9a3;
     margin-top: 5px;
     padding: 5px;
     border-radius: 3px;
-    background-color: #a5a5a53f;
+    /* background-color: #a5a5a53f; */
     cursor: pointer;
 }
 
@@ -178,10 +179,10 @@
 }
 
 
-.thumbs-up-icon:hover, .thumbs-down-icon:hover{
+/* .thumbs-up-icon:hover, .thumbs-down-icon:hover{
     background-color: #a5a5a51f;
     background-color: #a5a5a53f;
-}
+} */
 
 /* .new-icon-word-div-thumbs-down:hover{
     background-color: #a5a5a51f;
@@ -203,7 +204,7 @@
     margin-top: 5px;
     padding: 5px;
     border-radius: 3px;
-    background-color: #a5a5a53f;
+    /* background-color: #a5a5a53f; */
     cursor: pointer;
 }
 
