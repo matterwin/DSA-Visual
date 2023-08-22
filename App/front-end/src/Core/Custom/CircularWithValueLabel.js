@@ -7,8 +7,7 @@ import Box from '@mui/material/Box';
 function CircularProgressWithLabel(props) {
   return (
     <Box sx={{ position: 'relative', display: 'inline-flex', boxSizing:'border-box', margin:0, padding:0 }}>
-      <CircularProgress sx={{ color:'#a9c9a3', width: 40, // Adjust the width to make it smaller
-          height: 40,   }} size={35} variant="determinate" {...props} />
+      <CircularProgress sx={{ color:props.colorOfChoice }} size={35} variant="determinate" {...props} />
       <Box
         sx={{
           top: 0,
@@ -38,13 +37,13 @@ CircularProgressWithLabel.propTypes = {
   value: PropTypes.number.isRequired,
 };
 
-export default function CircularWithValueLabel({ replyWordCount }) {
+export default function CircularWithValueLabel({ replyWordCount, colorOfChoice }) {
   const maxWordCount = 300;
   const progress = (replyWordCount / maxWordCount) * 100; // Calculate the progress percentage
 
-  if (replyWordCount <= maxWordCount) {
-    return <CircularProgressWithLabel value={progress} />;
-  } else {
+  if(maxWordCount <= 300)
+    return <CircularProgressWithLabel value={progress} colorOfChoice={colorOfChoice}/>;
+  else {
     return (
       <Typography variant="caption" component="div" color="error">
         Word count exceeded maximum.
