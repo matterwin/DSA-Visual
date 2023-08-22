@@ -33,15 +33,19 @@ function Home() {
 
     return (
         <div>
-            <div className='sub-nav-container'>
-                <div className="sub-inside-nav">
-                    <div className="sub-nav-l-r-container">
-                        <div className="sub-left-side">
-                            <div className='sub-left-side-row-contain'>
-                                <CustomDSANavBtnReplica />
+            <div className='div-to-hide-sub-nav-container'>
+                <div className='sub-nav-container'>
+                    <div className="sub-inside-nav">
+                        <div className="sub-nav-l-r-container">
+                            <div className="sub-left-side">
+                                <div className='sub-left-side-row-contain'>
+                                    <div className='hide-dsa-btn'>
+                                        <CustomDSANavBtnReplica />
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>      
+                        </div>      
+                    </div>
                 </div>
             </div>
             <div className="container">

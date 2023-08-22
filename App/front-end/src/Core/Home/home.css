@@ -19,6 +19,7 @@
   display: flex;
   top: 115px;
   box-sizing: border-box;
+  border-right: #A9C9A3 1px solid;
   /* border-right: 1px solid silver; */
 }
 
@@ -95,6 +96,10 @@
     margin-left: 0px;
     margin-right: 0px;
     justify-content: center;
+  }
+
+  .div-to-hide-sub-nav-container{
+    display: none;
   }
 
   .center-side-home{

@@ -20,18 +20,18 @@
     resize: none;
     width: 100%;
     padding: 10px;
-    overflow-y:visible;
     box-sizing: border-box;
-    min-height: 10px;
-    max-height: 300px;
+    min-height: 40px;
+    max-height: 150px;
     border-radius: 5px;
+    overflow-y: hidden;
     font-family: 'Inter';
     font-size: 15px;
     color: black;
     text-decoration: none;
     border: 1px solid #4d3939;
     outline: none;
-    box-shadow: rgba(0, 0, 0, .1) 0px 0px 10px 10px;
+    box-shadow: rgba(0, 0, 0, .08) 0px 0px 18px 18px;
 }
 
 .reply-box-and-btn-div{
@@ -56,6 +56,7 @@
 
 .reply-btn{
     background-color: #4d3939;
+    background-color: #6b5151;
     padding: 8px;
     border-radius: 5px;
     color: #fff;
@@ -64,11 +65,21 @@
     text-decoration: none;
     outline: none;
     border: none;
-    transition: background-color 1s ease-in;
+    transition: background-color 0.3s ease;
 }
 
 .reply-btn:hover {
-    background-color: #3d2e2e;
+    
+    background-color: #4d3939;
+}
+
+.wordcount{
+    font-family: 'Inter';
+    font-size: 13px;
+    color: #6b5151;
+    margin-right: auto;
+    box-sizing: border-box;
+    padding: 0;
 }
 
 .comment-post-container{

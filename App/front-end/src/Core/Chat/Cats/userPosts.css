@@ -167,9 +167,9 @@
 }
 
 .thumbs-down-icon{
-    stroke: #4d3939;
+    stroke: #6b5151;
     stroke-width: 0.4;
-    color:#4d3939;
+    color:#6b5151;
     transform: scaleY(-1);
     font-style: bold;
     margin-top: 5px;
@@ -194,9 +194,9 @@
 }
 
 .thumbs-down-icon-filled{
-    stroke: #4d3939;
+    stroke: #6b5151;
     stroke-width: 0.4;
-    color:#4d3939;
+    color:#6b5151;
     font-style: bold;
     color: #7193ff;
     stroke: #7193ff;
@@ -220,9 +220,9 @@
 }
 
 .replies-icon{
-    stroke: #4d3939;
+    stroke: #6b5151;
     stroke-width: 0.4;
-    color:#4d3939;
+    color:#6b5151;
     font-size:22px;
     font-style: bold;
 }
@@ -275,7 +275,7 @@
     font-family: 'Inter';
     font-size: 15px;
     font-weight: 800;
-    color: #4d3939;
+    color: #6b5151;
 }
 
 .likes-text:hover {
@@ -393,4 +393,10 @@
 .user-posts-container:hover .right-top-div {
     /* Set opacity to 1 on hover to fade it in */
     opacity: 1;
+}
+
+@media screen and (max-width: 500px) {
+    .user-posts-container{
+        border-radius: 0px;
+    }
 }

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { useNavigate, useParams } from 'react-router-dom'; // Import useNavigate
 import ChatNav from '../chatNav';
 import { Divider } from '@mui/material';
@@ -18,6 +18,8 @@ import Footer from '../../Nav/Footer/footer';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import BubbleChartOutlinedIcon from '@mui/icons-material/BubbleChartOutlined';
 import CircularWithValueLabel from '../../Custom/CircularWithValueLabel';
+import useAutosizeTextArea from '../../Custom/useAutosizeTextArea';
+
 
 import './singlePost.css'
 
@@ -43,11 +45,20 @@ const SinglePost = () => {
     const [userPost, setUserPost] = useState(null);
     const [replies, setReplies] = useState(null);
     const [replyWordCount, setReplyWordCount] = useState(0);
+    const [value, setValue] = useState("");
+    const textAreaRef = useRef(null);
+    useAutosizeTextArea(textAreaRef.current, value);
 
     const navigate = useNavigate(); // Get the navigate function
 
     const handleGoBack = () => {
       navigate(-1); // Navigate back by one step
+    };
+
+    const handleResizeTextAreaChange = (evt) => {
+        const val = evt.target?.value;
+    
+        setValue(val);
     };
 
     const fetchPostReplies = async () => {
@@ -230,8 +241,15 @@ const SinglePost = () => {
         });
     };
     
-      
+    function adjustHeight(el){
+        el.style.height = (el.scrollHeight > el.clientHeight) ? (el.scrollHeight)+"px" : "60px";
+    }
 
+    const handleTextAreaChange = (e) => {
+        handleResizeTextAreaChange(e);
+        setReplyWordCount(e.target.value.length);
+    }
+      
     const getPost = () => {
         return (                
             <div>
@@ -363,18 +381,37 @@ const SinglePost = () => {
                                         <textarea 
                                             className='input-from-user' 
                                             placeholder='Reply to this post'
-                                            onChange={(e) => setReplyWordCount(e.target.value.length)}
+                                            onChange={(e) => handleTextAreaChange(e)}
+                                            onkeyup={() => adjustHeight(this)}
+                                            ref={textAreaRef}
+                                            rows={1}
+                                            value={value}
                                         />
                                         <div className='bottom-of-reply-div'>
+                                            {replyWordCount > 0 &&
+                                                <p style={{ color: replyWordCount > 290 ? replyWordCount > 300 ? '#f22c3d' : '#ea770a' : '#a9c9a3' }} className='wordcount'>
+                                                    {replyWordCount}/300
+                                                </p>
+                                            }
                                             {replyWordCount > 0 && <>
-                                                <CircularWithValueLabel replyWordCount={replyWordCount} />
+                                                <CircularWithValueLabel
+                                                    replyWordCount={replyWordCount}
+                                                    colorOfChoice={
+                                                        replyWordCount > 290 ? replyWordCount > 300 ? '#f22c3d' : '#ea770a' : '#a9c9a3'
+                                                    }
+                                                />
                                                 <Divider sx={{ backgroundColor: 'silver', width:'2px', height:'30px' }}/>
-                                            </>}
+                                            </>
+                                            }
                                             <button
                                                 className='reply-btn'
-                                                style={{ opacity: replyWordCount <= 0 || replyWordCount > 300 ? 0.5 : 1 }}
+                                                style={{
+                                                    opacity: replyWordCount <= 0 || replyWordCount > 300 ? 0.5 : 1,
+                                                    cursor: replyWordCount <= 0 || replyWordCount > 300 ? 'default' : 'pointer'
+                                                }}
                                                 disabled={replyWordCount <= 0 || replyWordCount > 300}
-                                                >
+                                                onClick={() => alert('test')}
+                                            >
                                                 <p>Reply</p>
                                             </button>
                                         </div>
