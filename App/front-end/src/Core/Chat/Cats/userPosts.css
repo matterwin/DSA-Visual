@@ -110,6 +110,8 @@
     stroke: #4d3939;
     stroke-width: 0.4;
     color:#4d3939;
+    stroke: #8d8d8d;
+    color: #8d8d8d;
     font-style: bold;
     margin-top: 5px;
     padding: 5px;
@@ -170,6 +172,8 @@
     stroke: #6b5151;
     stroke-width: 0.4;
     color:#6b5151;
+    stroke: #8d8d8d;
+    color: #8d8d8d;
     transform: scaleY(-1);
     font-style: bold;
     margin-top: 5px;
@@ -223,6 +227,8 @@
     stroke: #6b5151;
     stroke-width: 0.4;
     color:#6b5151;
+    stroke: #8d8d8d;
+    color: #8d8d8d;
     font-size:22px;
     font-style: bold;
 }
@@ -286,7 +292,6 @@
     font-family: 'Inter';
     font-size: 15px;
     font-weight: 800;
-    color: #4d3939;
 }
 
 .repost-text{

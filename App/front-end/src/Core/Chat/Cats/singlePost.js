@@ -67,7 +67,7 @@ const SinglePost = () => {
 
             const res = await fetch(url);
             const data = await res.json();
-
+            
             setReplies(data.replies);
             console.log(data.replies);
         } catch (error) {
@@ -82,13 +82,18 @@ const SinglePost = () => {
         
             const res = await fetch(url);
             const data = await res.json();
-
             setLoading(false);
+
             setUserPost(data.post);
+            document.title = "@" + data.post.user.username + " | Heyso: " + data.post.message;
             console.log(data.post);
         } catch (error) {
             window.location.href = `/`;
         }
+    }
+
+    const setTitleOfTab = async () => {
+        document.title = "post by " + userPost.user.username;
     }
 
     useEffect(() => {

@@ -289,7 +289,7 @@ const UserPosts = ({ setSortBy, sortBy }) => {
                                         <p className='likes-text' 
                                             style={{ 
                                                 color: post.hasLiked ? '#a9c9a3' : post.hasDisliked 
-                                                ? '#7193ff' : '#6b5151',
+                                                ? '#7193ff' : 'black',
                                                 textDecoration: 'none'
                                             }}
                                         >
