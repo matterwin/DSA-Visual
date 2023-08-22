@@ -14,7 +14,7 @@ const RepliesSchema = new mongoose.Schema({
   message: {
     type: String,
     minlength: 1,
-    maxlength: 400,
+    maxlength: 300,
     required: true,
   },
   createdAt: {

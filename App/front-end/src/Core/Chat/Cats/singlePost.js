@@ -17,6 +17,7 @@ import MoreHorizOutlinedIcon from '@mui/icons-material/MoreHorizOutlined';
 import Footer from '../../Nav/Footer/footer';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import BubbleChartOutlinedIcon from '@mui/icons-material/BubbleChartOutlined';
+import CircularWithValueLabel from '../../Custom/CircularWithValueLabel';
 
 import './singlePost.css'
 
@@ -41,6 +42,7 @@ const SinglePost = () => {
     const [loading, setLoading] = useState(true);
     const [userPost, setUserPost] = useState(null);
     const [replies, setReplies] = useState(null);
+    const [replyWordCount, setReplyWordCount] = useState(0);
 
     const navigate = useNavigate(); // Get the navigate function
 
@@ -157,7 +159,7 @@ const SinglePost = () => {
     
         return replies.map((reply, index) => {
             return (
-                <div key={index} className={`user-posts-container ${loading ? '' : 'bubble-animation'}`} style={{ animationDelay: '500ms' }}>
+                <div key={index} className={`user-posts-container ${loading ? '' : 'bubble-animation'}`} style={{ animationDelay: '400ms' }}>
                     <div className='div-for-padding-for-replies'>
                         <div className='split-side-container'>
                             <div className='left-contain-post'>
@@ -233,7 +235,7 @@ const SinglePost = () => {
     const getPost = () => {
         return (                
             <div>
-                <div className={`user-posts-container ${loading ? '' : 'bubble-animation'}`} style={{ animationDelay: '400ms' }}>
+                <div className={`user-posts-container ${loading ? '' : 'bubble-animation'}`} style={{ animationDelay: '300ms' }}>
                     <div>
                         <div className='div-for-padding'>
                             <div className='split-side-container'>
@@ -350,15 +352,40 @@ const SinglePost = () => {
                 <div className="center-side-chat">
                     {loading && <Loading />}
                     {!loading && getPost()}
-                    <div className='comment-post-container'>
-                        <div className="chat-cust-pfp-div">
-                            <img className="chat-cust-profile-pic" src={userData.pic} alt="ProfilePicture" />
-                        </div>
-                        <textarea className='input-from-user'/>
-                    </div>
-                    <div className='reply-container'>
-                        {replies != null && getReplies()}
-                    </div>
+                    {!loading &&
+                        <>
+                            <div className={`user-posts-container ${loading ? '' : 'bubble-animation'}`} style={{ animationDelay: '400ms' }}>
+                                <div className='comment-post-container'>
+                                    <div className="chat-cust-pfp-div">
+                                        <img className="chat-cust-profile-pic" src={userData.pic} alt="ProfilePicture" />
+                                    </div>
+                                    <div className='reply-box-and-btn-div'>
+                                        <textarea 
+                                            className='input-from-user' 
+                                            placeholder='Reply to this post'
+                                            onChange={(e) => setReplyWordCount(e.target.value.length)}
+                                        />
+                                        <div className='bottom-of-reply-div'>
+                                            {replyWordCount > 0 && <>
+                                                <CircularWithValueLabel replyWordCount={replyWordCount} />
+                                                <Divider sx={{ backgroundColor: 'silver', width:'2px', height:'30px' }}/>
+                                            </>}
+                                            <button
+                                                className='reply-btn'
+                                                style={{ opacity: replyWordCount <= 0 || replyWordCount > 300 ? 0.5 : 1 }}
+                                                disabled={replyWordCount <= 0 || replyWordCount > 300}
+                                                >
+                                                <p>Reply</p>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className='reply-container'>
+                                {replies != null && getReplies()}
+                            </div>
+                        </>
+                    }
                 </div>
                 <div className="right-side-chat">
                 <ChatInfo title={chatInfo.title} msg={chatInfo.msg} showButton={false}/>
