@@ -53,3 +53,9 @@ do sort by feature for chat
 add modal for post
 need to add minimal resizeAble height to have a threshold where its not too small, like have it as a min of 150px no matter the case
 add search page like twitch mobile, do the exact same and make it just the size of the left, center, and right 
+
+
+
+make the home feed show who edited it. which will only be me for now, and basically copy this site
+
+https://medium.com/@oherterich/creating-a-textarea-with-dynamic-height-using-react-and-typescript-5ed2d78d9848#:~:text=One%20way%20to%20do%20this,subsequently%20calculate%20the%20correct%20height.
